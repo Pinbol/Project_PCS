@@ -11,6 +11,7 @@ namespace Project
         public String idStaff;
         public String idMembership;
         public String idPayment;
+        public String idOccupation;
 
         public Form2()
         {
@@ -22,8 +23,10 @@ namespace Project
             panelStaff.Visible = true;
             panelMembership.Visible = false;
             panelPayment.Visible = false;
+            panelOccupation.Visible = false;
 
             refreshDGStaff();
+            clearStaff();
         }
 
         private void masterMembershipToolStripMenuItem_Click(object sender, EventArgs e)
@@ -31,8 +34,10 @@ namespace Project
             panelStaff.Visible = false;
             panelMembership.Visible = true;
             panelPayment.Visible = false;
+            panelOccupation.Visible = false;
 
             refreshDGMembership();
+            clearMembership();
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -40,8 +45,10 @@ namespace Project
             panelStaff.Visible = true;
             panelMembership.Visible = false;
             panelPayment.Visible = false;
+            panelOccupation.Visible = false;
 
             refreshDGStaff();
+            clearStaff();
         }
 
         private void refreshDGMembership()
@@ -111,6 +118,29 @@ namespace Project
             da.Fill(dt);
 
             dg_payment.DataSource = dt;
+        }
+
+        private void refreshDGOccupation()
+        {
+            dg_occupation.DataSource = null;
+
+            if (koneksi.getConn().State == ConnectionState.Open)
+            {
+                koneksi.closeConn();
+            }
+
+            DataTable dt = new DataTable();
+            MySqlCommand cmd = new MySqlCommand("SELECT ID, Name FROM occupation order by cast(id as unsigned) asc;", koneksi.getConn());
+            MySqlDataAdapter da = new MySqlDataAdapter();
+
+            koneksi.openConn();
+            cmd.ExecuteReader();
+            koneksi.closeConn();
+
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            dg_occupation.DataSource = dt;
         }
 
         private void btn_clear_staff_Click(object sender, EventArgs e)
@@ -558,6 +588,129 @@ namespace Project
 
                 clearPayment();
                 refreshDGPayment();
+
+                MessageBox.Show("Delete successfull !");
+            }
+        }
+
+        private void masterOccupationToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            panelStaff.Visible = false;
+            panelMembership.Visible = false;
+            panelPayment.Visible = false;
+            panelOccupation.Visible = true;
+
+            clearOccupation();
+            refreshDGOccupation();
+        }
+
+        private void btn_clear_occupation_Click(object sender, EventArgs e)
+        {
+            clearOccupation();
+        }
+
+        private void clearOccupation()
+        {
+            tb_name_occupation.Text = "";
+
+            btn_insert_occupation.Enabled = true;
+            btn_update_occupation.Enabled = false;
+            btn_delete_occupation.Enabled = false;
+        }
+
+        private void btn_insert_occupation_Click(object sender, EventArgs e)
+        {
+            if (tb_name_occupation.Text == "") MessageBox.Show("Please fill all inputs !");
+            else
+            {
+                MySqlCommand cmdID = new MySqlCommand();
+                cmdID.CommandText = "SELECT cast(id as unsigned)+1 FROM occupation ORDER BY CAST(id AS UNSIGNED) DESC LIMIT 1;";
+                cmdID.Connection = koneksi.getConn();
+
+                koneksi.openConn();
+                String newID = cmdID.ExecuteScalar().ToString();
+                koneksi.closeConn();
+
+                String name = tb_name_occupation.Text;
+
+                try
+                {
+                    MySqlCommand cmdInsert = new MySqlCommand("insert into occupation (id,name) values (@id,@name);", koneksi.getConn());
+
+                    cmdInsert.Parameters.AddWithValue("@id", newID);
+                    cmdInsert.Parameters.AddWithValue("@name", name);
+
+                    koneksi.openConn();
+                    cmdInsert.ExecuteNonQuery();
+                    koneksi.closeConn();
+
+                    clearOccupation();
+                    refreshDGOccupation();
+                    MessageBox.Show("Insert successful !");
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.InnerException.Message);
+                }
+            }
+        }
+
+        private void btn_update_occupation_Click(object sender, EventArgs e)
+        {
+            if (tb_name_occupation.Text == "") MessageBox.Show("Please fill all inputs !");
+            else
+            {
+                String name = tb_name_occupation.Text;
+
+                try
+                {
+                    MySqlCommand cmdInsert = new MySqlCommand("update occupation set name = @name where id = @id;", koneksi.getConn());
+
+                    cmdInsert.Parameters.AddWithValue("@id", idOccupation);
+                    cmdInsert.Parameters.AddWithValue("@name", name);
+
+                    koneksi.openConn();
+                    cmdInsert.ExecuteNonQuery();
+                    koneksi.closeConn();
+
+                    clearOccupation();
+                    refreshDGOccupation();
+                    idOccupation = "";
+                    MessageBox.Show("Update successful !");
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.InnerException.Message);
+                }
+            }
+        }
+
+        private void dg_occupation_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idOccupation = dg_occupation.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+            tb_name_occupation.Text = dg_occupation.Rows[e.RowIndex].Cells[1].Value.ToString();
+
+            btn_insert_occupation.Enabled = false;
+            btn_delete_occupation.Enabled = true;
+            btn_update_occupation.Enabled = true;
+        }
+
+        private void btn_delete_occupation_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete this occupation ?", "Confirm Delete", MessageBoxButtons.YesNo);
+
+            if (dr == DialogResult.Yes)
+            {
+                MySqlCommand cmd = new MySqlCommand("delete from occupation where id = @id", koneksi.getConn());
+                cmd.Parameters.AddWithValue("@id", idOccupation);
+
+                koneksi.openConn();
+                cmd.ExecuteNonQuery();
+                koneksi.closeConn();
+
+                clearOccupation();
+                refreshDGOccupation();
 
                 MessageBox.Show("Delete successfull !");
             }

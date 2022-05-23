@@ -83,6 +83,23 @@ namespace Project
             this.btn_clear_payment = new System.Windows.Forms.Button();
             this.btn_update_payment = new System.Windows.Forms.Button();
             this.btn_insert_payment = new System.Windows.Forms.Button();
+            this.masterOccupationToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.masterPersonelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.masterGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.masterGenreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.masterSongToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.masterFormatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.masterProductSongToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.masterProductSellingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelOccupation = new System.Windows.Forms.Panel();
+            this.btn_delete_occupation = new System.Windows.Forms.Button();
+            this.btn_clear_occupation = new System.Windows.Forms.Button();
+            this.btn_update_occupation = new System.Windows.Forms.Button();
+            this.btn_insert_occupation = new System.Windows.Forms.Button();
+            this.tb_name_occupation = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.dg_occupation = new System.Windows.Forms.DataGridView();
+            this.label16 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelStaff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_staff)).BeginInit();
@@ -92,6 +109,8 @@ namespace Project
             ((System.ComponentModel.ISupportInitialize)(this.nud_wkt_membership)).BeginInit();
             this.panelPayment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_payment)).BeginInit();
+            this.panelOccupation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_occupation)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -126,9 +145,13 @@ namespace Project
             // 
             // masterOccupationToolStripMenuItem
             // 
+            this.masterOccupationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.masterOccupationToolStripMenuItem1,
+            this.masterPersonelToolStripMenuItem,
+            this.masterGroupToolStripMenuItem});
             this.masterOccupationToolStripMenuItem.Name = "masterOccupationToolStripMenuItem";
-            this.masterOccupationToolStripMenuItem.Size = new System.Drawing.Size(120, 20);
-            this.masterOccupationToolStripMenuItem.Text = "Master Occupation";
+            this.masterOccupationToolStripMenuItem.Size = new System.Drawing.Size(103, 20);
+            this.masterOccupationToolStripMenuItem.Text = "Master Personel";
             // 
             // panelStaff
             // 
@@ -536,6 +559,12 @@ namespace Project
             // 
             // masterProductToolStripMenuItem
             // 
+            this.masterProductToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.masterGenreToolStripMenuItem,
+            this.masterSongToolStripMenuItem,
+            this.masterFormatToolStripMenuItem,
+            this.masterProductSongToolStripMenuItem,
+            this.masterProductSellingToolStripMenuItem});
             this.masterProductToolStripMenuItem.Name = "masterProductToolStripMenuItem";
             this.masterProductToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
             this.masterProductToolStripMenuItem.Text = "Master Product";
@@ -646,11 +675,160 @@ namespace Project
             this.btn_insert_payment.UseVisualStyleBackColor = true;
             this.btn_insert_payment.Click += new System.EventHandler(this.btn_insert_payment_Click);
             // 
+            // masterOccupationToolStripMenuItem1
+            // 
+            this.masterOccupationToolStripMenuItem1.Name = "masterOccupationToolStripMenuItem1";
+            this.masterOccupationToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.masterOccupationToolStripMenuItem1.Text = "Master Occupation";
+            this.masterOccupationToolStripMenuItem1.Click += new System.EventHandler(this.masterOccupationToolStripMenuItem1_Click);
+            // 
+            // masterPersonelToolStripMenuItem
+            // 
+            this.masterPersonelToolStripMenuItem.Name = "masterPersonelToolStripMenuItem";
+            this.masterPersonelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.masterPersonelToolStripMenuItem.Text = "Master Personel";
+            // 
+            // masterGroupToolStripMenuItem
+            // 
+            this.masterGroupToolStripMenuItem.Name = "masterGroupToolStripMenuItem";
+            this.masterGroupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.masterGroupToolStripMenuItem.Text = "Master Group";
+            // 
+            // masterGenreToolStripMenuItem
+            // 
+            this.masterGenreToolStripMenuItem.Name = "masterGenreToolStripMenuItem";
+            this.masterGenreToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.masterGenreToolStripMenuItem.Text = "Master Genre";
+            // 
+            // masterSongToolStripMenuItem
+            // 
+            this.masterSongToolStripMenuItem.Name = "masterSongToolStripMenuItem";
+            this.masterSongToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.masterSongToolStripMenuItem.Text = "Master Song";
+            // 
+            // masterFormatToolStripMenuItem
+            // 
+            this.masterFormatToolStripMenuItem.Name = "masterFormatToolStripMenuItem";
+            this.masterFormatToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.masterFormatToolStripMenuItem.Text = "Master Format";
+            // 
+            // masterProductSongToolStripMenuItem
+            // 
+            this.masterProductSongToolStripMenuItem.Name = "masterProductSongToolStripMenuItem";
+            this.masterProductSongToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.masterProductSongToolStripMenuItem.Text = "Master Product-Song";
+            // 
+            // masterProductSellingToolStripMenuItem
+            // 
+            this.masterProductSellingToolStripMenuItem.Name = "masterProductSellingToolStripMenuItem";
+            this.masterProductSellingToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.masterProductSellingToolStripMenuItem.Text = "Master Product-Selling";
+            // 
+            // panelOccupation
+            // 
+            this.panelOccupation.Controls.Add(this.btn_delete_occupation);
+            this.panelOccupation.Controls.Add(this.btn_clear_occupation);
+            this.panelOccupation.Controls.Add(this.btn_update_occupation);
+            this.panelOccupation.Controls.Add(this.btn_insert_occupation);
+            this.panelOccupation.Controls.Add(this.tb_name_occupation);
+            this.panelOccupation.Controls.Add(this.label15);
+            this.panelOccupation.Controls.Add(this.dg_occupation);
+            this.panelOccupation.Controls.Add(this.label16);
+            this.panelOccupation.Location = new System.Drawing.Point(0, 54);
+            this.panelOccupation.Name = "panelOccupation";
+            this.panelOccupation.Size = new System.Drawing.Size(880, 541);
+            this.panelOccupation.TabIndex = 17;
+            // 
+            // btn_delete_occupation
+            // 
+            this.btn_delete_occupation.Enabled = false;
+            this.btn_delete_occupation.Location = new System.Drawing.Point(700, 504);
+            this.btn_delete_occupation.Name = "btn_delete_occupation";
+            this.btn_delete_occupation.Size = new System.Drawing.Size(75, 23);
+            this.btn_delete_occupation.TabIndex = 16;
+            this.btn_delete_occupation.Text = "Delete";
+            this.btn_delete_occupation.UseVisualStyleBackColor = true;
+            this.btn_delete_occupation.Click += new System.EventHandler(this.btn_delete_occupation_Click);
+            // 
+            // btn_clear_occupation
+            // 
+            this.btn_clear_occupation.Location = new System.Drawing.Point(793, 504);
+            this.btn_clear_occupation.Name = "btn_clear_occupation";
+            this.btn_clear_occupation.Size = new System.Drawing.Size(75, 23);
+            this.btn_clear_occupation.TabIndex = 15;
+            this.btn_clear_occupation.Text = "Clear";
+            this.btn_clear_occupation.UseVisualStyleBackColor = true;
+            this.btn_clear_occupation.Click += new System.EventHandler(this.btn_clear_occupation_Click);
+            // 
+            // btn_update_occupation
+            // 
+            this.btn_update_occupation.Enabled = false;
+            this.btn_update_occupation.Location = new System.Drawing.Point(609, 504);
+            this.btn_update_occupation.Name = "btn_update_occupation";
+            this.btn_update_occupation.Size = new System.Drawing.Size(75, 23);
+            this.btn_update_occupation.TabIndex = 14;
+            this.btn_update_occupation.Text = "Update";
+            this.btn_update_occupation.UseVisualStyleBackColor = true;
+            this.btn_update_occupation.Click += new System.EventHandler(this.btn_update_occupation_Click);
+            // 
+            // btn_insert_occupation
+            // 
+            this.btn_insert_occupation.Location = new System.Drawing.Point(510, 504);
+            this.btn_insert_occupation.Name = "btn_insert_occupation";
+            this.btn_insert_occupation.Size = new System.Drawing.Size(75, 23);
+            this.btn_insert_occupation.TabIndex = 13;
+            this.btn_insert_occupation.Text = "Insert";
+            this.btn_insert_occupation.UseVisualStyleBackColor = true;
+            this.btn_insert_occupation.Click += new System.EventHandler(this.btn_insert_occupation_Click);
+            // 
+            // tb_name_occupation
+            // 
+            this.tb_name_occupation.Location = new System.Drawing.Point(87, 344);
+            this.tb_name_occupation.Name = "tb_name_occupation";
+            this.tb_name_occupation.Size = new System.Drawing.Size(163, 20);
+            this.tb_name_occupation.TabIndex = 3;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(21, 347);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(41, 13);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "Nama :";
+            // 
+            // dg_occupation
+            // 
+            this.dg_occupation.AllowUserToAddRows = false;
+            this.dg_occupation.AllowUserToDeleteRows = false;
+            this.dg_occupation.AllowUserToResizeColumns = false;
+            this.dg_occupation.AllowUserToResizeRows = false;
+            this.dg_occupation.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dg_occupation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_occupation.Location = new System.Drawing.Point(21, 34);
+            this.dg_occupation.Name = "dg_occupation";
+            this.dg_occupation.ReadOnly = true;
+            this.dg_occupation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dg_occupation.Size = new System.Drawing.Size(847, 289);
+            this.dg_occupation.TabIndex = 1;
+            this.dg_occupation.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_occupation_CellDoubleClick);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(17, 15);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(137, 16);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "Master Occupation";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 593);
+            this.Controls.Add(this.panelOccupation);
             this.Controls.Add(this.panelPayment);
             this.Controls.Add(this.panelMembership);
             this.Controls.Add(this.label7);
@@ -676,6 +854,9 @@ namespace Project
             this.panelPayment.ResumeLayout(false);
             this.panelPayment.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_payment)).EndInit();
+            this.panelOccupation.ResumeLayout(false);
+            this.panelOccupation.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_occupation)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -737,5 +918,22 @@ namespace Project
         private System.Windows.Forms.Button btn_insert_payment;
         private System.Windows.Forms.TextBox tb_name_payment;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ToolStripMenuItem masterOccupationToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem masterPersonelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem masterGroupToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem masterGenreToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem masterSongToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem masterFormatToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem masterProductSongToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem masterProductSellingToolStripMenuItem;
+        private System.Windows.Forms.Panel panelOccupation;
+        private System.Windows.Forms.Button btn_delete_occupation;
+        private System.Windows.Forms.Button btn_clear_occupation;
+        private System.Windows.Forms.Button btn_update_occupation;
+        private System.Windows.Forms.Button btn_insert_occupation;
+        private System.Windows.Forms.TextBox tb_name_occupation;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DataGridView dg_occupation;
+        private System.Windows.Forms.Label label16;
     }
 }
