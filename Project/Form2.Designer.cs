@@ -72,6 +72,17 @@ namespace Project
             this.btn_update_membership = new System.Windows.Forms.Button();
             this.btn_clear_membership = new System.Windows.Forms.Button();
             this.btn_delete_membership = new System.Windows.Forms.Button();
+            this.masterProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.masterPaymentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelPayment = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dg_payment = new System.Windows.Forms.DataGridView();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tb_name_payment = new System.Windows.Forms.TextBox();
+            this.btn_delete_payment = new System.Windows.Forms.Button();
+            this.btn_clear_payment = new System.Windows.Forms.Button();
+            this.btn_update_payment = new System.Windows.Forms.Button();
+            this.btn_insert_payment = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panelStaff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_staff)).BeginInit();
@@ -79,6 +90,8 @@ namespace Project
             this.panelMembership.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_membership)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_wkt_membership)).BeginInit();
+            this.panelPayment.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_payment)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -87,7 +100,9 @@ namespace Project
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.masterStaffToolStripMenuItem,
             this.masterMembershipToolStripMenuItem,
-            this.masterOccupationToolStripMenuItem});
+            this.masterOccupationToolStripMenuItem,
+            this.masterProductToolStripMenuItem,
+            this.masterPaymentToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -519,13 +534,126 @@ namespace Project
             this.btn_delete_membership.UseVisualStyleBackColor = true;
             this.btn_delete_membership.Click += new System.EventHandler(this.btn_delete_membership_Click);
             // 
+            // masterProductToolStripMenuItem
+            // 
+            this.masterProductToolStripMenuItem.Name = "masterProductToolStripMenuItem";
+            this.masterProductToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
+            this.masterProductToolStripMenuItem.Text = "Master Product";
+            // 
+            // masterPaymentToolStripMenuItem
+            // 
+            this.masterPaymentToolStripMenuItem.Name = "masterPaymentToolStripMenuItem";
+            this.masterPaymentToolStripMenuItem.Size = new System.Drawing.Size(105, 20);
+            this.masterPaymentToolStripMenuItem.Text = "Master Payment";
+            this.masterPaymentToolStripMenuItem.Click += new System.EventHandler(this.masterPaymentToolStripMenuItem_Click);
+            // 
+            // panelPayment
+            // 
+            this.panelPayment.Controls.Add(this.btn_delete_payment);
+            this.panelPayment.Controls.Add(this.btn_clear_payment);
+            this.panelPayment.Controls.Add(this.btn_update_payment);
+            this.panelPayment.Controls.Add(this.btn_insert_payment);
+            this.panelPayment.Controls.Add(this.tb_name_payment);
+            this.panelPayment.Controls.Add(this.label14);
+            this.panelPayment.Controls.Add(this.dg_payment);
+            this.panelPayment.Controls.Add(this.label13);
+            this.panelPayment.Location = new System.Drawing.Point(0, 54);
+            this.panelPayment.Name = "panelPayment";
+            this.panelPayment.Size = new System.Drawing.Size(880, 541);
+            this.panelPayment.TabIndex = 5;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(17, 15);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(119, 16);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Master Payment";
+            // 
+            // dg_payment
+            // 
+            this.dg_payment.AllowUserToAddRows = false;
+            this.dg_payment.AllowUserToDeleteRows = false;
+            this.dg_payment.AllowUserToResizeColumns = false;
+            this.dg_payment.AllowUserToResizeRows = false;
+            this.dg_payment.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dg_payment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_payment.Location = new System.Drawing.Point(21, 34);
+            this.dg_payment.Name = "dg_payment";
+            this.dg_payment.ReadOnly = true;
+            this.dg_payment.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dg_payment.Size = new System.Drawing.Size(847, 289);
+            this.dg_payment.TabIndex = 1;
+            this.dg_payment.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_payment_CellDoubleClick);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(21, 347);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(41, 13);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Nama :";
+            // 
+            // tb_name_payment
+            // 
+            this.tb_name_payment.Location = new System.Drawing.Point(87, 344);
+            this.tb_name_payment.Name = "tb_name_payment";
+            this.tb_name_payment.Size = new System.Drawing.Size(163, 20);
+            this.tb_name_payment.TabIndex = 3;
+            // 
+            // btn_delete_payment
+            // 
+            this.btn_delete_payment.Enabled = false;
+            this.btn_delete_payment.Location = new System.Drawing.Point(700, 504);
+            this.btn_delete_payment.Name = "btn_delete_payment";
+            this.btn_delete_payment.Size = new System.Drawing.Size(75, 23);
+            this.btn_delete_payment.TabIndex = 16;
+            this.btn_delete_payment.Text = "Delete";
+            this.btn_delete_payment.UseVisualStyleBackColor = true;
+            this.btn_delete_payment.Click += new System.EventHandler(this.btn_delete_payment_Click);
+            // 
+            // btn_clear_payment
+            // 
+            this.btn_clear_payment.Location = new System.Drawing.Point(793, 504);
+            this.btn_clear_payment.Name = "btn_clear_payment";
+            this.btn_clear_payment.Size = new System.Drawing.Size(75, 23);
+            this.btn_clear_payment.TabIndex = 15;
+            this.btn_clear_payment.Text = "Clear";
+            this.btn_clear_payment.UseVisualStyleBackColor = true;
+            this.btn_clear_payment.Click += new System.EventHandler(this.btn_clear_payment_Click);
+            // 
+            // btn_update_payment
+            // 
+            this.btn_update_payment.Enabled = false;
+            this.btn_update_payment.Location = new System.Drawing.Point(609, 504);
+            this.btn_update_payment.Name = "btn_update_payment";
+            this.btn_update_payment.Size = new System.Drawing.Size(75, 23);
+            this.btn_update_payment.TabIndex = 14;
+            this.btn_update_payment.Text = "Update";
+            this.btn_update_payment.UseVisualStyleBackColor = true;
+            this.btn_update_payment.Click += new System.EventHandler(this.btn_update_payment_Click);
+            // 
+            // btn_insert_payment
+            // 
+            this.btn_insert_payment.Location = new System.Drawing.Point(510, 504);
+            this.btn_insert_payment.Name = "btn_insert_payment";
+            this.btn_insert_payment.Size = new System.Drawing.Size(75, 23);
+            this.btn_insert_payment.TabIndex = 13;
+            this.btn_insert_payment.Text = "Insert";
+            this.btn_insert_payment.UseVisualStyleBackColor = true;
+            this.btn_insert_payment.Click += new System.EventHandler(this.btn_insert_payment_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 593);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.panelPayment);
             this.Controls.Add(this.panelMembership);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.panelStaff);
             this.Controls.Add(this.btn_logout);
             this.Controls.Add(this.menuStrip1);
@@ -545,6 +673,9 @@ namespace Project
             this.panelMembership.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_membership)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_wkt_membership)).EndInit();
+            this.panelPayment.ResumeLayout(false);
+            this.panelPayment.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_payment)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -595,5 +726,16 @@ namespace Project
         private System.Windows.Forms.Button btn_update_membership;
         private System.Windows.Forms.Button btn_insert_membership;
         private System.Windows.Forms.NumericUpDown nud_wkt_membership;
+        private System.Windows.Forms.ToolStripMenuItem masterProductToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem masterPaymentToolStripMenuItem;
+        private System.Windows.Forms.Panel panelPayment;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DataGridView dg_payment;
+        private System.Windows.Forms.Button btn_delete_payment;
+        private System.Windows.Forms.Button btn_clear_payment;
+        private System.Windows.Forms.Button btn_update_payment;
+        private System.Windows.Forms.Button btn_insert_payment;
+        private System.Windows.Forms.TextBox tb_name_payment;
+        private System.Windows.Forms.Label label14;
     }
 }
