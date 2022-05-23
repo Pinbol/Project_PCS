@@ -2,12 +2,14 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace Project
 {
     public partial class Form2 : Form
     {
         public String idStaff;
+        public String idMembership;
 
         public Form2()
         {
@@ -17,6 +19,7 @@ namespace Project
         private void masterStaffToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panelStaff.Visible = true;
+            panelMembership.Visible = false;
 
             refreshDGStaff();
         }
@@ -24,13 +27,40 @@ namespace Project
         private void masterMembershipToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panelStaff.Visible = false;
+            panelMembership.Visible = true;
+
+            refreshDGMembership();
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
             panelStaff.Visible = true;
+            panelMembership.Visible = false;
 
             refreshDGStaff();
+        }
+
+        private void refreshDGMembership()
+        {
+            dg_membership.DataSource = null;
+
+            if (koneksi.getConn().State == ConnectionState.Open)
+            {
+                koneksi.closeConn();
+            }
+
+            DataTable dt = new DataTable();
+            MySqlCommand cmd = new MySqlCommand("SELECT ID, Name, CONCAT(discount,'%') AS 'Harga', CONCAT(exp_length,' bulan') AS 'Waktu Expired' FROM membership ORDER BY CAST(ID AS UNSIGNED) ASC;", koneksi.getConn());
+            MySqlDataAdapter da = new MySqlDataAdapter();
+
+            koneksi.openConn();
+            cmd.ExecuteReader();
+            koneksi.closeConn();
+
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            dg_membership.DataSource = dt;
         }
 
         private void refreshDGStaff()
@@ -58,10 +88,10 @@ namespace Project
 
         private void btn_clear_staff_Click(object sender, EventArgs e)
         {
-            clear();
+            clearStaff();
         }
 
-        private void clear()
+        private void clearStaff()
         {
             tb_alamat_staff.Text = "";
             tb_name_staff.Text = "";
@@ -130,7 +160,7 @@ namespace Project
                     cmdInsert.ExecuteNonQuery();
                     koneksi.closeConn();
 
-                    clear();
+                    clearStaff();
                     refreshDGStaff();
                     MessageBox.Show("Insert successful !");
                 }
@@ -181,7 +211,7 @@ namespace Project
                     cmdInsert.ExecuteNonQuery();
                     koneksi.closeConn();
 
-                    clear();
+                    clearStaff();
                     idStaff = "";
                     refreshDGStaff();
                     MessageBox.Show("Update successful !");
@@ -206,7 +236,7 @@ namespace Project
                 cmd.ExecuteNonQuery();
                 koneksi.closeConn();
 
-                clear();
+                clearStaff();
                 refreshDGStaff();
 
                 MessageBox.Show("Delete successfull !");
@@ -256,6 +286,133 @@ namespace Project
             }
 
             dtp_dob_staff.Value = Convert.ToDateTime(dg_staff.Rows[e.RowIndex].Cells[6].Value.ToString());
+        }
+
+        private void dg_membership_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btn_update_membership.Enabled = true;
+            btn_delete_membership.Enabled = true;
+            btn_insert_membership.Enabled = false;
+
+            idMembership = dg_membership.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+            tb_name_membership.Text = dg_membership.Rows[e.RowIndex].Cells[1].Value.ToString();
+            tb_harga_membership.Text = dg_membership.Rows[e.RowIndex].Cells[2].Value.ToString().Substring(0, dg_membership.Rows[e.RowIndex].Cells[2].Value.ToString().Length-1);
+
+            nud_wkt_membership.Value = Convert.ToInt32(dg_membership.Rows[e.RowIndex].Cells[3].Value.ToString().Split(' ')[0]);
+        }
+
+        private void btn_clear_membership_Click(object sender, EventArgs e)
+        {
+            clearMembership();
+        }
+
+        private void clearMembership()
+        {
+            btn_update_membership.Enabled = false;
+            btn_delete_membership.Enabled = false;
+            btn_insert_membership.Enabled = true;
+
+            tb_name_membership.Text = "";
+            tb_harga_membership.Text = "";
+
+            nud_wkt_membership.Value = 0;
+        }
+
+        private void btn_insert_membership_Click(object sender, EventArgs e)
+        {
+            if (tb_harga_membership.Text == "" || tb_name_membership.Text == "" || nud_wkt_membership.Value==0) MessageBox.Show("Please fill all input !");
+            else if (!tb_harga_membership.Text.All(Char.IsDigit)) MessageBox.Show("Harga harus berupa digit !");
+            else
+            {
+                MySqlCommand cmdID = new MySqlCommand();
+                cmdID.CommandText = "SELECT cast(id as unsigned)+1 FROM membership ORDER BY CAST(id AS UNSIGNED) DESC LIMIT 1;";
+                cmdID.Connection = koneksi.getConn();
+
+                koneksi.openConn();
+                String newID = cmdID.ExecuteScalar().ToString();
+                koneksi.closeConn();
+
+                String name = tb_name_membership.Text;
+                String harga = tb_harga_membership.Text;
+                String wkt = nud_wkt_membership.Value.ToString();
+
+                try
+                {
+                    MySqlCommand cmdInsert = new MySqlCommand("insert into membership (id,name,discount,exp_length) values (@id,@name,@discount,@time);", koneksi.getConn());
+
+                    cmdInsert.Parameters.AddWithValue("@id", newID);
+                    cmdInsert.Parameters.AddWithValue("@name", name);
+                    cmdInsert.Parameters.AddWithValue("@discount", harga);
+                    cmdInsert.Parameters.AddWithValue("@time", wkt);
+
+                    koneksi.openConn();
+                    cmdInsert.ExecuteNonQuery();
+                    koneksi.closeConn();
+
+                    clearMembership();
+                    refreshDGMembership();
+                    MessageBox.Show("Insert successful !");
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.InnerException.Message);
+                }
+            }
+        }
+
+        private void btn_update_membership_Click(object sender, EventArgs e)
+        {
+            if (tb_harga_membership.Text == "" || tb_name_membership.Text == "" || nud_wkt_membership.Value == 0) MessageBox.Show("Please fill all input !");
+            else if (!tb_harga_membership.Text.All(Char.IsDigit)) MessageBox.Show("Harga harus berupa digit !");
+            else
+            {
+                String name = tb_name_membership.Text;
+                String harga = tb_harga_membership.Text;
+                String wkt = nud_wkt_membership.Value.ToString();
+
+                try
+                {
+                    MySqlCommand cmdInsert = new MySqlCommand("update membership set name = @name, discount = @discount, exp_length=@time where id = @id;", koneksi.getConn());
+
+                    cmdInsert.Parameters.AddWithValue("@id", idMembership);
+                    cmdInsert.Parameters.AddWithValue("@name", name);
+                    cmdInsert.Parameters.AddWithValue("@discount", harga);
+                    cmdInsert.Parameters.AddWithValue("@time", wkt);
+
+                    koneksi.openConn();
+                    cmdInsert.ExecuteNonQuery();
+                    koneksi.closeConn();
+
+                    clearMembership();
+                    refreshDGMembership();
+                    MessageBox.Show("Update successful !");
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.InnerException.Message);
+                }
+            }
+        }
+
+        private void btn_delete_membership_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete this membership ?", "Confirm Delete", MessageBoxButtons.YesNo);
+
+            if (dr == DialogResult.Yes)
+            {
+                MySqlCommand cmd = new MySqlCommand("delete from membership where id = @id", koneksi.getConn());
+                cmd.Parameters.AddWithValue("@id", idMembership);
+
+                koneksi.openConn();
+                cmd.ExecuteNonQuery();
+                koneksi.closeConn();
+
+                clearMembership();
+                refreshDGMembership();
+
+                MessageBox.Show("Delete successfull !");
+            }
         }
     }
 }

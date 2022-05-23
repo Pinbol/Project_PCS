@@ -57,10 +57,28 @@ namespace Project
             this.rb_aktif = new System.Windows.Forms.RadioButton();
             this.gb_status = new System.Windows.Forms.GroupBox();
             this.rb_tdk_aktif = new System.Windows.Forms.RadioButton();
+            this.panelMembership = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dg_membership = new System.Windows.Forms.DataGridView();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tb_name_membership = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tb_harga_membership = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.nud_wkt_membership = new System.Windows.Forms.NumericUpDown();
+            this.btn_insert_membership = new System.Windows.Forms.Button();
+            this.btn_update_membership = new System.Windows.Forms.Button();
+            this.btn_clear_membership = new System.Windows.Forms.Button();
+            this.btn_delete_membership = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panelStaff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_staff)).BeginInit();
             this.gb_status.SuspendLayout();
+            this.panelMembership.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_membership)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_wkt_membership)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -99,6 +117,7 @@ namespace Project
             // 
             // panelStaff
             // 
+            this.panelStaff.Controls.Add(this.label8);
             this.panelStaff.Controls.Add(this.gb_status);
             this.panelStaff.Controls.Add(this.lbl_status_staff);
             this.panelStaff.Controls.Add(this.dtp_dob_staff);
@@ -347,13 +366,168 @@ namespace Project
             this.rb_tdk_aktif.Text = "Tidak Aktif";
             this.rb_tdk_aktif.UseVisualStyleBackColor = true;
             // 
+            // panelMembership
+            // 
+            this.panelMembership.Controls.Add(this.btn_delete_membership);
+            this.panelMembership.Controls.Add(this.btn_clear_membership);
+            this.panelMembership.Controls.Add(this.btn_update_membership);
+            this.panelMembership.Controls.Add(this.btn_insert_membership);
+            this.panelMembership.Controls.Add(this.nud_wkt_membership);
+            this.panelMembership.Controls.Add(this.tb_harga_membership);
+            this.panelMembership.Controls.Add(this.label12);
+            this.panelMembership.Controls.Add(this.label11);
+            this.panelMembership.Controls.Add(this.tb_name_membership);
+            this.panelMembership.Controls.Add(this.label10);
+            this.panelMembership.Controls.Add(this.dg_membership);
+            this.panelMembership.Controls.Add(this.label9);
+            this.panelMembership.Location = new System.Drawing.Point(0, 54);
+            this.panelMembership.Name = "panelMembership";
+            this.panelMembership.Size = new System.Drawing.Size(880, 541);
+            this.panelMembership.TabIndex = 3;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(13, 28);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(59, 20);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Admin";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(14, 15);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(90, 16);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "Master Staff";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(14, 15);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(144, 16);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Master Membership";
+            // 
+            // dg_membership
+            // 
+            this.dg_membership.AllowUserToAddRows = false;
+            this.dg_membership.AllowUserToDeleteRows = false;
+            this.dg_membership.AllowUserToResizeColumns = false;
+            this.dg_membership.AllowUserToResizeRows = false;
+            this.dg_membership.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dg_membership.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_membership.Location = new System.Drawing.Point(17, 34);
+            this.dg_membership.Name = "dg_membership";
+            this.dg_membership.ReadOnly = true;
+            this.dg_membership.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dg_membership.Size = new System.Drawing.Size(851, 300);
+            this.dg_membership.TabIndex = 1;
+            this.dg_membership.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_membership_CellDoubleClick);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(17, 347);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 13);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Nama :";
+            // 
+            // tb_name_membership
+            // 
+            this.tb_name_membership.Location = new System.Drawing.Point(168, 344);
+            this.tb_name_membership.Name = "tb_name_membership";
+            this.tb_name_membership.Size = new System.Drawing.Size(164, 20);
+            this.tb_name_membership.TabIndex = 3;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(18, 403);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(118, 13);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Waktu Expired (bulan) :";
+            // 
+            // tb_harga_membership
+            // 
+            this.tb_harga_membership.Location = new System.Drawing.Point(168, 373);
+            this.tb_harga_membership.Name = "tb_harga_membership";
+            this.tb_harga_membership.Size = new System.Drawing.Size(164, 20);
+            this.tb_harga_membership.TabIndex = 7;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(17, 376);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(42, 13);
+            this.label12.TabIndex = 6;
+            this.label12.Text = "Harga :";
+            // 
+            // nud_wkt_membership
+            // 
+            this.nud_wkt_membership.Location = new System.Drawing.Point(168, 401);
+            this.nud_wkt_membership.Name = "nud_wkt_membership";
+            this.nud_wkt_membership.Size = new System.Drawing.Size(164, 20);
+            this.nud_wkt_membership.TabIndex = 8;
+            // 
+            // btn_insert_membership
+            // 
+            this.btn_insert_membership.Location = new System.Drawing.Point(480, 484);
+            this.btn_insert_membership.Name = "btn_insert_membership";
+            this.btn_insert_membership.Size = new System.Drawing.Size(75, 23);
+            this.btn_insert_membership.TabIndex = 9;
+            this.btn_insert_membership.Text = "Insert";
+            this.btn_insert_membership.UseVisualStyleBackColor = true;
+            this.btn_insert_membership.Click += new System.EventHandler(this.btn_insert_membership_Click);
+            // 
+            // btn_update_membership
+            // 
+            this.btn_update_membership.Location = new System.Drawing.Point(579, 484);
+            this.btn_update_membership.Name = "btn_update_membership";
+            this.btn_update_membership.Size = new System.Drawing.Size(75, 23);
+            this.btn_update_membership.TabIndex = 10;
+            this.btn_update_membership.Text = "Update";
+            this.btn_update_membership.UseVisualStyleBackColor = true;
+            this.btn_update_membership.Click += new System.EventHandler(this.btn_update_membership_Click);
+            // 
+            // btn_clear_membership
+            // 
+            this.btn_clear_membership.Location = new System.Drawing.Point(763, 484);
+            this.btn_clear_membership.Name = "btn_clear_membership";
+            this.btn_clear_membership.Size = new System.Drawing.Size(75, 23);
+            this.btn_clear_membership.TabIndex = 11;
+            this.btn_clear_membership.Text = "Clear";
+            this.btn_clear_membership.UseVisualStyleBackColor = true;
+            this.btn_clear_membership.Click += new System.EventHandler(this.btn_clear_membership_Click);
+            // 
+            // btn_delete_membership
+            // 
+            this.btn_delete_membership.Location = new System.Drawing.Point(670, 484);
+            this.btn_delete_membership.Name = "btn_delete_membership";
+            this.btn_delete_membership.Size = new System.Drawing.Size(75, 23);
+            this.btn_delete_membership.TabIndex = 12;
+            this.btn_delete_membership.Text = "Delete";
+            this.btn_delete_membership.UseVisualStyleBackColor = true;
+            this.btn_delete_membership.Click += new System.EventHandler(this.btn_delete_membership_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 593);
-            this.Controls.Add(this.btn_logout);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.panelMembership);
             this.Controls.Add(this.panelStaff);
+            this.Controls.Add(this.btn_logout);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -367,6 +541,10 @@ namespace Project
             ((System.ComponentModel.ISupportInitialize)(this.dg_staff)).EndInit();
             this.gb_status.ResumeLayout(false);
             this.gb_status.PerformLayout();
+            this.panelMembership.ResumeLayout(false);
+            this.panelMembership.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_membership)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_wkt_membership)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -402,5 +580,20 @@ namespace Project
         private System.Windows.Forms.RadioButton rb_tdk_aktif;
         private System.Windows.Forms.RadioButton rb_aktif;
         private System.Windows.Forms.Label lbl_status_staff;
+        private System.Windows.Forms.Panel panelMembership;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DataGridView dg_membership;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tb_harga_membership;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox tb_name_membership;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btn_delete_membership;
+        private System.Windows.Forms.Button btn_clear_membership;
+        private System.Windows.Forms.Button btn_update_membership;
+        private System.Windows.Forms.Button btn_insert_membership;
+        private System.Windows.Forms.NumericUpDown nud_wkt_membership;
     }
 }
