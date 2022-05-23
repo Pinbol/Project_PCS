@@ -93,5 +93,10 @@ namespace Project
                 }
             }
         }
+
+        private void tbUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) tbPassword.Focus();
+        }
     }
 }
