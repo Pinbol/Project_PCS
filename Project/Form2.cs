@@ -12,6 +12,8 @@ namespace Project
         public String idMembership;
         public String idPayment;
         public String idOccupation;
+        public String idGenre;
+        public String idFormat;
 
         public Form2()
         {
@@ -24,6 +26,8 @@ namespace Project
             panelMembership.Visible = false;
             panelPayment.Visible = false;
             panelOccupation.Visible = false;
+            panelGenre.Visible = false;
+            panelFormat.Visible = false;
 
             refreshDGStaff();
             clearStaff();
@@ -35,6 +39,8 @@ namespace Project
             panelMembership.Visible = true;
             panelPayment.Visible = false;
             panelOccupation.Visible = false;
+            panelGenre.Visible = false;
+            panelFormat.Visible = false;
 
             refreshDGMembership();
             clearMembership();
@@ -46,6 +52,8 @@ namespace Project
             panelMembership.Visible = false;
             panelPayment.Visible = false;
             panelOccupation.Visible = false;
+            panelGenre.Visible = false;
+            panelFormat.Visible = false;
 
             refreshDGStaff();
             clearStaff();
@@ -141,6 +149,52 @@ namespace Project
             da.Fill(dt);
 
             dg_occupation.DataSource = dt;
+        }
+
+        private void refreshDGGenre()
+        {
+            dg_genre.DataSource = null;
+
+            if (koneksi.getConn().State == ConnectionState.Open)
+            {
+                koneksi.closeConn();
+            }
+
+            DataTable dt = new DataTable();
+            MySqlCommand cmd = new MySqlCommand("SELECT ID, Name FROM genre order by cast(id as unsigned) asc;", koneksi.getConn());
+            MySqlDataAdapter da = new MySqlDataAdapter();
+
+            koneksi.openConn();
+            cmd.ExecuteReader();
+            koneksi.closeConn();
+
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            dg_genre.DataSource = dt;
+        }
+
+        private void refreshDGFormat()
+        {
+            dg_format.DataSource = null;
+
+            if (koneksi.getConn().State == ConnectionState.Open)
+            {
+                koneksi.closeConn();
+            }
+
+            DataTable dt = new DataTable();
+            MySqlCommand cmd = new MySqlCommand("SELECT ID, Name FROM format order by cast(id as unsigned) asc;", koneksi.getConn());
+            MySqlDataAdapter da = new MySqlDataAdapter();
+
+            koneksi.openConn();
+            cmd.ExecuteReader();
+            koneksi.closeConn();
+
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            dg_format.DataSource = dt;
         }
 
         private void btn_clear_staff_Click(object sender, EventArgs e)
@@ -477,7 +531,11 @@ namespace Project
             panelStaff.Visible = false;
             panelMembership.Visible = false;
             panelPayment.Visible = true;
+            panelOccupation.Visible = false;
+            panelGenre.Visible = false;
+            panelFormat.Visible = false;
 
+            clearPayment();
             refreshDGPayment();
         }
 
@@ -599,6 +657,8 @@ namespace Project
             panelMembership.Visible = false;
             panelPayment.Visible = false;
             panelOccupation.Visible = true;
+            panelGenre.Visible = false;
+            panelFormat.Visible = false;
 
             clearOccupation();
             refreshDGOccupation();
@@ -711,6 +771,251 @@ namespace Project
 
                 clearOccupation();
                 refreshDGOccupation();
+
+                MessageBox.Show("Delete successfull !");
+            }
+        }
+
+        private void masterGenreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panelStaff.Visible = false;
+            panelMembership.Visible = false;
+            panelPayment.Visible = false;
+            panelOccupation.Visible = false;
+            panelGenre.Visible = true;
+            panelFormat.Visible = false;
+
+            clearGenre();
+            refreshDGGenre();
+        }
+
+        private void clearGenre()
+        {
+            tb_name_genre.Text = "";
+
+            btn_insert_genre.Enabled = true;
+            btn_update_genre.Enabled = false;
+            btn_delete_genre.Enabled = false;
+        }
+
+        private void dg_genre_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idGenre = dg_genre.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+            tb_name_genre.Text = dg_genre.Rows[e.RowIndex].Cells[1].Value.ToString();
+
+            btn_insert_genre.Enabled = false;
+            btn_delete_genre.Enabled = true;
+            btn_update_genre.Enabled = true;
+        }
+
+        private void btn_insert_genre_Click(object sender, EventArgs e)
+        {
+            if (tb_name_genre.Text == "") MessageBox.Show("Please fill all inputs !");
+            else
+            {
+                MySqlCommand cmdID = new MySqlCommand();
+                cmdID.CommandText = "SELECT cast(id as unsigned)+1 FROM genre ORDER BY CAST(id AS UNSIGNED) DESC LIMIT 1;";
+                cmdID.Connection = koneksi.getConn();
+
+                koneksi.openConn();
+                String newID = cmdID.ExecuteScalar().ToString();
+                koneksi.closeConn();
+
+                String name = tb_name_genre.Text;
+
+                try
+                {
+                    MySqlCommand cmdInsert = new MySqlCommand("insert into genre (id,name) values (@id,@name);", koneksi.getConn());
+
+                    cmdInsert.Parameters.AddWithValue("@id", newID);
+                    cmdInsert.Parameters.AddWithValue("@name", name);
+
+                    koneksi.openConn();
+                    cmdInsert.ExecuteNonQuery();
+                    koneksi.closeConn();
+
+                    clearGenre();
+                    refreshDGGenre();
+                    MessageBox.Show("Insert successful !");
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.InnerException.Message);
+                }
+            }
+        }
+
+        private void btn_update_genre_Click(object sender, EventArgs e)
+        {
+            if (tb_name_genre.Text == "") MessageBox.Show("Please fill all inputs !");
+            else
+            {
+                String name = tb_name_genre.Text;
+
+                try
+                {
+                    MySqlCommand cmdInsert = new MySqlCommand("update genre set name = @name where id = @id;", koneksi.getConn());
+
+                    cmdInsert.Parameters.AddWithValue("@id", idGenre);
+                    cmdInsert.Parameters.AddWithValue("@name", name);
+
+                    koneksi.openConn();
+                    cmdInsert.ExecuteNonQuery();
+                    koneksi.closeConn();
+
+                    clearGenre();
+                    refreshDGGenre();
+                    idGenre = "";
+                    MessageBox.Show("Update successful !");
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.InnerException.Message);
+                }
+            }
+        }
+
+        private void btn_delete_genre_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete this genre ?", "Confirm Delete", MessageBoxButtons.YesNo);
+
+            if (dr == DialogResult.Yes)
+            {
+                MySqlCommand cmd = new MySqlCommand("delete from genre where id = @id", koneksi.getConn());
+                cmd.Parameters.AddWithValue("@id", idGenre);
+
+                koneksi.openConn();
+                cmd.ExecuteNonQuery();
+                koneksi.closeConn();
+
+                clearGenre();
+                refreshDGGenre();
+
+                MessageBox.Show("Delete successfull !");
+            }
+        }
+
+        private void btn_clear_genre_Click(object sender, EventArgs e)
+        {
+            clearGenre();
+        }
+
+        private void masterFormatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panelStaff.Visible = false;
+            panelMembership.Visible = false;
+            panelPayment.Visible = false;
+            panelOccupation.Visible = false;
+            panelGenre.Visible = false;
+            panelFormat.Visible = true;
+
+            clearFormat();
+            refreshDGFormat();
+        }
+
+        private void clearFormat()
+        {
+            tb_name_format.Text = "";
+
+            btn_insert_format.Enabled = true;
+            btn_update_format.Enabled = false;
+            btn_delete_format.Enabled = false;
+        }
+
+        private void dg_format_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idFormat = dg_format.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+            tb_name_format.Text = dg_format.Rows[e.RowIndex].Cells[1].Value.ToString();
+
+            btn_insert_format.Enabled = false;
+            btn_delete_format.Enabled = true;
+            btn_update_format.Enabled = true;
+        }
+
+        private void btn_insert_format_Click(object sender, EventArgs e)
+        {
+            if (tb_name_format.Text == "") MessageBox.Show("Please fill all inputs !");
+            else
+            {
+                MySqlCommand cmdID = new MySqlCommand();
+                cmdID.CommandText = "SELECT cast(id as unsigned)+1 FROM format ORDER BY CAST(id AS UNSIGNED) DESC LIMIT 1;";
+                cmdID.Connection = koneksi.getConn();
+
+                koneksi.openConn();
+                String newID = cmdID.ExecuteScalar().ToString();
+                koneksi.closeConn();
+
+                String name = tb_name_format.Text;
+
+                try
+                {
+                    MySqlCommand cmdInsert = new MySqlCommand("insert into format (id,name) values (@id,@name);", koneksi.getConn());
+
+                    cmdInsert.Parameters.AddWithValue("@id", newID);
+                    cmdInsert.Parameters.AddWithValue("@name", name);
+
+                    koneksi.openConn();
+                    cmdInsert.ExecuteNonQuery();
+                    koneksi.closeConn();
+
+                    clearFormat();
+                    refreshDGFormat();
+                    MessageBox.Show("Insert successful !");
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.InnerException.Message);
+                }
+            }
+        }
+
+        private void btn_update_format_Click(object sender, EventArgs e)
+        {
+            if (tb_name_format.Text == "") MessageBox.Show("Please fill all inputs !");
+            else
+            {
+                String name = tb_name_format.Text;
+
+                try
+                {
+                    MySqlCommand cmdInsert = new MySqlCommand("update format set name = @name where id = @id;", koneksi.getConn());
+
+                    cmdInsert.Parameters.AddWithValue("@id", idFormat);
+                    cmdInsert.Parameters.AddWithValue("@name", name);
+
+                    koneksi.openConn();
+                    cmdInsert.ExecuteNonQuery();
+                    koneksi.closeConn();
+
+                    clearFormat();
+                    refreshDGFormat();
+                    idFormat = "";
+                    MessageBox.Show("Update successful !");
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.InnerException.Message);
+                }
+            }
+        }
+
+        private void btn_delete_format_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete this format ?", "Confirm Delete", MessageBoxButtons.YesNo);
+
+            if (dr == DialogResult.Yes)
+            {
+                MySqlCommand cmd = new MySqlCommand("delete from format where id = @id", koneksi.getConn());
+                cmd.Parameters.AddWithValue("@id", idFormat);
+
+                koneksi.openConn();
+                cmd.ExecuteNonQuery();
+                koneksi.closeConn();
+
+                clearFormat();
+                refreshDGFormat();
 
                 MessageBox.Show("Delete successfull !");
             }

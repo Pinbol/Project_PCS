@@ -33,64 +33,64 @@ namespace Project
             this.masterStaffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.masterMembershipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.masterOccupationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panelStaff = new System.Windows.Forms.Panel();
-            this.dg_staff = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tb_name_staff = new System.Windows.Forms.TextBox();
-            this.tb_username_staff = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tb_password_staff = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tb_alamat_staff = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.rb_l = new System.Windows.Forms.RadioButton();
-            this.rb_p = new System.Windows.Forms.RadioButton();
-            this.btn_insert_staff = new System.Windows.Forms.Button();
-            this.btn_delete_staff = new System.Windows.Forms.Button();
-            this.btn_update_staff = new System.Windows.Forms.Button();
-            this.btn_clear_staff = new System.Windows.Forms.Button();
-            this.btn_logout = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dtp_dob_staff = new System.Windows.Forms.DateTimePicker();
-            this.lbl_status_staff = new System.Windows.Forms.Label();
-            this.rb_aktif = new System.Windows.Forms.RadioButton();
-            this.gb_status = new System.Windows.Forms.GroupBox();
-            this.rb_tdk_aktif = new System.Windows.Forms.RadioButton();
-            this.panelMembership = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.dg_membership = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
-            this.tb_name_membership = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.tb_harga_membership = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.nud_wkt_membership = new System.Windows.Forms.NumericUpDown();
-            this.btn_insert_membership = new System.Windows.Forms.Button();
-            this.btn_update_membership = new System.Windows.Forms.Button();
-            this.btn_clear_membership = new System.Windows.Forms.Button();
-            this.btn_delete_membership = new System.Windows.Forms.Button();
-            this.masterProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.masterPaymentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panelPayment = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.dg_payment = new System.Windows.Forms.DataGridView();
-            this.label14 = new System.Windows.Forms.Label();
-            this.tb_name_payment = new System.Windows.Forms.TextBox();
-            this.btn_delete_payment = new System.Windows.Forms.Button();
-            this.btn_clear_payment = new System.Windows.Forms.Button();
-            this.btn_update_payment = new System.Windows.Forms.Button();
-            this.btn_insert_payment = new System.Windows.Forms.Button();
             this.masterOccupationToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.masterPersonelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.masterGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.masterProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.masterGenreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.masterSongToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.masterFormatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.masterProductSongToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.masterProductSellingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.masterPaymentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelStaff = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.gb_status = new System.Windows.Forms.GroupBox();
+            this.rb_tdk_aktif = new System.Windows.Forms.RadioButton();
+            this.rb_aktif = new System.Windows.Forms.RadioButton();
+            this.lbl_status_staff = new System.Windows.Forms.Label();
+            this.dtp_dob_staff = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btn_clear_staff = new System.Windows.Forms.Button();
+            this.btn_update_staff = new System.Windows.Forms.Button();
+            this.btn_delete_staff = new System.Windows.Forms.Button();
+            this.btn_insert_staff = new System.Windows.Forms.Button();
+            this.rb_p = new System.Windows.Forms.RadioButton();
+            this.rb_l = new System.Windows.Forms.RadioButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tb_alamat_staff = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tb_password_staff = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tb_username_staff = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tb_name_staff = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dg_staff = new System.Windows.Forms.DataGridView();
+            this.btn_logout = new System.Windows.Forms.Button();
+            this.panelMembership = new System.Windows.Forms.Panel();
+            this.btn_delete_membership = new System.Windows.Forms.Button();
+            this.btn_clear_membership = new System.Windows.Forms.Button();
+            this.btn_update_membership = new System.Windows.Forms.Button();
+            this.btn_insert_membership = new System.Windows.Forms.Button();
+            this.nud_wkt_membership = new System.Windows.Forms.NumericUpDown();
+            this.tb_harga_membership = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tb_name_membership = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dg_membership = new System.Windows.Forms.DataGridView();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panelPayment = new System.Windows.Forms.Panel();
+            this.btn_delete_payment = new System.Windows.Forms.Button();
+            this.btn_clear_payment = new System.Windows.Forms.Button();
+            this.btn_update_payment = new System.Windows.Forms.Button();
+            this.btn_insert_payment = new System.Windows.Forms.Button();
+            this.tb_name_payment = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.dg_payment = new System.Windows.Forms.DataGridView();
+            this.label13 = new System.Windows.Forms.Label();
             this.panelOccupation = new System.Windows.Forms.Panel();
             this.btn_delete_occupation = new System.Windows.Forms.Button();
             this.btn_clear_occupation = new System.Windows.Forms.Button();
@@ -100,17 +100,39 @@ namespace Project
             this.label15 = new System.Windows.Forms.Label();
             this.dg_occupation = new System.Windows.Forms.DataGridView();
             this.label16 = new System.Windows.Forms.Label();
+            this.panelGenre = new System.Windows.Forms.Panel();
+            this.btn_delete_genre = new System.Windows.Forms.Button();
+            this.btn_clear_genre = new System.Windows.Forms.Button();
+            this.btn_update_genre = new System.Windows.Forms.Button();
+            this.btn_insert_genre = new System.Windows.Forms.Button();
+            this.tb_name_genre = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.dg_genre = new System.Windows.Forms.DataGridView();
+            this.label18 = new System.Windows.Forms.Label();
+            this.panelFormat = new System.Windows.Forms.Panel();
+            this.btn_delete_format = new System.Windows.Forms.Button();
+            this.btn_clear_format = new System.Windows.Forms.Button();
+            this.btn_update_format = new System.Windows.Forms.Button();
+            this.btn_insert_format = new System.Windows.Forms.Button();
+            this.tb_name_format = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.dg_format = new System.Windows.Forms.DataGridView();
+            this.label20 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelStaff.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_staff)).BeginInit();
             this.gb_status.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_staff)).BeginInit();
             this.panelMembership.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_membership)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_wkt_membership)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_membership)).BeginInit();
             this.panelPayment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_payment)).BeginInit();
             this.panelOccupation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_occupation)).BeginInit();
+            this.panelGenre.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_genre)).BeginInit();
+            this.panelFormat.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_format)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -153,6 +175,76 @@ namespace Project
             this.masterOccupationToolStripMenuItem.Size = new System.Drawing.Size(103, 20);
             this.masterOccupationToolStripMenuItem.Text = "Master Personel";
             // 
+            // masterOccupationToolStripMenuItem1
+            // 
+            this.masterOccupationToolStripMenuItem1.Name = "masterOccupationToolStripMenuItem1";
+            this.masterOccupationToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.masterOccupationToolStripMenuItem1.Text = "Master Occupation";
+            this.masterOccupationToolStripMenuItem1.Click += new System.EventHandler(this.masterOccupationToolStripMenuItem1_Click);
+            // 
+            // masterPersonelToolStripMenuItem
+            // 
+            this.masterPersonelToolStripMenuItem.Name = "masterPersonelToolStripMenuItem";
+            this.masterPersonelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.masterPersonelToolStripMenuItem.Text = "Master Personel";
+            // 
+            // masterGroupToolStripMenuItem
+            // 
+            this.masterGroupToolStripMenuItem.Name = "masterGroupToolStripMenuItem";
+            this.masterGroupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.masterGroupToolStripMenuItem.Text = "Master Group";
+            // 
+            // masterProductToolStripMenuItem
+            // 
+            this.masterProductToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.masterGenreToolStripMenuItem,
+            this.masterSongToolStripMenuItem,
+            this.masterFormatToolStripMenuItem,
+            this.masterProductSongToolStripMenuItem,
+            this.masterProductSellingToolStripMenuItem});
+            this.masterProductToolStripMenuItem.Name = "masterProductToolStripMenuItem";
+            this.masterProductToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
+            this.masterProductToolStripMenuItem.Text = "Master Product";
+            // 
+            // masterGenreToolStripMenuItem
+            // 
+            this.masterGenreToolStripMenuItem.Name = "masterGenreToolStripMenuItem";
+            this.masterGenreToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.masterGenreToolStripMenuItem.Text = "Master Genre";
+            this.masterGenreToolStripMenuItem.Click += new System.EventHandler(this.masterGenreToolStripMenuItem_Click);
+            // 
+            // masterSongToolStripMenuItem
+            // 
+            this.masterSongToolStripMenuItem.Name = "masterSongToolStripMenuItem";
+            this.masterSongToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.masterSongToolStripMenuItem.Text = "Master Song";
+            // 
+            // masterFormatToolStripMenuItem
+            // 
+            this.masterFormatToolStripMenuItem.Name = "masterFormatToolStripMenuItem";
+            this.masterFormatToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.masterFormatToolStripMenuItem.Text = "Master Format";
+            this.masterFormatToolStripMenuItem.Click += new System.EventHandler(this.masterFormatToolStripMenuItem_Click);
+            // 
+            // masterProductSongToolStripMenuItem
+            // 
+            this.masterProductSongToolStripMenuItem.Name = "masterProductSongToolStripMenuItem";
+            this.masterProductSongToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.masterProductSongToolStripMenuItem.Text = "Master Product-Song";
+            // 
+            // masterProductSellingToolStripMenuItem
+            // 
+            this.masterProductSellingToolStripMenuItem.Name = "masterProductSellingToolStripMenuItem";
+            this.masterProductSellingToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.masterProductSellingToolStripMenuItem.Text = "Master Product-Selling";
+            // 
+            // masterPaymentToolStripMenuItem
+            // 
+            this.masterPaymentToolStripMenuItem.Name = "masterPaymentToolStripMenuItem";
+            this.masterPaymentToolStripMenuItem.Size = new System.Drawing.Size(105, 20);
+            this.masterPaymentToolStripMenuItem.Text = "Master Payment";
+            this.masterPaymentToolStripMenuItem.Click += new System.EventHandler(this.masterPaymentToolStripMenuItem_Click);
+            // 
             // panelStaff
             // 
             this.panelStaff.Controls.Add(this.label8);
@@ -177,210 +269,20 @@ namespace Project
             this.panelStaff.Controls.Add(this.label1);
             this.panelStaff.Controls.Add(this.dg_staff);
             this.panelStaff.Location = new System.Drawing.Point(0, 54);
-            this.panelStaff.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelStaff.Margin = new System.Windows.Forms.Padding(2);
             this.panelStaff.Name = "panelStaff";
             this.panelStaff.Size = new System.Drawing.Size(880, 541);
             this.panelStaff.TabIndex = 1;
             // 
-            // dg_staff
+            // label8
             // 
-            this.dg_staff.AllowUserToAddRows = false;
-            this.dg_staff.AllowUserToDeleteRows = false;
-            this.dg_staff.AllowUserToResizeColumns = false;
-            this.dg_staff.AllowUserToResizeRows = false;
-            this.dg_staff.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dg_staff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_staff.Location = new System.Drawing.Point(3, 34);
-            this.dg_staff.Name = "dg_staff";
-            this.dg_staff.ReadOnly = true;
-            this.dg_staff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dg_staff.Size = new System.Drawing.Size(874, 322);
-            this.dg_staff.TabIndex = 0;
-            this.dg_staff.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_staff_CellDoubleClick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 363);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Nama :";
-            // 
-            // tb_name_staff
-            // 
-            this.tb_name_staff.Location = new System.Drawing.Point(109, 361);
-            this.tb_name_staff.Name = "tb_name_staff";
-            this.tb_name_staff.Size = new System.Drawing.Size(291, 20);
-            this.tb_name_staff.TabIndex = 2;
-            // 
-            // tb_username_staff
-            // 
-            this.tb_username_staff.Location = new System.Drawing.Point(109, 388);
-            this.tb_username_staff.Name = "tb_username_staff";
-            this.tb_username_staff.Size = new System.Drawing.Size(291, 20);
-            this.tb_username_staff.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 390);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Username :";
-            // 
-            // tb_password_staff
-            // 
-            this.tb_password_staff.Location = new System.Drawing.Point(109, 417);
-            this.tb_password_staff.Name = "tb_password_staff";
-            this.tb_password_staff.Size = new System.Drawing.Size(291, 20);
-            this.tb_password_staff.TabIndex = 6;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 419);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Password :";
-            // 
-            // tb_alamat_staff
-            // 
-            this.tb_alamat_staff.Location = new System.Drawing.Point(515, 360);
-            this.tb_alamat_staff.Name = "tb_alamat_staff";
-            this.tb_alamat_staff.Size = new System.Drawing.Size(291, 20);
-            this.tb_alamat_staff.TabIndex = 8;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(419, 363);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Alamat :";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(419, 389);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Jenis Kelamin :";
-            // 
-            // rb_l
-            // 
-            this.rb_l.AutoSize = true;
-            this.rb_l.Location = new System.Drawing.Point(515, 389);
-            this.rb_l.Name = "rb_l";
-            this.rb_l.Size = new System.Drawing.Size(68, 17);
-            this.rb_l.TabIndex = 10;
-            this.rb_l.TabStop = true;
-            this.rb_l.Text = "Laki-Laki";
-            this.rb_l.UseVisualStyleBackColor = true;
-            // 
-            // rb_p
-            // 
-            this.rb_p.AutoSize = true;
-            this.rb_p.Location = new System.Drawing.Point(611, 389);
-            this.rb_p.Name = "rb_p";
-            this.rb_p.Size = new System.Drawing.Size(79, 17);
-            this.rb_p.TabIndex = 11;
-            this.rb_p.TabStop = true;
-            this.rb_p.Text = "Perempuan";
-            this.rb_p.UseVisualStyleBackColor = true;
-            // 
-            // btn_insert_staff
-            // 
-            this.btn_insert_staff.Location = new System.Drawing.Point(515, 484);
-            this.btn_insert_staff.Name = "btn_insert_staff";
-            this.btn_insert_staff.Size = new System.Drawing.Size(75, 23);
-            this.btn_insert_staff.TabIndex = 12;
-            this.btn_insert_staff.Text = "Insert";
-            this.btn_insert_staff.UseVisualStyleBackColor = true;
-            this.btn_insert_staff.Click += new System.EventHandler(this.btn_insert_staff_Click);
-            // 
-            // btn_delete_staff
-            // 
-            this.btn_delete_staff.Enabled = false;
-            this.btn_delete_staff.Location = new System.Drawing.Point(700, 484);
-            this.btn_delete_staff.Name = "btn_delete_staff";
-            this.btn_delete_staff.Size = new System.Drawing.Size(75, 23);
-            this.btn_delete_staff.TabIndex = 13;
-            this.btn_delete_staff.Text = "Delete";
-            this.btn_delete_staff.UseVisualStyleBackColor = true;
-            this.btn_delete_staff.Click += new System.EventHandler(this.btn_delete_staff_Click);
-            // 
-            // btn_update_staff
-            // 
-            this.btn_update_staff.Enabled = false;
-            this.btn_update_staff.Location = new System.Drawing.Point(606, 484);
-            this.btn_update_staff.Name = "btn_update_staff";
-            this.btn_update_staff.Size = new System.Drawing.Size(75, 23);
-            this.btn_update_staff.TabIndex = 14;
-            this.btn_update_staff.Text = "Update";
-            this.btn_update_staff.UseVisualStyleBackColor = true;
-            this.btn_update_staff.Click += new System.EventHandler(this.btn_update_staff_Click);
-            // 
-            // btn_clear_staff
-            // 
-            this.btn_clear_staff.Location = new System.Drawing.Point(793, 484);
-            this.btn_clear_staff.Name = "btn_clear_staff";
-            this.btn_clear_staff.Size = new System.Drawing.Size(75, 23);
-            this.btn_clear_staff.TabIndex = 15;
-            this.btn_clear_staff.Text = "Clear";
-            this.btn_clear_staff.UseVisualStyleBackColor = true;
-            this.btn_clear_staff.Click += new System.EventHandler(this.btn_clear_staff_Click);
-            // 
-            // btn_logout
-            // 
-            this.btn_logout.Location = new System.Drawing.Point(793, 27);
-            this.btn_logout.Name = "btn_logout";
-            this.btn_logout.Size = new System.Drawing.Size(75, 23);
-            this.btn_logout.TabIndex = 2;
-            this.btn_logout.Text = "Logout";
-            this.btn_logout.UseVisualStyleBackColor = true;
-            this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(419, 419);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 13);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "Tanggal Lahir :";
-            // 
-            // dtp_dob_staff
-            // 
-            this.dtp_dob_staff.Location = new System.Drawing.Point(515, 414);
-            this.dtp_dob_staff.Name = "dtp_dob_staff";
-            this.dtp_dob_staff.Size = new System.Drawing.Size(200, 20);
-            this.dtp_dob_staff.TabIndex = 17;
-            // 
-            // lbl_status_staff
-            // 
-            this.lbl_status_staff.AutoSize = true;
-            this.lbl_status_staff.Location = new System.Drawing.Point(419, 456);
-            this.lbl_status_staff.Name = "lbl_status_staff";
-            this.lbl_status_staff.Size = new System.Drawing.Size(43, 13);
-            this.lbl_status_staff.TabIndex = 18;
-            this.lbl_status_staff.Text = "Status :";
-            this.lbl_status_staff.Visible = false;
-            // 
-            // rb_aktif
-            // 
-            this.rb_aktif.AutoSize = true;
-            this.rb_aktif.Location = new System.Drawing.Point(18, 16);
-            this.rb_aktif.Name = "rb_aktif";
-            this.rb_aktif.Size = new System.Drawing.Size(46, 17);
-            this.rb_aktif.TabIndex = 19;
-            this.rb_aktif.TabStop = true;
-            this.rb_aktif.Text = "Aktif";
-            this.rb_aktif.UseVisualStyleBackColor = true;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(14, 15);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(90, 16);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "Master Staff";
             // 
             // gb_status
             // 
@@ -404,6 +306,206 @@ namespace Project
             this.rb_tdk_aktif.Text = "Tidak Aktif";
             this.rb_tdk_aktif.UseVisualStyleBackColor = true;
             // 
+            // rb_aktif
+            // 
+            this.rb_aktif.AutoSize = true;
+            this.rb_aktif.Location = new System.Drawing.Point(18, 16);
+            this.rb_aktif.Name = "rb_aktif";
+            this.rb_aktif.Size = new System.Drawing.Size(46, 17);
+            this.rb_aktif.TabIndex = 19;
+            this.rb_aktif.TabStop = true;
+            this.rb_aktif.Text = "Aktif";
+            this.rb_aktif.UseVisualStyleBackColor = true;
+            // 
+            // lbl_status_staff
+            // 
+            this.lbl_status_staff.AutoSize = true;
+            this.lbl_status_staff.Location = new System.Drawing.Point(419, 456);
+            this.lbl_status_staff.Name = "lbl_status_staff";
+            this.lbl_status_staff.Size = new System.Drawing.Size(43, 13);
+            this.lbl_status_staff.TabIndex = 18;
+            this.lbl_status_staff.Text = "Status :";
+            this.lbl_status_staff.Visible = false;
+            // 
+            // dtp_dob_staff
+            // 
+            this.dtp_dob_staff.Location = new System.Drawing.Point(515, 414);
+            this.dtp_dob_staff.Name = "dtp_dob_staff";
+            this.dtp_dob_staff.Size = new System.Drawing.Size(200, 20);
+            this.dtp_dob_staff.TabIndex = 17;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(419, 419);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(78, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Tanggal Lahir :";
+            // 
+            // btn_clear_staff
+            // 
+            this.btn_clear_staff.Location = new System.Drawing.Point(793, 484);
+            this.btn_clear_staff.Name = "btn_clear_staff";
+            this.btn_clear_staff.Size = new System.Drawing.Size(75, 23);
+            this.btn_clear_staff.TabIndex = 15;
+            this.btn_clear_staff.Text = "Clear";
+            this.btn_clear_staff.UseVisualStyleBackColor = true;
+            this.btn_clear_staff.Click += new System.EventHandler(this.btn_clear_staff_Click);
+            // 
+            // btn_update_staff
+            // 
+            this.btn_update_staff.Enabled = false;
+            this.btn_update_staff.Location = new System.Drawing.Point(606, 484);
+            this.btn_update_staff.Name = "btn_update_staff";
+            this.btn_update_staff.Size = new System.Drawing.Size(75, 23);
+            this.btn_update_staff.TabIndex = 14;
+            this.btn_update_staff.Text = "Update";
+            this.btn_update_staff.UseVisualStyleBackColor = true;
+            this.btn_update_staff.Click += new System.EventHandler(this.btn_update_staff_Click);
+            // 
+            // btn_delete_staff
+            // 
+            this.btn_delete_staff.Enabled = false;
+            this.btn_delete_staff.Location = new System.Drawing.Point(700, 484);
+            this.btn_delete_staff.Name = "btn_delete_staff";
+            this.btn_delete_staff.Size = new System.Drawing.Size(75, 23);
+            this.btn_delete_staff.TabIndex = 13;
+            this.btn_delete_staff.Text = "Delete";
+            this.btn_delete_staff.UseVisualStyleBackColor = true;
+            this.btn_delete_staff.Click += new System.EventHandler(this.btn_delete_staff_Click);
+            // 
+            // btn_insert_staff
+            // 
+            this.btn_insert_staff.Location = new System.Drawing.Point(515, 484);
+            this.btn_insert_staff.Name = "btn_insert_staff";
+            this.btn_insert_staff.Size = new System.Drawing.Size(75, 23);
+            this.btn_insert_staff.TabIndex = 12;
+            this.btn_insert_staff.Text = "Insert";
+            this.btn_insert_staff.UseVisualStyleBackColor = true;
+            this.btn_insert_staff.Click += new System.EventHandler(this.btn_insert_staff_Click);
+            // 
+            // rb_p
+            // 
+            this.rb_p.AutoSize = true;
+            this.rb_p.Location = new System.Drawing.Point(611, 389);
+            this.rb_p.Name = "rb_p";
+            this.rb_p.Size = new System.Drawing.Size(79, 17);
+            this.rb_p.TabIndex = 11;
+            this.rb_p.TabStop = true;
+            this.rb_p.Text = "Perempuan";
+            this.rb_p.UseVisualStyleBackColor = true;
+            // 
+            // rb_l
+            // 
+            this.rb_l.AutoSize = true;
+            this.rb_l.Location = new System.Drawing.Point(515, 389);
+            this.rb_l.Name = "rb_l";
+            this.rb_l.Size = new System.Drawing.Size(68, 17);
+            this.rb_l.TabIndex = 10;
+            this.rb_l.TabStop = true;
+            this.rb_l.Text = "Laki-Laki";
+            this.rb_l.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(419, 389);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(77, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Jenis Kelamin :";
+            // 
+            // tb_alamat_staff
+            // 
+            this.tb_alamat_staff.Location = new System.Drawing.Point(515, 360);
+            this.tb_alamat_staff.Name = "tb_alamat_staff";
+            this.tb_alamat_staff.Size = new System.Drawing.Size(291, 20);
+            this.tb_alamat_staff.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(419, 363);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(45, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Alamat :";
+            // 
+            // tb_password_staff
+            // 
+            this.tb_password_staff.Location = new System.Drawing.Point(109, 417);
+            this.tb_password_staff.Name = "tb_password_staff";
+            this.tb_password_staff.Size = new System.Drawing.Size(291, 20);
+            this.tb_password_staff.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 419);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Password :";
+            // 
+            // tb_username_staff
+            // 
+            this.tb_username_staff.Location = new System.Drawing.Point(109, 388);
+            this.tb_username_staff.Name = "tb_username_staff";
+            this.tb_username_staff.Size = new System.Drawing.Size(291, 20);
+            this.tb_username_staff.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 390);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Username :";
+            // 
+            // tb_name_staff
+            // 
+            this.tb_name_staff.Location = new System.Drawing.Point(109, 361);
+            this.tb_name_staff.Name = "tb_name_staff";
+            this.tb_name_staff.Size = new System.Drawing.Size(291, 20);
+            this.tb_name_staff.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 363);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Nama :";
+            // 
+            // dg_staff
+            // 
+            this.dg_staff.AllowUserToAddRows = false;
+            this.dg_staff.AllowUserToDeleteRows = false;
+            this.dg_staff.AllowUserToResizeColumns = false;
+            this.dg_staff.AllowUserToResizeRows = false;
+            this.dg_staff.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dg_staff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_staff.Location = new System.Drawing.Point(3, 34);
+            this.dg_staff.Name = "dg_staff";
+            this.dg_staff.ReadOnly = true;
+            this.dg_staff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dg_staff.Size = new System.Drawing.Size(874, 322);
+            this.dg_staff.TabIndex = 0;
+            this.dg_staff.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_staff_CellDoubleClick);
+            // 
+            // btn_logout
+            // 
+            this.btn_logout.Location = new System.Drawing.Point(793, 27);
+            this.btn_logout.Name = "btn_logout";
+            this.btn_logout.Size = new System.Drawing.Size(75, 23);
+            this.btn_logout.TabIndex = 2;
+            this.btn_logout.Text = "Logout";
+            this.btn_logout.UseVisualStyleBackColor = true;
+            this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
+            // 
             // panelMembership
             // 
             this.panelMembership.Controls.Add(this.btn_delete_membership);
@@ -423,76 +525,52 @@ namespace Project
             this.panelMembership.Size = new System.Drawing.Size(880, 541);
             this.panelMembership.TabIndex = 3;
             // 
-            // label7
+            // btn_delete_membership
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(13, 28);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 20);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "Admin";
+            this.btn_delete_membership.Location = new System.Drawing.Point(670, 484);
+            this.btn_delete_membership.Name = "btn_delete_membership";
+            this.btn_delete_membership.Size = new System.Drawing.Size(75, 23);
+            this.btn_delete_membership.TabIndex = 12;
+            this.btn_delete_membership.Text = "Delete";
+            this.btn_delete_membership.UseVisualStyleBackColor = true;
+            this.btn_delete_membership.Click += new System.EventHandler(this.btn_delete_membership_Click);
             // 
-            // label8
+            // btn_clear_membership
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(14, 15);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(90, 16);
-            this.label8.TabIndex = 21;
-            this.label8.Text = "Master Staff";
+            this.btn_clear_membership.Location = new System.Drawing.Point(763, 484);
+            this.btn_clear_membership.Name = "btn_clear_membership";
+            this.btn_clear_membership.Size = new System.Drawing.Size(75, 23);
+            this.btn_clear_membership.TabIndex = 11;
+            this.btn_clear_membership.Text = "Clear";
+            this.btn_clear_membership.UseVisualStyleBackColor = true;
+            this.btn_clear_membership.Click += new System.EventHandler(this.btn_clear_membership_Click);
             // 
-            // label9
+            // btn_update_membership
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(14, 15);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(144, 16);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Master Membership";
+            this.btn_update_membership.Location = new System.Drawing.Point(579, 484);
+            this.btn_update_membership.Name = "btn_update_membership";
+            this.btn_update_membership.Size = new System.Drawing.Size(75, 23);
+            this.btn_update_membership.TabIndex = 10;
+            this.btn_update_membership.Text = "Update";
+            this.btn_update_membership.UseVisualStyleBackColor = true;
+            this.btn_update_membership.Click += new System.EventHandler(this.btn_update_membership_Click);
             // 
-            // dg_membership
+            // btn_insert_membership
             // 
-            this.dg_membership.AllowUserToAddRows = false;
-            this.dg_membership.AllowUserToDeleteRows = false;
-            this.dg_membership.AllowUserToResizeColumns = false;
-            this.dg_membership.AllowUserToResizeRows = false;
-            this.dg_membership.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dg_membership.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_membership.Location = new System.Drawing.Point(17, 34);
-            this.dg_membership.Name = "dg_membership";
-            this.dg_membership.ReadOnly = true;
-            this.dg_membership.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dg_membership.Size = new System.Drawing.Size(851, 300);
-            this.dg_membership.TabIndex = 1;
-            this.dg_membership.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_membership_CellDoubleClick);
+            this.btn_insert_membership.Location = new System.Drawing.Point(480, 484);
+            this.btn_insert_membership.Name = "btn_insert_membership";
+            this.btn_insert_membership.Size = new System.Drawing.Size(75, 23);
+            this.btn_insert_membership.TabIndex = 9;
+            this.btn_insert_membership.Text = "Insert";
+            this.btn_insert_membership.UseVisualStyleBackColor = true;
+            this.btn_insert_membership.Click += new System.EventHandler(this.btn_insert_membership_Click);
             // 
-            // label10
+            // nud_wkt_membership
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(17, 347);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(41, 13);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "Nama :";
-            // 
-            // tb_name_membership
-            // 
-            this.tb_name_membership.Location = new System.Drawing.Point(168, 344);
-            this.tb_name_membership.Name = "tb_name_membership";
-            this.tb_name_membership.Size = new System.Drawing.Size(164, 20);
-            this.tb_name_membership.TabIndex = 3;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(18, 403);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(118, 13);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "Waktu Expired (bulan) :";
+            this.nud_wkt_membership.Location = new System.Drawing.Point(168, 401);
+            this.nud_wkt_membership.Name = "nud_wkt_membership";
+            this.nud_wkt_membership.Size = new System.Drawing.Size(164, 20);
+            this.nud_wkt_membership.TabIndex = 8;
             // 
             // tb_harga_membership
             // 
@@ -510,71 +588,66 @@ namespace Project
             this.label12.TabIndex = 6;
             this.label12.Text = "Harga :";
             // 
-            // nud_wkt_membership
+            // label11
             // 
-            this.nud_wkt_membership.Location = new System.Drawing.Point(168, 401);
-            this.nud_wkt_membership.Name = "nud_wkt_membership";
-            this.nud_wkt_membership.Size = new System.Drawing.Size(164, 20);
-            this.nud_wkt_membership.TabIndex = 8;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(18, 403);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(118, 13);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Waktu Expired (bulan) :";
             // 
-            // btn_insert_membership
+            // tb_name_membership
             // 
-            this.btn_insert_membership.Location = new System.Drawing.Point(480, 484);
-            this.btn_insert_membership.Name = "btn_insert_membership";
-            this.btn_insert_membership.Size = new System.Drawing.Size(75, 23);
-            this.btn_insert_membership.TabIndex = 9;
-            this.btn_insert_membership.Text = "Insert";
-            this.btn_insert_membership.UseVisualStyleBackColor = true;
-            this.btn_insert_membership.Click += new System.EventHandler(this.btn_insert_membership_Click);
+            this.tb_name_membership.Location = new System.Drawing.Point(168, 344);
+            this.tb_name_membership.Name = "tb_name_membership";
+            this.tb_name_membership.Size = new System.Drawing.Size(164, 20);
+            this.tb_name_membership.TabIndex = 3;
             // 
-            // btn_update_membership
+            // label10
             // 
-            this.btn_update_membership.Location = new System.Drawing.Point(579, 484);
-            this.btn_update_membership.Name = "btn_update_membership";
-            this.btn_update_membership.Size = new System.Drawing.Size(75, 23);
-            this.btn_update_membership.TabIndex = 10;
-            this.btn_update_membership.Text = "Update";
-            this.btn_update_membership.UseVisualStyleBackColor = true;
-            this.btn_update_membership.Click += new System.EventHandler(this.btn_update_membership_Click);
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(17, 347);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 13);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Nama :";
             // 
-            // btn_clear_membership
+            // dg_membership
             // 
-            this.btn_clear_membership.Location = new System.Drawing.Point(763, 484);
-            this.btn_clear_membership.Name = "btn_clear_membership";
-            this.btn_clear_membership.Size = new System.Drawing.Size(75, 23);
-            this.btn_clear_membership.TabIndex = 11;
-            this.btn_clear_membership.Text = "Clear";
-            this.btn_clear_membership.UseVisualStyleBackColor = true;
-            this.btn_clear_membership.Click += new System.EventHandler(this.btn_clear_membership_Click);
+            this.dg_membership.AllowUserToAddRows = false;
+            this.dg_membership.AllowUserToDeleteRows = false;
+            this.dg_membership.AllowUserToResizeColumns = false;
+            this.dg_membership.AllowUserToResizeRows = false;
+            this.dg_membership.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dg_membership.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_membership.Location = new System.Drawing.Point(17, 34);
+            this.dg_membership.Name = "dg_membership";
+            this.dg_membership.ReadOnly = true;
+            this.dg_membership.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dg_membership.Size = new System.Drawing.Size(851, 300);
+            this.dg_membership.TabIndex = 1;
+            this.dg_membership.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_membership_CellDoubleClick);
             // 
-            // btn_delete_membership
+            // label9
             // 
-            this.btn_delete_membership.Location = new System.Drawing.Point(670, 484);
-            this.btn_delete_membership.Name = "btn_delete_membership";
-            this.btn_delete_membership.Size = new System.Drawing.Size(75, 23);
-            this.btn_delete_membership.TabIndex = 12;
-            this.btn_delete_membership.Text = "Delete";
-            this.btn_delete_membership.UseVisualStyleBackColor = true;
-            this.btn_delete_membership.Click += new System.EventHandler(this.btn_delete_membership_Click);
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(14, 15);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(144, 16);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Master Membership";
             // 
-            // masterProductToolStripMenuItem
+            // label7
             // 
-            this.masterProductToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.masterGenreToolStripMenuItem,
-            this.masterSongToolStripMenuItem,
-            this.masterFormatToolStripMenuItem,
-            this.masterProductSongToolStripMenuItem,
-            this.masterProductSellingToolStripMenuItem});
-            this.masterProductToolStripMenuItem.Name = "masterProductToolStripMenuItem";
-            this.masterProductToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
-            this.masterProductToolStripMenuItem.Text = "Master Product";
-            // 
-            // masterPaymentToolStripMenuItem
-            // 
-            this.masterPaymentToolStripMenuItem.Name = "masterPaymentToolStripMenuItem";
-            this.masterPaymentToolStripMenuItem.Size = new System.Drawing.Size(105, 20);
-            this.masterPaymentToolStripMenuItem.Text = "Master Payment";
-            this.masterPaymentToolStripMenuItem.Click += new System.EventHandler(this.masterPaymentToolStripMenuItem_Click);
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(13, 28);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(59, 20);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Admin";
             // 
             // panelPayment
             // 
@@ -590,48 +663,6 @@ namespace Project
             this.panelPayment.Name = "panelPayment";
             this.panelPayment.Size = new System.Drawing.Size(880, 541);
             this.panelPayment.TabIndex = 5;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(17, 15);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(119, 16);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "Master Payment";
-            // 
-            // dg_payment
-            // 
-            this.dg_payment.AllowUserToAddRows = false;
-            this.dg_payment.AllowUserToDeleteRows = false;
-            this.dg_payment.AllowUserToResizeColumns = false;
-            this.dg_payment.AllowUserToResizeRows = false;
-            this.dg_payment.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dg_payment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_payment.Location = new System.Drawing.Point(21, 34);
-            this.dg_payment.Name = "dg_payment";
-            this.dg_payment.ReadOnly = true;
-            this.dg_payment.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dg_payment.Size = new System.Drawing.Size(847, 289);
-            this.dg_payment.TabIndex = 1;
-            this.dg_payment.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_payment_CellDoubleClick);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(21, 347);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(41, 13);
-            this.label14.TabIndex = 2;
-            this.label14.Text = "Nama :";
-            // 
-            // tb_name_payment
-            // 
-            this.tb_name_payment.Location = new System.Drawing.Point(87, 344);
-            this.tb_name_payment.Name = "tb_name_payment";
-            this.tb_name_payment.Size = new System.Drawing.Size(163, 20);
-            this.tb_name_payment.TabIndex = 3;
             // 
             // btn_delete_payment
             // 
@@ -675,54 +706,47 @@ namespace Project
             this.btn_insert_payment.UseVisualStyleBackColor = true;
             this.btn_insert_payment.Click += new System.EventHandler(this.btn_insert_payment_Click);
             // 
-            // masterOccupationToolStripMenuItem1
+            // tb_name_payment
             // 
-            this.masterOccupationToolStripMenuItem1.Name = "masterOccupationToolStripMenuItem1";
-            this.masterOccupationToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.masterOccupationToolStripMenuItem1.Text = "Master Occupation";
-            this.masterOccupationToolStripMenuItem1.Click += new System.EventHandler(this.masterOccupationToolStripMenuItem1_Click);
+            this.tb_name_payment.Location = new System.Drawing.Point(87, 344);
+            this.tb_name_payment.Name = "tb_name_payment";
+            this.tb_name_payment.Size = new System.Drawing.Size(163, 20);
+            this.tb_name_payment.TabIndex = 3;
             // 
-            // masterPersonelToolStripMenuItem
+            // label14
             // 
-            this.masterPersonelToolStripMenuItem.Name = "masterPersonelToolStripMenuItem";
-            this.masterPersonelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.masterPersonelToolStripMenuItem.Text = "Master Personel";
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(21, 347);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(41, 13);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Nama :";
             // 
-            // masterGroupToolStripMenuItem
+            // dg_payment
             // 
-            this.masterGroupToolStripMenuItem.Name = "masterGroupToolStripMenuItem";
-            this.masterGroupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.masterGroupToolStripMenuItem.Text = "Master Group";
+            this.dg_payment.AllowUserToAddRows = false;
+            this.dg_payment.AllowUserToDeleteRows = false;
+            this.dg_payment.AllowUserToResizeColumns = false;
+            this.dg_payment.AllowUserToResizeRows = false;
+            this.dg_payment.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dg_payment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_payment.Location = new System.Drawing.Point(21, 34);
+            this.dg_payment.Name = "dg_payment";
+            this.dg_payment.ReadOnly = true;
+            this.dg_payment.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dg_payment.Size = new System.Drawing.Size(847, 289);
+            this.dg_payment.TabIndex = 1;
+            this.dg_payment.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_payment_CellDoubleClick);
             // 
-            // masterGenreToolStripMenuItem
+            // label13
             // 
-            this.masterGenreToolStripMenuItem.Name = "masterGenreToolStripMenuItem";
-            this.masterGenreToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.masterGenreToolStripMenuItem.Text = "Master Genre";
-            // 
-            // masterSongToolStripMenuItem
-            // 
-            this.masterSongToolStripMenuItem.Name = "masterSongToolStripMenuItem";
-            this.masterSongToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.masterSongToolStripMenuItem.Text = "Master Song";
-            // 
-            // masterFormatToolStripMenuItem
-            // 
-            this.masterFormatToolStripMenuItem.Name = "masterFormatToolStripMenuItem";
-            this.masterFormatToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.masterFormatToolStripMenuItem.Text = "Master Format";
-            // 
-            // masterProductSongToolStripMenuItem
-            // 
-            this.masterProductSongToolStripMenuItem.Name = "masterProductSongToolStripMenuItem";
-            this.masterProductSongToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.masterProductSongToolStripMenuItem.Text = "Master Product-Song";
-            // 
-            // masterProductSellingToolStripMenuItem
-            // 
-            this.masterProductSellingToolStripMenuItem.Name = "masterProductSellingToolStripMenuItem";
-            this.masterProductSellingToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.masterProductSellingToolStripMenuItem.Text = "Master Product-Selling";
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(17, 15);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(119, 16);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Master Payment";
             // 
             // panelOccupation
             // 
@@ -823,11 +847,210 @@ namespace Project
             this.label16.TabIndex = 0;
             this.label16.Text = "Master Occupation";
             // 
+            // panelGenre
+            // 
+            this.panelGenre.Controls.Add(this.btn_delete_genre);
+            this.panelGenre.Controls.Add(this.btn_clear_genre);
+            this.panelGenre.Controls.Add(this.btn_update_genre);
+            this.panelGenre.Controls.Add(this.btn_insert_genre);
+            this.panelGenre.Controls.Add(this.tb_name_genre);
+            this.panelGenre.Controls.Add(this.label17);
+            this.panelGenre.Controls.Add(this.dg_genre);
+            this.panelGenre.Controls.Add(this.label18);
+            this.panelGenre.Location = new System.Drawing.Point(0, 54);
+            this.panelGenre.Name = "panelGenre";
+            this.panelGenre.Size = new System.Drawing.Size(880, 541);
+            this.panelGenre.TabIndex = 18;
+            // 
+            // btn_delete_genre
+            // 
+            this.btn_delete_genre.Enabled = false;
+            this.btn_delete_genre.Location = new System.Drawing.Point(700, 504);
+            this.btn_delete_genre.Name = "btn_delete_genre";
+            this.btn_delete_genre.Size = new System.Drawing.Size(75, 23);
+            this.btn_delete_genre.TabIndex = 16;
+            this.btn_delete_genre.Text = "Delete";
+            this.btn_delete_genre.UseVisualStyleBackColor = true;
+            this.btn_delete_genre.Click += new System.EventHandler(this.btn_delete_genre_Click);
+            // 
+            // btn_clear_genre
+            // 
+            this.btn_clear_genre.Location = new System.Drawing.Point(793, 504);
+            this.btn_clear_genre.Name = "btn_clear_genre";
+            this.btn_clear_genre.Size = new System.Drawing.Size(75, 23);
+            this.btn_clear_genre.TabIndex = 15;
+            this.btn_clear_genre.Text = "Clear";
+            this.btn_clear_genre.UseVisualStyleBackColor = true;
+            this.btn_clear_genre.Click += new System.EventHandler(this.btn_clear_genre_Click);
+            // 
+            // btn_update_genre
+            // 
+            this.btn_update_genre.Enabled = false;
+            this.btn_update_genre.Location = new System.Drawing.Point(609, 504);
+            this.btn_update_genre.Name = "btn_update_genre";
+            this.btn_update_genre.Size = new System.Drawing.Size(75, 23);
+            this.btn_update_genre.TabIndex = 14;
+            this.btn_update_genre.Text = "Update";
+            this.btn_update_genre.UseVisualStyleBackColor = true;
+            this.btn_update_genre.Click += new System.EventHandler(this.btn_update_genre_Click);
+            // 
+            // btn_insert_genre
+            // 
+            this.btn_insert_genre.Location = new System.Drawing.Point(510, 504);
+            this.btn_insert_genre.Name = "btn_insert_genre";
+            this.btn_insert_genre.Size = new System.Drawing.Size(75, 23);
+            this.btn_insert_genre.TabIndex = 13;
+            this.btn_insert_genre.Text = "Insert";
+            this.btn_insert_genre.UseVisualStyleBackColor = true;
+            this.btn_insert_genre.Click += new System.EventHandler(this.btn_insert_genre_Click);
+            // 
+            // tb_name_genre
+            // 
+            this.tb_name_genre.Location = new System.Drawing.Point(87, 344);
+            this.tb_name_genre.Name = "tb_name_genre";
+            this.tb_name_genre.Size = new System.Drawing.Size(163, 20);
+            this.tb_name_genre.TabIndex = 3;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(21, 347);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(41, 13);
+            this.label17.TabIndex = 2;
+            this.label17.Text = "Nama :";
+            // 
+            // dg_genre
+            // 
+            this.dg_genre.AllowUserToAddRows = false;
+            this.dg_genre.AllowUserToDeleteRows = false;
+            this.dg_genre.AllowUserToResizeColumns = false;
+            this.dg_genre.AllowUserToResizeRows = false;
+            this.dg_genre.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dg_genre.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_genre.Location = new System.Drawing.Point(21, 34);
+            this.dg_genre.Name = "dg_genre";
+            this.dg_genre.ReadOnly = true;
+            this.dg_genre.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dg_genre.Size = new System.Drawing.Size(847, 289);
+            this.dg_genre.TabIndex = 1;
+            this.dg_genre.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_genre_CellDoubleClick);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(17, 15);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(101, 16);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "Master Genre";
+            // 
+            // panelFormat
+            // 
+            this.panelFormat.Controls.Add(this.btn_delete_format);
+            this.panelFormat.Controls.Add(this.btn_clear_format);
+            this.panelFormat.Controls.Add(this.btn_update_format);
+            this.panelFormat.Controls.Add(this.btn_insert_format);
+            this.panelFormat.Controls.Add(this.tb_name_format);
+            this.panelFormat.Controls.Add(this.label19);
+            this.panelFormat.Controls.Add(this.dg_format);
+            this.panelFormat.Controls.Add(this.label20);
+            this.panelFormat.Location = new System.Drawing.Point(0, 54);
+            this.panelFormat.Name = "panelFormat";
+            this.panelFormat.Size = new System.Drawing.Size(880, 541);
+            this.panelFormat.TabIndex = 19;
+            // 
+            // btn_delete_format
+            // 
+            this.btn_delete_format.Enabled = false;
+            this.btn_delete_format.Location = new System.Drawing.Point(700, 504);
+            this.btn_delete_format.Name = "btn_delete_format";
+            this.btn_delete_format.Size = new System.Drawing.Size(75, 23);
+            this.btn_delete_format.TabIndex = 16;
+            this.btn_delete_format.Text = "Delete";
+            this.btn_delete_format.UseVisualStyleBackColor = true;
+            this.btn_delete_format.Click += new System.EventHandler(this.btn_delete_format_Click);
+            // 
+            // btn_clear_format
+            // 
+            this.btn_clear_format.Location = new System.Drawing.Point(793, 504);
+            this.btn_clear_format.Name = "btn_clear_format";
+            this.btn_clear_format.Size = new System.Drawing.Size(75, 23);
+            this.btn_clear_format.TabIndex = 15;
+            this.btn_clear_format.Text = "Clear";
+            this.btn_clear_format.UseVisualStyleBackColor = true;
+            // 
+            // btn_update_format
+            // 
+            this.btn_update_format.Enabled = false;
+            this.btn_update_format.Location = new System.Drawing.Point(609, 504);
+            this.btn_update_format.Name = "btn_update_format";
+            this.btn_update_format.Size = new System.Drawing.Size(75, 23);
+            this.btn_update_format.TabIndex = 14;
+            this.btn_update_format.Text = "Update";
+            this.btn_update_format.UseVisualStyleBackColor = true;
+            this.btn_update_format.Click += new System.EventHandler(this.btn_update_format_Click);
+            // 
+            // btn_insert_format
+            // 
+            this.btn_insert_format.Location = new System.Drawing.Point(510, 504);
+            this.btn_insert_format.Name = "btn_insert_format";
+            this.btn_insert_format.Size = new System.Drawing.Size(75, 23);
+            this.btn_insert_format.TabIndex = 13;
+            this.btn_insert_format.Text = "Insert";
+            this.btn_insert_format.UseVisualStyleBackColor = true;
+            this.btn_insert_format.Click += new System.EventHandler(this.btn_insert_format_Click);
+            // 
+            // tb_name_format
+            // 
+            this.tb_name_format.Location = new System.Drawing.Point(87, 344);
+            this.tb_name_format.Name = "tb_name_format";
+            this.tb_name_format.Size = new System.Drawing.Size(163, 20);
+            this.tb_name_format.TabIndex = 3;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(21, 347);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(41, 13);
+            this.label19.TabIndex = 2;
+            this.label19.Text = "Nama :";
+            // 
+            // dg_format
+            // 
+            this.dg_format.AllowUserToAddRows = false;
+            this.dg_format.AllowUserToDeleteRows = false;
+            this.dg_format.AllowUserToResizeColumns = false;
+            this.dg_format.AllowUserToResizeRows = false;
+            this.dg_format.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dg_format.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_format.Location = new System.Drawing.Point(21, 34);
+            this.dg_format.Name = "dg_format";
+            this.dg_format.ReadOnly = true;
+            this.dg_format.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dg_format.Size = new System.Drawing.Size(847, 289);
+            this.dg_format.TabIndex = 1;
+            this.dg_format.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_format_CellDoubleClick);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(17, 15);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(107, 16);
+            this.label20.TabIndex = 0;
+            this.label20.Text = "Master Format";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 593);
+            this.Controls.Add(this.panelFormat);
+            this.Controls.Add(this.panelGenre);
             this.Controls.Add(this.panelOccupation);
             this.Controls.Add(this.panelPayment);
             this.Controls.Add(this.panelMembership);
@@ -836,7 +1059,7 @@ namespace Project
             this.Controls.Add(this.btn_logout);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form2";
             this.Text = "Admin";
             this.Load += new System.EventHandler(this.Form2_Load);
@@ -844,19 +1067,25 @@ namespace Project
             this.menuStrip1.PerformLayout();
             this.panelStaff.ResumeLayout(false);
             this.panelStaff.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_staff)).EndInit();
             this.gb_status.ResumeLayout(false);
             this.gb_status.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_staff)).EndInit();
             this.panelMembership.ResumeLayout(false);
             this.panelMembership.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_membership)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_wkt_membership)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_membership)).EndInit();
             this.panelPayment.ResumeLayout(false);
             this.panelPayment.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_payment)).EndInit();
             this.panelOccupation.ResumeLayout(false);
             this.panelOccupation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_occupation)).EndInit();
+            this.panelGenre.ResumeLayout(false);
+            this.panelGenre.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_genre)).EndInit();
+            this.panelFormat.ResumeLayout(false);
+            this.panelFormat.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_format)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -935,5 +1164,23 @@ namespace Project
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DataGridView dg_occupation;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Panel panelGenre;
+        private System.Windows.Forms.Button btn_delete_genre;
+        private System.Windows.Forms.Button btn_clear_genre;
+        private System.Windows.Forms.Button btn_update_genre;
+        private System.Windows.Forms.Button btn_insert_genre;
+        private System.Windows.Forms.TextBox tb_name_genre;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.DataGridView dg_genre;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Panel panelFormat;
+        private System.Windows.Forms.Button btn_delete_format;
+        private System.Windows.Forms.Button btn_clear_format;
+        private System.Windows.Forms.Button btn_update_format;
+        private System.Windows.Forms.Button btn_insert_format;
+        private System.Windows.Forms.TextBox tb_name_format;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.DataGridView dg_format;
+        private System.Windows.Forms.Label label20;
     }
 }
