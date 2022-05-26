@@ -14,6 +14,14 @@ namespace Project
         public String idOccupation;
         public String idGenre;
         public String idFormat;
+        public String idPersonel;
+        public String idGroupMusic;
+
+        DataTable dtInternalGroupMusic = new DataTable();
+
+        DataTable dtTempUpdateGroupMusic = new DataTable();
+
+        public int PersonelGroupMusicIndex;
 
         public Form2()
         {
@@ -28,6 +36,7 @@ namespace Project
             panelOccupation.Visible = false;
             panelGenre.Visible = false;
             panelFormat.Visible = false;
+            panelPersonel.Visible = false;
 
             refreshDGStaff();
             clearStaff();
@@ -41,6 +50,8 @@ namespace Project
             panelOccupation.Visible = false;
             panelGenre.Visible = false;
             panelFormat.Visible = false;
+            panelPersonel.Visible = false;
+            panelGroupMusic.Visible = false;
 
             refreshDGMembership();
             clearMembership();
@@ -54,6 +65,8 @@ namespace Project
             panelOccupation.Visible = false;
             panelGenre.Visible = false;
             panelFormat.Visible = false;
+            panelPersonel.Visible = false;
+            panelGroupMusic.Visible = false;
 
             refreshDGStaff();
             clearStaff();
@@ -195,6 +208,176 @@ namespace Project
             da.Fill(dt);
 
             dg_format.DataSource = dt;
+        }
+
+        private void refreshDGPersonel()
+        {
+            dg_personel.DataSource = null;
+
+            if (koneksi.getConn().State == ConnectionState.Open)
+            {
+                koneksi.closeConn();
+            }
+
+            DataTable dt = new DataTable();
+            MySqlCommand cmd = new MySqlCommand("SELECT P.ID AS 'ID', P.NAME AS 'Name', P.COUNTRY AS 'Country', P.GENDER AS 'Gender', O.`NAME` AS 'Occupation' FROM PERSONEL P, OCCUPATION O WHERE p.`OCCUPATION_ID` = o.`ID` ORDER BY CAST(p.`ID` AS UNSIGNED) ASC;", koneksi.getConn());
+            MySqlDataAdapter da = new MySqlDataAdapter();
+
+            koneksi.openConn();
+            cmd.ExecuteReader();
+            koneksi.closeConn();
+
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            dg_personel.DataSource = dt;
+        }
+
+        private void refreshDGGroupMusic()
+        {
+            dg_groupMusic.DataSource = null;
+
+            if (koneksi.getConn().State == ConnectionState.Open)
+            {
+                koneksi.closeConn();
+            }
+
+            DataTable dt = new DataTable();
+            MySqlCommand cmd = new MySqlCommand("SELECT ID, Name FROM group_music order by cast(id as unsigned) asc;", koneksi.getConn());
+            MySqlDataAdapter da = new MySqlDataAdapter();
+
+            koneksi.openConn();
+            cmd.ExecuteReader();
+            koneksi.closeConn();
+
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            dg_groupMusic.DataSource = dt;
+        }
+
+        private void fillCBPersonel()
+        {
+            cb_occupation_personel.Items.Clear();
+
+            if (koneksi.getConn().State == ConnectionState.Open)
+            {
+                koneksi.closeConn();
+            }
+
+            MySqlCommand cmd = new MySqlCommand("select * from occupation;", koneksi.getConn());
+
+            koneksi.openConn();
+            MySqlDataReader dr = cmd.ExecuteReader();
+
+            cb_occupation_personel.DisplayMember = "Text";
+            cb_occupation_personel.ValueMember = "Value";
+
+            while (dr.Read())
+            {
+                cb_occupation_personel.Items.Add(new { Text = dr.GetString(1), Value = dr.GetString(0) });
+            }
+
+            koneksi.closeConn();
+            cb_occupation_personel.SelectedIndex = -1;
+        }
+
+        private void fillCBGroupMusic()
+        {
+            cb_personel_groupMusic.Items.Clear();
+
+            if (koneksi.getConn().State == ConnectionState.Open)
+            {
+                koneksi.closeConn();
+            }
+
+            MySqlCommand cmd = new MySqlCommand("SELECT p.ID, CONCAT(p.Name, ' - ', o.`NAME`), p.Name, o.Name FROM personel p, occupation o WHERE p.`OCCUPATION_ID` = o.`ID` ORDER BY CAST(p.`ID` AS UNSIGNED) ASC;", koneksi.getConn());
+
+            koneksi.openConn();
+            MySqlDataReader dr = cmd.ExecuteReader();
+
+            cb_personel_groupMusic.DisplayMember = "Text";
+            cb_personel_groupMusic.ValueMember = "Value";
+
+            while (dr.Read())
+            {
+                cb_personel_groupMusic.Items.Add(new { Text = dr.GetString(1), Value = dr.GetString(0), Personel = dr.GetString(2), Occupation = dr.GetString(3) });
+            }
+
+            koneksi.closeConn();
+            cb_personel_groupMusic.SelectedIndex = -1;
+        }
+
+        private Boolean checkCond_personel()
+        {
+            if (tb_name_personel.Text=="")
+            {
+                MessageBox.Show("Please fill the name !");
+                return false;
+            } else if (tb_country_personel.Text=="")
+            {
+                MessageBox.Show("Please fill the country !");
+                return false;
+            } else if (!rb_l_personel.Checked && !rb_p_personel.Checked)
+            {
+                MessageBox.Show("Please choose the gender !");
+                return false;
+            } else if (cb_occupation_personel.SelectedIndex==-1)
+            {
+                MessageBox.Show("Please choose the occupation !");
+                return false;
+            }
+            return true;
+        }
+
+        private Boolean checkCond_groupMusic()
+        {
+            if (tb_name_groupMusic.Text=="")
+            {
+                MessageBox.Show("Please fill the name !");
+                return false;
+            } else if (dg_personel_groupMusic.Rows.Count==0)
+            {
+                MessageBox.Show("A group must consist at least 1 personel !");
+                return false;
+            }
+            return true;
+        }
+
+        private void prepareDTInternalGroupMusic()
+        {
+            dtInternalGroupMusic.Columns.Add("Personel_ID");
+            dtTempUpdateGroupMusic.Columns.Add("Personel_ID");
+        }
+
+        private void fillDGPersonelGroupMusic()
+        {
+            dg_personel_groupMusic.Rows.Clear();
+
+            if (koneksi.getConn().State == ConnectionState.Open)
+            {
+                koneksi.closeConn();
+            }
+
+            MySqlCommand cmd = new MySqlCommand("SELECT p.`NAME`, o.`NAME`, p.ID FROM personel p, group_music gm, occupation o,group_personel gp WHERE o.`ID` = p.`OCCUPATION_ID` AND gp.`GROUP_ID` = gm.`id` AND gp.`PERSONEL_ID` = p.`ID` AND gm.`id` = @id ORDER BY CAST(gp.`ID` AS UNSIGNED) ASC;", koneksi.getConn());
+            cmd.Parameters.AddWithValue("@id", idGroupMusic);
+
+            koneksi.openConn();
+
+            MySqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                int rowID = dg_personel_groupMusic.Rows.Add();
+
+                DataGridViewRow row = dg_personel_groupMusic.Rows[rowID];
+
+                row.Cells["Personel"].Value = dr.GetString(0);
+                row.Cells["Occupation"].Value = dr.GetString(1);
+
+                dtInternalGroupMusic.Rows.Add(dr.GetString(2));
+            }
+
+            koneksi.closeConn();
         }
 
         private void btn_clear_staff_Click(object sender, EventArgs e)
@@ -534,6 +717,8 @@ namespace Project
             panelOccupation.Visible = false;
             panelGenre.Visible = false;
             panelFormat.Visible = false;
+            panelPersonel.Visible = false;
+            panelGroupMusic.Visible = false;
 
             clearPayment();
             refreshDGPayment();
@@ -659,6 +844,8 @@ namespace Project
             panelOccupation.Visible = true;
             panelGenre.Visible = false;
             panelFormat.Visible = false;
+            panelPersonel.Visible = false;
+            panelGroupMusic.Visible = false;
 
             clearOccupation();
             refreshDGOccupation();
@@ -784,6 +971,8 @@ namespace Project
             panelOccupation.Visible = false;
             panelGenre.Visible = true;
             panelFormat.Visible = false;
+            panelPersonel.Visible = false;
+            panelGroupMusic.Visible = false;
 
             clearGenre();
             refreshDGGenre();
@@ -909,6 +1098,8 @@ namespace Project
             panelOccupation.Visible = false;
             panelGenre.Visible = false;
             panelFormat.Visible = true;
+            panelPersonel.Visible = false;
+            panelGroupMusic.Visible = false;
 
             clearFormat();
             refreshDGFormat();
@@ -1018,6 +1209,431 @@ namespace Project
                 refreshDGFormat();
 
                 MessageBox.Show("Delete successfull !");
+            }
+        }
+
+        private void masterPersonelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panelStaff.Visible = false;
+            panelMembership.Visible = false;
+            panelPayment.Visible = false;
+            panelOccupation.Visible = false;
+            panelGenre.Visible = false;
+            panelFormat.Visible = false;
+            panelPersonel.Visible = true;
+            panelGroupMusic.Visible = false;
+
+            clearPersonel();
+            refreshDGPersonel();
+            fillCBPersonel();
+        }
+
+        private void clearPersonel()
+        {
+            tb_name_personel.Text = "";
+            tb_country_personel.Text = "";
+
+            rb_l_personel.Checked = false;
+            rb_p_personel.Checked = false;
+
+            cb_occupation_personel.SelectedIndex = -1;
+
+            btn_insert_personel.Enabled = true;
+            btn_update_personel.Enabled = false;
+            btn_delete_personel.Enabled = false;
+        }
+
+        private void btn_insert_personel_Click(object sender, EventArgs e)
+        {
+            if (checkCond_personel())
+            {
+                MySqlCommand cmdID = new MySqlCommand();
+                cmdID.CommandText = "SELECT cast(id as unsigned)+1 FROM personel ORDER BY CAST(id AS UNSIGNED) DESC LIMIT 1;";
+                cmdID.Connection = koneksi.getConn();
+
+                koneksi.openConn();
+                String newID = cmdID.ExecuteScalar().ToString();
+                koneksi.closeConn();
+
+                String name = tb_name_personel.Text;
+                String country = tb_country_personel.Text;
+
+                String gender = "";
+                if (rb_l_personel.Checked) gender = "L";
+                else gender = "P";
+
+                String occupation = (cb_occupation_personel.SelectedItem as dynamic).Value;
+
+                try
+                {
+                    MySqlCommand cmdInsert = new MySqlCommand("insert into personel (id,name,country,gender,occupation_id) values (@id,@name,@country,@gender,@occupation_id);", koneksi.getConn());
+
+                    cmdInsert.Parameters.AddWithValue("@id", newID);
+                    cmdInsert.Parameters.AddWithValue("@name", name);
+                    cmdInsert.Parameters.AddWithValue("@country", country);
+                    cmdInsert.Parameters.AddWithValue("@gender", gender);
+                    cmdInsert.Parameters.AddWithValue("@occupation_id", occupation);
+
+                    koneksi.openConn();
+                    cmdInsert.ExecuteNonQuery();
+                    koneksi.closeConn();
+
+                    clearPersonel();
+                    refreshDGPersonel();
+                    MessageBox.Show("Insert successful !");
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.InnerException.Message);
+                }
+            }
+        }
+
+        private void dg_personel_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idPersonel = dg_personel.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+            tb_name_personel.Text = dg_personel.Rows[e.RowIndex].Cells[1].Value.ToString();
+            tb_country_personel.Text = dg_personel.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+            String gender = dg_personel.Rows[e.RowIndex].Cells[3].Value.ToString();
+            if (gender == "L") rb_l_personel.Checked = true;
+            else rb_p_personel.Checked = true;
+
+            cb_occupation_personel.Text = dg_personel.Rows[e.RowIndex].Cells[4].Value.ToString();
+
+            btn_insert_personel.Enabled = false;
+            btn_delete_personel.Enabled = true;
+            btn_update_personel.Enabled = true;
+        }
+
+        private void btn_clear_personel_Click(object sender, EventArgs e)
+        {
+            clearPersonel();
+        }
+
+        private void btn_update_personel_Click(object sender, EventArgs e)
+        {
+            if (checkCond_personel())
+            {
+                String name = tb_name_personel.Text;
+                String country = tb_country_personel.Text;
+
+                String gender = "";
+                if (rb_l_personel.Checked) gender = "L";
+                else gender = "P";
+
+                String occupation = (cb_occupation_personel.SelectedItem as dynamic).Value;
+
+                try
+                {
+                    MySqlCommand cmdInsert = new MySqlCommand("update personel set name = @name, country = @country, gender = @gender, occupation_id = @occupation_id where id = @id;", koneksi.getConn());
+
+                    cmdInsert.Parameters.AddWithValue("@id", idPersonel);
+                    cmdInsert.Parameters.AddWithValue("@name", name);
+                    cmdInsert.Parameters.AddWithValue("@country", country);
+                    cmdInsert.Parameters.AddWithValue("@gender", gender);
+                    cmdInsert.Parameters.AddWithValue("@occupation_id", occupation);
+
+                    koneksi.openConn();
+                    cmdInsert.ExecuteNonQuery();
+                    koneksi.closeConn();
+
+                    clearPersonel();
+                    refreshDGPersonel();
+                    MessageBox.Show("Update successful !");
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.InnerException.Message);
+                }
+            }
+        }
+
+        private void btn_delete_personel_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete this personel ?", "Confirm Delete", MessageBoxButtons.YesNo);
+
+            if (dr == DialogResult.Yes)
+            {
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand("delete from personel where id = @id", koneksi.getConn());
+                    cmd.Parameters.AddWithValue("@id", idPersonel);
+
+                    koneksi.openConn();
+                    cmd.ExecuteNonQuery();
+                    koneksi.closeConn();
+
+                    clearPersonel();
+                    refreshDGPersonel();
+
+                    MessageBox.Show("Delete successfull !");
+                } catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void masterGroupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panelStaff.Visible = false;
+            panelMembership.Visible = false;
+            panelPayment.Visible = false;
+            panelOccupation.Visible = false;
+            panelGenre.Visible = false;
+            panelFormat.Visible = false;
+            panelPersonel.Visible = false;
+            panelGroupMusic.Visible = true;
+
+            clearGroupMusic();
+            refreshDGGroupMusic();
+            fillCBGroupMusic();
+            prepareDTInternalGroupMusic();
+        }
+
+        private void clearGroupMusic()
+        {
+            tb_name_groupMusic.Text = "";
+
+            cb_personel_groupMusic.SelectedIndex = -1;
+
+            btn_insert_groupMusic.Enabled = true;
+            btn_update_groupMusic.Enabled = false;
+            btn_delete_groupMusic.Enabled = false;
+
+            dg_personel_groupMusic.Rows.Clear();
+
+            dtInternalGroupMusic.Rows.Clear();
+            dtTempUpdateGroupMusic.Rows.Clear();
+        }
+
+        private void btn_clear_groupMusic_Click(object sender, EventArgs e)
+        {
+            clearGroupMusic();
+        }
+
+        private void dg_groupMusic_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idGroupMusic = dg_groupMusic.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+            tb_name_groupMusic.Text = dg_groupMusic.Rows[e.RowIndex].Cells[1].Value.ToString();
+
+            fillDGPersonelGroupMusic();
+
+            btn_insert_groupMusic.Enabled = false;
+            btn_update_groupMusic.Enabled = true;
+            btn_delete_groupMusic.Enabled = true;
+        }
+
+        private void btn_clear_personel_group_Click(object sender, EventArgs e)
+        {
+            dg_personel_groupMusic.Rows.Clear();
+        }
+
+        private void btn_enter_group_personel_Click(object sender, EventArgs e)
+        {
+            String personel = (cb_personel_groupMusic.SelectedItem as dynamic).Personel;
+            String occupation = (cb_personel_groupMusic.SelectedItem as dynamic).Occupation;
+
+            dg_personel_groupMusic.Rows.Add(personel, occupation);
+
+            dtInternalGroupMusic.Rows.Add((cb_personel_groupMusic.SelectedItem as dynamic).Value);
+        }
+
+        private void btn_delete_group_personel_Click(object sender, EventArgs e)
+        {
+            dg_personel_groupMusic.Rows.RemoveAt(PersonelGroupMusicIndex);
+            dtInternalGroupMusic.Rows.RemoveAt(PersonelGroupMusicIndex);
+        }
+
+        private void dg_personel_groupMusic_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            PersonelGroupMusicIndex = e.RowIndex;
+        }
+
+        private void btn_insert_groupMusic_Click(object sender, EventArgs e)
+        {
+            if (checkCond_groupMusic())
+            {
+                MySqlCommand cmdID = new MySqlCommand();
+                cmdID.CommandText = "SELECT cast(id as unsigned)+1 FROM group_music ORDER BY CAST(id AS UNSIGNED) DESC LIMIT 1;";
+                cmdID.Connection = koneksi.getConn();
+
+                koneksi.openConn();
+                String newID = cmdID.ExecuteScalar().ToString();
+                koneksi.closeConn();
+
+                String name = tb_name_groupMusic.Text;
+
+                koneksi.openConn();
+                using (MySqlTransaction trans = koneksi.getConn().BeginTransaction())
+                {
+                    try
+                    {
+                        MySqlCommand cmdInsert = new MySqlCommand("insert into group_music (id,name) values (@id,@name);", koneksi.getConn());
+
+                        cmdInsert.Parameters.AddWithValue("@id", newID);
+                        cmdInsert.Parameters.AddWithValue("@name", name);
+
+                        cmdInsert.ExecuteNonQuery();
+
+                        for (int i=0; i<dtInternalGroupMusic.Rows.Count; i++)
+                        {
+                            MySqlCommand cmdIDGroupPersonel = new MySqlCommand();
+                            cmdIDGroupPersonel.CommandText = "SELECT cast(id as unsigned)+1 FROM group_personel ORDER BY CAST(id AS UNSIGNED) DESC LIMIT 1;";
+                            cmdIDGroupPersonel.Connection = koneksi.getConn();
+
+                            String newIDGroupPersonel = cmdIDGroupPersonel.ExecuteScalar().ToString();
+
+                            MySqlCommand cmdInsertGroupPersonel = new MySqlCommand();
+                            cmdInsertGroupPersonel.CommandText = "insert into group_personel (id, group_id, personel_id) values (@id, @group_id, @personel_id);";
+                            cmdInsertGroupPersonel.Parameters.AddWithValue("@id", newIDGroupPersonel);
+                            cmdInsertGroupPersonel.Parameters.AddWithValue("@group_id", newID);
+                            cmdInsertGroupPersonel.Parameters.AddWithValue("@personel_id", dtInternalGroupMusic.Rows[i][0].ToString());
+                            cmdInsertGroupPersonel.Connection = koneksi.getConn();
+
+                            cmdInsertGroupPersonel.ExecuteNonQuery();
+                        }
+
+                        trans.Commit();
+
+                        clearGroupMusic();
+                        refreshDGGroupMusic();
+
+                        MessageBox.Show("Insert successful !");
+                    } catch (MySqlException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        trans.Rollback();
+                    }
+                }
+                koneksi.closeConn();
+            }
+        }
+
+        private void btn_delete_groupMusic_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete this group ?", "Confirm Delete", MessageBoxButtons.YesNo);
+
+            if (dr == DialogResult.Yes)
+            {
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand("delete from group_personel where group_id = @id", koneksi.getConn());
+                    cmd.Parameters.AddWithValue("@id", idGroupMusic);
+
+                    koneksi.openConn();
+                    cmd.ExecuteNonQuery();
+                    koneksi.closeConn();
+
+                    MySqlCommand cmd2 = new MySqlCommand("delete from group_music where id = @id", koneksi.getConn());
+                    cmd2.Parameters.AddWithValue("@id", idGroupMusic);
+
+                    koneksi.openConn();
+                    cmd2.ExecuteNonQuery();
+                    koneksi.closeConn();
+
+                    clearGroupMusic();
+                    refreshDGGroupMusic();
+
+                    MessageBox.Show("Delete successfull !");
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void btn_update_groupMusic_Click(object sender, EventArgs e)
+        {
+            if (checkCond_groupMusic())
+            {
+                String name = tb_name_groupMusic.Text;
+
+                koneksi.openConn();
+                using (MySqlTransaction trans = koneksi.getConn().BeginTransaction())
+                {
+                    try
+                    {
+                        MySqlCommand cmdUpdate = new MySqlCommand("update group_music set name = @name where id = @id", koneksi.getConn());
+                        cmdUpdate.Parameters.AddWithValue("@name", name);
+                        cmdUpdate.Parameters.AddWithValue("@id", idGroupMusic);
+
+                        cmdUpdate.ExecuteNonQuery();
+
+                        for (int i=0; i<dtInternalGroupMusic.Rows.Count; i++)
+                        {
+                            MySqlCommand cmdCount = new MySqlCommand("select count(*) from group_personel where group_id=@group and personel_id=@personel", koneksi.getConn());
+                            cmdCount.Parameters.AddWithValue("@group", idGroupMusic);
+                            cmdCount.Parameters.AddWithValue("@personel", dtInternalGroupMusic.Rows[i][0].ToString());
+
+                            String count = cmdCount.ExecuteScalar().ToString();
+
+                            if (count=="0")
+                            {
+                                MySqlCommand cmdID = new MySqlCommand();
+                                cmdID.CommandText = "SELECT cast(id as unsigned)+1 FROM group_personel ORDER BY CAST(id AS UNSIGNED) DESC LIMIT 1;";
+                                cmdID.Connection = koneksi.getConn();
+
+                                String newID = cmdID.ExecuteScalar().ToString();
+
+                                MySqlCommand cmdNewInsert = new MySqlCommand("insert into group_personel (id, group_id, personel_id) values (@id, @group, @personel)",koneksi.getConn());
+                                cmdNewInsert.Parameters.AddWithValue("@id", newID);
+                                cmdNewInsert.Parameters.AddWithValue("@group", idGroupMusic);
+                                cmdNewInsert.Parameters.AddWithValue("@personel", dtInternalGroupMusic.Rows[i][0].ToString());
+
+                                cmdNewInsert.ExecuteNonQuery();
+                            }
+                        }
+
+                        MySqlCommand cmdTemp = new MySqlCommand("select personel_id from group_personel where group_id = @group",koneksi.getConn());
+                        cmdTemp.Parameters.AddWithValue("@group", idGroupMusic);
+
+                        MySqlDataReader dr = cmdTemp.ExecuteReader();
+                        while (dr.Read())
+                        {
+                            dtTempUpdateGroupMusic.Rows.Add(dr.GetString(0));
+                        }
+                        dr.Close();
+
+                        for (int i=0; i<dtTempUpdateGroupMusic.Rows.Count;i++)
+                        {
+                            Boolean isThere = false;
+                            for (int j=0; j<dtInternalGroupMusic.Rows.Count; j++)
+                            {
+                                if (dtInternalGroupMusic.Rows[j][0].ToString()==dtTempUpdateGroupMusic.Rows[i][0].ToString())
+                                {
+                                    isThere = true;
+                                    break;
+                                }
+                            }
+
+                            if (!isThere)
+                            {
+                                MySqlCommand cmdNewDelete = new MySqlCommand("delete from group_personel where group_id = @group and personel_id = @personel", koneksi.getConn());
+                                cmdNewDelete.Parameters.AddWithValue("@group", idGroupMusic);
+                                cmdNewDelete.Parameters.AddWithValue("@personel", dtTempUpdateGroupMusic.Rows[i][0].ToString());
+
+                                cmdNewDelete.ExecuteNonQuery();
+                            }
+                        }
+
+                        trans.Commit();
+
+                        clearGroupMusic();
+                        refreshDGGroupMusic();
+
+                        MessageBox.Show("Update successful !");
+                    } catch (MySqlException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        trans.Rollback();
+                    }
+                }
+                koneksi.closeConn();
             }
         }
     }
