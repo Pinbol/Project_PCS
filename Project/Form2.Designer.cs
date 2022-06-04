@@ -119,6 +119,13 @@ namespace Project
             this.dg_format = new System.Windows.Forms.DataGridView();
             this.label20 = new System.Windows.Forms.Label();
             this.panelPersonel = new System.Windows.Forms.Panel();
+            this.cb_occupation_personel = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.rb_p_personel = new System.Windows.Forms.RadioButton();
+            this.rb_l_personel = new System.Windows.Forms.RadioButton();
+            this.label24 = new System.Windows.Forms.Label();
+            this.tb_country_personel = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.btn_delete_personel = new System.Windows.Forms.Button();
             this.btn_clear_personel = new System.Windows.Forms.Button();
             this.btn_update_personel = new System.Windows.Forms.Button();
@@ -127,14 +134,13 @@ namespace Project
             this.label21 = new System.Windows.Forms.Label();
             this.dg_personel = new System.Windows.Forms.DataGridView();
             this.label22 = new System.Windows.Forms.Label();
-            this.tb_country_personel = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.rb_l_personel = new System.Windows.Forms.RadioButton();
-            this.rb_p_personel = new System.Windows.Forms.RadioButton();
-            this.label25 = new System.Windows.Forms.Label();
-            this.cb_occupation_personel = new System.Windows.Forms.ComboBox();
             this.panelGroupMusic = new System.Windows.Forms.Panel();
+            this.btn_clear_personel_group = new System.Windows.Forms.Button();
+            this.btn_delete_group_personel = new System.Windows.Forms.Button();
+            this.btn_enter_group_personel = new System.Windows.Forms.Button();
+            this.dg_personel_groupMusic = new System.Windows.Forms.DataGridView();
+            this.Personel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Occupation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cb_personel_groupMusic = new System.Windows.Forms.ComboBox();
             this.label26 = new System.Windows.Forms.Label();
             this.btn_delete_groupMusic = new System.Windows.Forms.Button();
@@ -145,12 +151,25 @@ namespace Project
             this.label29 = new System.Windows.Forms.Label();
             this.dg_groupMusic = new System.Windows.Forms.DataGridView();
             this.label30 = new System.Windows.Forms.Label();
-            this.dg_personel_groupMusic = new System.Windows.Forms.DataGridView();
-            this.btn_enter_group_personel = new System.Windows.Forms.Button();
-            this.btn_delete_group_personel = new System.Windows.Forms.Button();
-            this.Personel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Occupation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_clear_personel_group = new System.Windows.Forms.Button();
+            this.panelSong = new System.Windows.Forms.Panel();
+            this.cb_genre_song = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.btn_delete_song = new System.Windows.Forms.Button();
+            this.btn_clear_song = new System.Windows.Forms.Button();
+            this.btn_update_song = new System.Windows.Forms.Button();
+            this.btn_insert_song = new System.Windows.Forms.Button();
+            this.tb_name_song = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.dg_song = new System.Windows.Forms.DataGridView();
+            this.label33 = new System.Windows.Forms.Label();
+            this.rtb_deskripsi_song = new System.Windows.Forms.RichTextBox();
+            this.tb_length_song = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.cb_group_song = new System.Windows.Forms.ComboBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.dtp_releaseDate_song = new System.Windows.Forms.DateTimePicker();
             this.menuStrip1.SuspendLayout();
             this.panelStaff.SuspendLayout();
             this.gb_status.SuspendLayout();
@@ -169,8 +188,10 @@ namespace Project
             this.panelPersonel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_personel)).BeginInit();
             this.panelGroupMusic.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_groupMusic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dg_personel_groupMusic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_groupMusic)).BeginInit();
+            this.panelSong.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_song)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -216,21 +237,21 @@ namespace Project
             // masterOccupationToolStripMenuItem1
             // 
             this.masterOccupationToolStripMenuItem1.Name = "masterOccupationToolStripMenuItem1";
-            this.masterOccupationToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.masterOccupationToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
             this.masterOccupationToolStripMenuItem1.Text = "Master Occupation";
             this.masterOccupationToolStripMenuItem1.Click += new System.EventHandler(this.masterOccupationToolStripMenuItem1_Click);
             // 
             // masterPersonelToolStripMenuItem
             // 
             this.masterPersonelToolStripMenuItem.Name = "masterPersonelToolStripMenuItem";
-            this.masterPersonelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.masterPersonelToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.masterPersonelToolStripMenuItem.Text = "Master Personel";
             this.masterPersonelToolStripMenuItem.Click += new System.EventHandler(this.masterPersonelToolStripMenuItem_Click);
             // 
             // masterGroupToolStripMenuItem
             // 
             this.masterGroupToolStripMenuItem.Name = "masterGroupToolStripMenuItem";
-            this.masterGroupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.masterGroupToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.masterGroupToolStripMenuItem.Text = "Master Group";
             this.masterGroupToolStripMenuItem.Click += new System.EventHandler(this.masterGroupToolStripMenuItem_Click);
             // 
@@ -258,6 +279,7 @@ namespace Project
             this.masterSongToolStripMenuItem.Name = "masterSongToolStripMenuItem";
             this.masterSongToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.masterSongToolStripMenuItem.Text = "Master Song";
+            this.masterSongToolStripMenuItem.Click += new System.EventHandler(this.masterSongToolStripMenuItem_Click);
             // 
             // masterFormatToolStripMenuItem
             // 
@@ -1106,6 +1128,70 @@ namespace Project
             this.panelPersonel.Size = new System.Drawing.Size(880, 541);
             this.panelPersonel.TabIndex = 20;
             // 
+            // cb_occupation_personel
+            // 
+            this.cb_occupation_personel.FormattingEnabled = true;
+            this.cb_occupation_personel.Location = new System.Drawing.Point(462, 344);
+            this.cb_occupation_personel.Name = "cb_occupation_personel";
+            this.cb_occupation_personel.Size = new System.Drawing.Size(153, 21);
+            this.cb_occupation_personel.TabIndex = 23;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(356, 347);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(68, 13);
+            this.label25.TabIndex = 22;
+            this.label25.Text = "Occupation :";
+            // 
+            // rb_p_personel
+            // 
+            this.rb_p_personel.AutoSize = true;
+            this.rb_p_personel.Location = new System.Drawing.Point(215, 406);
+            this.rb_p_personel.Name = "rb_p_personel";
+            this.rb_p_personel.Size = new System.Drawing.Size(79, 17);
+            this.rb_p_personel.TabIndex = 21;
+            this.rb_p_personel.TabStop = true;
+            this.rb_p_personel.Text = "Perempuan";
+            this.rb_p_personel.UseVisualStyleBackColor = true;
+            // 
+            // rb_l_personel
+            // 
+            this.rb_l_personel.AutoSize = true;
+            this.rb_l_personel.Location = new System.Drawing.Point(131, 406);
+            this.rb_l_personel.Name = "rb_l_personel";
+            this.rb_l_personel.Size = new System.Drawing.Size(68, 17);
+            this.rb_l_personel.TabIndex = 20;
+            this.rb_l_personel.TabStop = true;
+            this.rb_l_personel.Text = "Laki-Laki";
+            this.rb_l_personel.UseVisualStyleBackColor = true;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(21, 408);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(77, 13);
+            this.label24.TabIndex = 19;
+            this.label24.Text = "Jenis Kelamin :";
+            // 
+            // tb_country_personel
+            // 
+            this.tb_country_personel.Location = new System.Drawing.Point(131, 373);
+            this.tb_country_personel.Name = "tb_country_personel";
+            this.tb_country_personel.Size = new System.Drawing.Size(163, 20);
+            this.tb_country_personel.TabIndex = 18;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(21, 376);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(48, 13);
+            this.label23.TabIndex = 17;
+            this.label23.Text = "Negara :";
+            // 
             // btn_delete_personel
             // 
             this.btn_delete_personel.Enabled = false;
@@ -1190,70 +1276,6 @@ namespace Project
             this.label22.TabIndex = 0;
             this.label22.Text = "Master Personel";
             // 
-            // tb_country_personel
-            // 
-            this.tb_country_personel.Location = new System.Drawing.Point(131, 373);
-            this.tb_country_personel.Name = "tb_country_personel";
-            this.tb_country_personel.Size = new System.Drawing.Size(163, 20);
-            this.tb_country_personel.TabIndex = 18;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(21, 376);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(48, 13);
-            this.label23.TabIndex = 17;
-            this.label23.Text = "Negara :";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(21, 408);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(77, 13);
-            this.label24.TabIndex = 19;
-            this.label24.Text = "Jenis Kelamin :";
-            // 
-            // rb_l_personel
-            // 
-            this.rb_l_personel.AutoSize = true;
-            this.rb_l_personel.Location = new System.Drawing.Point(131, 406);
-            this.rb_l_personel.Name = "rb_l_personel";
-            this.rb_l_personel.Size = new System.Drawing.Size(68, 17);
-            this.rb_l_personel.TabIndex = 20;
-            this.rb_l_personel.TabStop = true;
-            this.rb_l_personel.Text = "Laki-Laki";
-            this.rb_l_personel.UseVisualStyleBackColor = true;
-            // 
-            // rb_p_personel
-            // 
-            this.rb_p_personel.AutoSize = true;
-            this.rb_p_personel.Location = new System.Drawing.Point(215, 406);
-            this.rb_p_personel.Name = "rb_p_personel";
-            this.rb_p_personel.Size = new System.Drawing.Size(79, 17);
-            this.rb_p_personel.TabIndex = 21;
-            this.rb_p_personel.TabStop = true;
-            this.rb_p_personel.Text = "Perempuan";
-            this.rb_p_personel.UseVisualStyleBackColor = true;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(356, 347);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(68, 13);
-            this.label25.TabIndex = 22;
-            this.label25.Text = "Occupation :";
-            // 
-            // cb_occupation_personel
-            // 
-            this.cb_occupation_personel.FormattingEnabled = true;
-            this.cb_occupation_personel.Location = new System.Drawing.Point(462, 344);
-            this.cb_occupation_personel.Name = "cb_occupation_personel";
-            this.cb_occupation_personel.Size = new System.Drawing.Size(153, 21);
-            this.cb_occupation_personel.TabIndex = 23;
-            // 
             // panelGroupMusic
             // 
             this.panelGroupMusic.Controls.Add(this.btn_clear_personel_group);
@@ -1274,6 +1296,67 @@ namespace Project
             this.panelGroupMusic.Name = "panelGroupMusic";
             this.panelGroupMusic.Size = new System.Drawing.Size(880, 541);
             this.panelGroupMusic.TabIndex = 24;
+            // 
+            // btn_clear_personel_group
+            // 
+            this.btn_clear_personel_group.Location = new System.Drawing.Point(736, 250);
+            this.btn_clear_personel_group.Name = "btn_clear_personel_group";
+            this.btn_clear_personel_group.Size = new System.Drawing.Size(109, 23);
+            this.btn_clear_personel_group.TabIndex = 27;
+            this.btn_clear_personel_group.Text = "Clear Personel";
+            this.btn_clear_personel_group.UseVisualStyleBackColor = true;
+            this.btn_clear_personel_group.Click += new System.EventHandler(this.btn_clear_personel_group_Click);
+            // 
+            // btn_delete_group_personel
+            // 
+            this.btn_delete_group_personel.Location = new System.Drawing.Point(621, 250);
+            this.btn_delete_group_personel.Name = "btn_delete_group_personel";
+            this.btn_delete_group_personel.Size = new System.Drawing.Size(109, 23);
+            this.btn_delete_group_personel.TabIndex = 26;
+            this.btn_delete_group_personel.Text = "Delete Personel";
+            this.btn_delete_group_personel.UseVisualStyleBackColor = true;
+            this.btn_delete_group_personel.Click += new System.EventHandler(this.btn_delete_group_personel_Click);
+            // 
+            // btn_enter_group_personel
+            // 
+            this.btn_enter_group_personel.Location = new System.Drawing.Point(510, 250);
+            this.btn_enter_group_personel.Name = "btn_enter_group_personel";
+            this.btn_enter_group_personel.Size = new System.Drawing.Size(105, 23);
+            this.btn_enter_group_personel.TabIndex = 25;
+            this.btn_enter_group_personel.Text = "Enter Personel";
+            this.btn_enter_group_personel.UseVisualStyleBackColor = true;
+            this.btn_enter_group_personel.Click += new System.EventHandler(this.btn_enter_group_personel_Click);
+            // 
+            // dg_personel_groupMusic
+            // 
+            this.dg_personel_groupMusic.AllowUserToAddRows = false;
+            this.dg_personel_groupMusic.AllowUserToDeleteRows = false;
+            this.dg_personel_groupMusic.AllowUserToResizeColumns = false;
+            this.dg_personel_groupMusic.AllowUserToResizeRows = false;
+            this.dg_personel_groupMusic.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dg_personel_groupMusic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_personel_groupMusic.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Personel,
+            this.Occupation});
+            this.dg_personel_groupMusic.Location = new System.Drawing.Point(510, 34);
+            this.dg_personel_groupMusic.Name = "dg_personel_groupMusic";
+            this.dg_personel_groupMusic.ReadOnly = true;
+            this.dg_personel_groupMusic.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dg_personel_groupMusic.Size = new System.Drawing.Size(320, 165);
+            this.dg_personel_groupMusic.TabIndex = 24;
+            this.dg_personel_groupMusic.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_personel_groupMusic_CellClick);
+            // 
+            // Personel
+            // 
+            this.Personel.HeaderText = "Personel";
+            this.Personel.Name = "Personel";
+            this.Personel.ReadOnly = true;
+            // 
+            // Occupation
+            // 
+            this.Occupation.HeaderText = "Occupation";
+            this.Occupation.Name = "Occupation";
+            this.Occupation.ReadOnly = true;
             // 
             // cb_personel_groupMusic
             // 
@@ -1376,72 +1459,204 @@ namespace Project
             this.label30.TabIndex = 0;
             this.label30.Text = "Master Group Music";
             // 
-            // dg_personel_groupMusic
+            // panelSong
             // 
-            this.dg_personel_groupMusic.AllowUserToAddRows = false;
-            this.dg_personel_groupMusic.AllowUserToDeleteRows = false;
-            this.dg_personel_groupMusic.AllowUserToResizeColumns = false;
-            this.dg_personel_groupMusic.AllowUserToResizeRows = false;
-            this.dg_personel_groupMusic.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dg_personel_groupMusic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_personel_groupMusic.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Personel,
-            this.Occupation});
-            this.dg_personel_groupMusic.Location = new System.Drawing.Point(510, 34);
-            this.dg_personel_groupMusic.Name = "dg_personel_groupMusic";
-            this.dg_personel_groupMusic.ReadOnly = true;
-            this.dg_personel_groupMusic.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dg_personel_groupMusic.Size = new System.Drawing.Size(320, 165);
-            this.dg_personel_groupMusic.TabIndex = 24;
-            this.dg_personel_groupMusic.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_personel_groupMusic_CellClick);
+            this.panelSong.Controls.Add(this.dtp_releaseDate_song);
+            this.panelSong.Controls.Add(this.label35);
+            this.panelSong.Controls.Add(this.cb_group_song);
+            this.panelSong.Controls.Add(this.label34);
+            this.panelSong.Controls.Add(this.tb_length_song);
+            this.panelSong.Controls.Add(this.label28);
+            this.panelSong.Controls.Add(this.rtb_deskripsi_song);
+            this.panelSong.Controls.Add(this.cb_genre_song);
+            this.panelSong.Controls.Add(this.label27);
+            this.panelSong.Controls.Add(this.label31);
+            this.panelSong.Controls.Add(this.btn_delete_song);
+            this.panelSong.Controls.Add(this.btn_clear_song);
+            this.panelSong.Controls.Add(this.btn_update_song);
+            this.panelSong.Controls.Add(this.btn_insert_song);
+            this.panelSong.Controls.Add(this.tb_name_song);
+            this.panelSong.Controls.Add(this.label32);
+            this.panelSong.Controls.Add(this.dg_song);
+            this.panelSong.Controls.Add(this.label33);
+            this.panelSong.Location = new System.Drawing.Point(0, 54);
+            this.panelSong.Name = "panelSong";
+            this.panelSong.Size = new System.Drawing.Size(880, 541);
+            this.panelSong.TabIndex = 25;
             // 
-            // btn_enter_group_personel
+            // cb_genre_song
             // 
-            this.btn_enter_group_personel.Location = new System.Drawing.Point(510, 250);
-            this.btn_enter_group_personel.Name = "btn_enter_group_personel";
-            this.btn_enter_group_personel.Size = new System.Drawing.Size(105, 23);
-            this.btn_enter_group_personel.TabIndex = 25;
-            this.btn_enter_group_personel.Text = "Enter Personel";
-            this.btn_enter_group_personel.UseVisualStyleBackColor = true;
-            this.btn_enter_group_personel.Click += new System.EventHandler(this.btn_enter_group_personel_Click);
+            this.cb_genre_song.FormattingEnabled = true;
+            this.cb_genre_song.Location = new System.Drawing.Point(462, 400);
+            this.cb_genre_song.Name = "cb_genre_song";
+            this.cb_genre_song.Size = new System.Drawing.Size(163, 21);
+            this.cb_genre_song.TabIndex = 23;
             // 
-            // btn_delete_group_personel
+            // label27
             // 
-            this.btn_delete_group_personel.Location = new System.Drawing.Point(621, 250);
-            this.btn_delete_group_personel.Name = "btn_delete_group_personel";
-            this.btn_delete_group_personel.Size = new System.Drawing.Size(109, 23);
-            this.btn_delete_group_personel.TabIndex = 26;
-            this.btn_delete_group_personel.Text = "Delete Personel";
-            this.btn_delete_group_personel.UseVisualStyleBackColor = true;
-            this.btn_delete_group_personel.Click += new System.EventHandler(this.btn_delete_group_personel_Click);
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(356, 403);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(42, 13);
+            this.label27.TabIndex = 22;
+            this.label27.Text = "Genre :";
             // 
-            // Personel
+            // label31
             // 
-            this.Personel.HeaderText = "Personel";
-            this.Personel.Name = "Personel";
-            this.Personel.ReadOnly = true;
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(21, 376);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(56, 13);
+            this.label31.TabIndex = 17;
+            this.label31.Text = "Deskripsi :";
             // 
-            // Occupation
+            // btn_delete_song
             // 
-            this.Occupation.HeaderText = "Occupation";
-            this.Occupation.Name = "Occupation";
-            this.Occupation.ReadOnly = true;
+            this.btn_delete_song.Enabled = false;
+            this.btn_delete_song.Location = new System.Drawing.Point(700, 504);
+            this.btn_delete_song.Name = "btn_delete_song";
+            this.btn_delete_song.Size = new System.Drawing.Size(75, 23);
+            this.btn_delete_song.TabIndex = 16;
+            this.btn_delete_song.Text = "Delete";
+            this.btn_delete_song.UseVisualStyleBackColor = true;
+            this.btn_delete_song.Click += new System.EventHandler(this.btn_delete_song_Click);
             // 
-            // btn_clear_personel_group
+            // btn_clear_song
             // 
-            this.btn_clear_personel_group.Location = new System.Drawing.Point(736, 250);
-            this.btn_clear_personel_group.Name = "btn_clear_personel_group";
-            this.btn_clear_personel_group.Size = new System.Drawing.Size(109, 23);
-            this.btn_clear_personel_group.TabIndex = 27;
-            this.btn_clear_personel_group.Text = "Clear Personel";
-            this.btn_clear_personel_group.UseVisualStyleBackColor = true;
-            this.btn_clear_personel_group.Click += new System.EventHandler(this.btn_clear_personel_group_Click);
+            this.btn_clear_song.Location = new System.Drawing.Point(793, 504);
+            this.btn_clear_song.Name = "btn_clear_song";
+            this.btn_clear_song.Size = new System.Drawing.Size(75, 23);
+            this.btn_clear_song.TabIndex = 15;
+            this.btn_clear_song.Text = "Clear";
+            this.btn_clear_song.UseVisualStyleBackColor = true;
+            this.btn_clear_song.Click += new System.EventHandler(this.btn_clear_song_Click);
+            // 
+            // btn_update_song
+            // 
+            this.btn_update_song.Enabled = false;
+            this.btn_update_song.Location = new System.Drawing.Point(609, 504);
+            this.btn_update_song.Name = "btn_update_song";
+            this.btn_update_song.Size = new System.Drawing.Size(75, 23);
+            this.btn_update_song.TabIndex = 14;
+            this.btn_update_song.Text = "Update";
+            this.btn_update_song.UseVisualStyleBackColor = true;
+            this.btn_update_song.Click += new System.EventHandler(this.btn_update_song_Click);
+            // 
+            // btn_insert_song
+            // 
+            this.btn_insert_song.Location = new System.Drawing.Point(510, 504);
+            this.btn_insert_song.Name = "btn_insert_song";
+            this.btn_insert_song.Size = new System.Drawing.Size(75, 23);
+            this.btn_insert_song.TabIndex = 13;
+            this.btn_insert_song.Text = "Insert";
+            this.btn_insert_song.UseVisualStyleBackColor = true;
+            this.btn_insert_song.Click += new System.EventHandler(this.btn_insert_song_Click);
+            // 
+            // tb_name_song
+            // 
+            this.tb_name_song.Location = new System.Drawing.Point(131, 344);
+            this.tb_name_song.Name = "tb_name_song";
+            this.tb_name_song.Size = new System.Drawing.Size(163, 20);
+            this.tb_name_song.TabIndex = 3;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(21, 347);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(41, 13);
+            this.label32.TabIndex = 2;
+            this.label32.Text = "Nama :";
+            // 
+            // dg_song
+            // 
+            this.dg_song.AllowUserToAddRows = false;
+            this.dg_song.AllowUserToDeleteRows = false;
+            this.dg_song.AllowUserToResizeColumns = false;
+            this.dg_song.AllowUserToResizeRows = false;
+            this.dg_song.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dg_song.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_song.Location = new System.Drawing.Point(21, 34);
+            this.dg_song.Name = "dg_song";
+            this.dg_song.ReadOnly = true;
+            this.dg_song.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dg_song.Size = new System.Drawing.Size(847, 289);
+            this.dg_song.TabIndex = 1;
+            this.dg_song.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_song_CellDoubleClick);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(17, 15);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(95, 16);
+            this.label33.TabIndex = 0;
+            this.label33.Text = "Master Song";
+            // 
+            // rtb_deskripsi_song
+            // 
+            this.rtb_deskripsi_song.Location = new System.Drawing.Point(131, 376);
+            this.rtb_deskripsi_song.Name = "rtb_deskripsi_song";
+            this.rtb_deskripsi_song.Size = new System.Drawing.Size(163, 96);
+            this.rtb_deskripsi_song.TabIndex = 24;
+            this.rtb_deskripsi_song.Text = "";
+            // 
+            // tb_length_song
+            // 
+            this.tb_length_song.Location = new System.Drawing.Point(462, 344);
+            this.tb_length_song.Name = "tb_length_song";
+            this.tb_length_song.Size = new System.Drawing.Size(163, 20);
+            this.tb_length_song.TabIndex = 26;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(356, 347);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(84, 13);
+            this.label28.TabIndex = 25;
+            this.label28.Text = "Panjang (detik) :";
+            // 
+            // cb_group_song
+            // 
+            this.cb_group_song.FormattingEnabled = true;
+            this.cb_group_song.Location = new System.Drawing.Point(462, 427);
+            this.cb_group_song.Name = "cb_group_song";
+            this.cb_group_song.Size = new System.Drawing.Size(163, 21);
+            this.cb_group_song.TabIndex = 28;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(356, 430);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(42, 13);
+            this.label34.TabIndex = 27;
+            this.label34.Text = "Group :";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(356, 379);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(74, 13);
+            this.label35.TabIndex = 29;
+            this.label35.Text = "Tanggal Rilis :";
+            // 
+            // dtp_releaseDate_song
+            // 
+            this.dtp_releaseDate_song.Location = new System.Drawing.Point(462, 373);
+            this.dtp_releaseDate_song.Name = "dtp_releaseDate_song";
+            this.dtp_releaseDate_song.Size = new System.Drawing.Size(200, 20);
+            this.dtp_releaseDate_song.TabIndex = 30;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 593);
+            this.Controls.Add(this.panelSong);
             this.Controls.Add(this.panelPersonel);
             this.Controls.Add(this.panelGroupMusic);
             this.Controls.Add(this.panelStaff);
@@ -1486,8 +1701,11 @@ namespace Project
             ((System.ComponentModel.ISupportInitialize)(this.dg_personel)).EndInit();
             this.panelGroupMusic.ResumeLayout(false);
             this.panelGroupMusic.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_groupMusic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dg_personel_groupMusic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_groupMusic)).EndInit();
+            this.panelSong.ResumeLayout(false);
+            this.panelSong.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_song)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1617,5 +1835,24 @@ namespace Project
         private System.Windows.Forms.Button btn_clear_personel_group;
         private System.Windows.Forms.DataGridViewTextBoxColumn Personel;
         private System.Windows.Forms.DataGridViewTextBoxColumn Occupation;
+        private System.Windows.Forms.Panel panelSong;
+        private System.Windows.Forms.ComboBox cb_group_song;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TextBox tb_length_song;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.RichTextBox rtb_deskripsi_song;
+        private System.Windows.Forms.ComboBox cb_genre_song;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Button btn_delete_song;
+        private System.Windows.Forms.Button btn_clear_song;
+        private System.Windows.Forms.Button btn_update_song;
+        private System.Windows.Forms.Button btn_insert_song;
+        private System.Windows.Forms.TextBox tb_name_song;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.DataGridView dg_song;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.DateTimePicker dtp_releaseDate_song;
+        private System.Windows.Forms.Label label35;
     }
 }

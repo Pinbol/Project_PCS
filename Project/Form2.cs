@@ -16,6 +16,7 @@ namespace Project
         public String idFormat;
         public String idPersonel;
         public String idGroupMusic;
+        public String idSong;
 
         DataTable dtInternalGroupMusic = new DataTable();
 
@@ -37,6 +38,7 @@ namespace Project
             panelGenre.Visible = false;
             panelFormat.Visible = false;
             panelPersonel.Visible = false;
+            panelSong.Visible = false;
 
             refreshDGStaff();
             clearStaff();
@@ -52,6 +54,7 @@ namespace Project
             panelFormat.Visible = false;
             panelPersonel.Visible = false;
             panelGroupMusic.Visible = false;
+            panelSong.Visible = false;
 
             refreshDGMembership();
             clearMembership();
@@ -67,6 +70,7 @@ namespace Project
             panelFormat.Visible = false;
             panelPersonel.Visible = false;
             panelGroupMusic.Visible = false;
+            panelSong.Visible = false;
 
             refreshDGStaff();
             clearStaff();
@@ -256,6 +260,29 @@ namespace Project
             dg_groupMusic.DataSource = dt;
         }
 
+        private void refreshDGSong()
+        {
+            dg_song.DataSource = null;
+
+            if (koneksi.getConn().State == ConnectionState.Open)
+            {
+                koneksi.closeConn();
+            }
+
+            DataTable dt = new DataTable();
+            MySqlCommand cmd = new MySqlCommand("SELECT s.`ID` AS 'ID', s.`NAME` AS 'Name', DATE_FORMAT(s.`RELEASE_DATE`, '%d %M %Y') AS 'Release Date', gm.`name` AS 'Group', g.`NAME` AS 'Genre', CONCAT(LPAD(s.`LENGTH` DIV 60,2,'0'), ':', LPAD(s.`LENGTH` MOD 60,2,'0')) AS 'Length', s.`DESCRIPTION` AS 'Description' FROM songs s, group_music gm, genre g WHERE s.`GENRE_ID` = g.`ID` AND s.`GROUP_ID` = gm.`id` order by cast(s.id as unsigned) asc;", koneksi.getConn());
+            MySqlDataAdapter da = new MySqlDataAdapter();
+
+            koneksi.openConn();
+            cmd.ExecuteReader();
+            koneksi.closeConn();
+
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            dg_song.DataSource = dt;
+        }
+
         private void fillCBPersonel()
         {
             cb_occupation_personel.Items.Clear();
@@ -308,6 +335,58 @@ namespace Project
             cb_personel_groupMusic.SelectedIndex = -1;
         }
 
+        private void fillCBSong_1()
+        {
+            cb_genre_song.Items.Clear();
+
+            if (koneksi.getConn().State == ConnectionState.Open)
+            {
+                koneksi.closeConn();
+            }
+
+            MySqlCommand cmd = new MySqlCommand("SELECT id, NAME FROM genre ORDER BY CAST(id AS UNSIGNED) ASC;", koneksi.getConn());
+
+            koneksi.openConn();
+            MySqlDataReader dr = cmd.ExecuteReader();
+
+            cb_genre_song.DisplayMember = "Text";
+            cb_genre_song.ValueMember = "Value";
+
+            while (dr.Read())
+            {
+                cb_genre_song.Items.Add(new { Text = dr.GetString(1), Value = dr.GetString(0) });
+            }
+
+            koneksi.closeConn();
+            cb_genre_song.SelectedIndex = -1;
+        }
+
+        private void fillCBSong_2()
+        {
+            cb_group_song.Items.Clear();
+
+            if (koneksi.getConn().State == ConnectionState.Open)
+            {
+                koneksi.closeConn();
+            }
+
+            MySqlCommand cmd = new MySqlCommand("SELECT id, NAME FROM group_music ORDER BY CAST(id AS UNSIGNED) ASC;", koneksi.getConn());
+
+            koneksi.openConn();
+            MySqlDataReader dr = cmd.ExecuteReader();
+
+            cb_group_song.DisplayMember = "Text";
+            cb_group_song.ValueMember = "Value";
+
+            while (dr.Read())
+            {
+                cb_group_song.Items.Add(new { Text = dr.GetString(1), Value = dr.GetString(0) });
+            }
+
+            koneksi.closeConn();
+            cb_group_song.SelectedIndex = -1;
+        }
+
         private Boolean checkCond_personel()
         {
             if (tb_name_personel.Text=="")
@@ -339,6 +418,40 @@ namespace Project
             } else if (dg_personel_groupMusic.Rows.Count==0)
             {
                 MessageBox.Show("A group must consist at least 1 personel !");
+                return false;
+            }
+            return true;
+        }
+
+        private Boolean checkCond_song()
+        {
+            if (tb_name_song.Text=="")
+            {
+                MessageBox.Show("Please fill the name !");
+                return false;
+            } else if (rtb_deskripsi_song.Text=="")
+            {
+                MessageBox.Show("Please fill the description !");
+                return false;
+            } else if (tb_length_song.Text=="")
+            {
+                MessageBox.Show("Please fill the length !");
+                return false;
+            } else if (!tb_length_song.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Length must be in digits !");
+                return false;
+            } else if (dtp_releaseDate_song.Value==DateTime.Now)
+            {
+                MessageBox.Show("Release date must not be today !");
+                return false;
+            } else if (cb_genre_song.SelectedIndex==-1)
+            {
+                MessageBox.Show("Genre must be chosen !");
+                return false;
+            } else if (cb_group_song.SelectedIndex==-1)
+            {
+                MessageBox.Show("Group must be chosen !");
                 return false;
             }
             return true;
@@ -719,6 +832,7 @@ namespace Project
             panelFormat.Visible = false;
             panelPersonel.Visible = false;
             panelGroupMusic.Visible = false;
+            panelSong.Visible = false;
 
             clearPayment();
             refreshDGPayment();
@@ -846,6 +960,7 @@ namespace Project
             panelFormat.Visible = false;
             panelPersonel.Visible = false;
             panelGroupMusic.Visible = false;
+            panelSong.Visible = false;
 
             clearOccupation();
             refreshDGOccupation();
@@ -973,6 +1088,7 @@ namespace Project
             panelFormat.Visible = false;
             panelPersonel.Visible = false;
             panelGroupMusic.Visible = false;
+            panelSong.Visible = false;
 
             clearGenre();
             refreshDGGenre();
@@ -1100,6 +1216,7 @@ namespace Project
             panelFormat.Visible = true;
             panelPersonel.Visible = false;
             panelGroupMusic.Visible = false;
+            panelSong.Visible = false;
 
             clearFormat();
             refreshDGFormat();
@@ -1222,6 +1339,7 @@ namespace Project
             panelFormat.Visible = false;
             panelPersonel.Visible = true;
             panelGroupMusic.Visible = false;
+            panelSong.Visible = false;
 
             clearPersonel();
             refreshDGPersonel();
@@ -1386,11 +1504,13 @@ namespace Project
             panelFormat.Visible = false;
             panelPersonel.Visible = false;
             panelGroupMusic.Visible = true;
+            panelSong.Visible = false;
 
             clearGroupMusic();
             refreshDGGroupMusic();
             fillCBGroupMusic();
-            prepareDTInternalGroupMusic();
+            
+            if (dtInternalGroupMusic.Columns.Count==0) prepareDTInternalGroupMusic();
         }
 
         private void clearGroupMusic()
@@ -1634,6 +1754,180 @@ namespace Project
                     }
                 }
                 koneksi.closeConn();
+            }
+        }
+
+        private void masterSongToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panelStaff.Visible = false;
+            panelMembership.Visible = false;
+            panelPayment.Visible = false;
+            panelOccupation.Visible = false;
+            panelGenre.Visible = false;
+            panelFormat.Visible = false;
+            panelPersonel.Visible = false;
+            panelGroupMusic.Visible = false;
+            panelSong.Visible = true;
+
+            clearSong();
+            refreshDGSong();
+            fillCBSong_1();
+            fillCBSong_2();
+        }
+
+        private void clearSong()
+        {
+            tb_name_song.Text = "";
+            tb_length_song.Text = "";
+
+            rtb_deskripsi_song.Text = "";
+
+            cb_group_song.SelectedIndex = -1;
+            cb_genre_song.SelectedIndex = -1;
+
+            dtp_releaseDate_song.Value = DateTime.Today;
+
+            btn_insert_song.Enabled = true;
+            btn_update_song.Enabled = false;
+            btn_delete_song.Enabled = false;
+        }
+
+        private void btn_clear_song_Click(object sender, EventArgs e)
+        {
+            clearSong();
+        }
+
+        private void btn_insert_song_Click(object sender, EventArgs e)
+        {
+            if (checkCond_song())
+            {
+                MySqlCommand cmdID = new MySqlCommand();
+                cmdID.CommandText = "SELECT cast(id as unsigned)+1 FROM songs ORDER BY CAST(id AS UNSIGNED) DESC LIMIT 1;";
+                cmdID.Connection = koneksi.getConn();
+
+                koneksi.openConn();
+                String newID = cmdID.ExecuteScalar().ToString();
+                koneksi.closeConn();
+
+                String name = tb_name_song.Text;
+                String description = rtb_deskripsi_song.Text;
+                String length = tb_length_song.Text;
+
+                String releaseDate = dtp_releaseDate_song.Value.ToString("yyyy-MM-dd");
+
+                String genre = (cb_genre_song.SelectedItem as dynamic).Value;
+                String group = (cb_group_song.SelectedItem as dynamic).Value;
+
+                try
+                {
+                    MySqlCommand cmdInsert = new MySqlCommand("insert into songs (id,name,release_date,group_id, genre_id, description, length, rating) values (@id,@name,@date,@group,@genre, @desc, @length, 0);", koneksi.getConn());
+
+                    cmdInsert.Parameters.AddWithValue("@id", newID);
+                    cmdInsert.Parameters.AddWithValue("@name", name);
+                    cmdInsert.Parameters.AddWithValue("@date", releaseDate);
+                    cmdInsert.Parameters.AddWithValue("@genre", genre);
+                    cmdInsert.Parameters.AddWithValue("@group", group);
+                    cmdInsert.Parameters.AddWithValue("@desc", description);
+                    cmdInsert.Parameters.AddWithValue("@length", length);
+
+                    koneksi.openConn();
+                    cmdInsert.ExecuteNonQuery();
+                    koneksi.closeConn();
+
+                    clearSong();
+                    refreshDGSong();
+                    MessageBox.Show("Insert successful !");
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void dg_song_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idSong = dg_song.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+            tb_name_song.Text = dg_song.Rows[e.RowIndex].Cells[1].Value.ToString();
+            rtb_deskripsi_song.Text = dg_song.Rows[e.RowIndex].Cells[6].Value.ToString();
+
+            dtp_releaseDate_song.Value = DateTime.Parse(dg_song.Rows[e.RowIndex].Cells[2].Value.ToString());
+
+            tb_length_song.Text = (Convert.ToInt32(dg_song.Rows[e.RowIndex].Cells[5].Value.ToString().Substring(0,2))*60 + Convert.ToInt32(dg_song.Rows[e.RowIndex].Cells[5].Value.ToString().Substring(3, 2))).ToString() ;
+
+            cb_group_song.Text = dg_song.Rows[e.RowIndex].Cells[3].Value.ToString();
+            cb_genre_song.Text = dg_song.Rows[e.RowIndex].Cells[4].Value.ToString();
+
+            btn_insert_song.Enabled = false;
+            btn_delete_song.Enabled = true;
+            btn_update_song.Enabled = true;
+        }
+
+        private void btn_delete_song_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete this song ?", "Confirm Delete", MessageBoxButtons.YesNo);
+
+            if (dr == DialogResult.Yes)
+            {
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand("delete from songs where id = @id", koneksi.getConn());
+                    cmd.Parameters.AddWithValue("@id", idSong);
+
+                    koneksi.openConn();
+                    cmd.ExecuteNonQuery();
+                    koneksi.closeConn();
+
+                    clearSong();
+                    refreshDGSong();
+
+                    MessageBox.Show("Delete successfull !");
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void btn_update_song_Click(object sender, EventArgs e)
+        {
+            if (checkCond_song())
+            {
+                String name = tb_name_song.Text;
+                String description = rtb_deskripsi_song.Text;
+                String length = tb_length_song.Text;
+
+                String releaseDate = dtp_releaseDate_song.Value.ToString("yyyy-MM-dd");
+
+                String genre = (cb_genre_song.SelectedItem as dynamic).Value;
+                String group = (cb_group_song.SelectedItem as dynamic).Value;
+
+                try
+                {
+                    MySqlCommand cmdInsert = new MySqlCommand("update songs set name = @name, release_date = @date, genre_id = @genre, group_id = @group, length = @length, description = @desc where id = @id;", koneksi.getConn());
+
+                    cmdInsert.Parameters.AddWithValue("@id", idSong);
+                    cmdInsert.Parameters.AddWithValue("@name", name);
+                    cmdInsert.Parameters.AddWithValue("@date", releaseDate);
+                    cmdInsert.Parameters.AddWithValue("@genre", genre);
+                    cmdInsert.Parameters.AddWithValue("@group", group);
+                    cmdInsert.Parameters.AddWithValue("@desc", description);
+                    cmdInsert.Parameters.AddWithValue("@length", length);
+
+                    koneksi.openConn();
+                    cmdInsert.ExecuteNonQuery();
+                    koneksi.closeConn();
+
+                    clearSong();
+                    refreshDGSong();
+                    MessageBox.Show("Update successful !");
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }

@@ -59,7 +59,15 @@ namespace Project
 
                     if (password.Equals(tbPassword.Text))
                     {
+                        this.Hide();
+                        using (FormStaff form = new FormStaff())
+                        {
+                            form.ShowDialog();
+                        }
+                        this.Show();
 
+                        tbUsername.Text = "";
+                        tbPassword.Text = "";
                     }
                     else
                     {
@@ -80,7 +88,15 @@ namespace Project
 
                     if (password.Equals(tbPassword.Text))
                     {
+                        this.Hide();
+                        using (FormMember form = new FormMember())
+                        {
+                            form.ShowDialog();
+                        }
+                        this.Show();
 
+                        tbUsername.Text = "";
+                        tbPassword.Text = "";
                     }
                     else
                     {
