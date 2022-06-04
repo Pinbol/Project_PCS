@@ -636,17 +636,24 @@ namespace Project
 
             if (dr == DialogResult.Yes)
             {
-                MySqlCommand cmd = new MySqlCommand("delete from staff where id = @id", koneksi.getConn());
-                cmd.Parameters.AddWithValue("@id", idStaff);
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand("delete from staff where id = @id", koneksi.getConn());
+                    cmd.Parameters.AddWithValue("@id", idStaff);
 
-                koneksi.openConn();
-                cmd.ExecuteNonQuery();
-                koneksi.closeConn();
+                    koneksi.openConn();
+                    cmd.ExecuteNonQuery();
+                    koneksi.closeConn();
 
-                clearStaff();
-                refreshDGStaff();
+                    clearStaff();
+                    refreshDGStaff();
 
-                MessageBox.Show("Delete successfull !");
+                    MessageBox.Show("Delete successfull !");
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -808,17 +815,24 @@ namespace Project
 
             if (dr == DialogResult.Yes)
             {
-                MySqlCommand cmd = new MySqlCommand("delete from membership where id = @id", koneksi.getConn());
-                cmd.Parameters.AddWithValue("@id", idMembership);
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand("delete from membership where id = @id", koneksi.getConn());
+                    cmd.Parameters.AddWithValue("@id", idMembership);
 
-                koneksi.openConn();
-                cmd.ExecuteNonQuery();
-                koneksi.closeConn();
+                    koneksi.openConn();
+                    cmd.ExecuteNonQuery();
+                    koneksi.closeConn();
 
-                clearMembership();
-                refreshDGMembership();
+                    clearMembership();
+                    refreshDGMembership();
 
-                MessageBox.Show("Delete successfull !");
+                    MessageBox.Show("Delete successfull !");
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 

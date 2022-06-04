@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2022 at 05:21 PM
+-- Generation Time: Jun 04, 2022 at 04:24 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -119,7 +119,8 @@ INSERT INTO `group_music` (`id`, `name`) VALUES
 ('3', 'Group_Towa_2'),
 ('4', 'Group_Towa_3'),
 ('5', 'Group_Towa_4'),
-('6', 'Group_Towa_5');
+('6', 'Group_Towa_5'),
+('7', 'Group_Fubuki_1');
 
 -- --------------------------------------------------------
 
@@ -146,6 +147,7 @@ INSERT INTO `group_personel` (`ID`, `GROUP_ID`, `PERSONEL_ID`) VALUES
 ('13', '5', '10'),
 ('14', '6', '6'),
 ('15', '6', '11'),
+('16', '7', '12'),
 ('2', '1', '2'),
 ('3', '1', '3'),
 ('4', '1', '4'),
@@ -205,6 +207,24 @@ INSERT INTO `membership` (`ID`, `NAME`, `DISCOUNT`, `EXP_LENGTH`) VALUES
 ('3', 'Gold', 10, 6),
 ('4', 'Platinum', 15, 6),
 ('5', 'Diamond', 25, 12);
+
+--
+-- Triggers `membership`
+--
+DROP TRIGGER IF EXISTS `TR_Membership_1`;
+DELIMITER $$
+CREATE TRIGGER `TR_Membership_1` BEFORE DELETE ON `membership` FOR EACH ROW BEGIN
+	DECLARE EXIT HANDLER FOR SQLSTATE '45000'
+		  BEGIN
+		   RESIGNAL SET MESSAGE_TEXT = 'Terdapat member yang memunyai membership jenis ini !';
+		  END;
+		  
+	IF (old.id IN (SELECT m.membership_id FROM member m WHERE m.membership_id = old.id)) THEN
+		SIGNAL SQLSTATE '45000';
+	END IF;
+    END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -319,6 +339,7 @@ INSERT INTO `personel` (`ID`, `NAME`, `COUNTRY`, `GENDER`, `OCCUPATION_ID`) VALU
 ('1', 'Moona Hoshinova', 'Indonesia', 'P', '1'),
 ('10', 'ANCHOR', 'Japan', 'L', '7'),
 ('11', '鬱P', 'Japan', 'L', '7'),
+('12', 'Shirakami Fubuki', 'Japan', 'P', '1'),
 ('2', 'ZSunder', 'Philippines', 'L', '2'),
 ('3', 'Furaisen', 'Malaysia', 'L', '3'),
 ('4', 'Rumskii', 'Indonesia', 'P', '4'),
@@ -464,7 +485,8 @@ INSERT INTO `songs` (`ID`, `NAME`, `RELEASE_DATE`, `GROUP_ID`, `GENRE_ID`, `LENG
 ('4', 'Pallete', '2021-02-17 00:00:00', '4', '4', 215, 'Tokoyami Towa\'s first original song.', 0),
 ('5', 'Fact', '2022-01-03 00:00:00', '4', '4', 195, 'Tokoyami Towa\'s second original song to be made MV.', 0),
 ('6', 'Born to be Real', '2022-01-03 00:00:00', '5', '4', 207, 'The fifth track in Towa\'s first EP, Scream', 0),
-('7', 'My Roar', '2022-01-03 00:00:00', '6', '4', 218, 'The sixth track in Towa\'s first EP, Scream', 0);
+('7', 'My Roar', '2022-01-03 00:00:00', '6', '4', 218, 'The sixth track in Towa\'s first EP, Scream', 0),
+('8', 'KINGWORLD', '2022-06-03 00:00:00', '7', '4', 216, 'Shirakami Fubuki\'s second original song. Released on June 3rd, 2022', 0);
 
 -- --------------------------------------------------------
 
@@ -490,6 +512,24 @@ CREATE TABLE `staff` (
 
 INSERT INTO `staff` (`ID`, `NAME`, `USERNAME`, `PASSWORD`, `ADDRESS`, `GENDER`, `DATE_OF_BIRTH`, `STATUS`) VALUES
 ('1', 'Eugene Bush', 'Staff#1', '123456', 'Jalan Lorem no 69, Surabaya, Jawa Timur, Indonesia', 'L', '1997-05-09', 1);
+
+--
+-- Triggers `staff`
+--
+DROP TRIGGER IF EXISTS `TR_Staff_1`;
+DELIMITER $$
+CREATE TRIGGER `TR_Staff_1` BEFORE DELETE ON `staff` FOR EACH ROW BEGIN
+	DECLARE EXIT HANDLER FOR SQLSTATE '45000'
+		  BEGIN
+		   RESIGNAL SET MESSAGE_TEXT = 'Staff sudah pernah menangani order sehingga staff tidak bisa di-delete !';
+		  END;
+	
+	if (old.id in (select staff_id from orders o where o.staff_id = old.id)) then
+		SIGNAL SQLSTATE '45000';
+	end if;
+    END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
