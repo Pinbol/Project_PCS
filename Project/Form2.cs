@@ -39,7 +39,7 @@ namespace Project
             panelFormat.Visible = false;
             panelPersonel.Visible = false;
             panelSong.Visible = false;
-
+            
             refreshDGStaff();
             clearStaff();
         }
