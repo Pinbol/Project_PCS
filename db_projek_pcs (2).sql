@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2022 at 04:24 PM
+-- Generation Time: Jun 15, 2022 at 02:45 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -453,7 +453,8 @@ DROP TABLE IF EXISTS `shopping_cart`;
 CREATE TABLE `shopping_cart` (
   `ID` varchar(10) NOT NULL,
   `PRODUCT_ID` varchar(10) NOT NULL,
-  `MEMBER_ID` varchar(10) NOT NULL
+  `MEMBER_ID` varchar(10) NOT NULL,
+  `QUANTITY` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -674,8 +675,8 @@ ALTER TABLE `review_song`
 --
 ALTER TABLE `shopping_cart`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_cart_product` (`PRODUCT_ID`),
-  ADD KEY `fk_cart_member` (`MEMBER_ID`);
+  ADD KEY `fk_cart_member` (`MEMBER_ID`),
+  ADD KEY `fk_cart_product` (`PRODUCT_ID`);
 
 --
 -- Indexes for table `songs`
@@ -773,7 +774,7 @@ ALTER TABLE `review_song`
 --
 ALTER TABLE `shopping_cart`
   ADD CONSTRAINT `fk_cart_member` FOREIGN KEY (`MEMBER_ID`) REFERENCES `member` (`ID`),
-  ADD CONSTRAINT `fk_cart_product` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `product` (`ID`);
+  ADD CONSTRAINT `fk_cart_product` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `format_product` (`ID`);
 
 --
 -- Constraints for table `songs`
