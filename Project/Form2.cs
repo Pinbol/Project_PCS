@@ -653,6 +653,7 @@ namespace Project
                 catch (MySqlException ex)
                 {
                     MessageBox.Show(ex.Message);
+                    clearStaff();
                 }
             }
         }
@@ -832,6 +833,7 @@ namespace Project
                 catch (MySqlException ex)
                 {
                     MessageBox.Show(ex.Message);
+                    clearMembership();
                 }
             }
         }
@@ -950,17 +952,24 @@ namespace Project
 
             if (dr == DialogResult.Yes)
             {
-                MySqlCommand cmd = new MySqlCommand("delete from payment_method where id = @id", koneksi.getConn());
-                cmd.Parameters.AddWithValue("@id", idPayment);
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand("delete from payment_method where id = @id", koneksi.getConn());
+                    cmd.Parameters.AddWithValue("@id", idPayment);
 
-                koneksi.openConn();
-                cmd.ExecuteNonQuery();
-                koneksi.closeConn();
+                    koneksi.openConn();
+                    cmd.ExecuteNonQuery();
+                    koneksi.closeConn();
 
-                clearPayment();
-                refreshDGPayment();
+                    clearPayment();
+                    refreshDGPayment();
 
-                MessageBox.Show("Delete successfull !");
+                    MessageBox.Show("Delete successfull !");
+                } catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    clearPayment();
+                }
             }
         }
 
@@ -1078,17 +1087,24 @@ namespace Project
 
             if (dr == DialogResult.Yes)
             {
-                MySqlCommand cmd = new MySqlCommand("delete from occupation where id = @id", koneksi.getConn());
-                cmd.Parameters.AddWithValue("@id", idOccupation);
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand("delete from occupation where id = @id", koneksi.getConn());
+                    cmd.Parameters.AddWithValue("@id", idOccupation);
 
-                koneksi.openConn();
-                cmd.ExecuteNonQuery();
-                koneksi.closeConn();
+                    koneksi.openConn();
+                    cmd.ExecuteNonQuery();
+                    koneksi.closeConn();
 
-                clearOccupation();
-                refreshDGOccupation();
+                    clearOccupation();
+                    refreshDGOccupation();
 
-                MessageBox.Show("Delete successfull !");
+                    MessageBox.Show("Delete successfull !");
+                } catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    clearOccupation();
+                }
             }
         }
 
@@ -1201,17 +1217,24 @@ namespace Project
 
             if (dr == DialogResult.Yes)
             {
-                MySqlCommand cmd = new MySqlCommand("delete from genre where id = @id", koneksi.getConn());
-                cmd.Parameters.AddWithValue("@id", idGenre);
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand("delete from genre where id = @id", koneksi.getConn());
+                    cmd.Parameters.AddWithValue("@id", idGenre);
 
-                koneksi.openConn();
-                cmd.ExecuteNonQuery();
-                koneksi.closeConn();
+                    koneksi.openConn();
+                    cmd.ExecuteNonQuery();
+                    koneksi.closeConn();
 
-                clearGenre();
-                refreshDGGenre();
+                    clearGenre();
+                    refreshDGGenre();
 
-                MessageBox.Show("Delete successfull !");
+                    MessageBox.Show("Delete successfull !");
+                } catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    clearGenre();
+                }
             }
         }
 
@@ -1329,17 +1352,24 @@ namespace Project
 
             if (dr == DialogResult.Yes)
             {
-                MySqlCommand cmd = new MySqlCommand("delete from format where id = @id", koneksi.getConn());
-                cmd.Parameters.AddWithValue("@id", idFormat);
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand("delete from format where id = @id", koneksi.getConn());
+                    cmd.Parameters.AddWithValue("@id", idFormat);
 
-                koneksi.openConn();
-                cmd.ExecuteNonQuery();
-                koneksi.closeConn();
+                    koneksi.openConn();
+                    cmd.ExecuteNonQuery();
+                    koneksi.closeConn();
 
-                clearFormat();
-                refreshDGFormat();
+                    clearFormat();
+                    refreshDGFormat();
 
-                MessageBox.Show("Delete successfull !");
+                    MessageBox.Show("Delete successfull !");
+                } catch (Exception ex)
+                {
+                    clearFormat();
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -1503,6 +1533,7 @@ namespace Project
                     MessageBox.Show("Delete successfull !");
                 } catch (MySqlException ex)
                 {
+                    clearPersonel();
                     MessageBox.Show(ex.Message);
                 }
             }
@@ -1676,6 +1707,7 @@ namespace Project
                 }
                 catch (MySqlException ex)
                 {
+                    clearGroupMusic();
                     MessageBox.Show(ex.Message);
                 }
             }
@@ -1900,6 +1932,7 @@ namespace Project
                 }
                 catch (MySqlException ex)
                 {
+                    clearSong();
                     MessageBox.Show(ex.Message);
                 }
             }

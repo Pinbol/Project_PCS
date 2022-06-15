@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2022 at 02:45 AM
+-- Generation Time: Jun 15, 2022 at 01:25 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -44,6 +44,24 @@ INSERT INTO `format` (`ID`, `NAME`) VALUES
 ('2', 'Vinyl'),
 ('3', 'Cassette'),
 ('4', 'Digital File');
+
+--
+-- Triggers `format`
+--
+DROP TRIGGER IF EXISTS `TR_Format_1`;
+DELIMITER $$
+CREATE TRIGGER `TR_Format_1` BEFORE DELETE ON `format` FOR EACH ROW BEGIN
+	DECLARE EXIT HANDLER FOR SQLSTATE '45000'
+		  BEGIN
+		   RESIGNAL SET MESSAGE_TEXT = 'Terdapat produk dengan format ini !';
+		  END;
+		  
+	IF (old.id IN (SELECT fp.`FORMAT_ID` FROM format_product fp WHERE fp.`FORMAT_ID` = old.id)) THEN
+		SIGNAL SQLSTATE '45000';
+	END IF;
+    END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -97,6 +115,24 @@ INSERT INTO `genre` (`ID`, `NAME`) VALUES
 ('8', 'Electronic'),
 ('9', 'Techno');
 
+--
+-- Triggers `genre`
+--
+DROP TRIGGER IF EXISTS `TR_Genre_1`;
+DELIMITER $$
+CREATE TRIGGER `TR_Genre_1` BEFORE DELETE ON `genre` FOR EACH ROW BEGIN
+	DECLARE EXIT HANDLER FOR SQLSTATE '45000'
+		  BEGIN
+		   RESIGNAL SET MESSAGE_TEXT = 'Terdapat lagu yang bergenre ini !';
+		  END;
+		  
+	IF (old.id IN (SELECT s.`GENRE_ID` FROM songs s WHERE s.`GENRE_ID` = old.id)) THEN
+		SIGNAL SQLSTATE '45000';
+	END IF;
+    END
+$$
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -122,6 +158,24 @@ INSERT INTO `group_music` (`id`, `name`) VALUES
 ('6', 'Group_Towa_5'),
 ('7', 'Group_Fubuki_1');
 
+--
+-- Triggers `group_music`
+--
+DROP TRIGGER IF EXISTS `TR_Group_1`;
+DELIMITER $$
+CREATE TRIGGER `TR_Group_1` BEFORE DELETE ON `group_music` FOR EACH ROW BEGIN
+	DECLARE EXIT HANDLER FOR SQLSTATE '45000'
+		  BEGIN
+		   RESIGNAL SET MESSAGE_TEXT = 'Group ini pernah membuat lagu sebelumnya !';
+		  END;
+		  
+	IF (old.id IN (SELECT s.`GROUP_ID` FROM songs s  WHERE s.`GROUP_ID` = old.id)) THEN
+		SIGNAL SQLSTATE '45000';
+	END IF;
+    END
+$$
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -140,7 +194,6 @@ CREATE TABLE `group_personel` (
 --
 
 INSERT INTO `group_personel` (`ID`, `GROUP_ID`, `PERSONEL_ID`) VALUES
-('1', '1', '1'),
 ('10', '4', '6'),
 ('11', '4', '9'),
 ('12', '5', '6'),
@@ -148,10 +201,6 @@ INSERT INTO `group_personel` (`ID`, `GROUP_ID`, `PERSONEL_ID`) VALUES
 ('14', '6', '6'),
 ('15', '6', '11'),
 ('16', '7', '12'),
-('2', '1', '2'),
-('3', '1', '3'),
-('4', '1', '4'),
-('5', '1', '5'),
 ('6', '2', '6'),
 ('7', '2', '7'),
 ('8', '3', '6'),
@@ -251,6 +300,24 @@ INSERT INTO `occupation` (`ID`, `NAME`) VALUES
 ('6', 'Producer'),
 ('7', 'Arranger');
 
+--
+-- Triggers `occupation`
+--
+DROP TRIGGER IF EXISTS `TR_Occupation_1`;
+DELIMITER $$
+CREATE TRIGGER `TR_Occupation_1` BEFORE DELETE ON `occupation` FOR EACH ROW BEGIN
+	DECLARE EXIT HANDLER FOR SQLSTATE '45000'
+		  BEGIN
+		   RESIGNAL SET MESSAGE_TEXT = 'Terdapat personel yang bekerja sebagai posisi ini !';
+		  END;
+		  
+	IF (old.id IN (SELECT p.`OCCUPATION_ID` FROM personel p WHERE p.`OCCUPATION_ID` = old.id)) THEN
+		SIGNAL SQLSTATE '45000';
+	END IF;
+    END
+$$
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -283,7 +350,7 @@ CREATE TABLE `orders` (
   `NOTE_NUMBER` varchar(15) NOT NULL,
   `ORDER_DATE` date NOT NULL,
   `MEMBER_ID` varchar(10) NOT NULL,
-  `STAFF_ID` varchar(10) NOT NULL,
+  `STAFF_ID` varchar(10) DEFAULT NULL,
   `STATUS` varchar(50) NOT NULL,
   `PAYMENT_METHOD` varchar(50) NOT NULL,
   `TOTAL` int(11) NOT NULL
@@ -315,6 +382,24 @@ CREATE TABLE `payment_method` (
 INSERT INTO `payment_method` (`ID`, `NAME`) VALUES
 ('1', 'GO-PAY'),
 ('2', 'OVO');
+
+--
+-- Triggers `payment_method`
+--
+DROP TRIGGER IF EXISTS `TR_Payment_1`;
+DELIMITER $$
+CREATE TRIGGER `TR_Payment_1` BEFORE DELETE ON `payment_method` FOR EACH ROW BEGIN
+	DECLARE EXIT HANDLER FOR SQLSTATE '45000'
+		  BEGIN
+		   RESIGNAL SET MESSAGE_TEXT = 'Terdapat order yang menggunakan payment method ini !';
+		  END;
+		  
+	IF (old.id IN (SELECT o.`PAYMENT_METHOD` FROM orders o WHERE o.`PAYMENT_METHOD` = old.id)) THEN
+		SIGNAL SQLSTATE '45000';
+	END IF;
+    END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -348,6 +433,24 @@ INSERT INTO `personel` (`ID`, `NAME`, `COUNTRY`, `GENDER`, `OCCUPATION_ID`) VALU
 ('7', 'すりぃ', 'JAPAN', 'L', '7'),
 ('8', 'R Sound Design', 'Japan', 'L', '2'),
 ('9', 'niki', 'Japan', 'L', '7');
+
+--
+-- Triggers `personel`
+--
+DROP TRIGGER IF EXISTS `TR_Personel_1`;
+DELIMITER $$
+CREATE TRIGGER `TR_Personel_1` BEFORE DELETE ON `personel` FOR EACH ROW BEGIN
+	DECLARE EXIT HANDLER FOR SQLSTATE '45000'
+		  BEGIN
+		   RESIGNAL SET MESSAGE_TEXT = 'Personel ini masih aktif !';
+		  END;
+		  
+	IF (old.id IN (SELECT gp.`PERSONEL_ID`  FROM group_personel gp WHERE gp.`PERSONEL_ID` = old.id)) THEN
+		SIGNAL SQLSTATE '45000';
+	END IF;
+    END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -488,6 +591,24 @@ INSERT INTO `songs` (`ID`, `NAME`, `RELEASE_DATE`, `GROUP_ID`, `GENRE_ID`, `LENG
 ('6', 'Born to be Real', '2022-01-03 00:00:00', '5', '4', 207, 'The fifth track in Towa\'s first EP, Scream', 0),
 ('7', 'My Roar', '2022-01-03 00:00:00', '6', '4', 218, 'The sixth track in Towa\'s first EP, Scream', 0),
 ('8', 'KINGWORLD', '2022-06-03 00:00:00', '7', '4', 216, 'Shirakami Fubuki\'s second original song. Released on June 3rd, 2022', 0);
+
+--
+-- Triggers `songs`
+--
+DROP TRIGGER IF EXISTS `TR_Song_1`;
+DELIMITER $$
+CREATE TRIGGER `TR_Song_1` BEFORE DELETE ON `songs` FOR EACH ROW BEGIN
+	DECLARE EXIT HANDLER FOR SQLSTATE '45000'
+		  BEGIN
+		   RESIGNAL SET MESSAGE_TEXT = 'Lagu ini pernah menjadi bagian produk sebelumnya !';
+		  END;
+		  
+	IF (old.id IN (SELECT ps.`SONG_ID` FROM product_song ps  WHERE ps.`SONG_ID` = old.id)) THEN
+		SIGNAL SQLSTATE '45000';
+	END IF;
+    END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
