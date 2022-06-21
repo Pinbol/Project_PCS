@@ -3,10 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2022 at 04:38 PM
+-- Generation Time: Jun 21, 2022 at 05:00 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -30,9 +31,10 @@ USE `db_projek_pcs`;
 --
 
 DROP TABLE IF EXISTS `format`;
-CREATE TABLE `format` (
+CREATE TABLE IF NOT EXISTS `format` (
   `ID` varchar(10) NOT NULL,
-  `NAME` varchar(150) NOT NULL
+  `NAME` varchar(150) NOT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -70,12 +72,15 @@ DELIMITER ;
 --
 
 DROP TABLE IF EXISTS `format_product`;
-CREATE TABLE `format_product` (
+CREATE TABLE IF NOT EXISTS `format_product` (
   `ID` varchar(10) NOT NULL,
   `PRODUCT_ID` varchar(10) NOT NULL,
   `FORMAT_ID` varchar(10) NOT NULL,
   `STOCK` int(11) NOT NULL,
-  `PRICE` int(11) NOT NULL
+  `PRICE` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `fk_format_product_1` (`PRODUCT_ID`),
+  KEY `fk_format_product_2` (`FORMAT_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -93,9 +98,10 @@ INSERT INTO `format_product` (`ID`, `PRODUCT_ID`, `FORMAT_ID`, `STOCK`, `PRICE`)
 --
 
 DROP TABLE IF EXISTS `genre`;
-CREATE TABLE `genre` (
-  `ID` varchar(5) NOT NULL,
-  `NAME` varchar(150) NOT NULL
+CREATE TABLE IF NOT EXISTS `genre` (
+  `ID` varchar(10) NOT NULL,
+  `NAME` varchar(150) NOT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -140,9 +146,10 @@ DELIMITER ;
 --
 
 DROP TABLE IF EXISTS `group_music`;
-CREATE TABLE `group_music` (
+CREATE TABLE IF NOT EXISTS `group_music` (
   `id` varchar(10) NOT NULL,
-  `name` varchar(150) NOT NULL
+  `name` varchar(150) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -183,10 +190,13 @@ DELIMITER ;
 --
 
 DROP TABLE IF EXISTS `group_personel`;
-CREATE TABLE `group_personel` (
+CREATE TABLE IF NOT EXISTS `group_personel` (
   `ID` varchar(10) NOT NULL,
   `GROUP_ID` varchar(10) NOT NULL,
-  `PERSONEL_ID` varchar(10) NOT NULL
+  `PERSONEL_ID` varchar(10) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `fkPersonel_Group` (`GROUP_ID`),
+  KEY `fkPersonel_Personel` (`PERSONEL_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -213,7 +223,7 @@ INSERT INTO `group_personel` (`ID`, `GROUP_ID`, `PERSONEL_ID`) VALUES
 --
 
 DROP TABLE IF EXISTS `member`;
-CREATE TABLE `member` (
+CREATE TABLE IF NOT EXISTS `member` (
   `ID` varchar(10) NOT NULL,
   `NAME` varchar(150) NOT NULL,
   `USERNAME` varchar(150) NOT NULL,
@@ -222,7 +232,9 @@ CREATE TABLE `member` (
   `ADDRESS` varchar(250) NOT NULL,
   `DATE_OF_BIRTH` date NOT NULL,
   `MEMBERSHIP_ID` varchar(10) DEFAULT NULL,
-  `MEMBERSHIP_EXP` date DEFAULT NULL
+  `MEMBERSHIP_EXP` date DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `fk_member_membership` (`MEMBERSHIP_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -239,11 +251,12 @@ INSERT INTO `member` (`ID`, `NAME`, `USERNAME`, `PASSWORD`, `GENDER`, `ADDRESS`,
 --
 
 DROP TABLE IF EXISTS `membership`;
-CREATE TABLE `membership` (
+CREATE TABLE IF NOT EXISTS `membership` (
   `ID` varchar(10) NOT NULL,
   `NAME` varchar(150) NOT NULL,
   `DISCOUNT` int(11) NOT NULL,
-  `EXP_LENGTH` int(11) NOT NULL
+  `EXP_LENGTH` int(11) NOT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -282,9 +295,10 @@ DELIMITER ;
 --
 
 DROP TABLE IF EXISTS `occupation`;
-CREATE TABLE `occupation` (
+CREATE TABLE IF NOT EXISTS `occupation` (
   `ID` varchar(10) NOT NULL,
-  `NAME` varchar(150) NOT NULL
+  `NAME` varchar(150) NOT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -325,7 +339,7 @@ DELIMITER ;
 --
 
 DROP TABLE IF EXISTS `orderdetails`;
-CREATE TABLE `orderdetails` (
+CREATE TABLE IF NOT EXISTS `orderdetails` (
   `NOTE_NUMBER` varchar(15) NOT NULL,
   `PRODUCT_ID` varchar(10) NOT NULL,
   `QUANTITY` int(11) NOT NULL,
@@ -346,7 +360,7 @@ INSERT INTO `orderdetails` (`NOTE_NUMBER`, `PRODUCT_ID`, `QUANTITY`, `SUBTOTAL`)
 --
 
 DROP TABLE IF EXISTS `orders`;
-CREATE TABLE `orders` (
+CREATE TABLE IF NOT EXISTS `orders` (
   `NOTE_NUMBER` varchar(15) NOT NULL,
   `ORDER_DATE` date NOT NULL,
   `MEMBER_ID` varchar(10) NOT NULL,
@@ -370,7 +384,7 @@ INSERT INTO `orders` (`NOTE_NUMBER`, `ORDER_DATE`, `MEMBER_ID`, `STAFF_ID`, `STA
 --
 
 DROP TABLE IF EXISTS `payment_method`;
-CREATE TABLE `payment_method` (
+CREATE TABLE IF NOT EXISTS `payment_method` (
   `ID` varchar(10) NOT NULL,
   `NAME` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -382,12 +396,14 @@ CREATE TABLE `payment_method` (
 --
 
 DROP TABLE IF EXISTS `personel`;
-CREATE TABLE `personel` (
+CREATE TABLE IF NOT EXISTS `personel` (
   `ID` varchar(10) NOT NULL,
   `NAME` varchar(150) NOT NULL,
   `COUNTRY` varchar(150) NOT NULL,
   `GENDER` varchar(1) NOT NULL,
-  `OCCUPATION_ID` varchar(10) NOT NULL
+  `OCCUPATION_ID` varchar(10) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `fkPersonel` (`OCCUPATION_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -433,13 +449,15 @@ DELIMITER ;
 --
 
 DROP TABLE IF EXISTS `product`;
-CREATE TABLE `product` (
+CREATE TABLE IF NOT EXISTS `product` (
   `ID` varchar(10) NOT NULL,
   `NAME` varchar(150) NOT NULL,
   `RELEASE_DATE` datetime NOT NULL,
   `RATING` double NOT NULL,
   `DESCRIPTION` varchar(250) NOT NULL,
-  `TYPE_ID` varchar(10) NOT NULL
+  `TYPE_ID` varchar(10) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `fk_product_type` (`TYPE_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -458,10 +476,13 @@ INSERT INTO `product` (`ID`, `NAME`, `RELEASE_DATE`, `RATING`, `DESCRIPTION`, `T
 --
 
 DROP TABLE IF EXISTS `product_song`;
-CREATE TABLE `product_song` (
+CREATE TABLE IF NOT EXISTS `product_song` (
   `ID` varchar(10) NOT NULL,
   `PRODUCT_ID` varchar(10) NOT NULL,
-  `SONG_ID` varchar(10) NOT NULL
+  `SONG_ID` varchar(10) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `fk_product_song_1` (`PRODUCT_ID`),
+  KEY `fk_product_song_2` (`SONG_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -485,12 +506,15 @@ INSERT INTO `product_song` (`ID`, `PRODUCT_ID`, `SONG_ID`) VALUES
 --
 
 DROP TABLE IF EXISTS `review_product`;
-CREATE TABLE `review_product` (
+CREATE TABLE IF NOT EXISTS `review_product` (
   `ID` varchar(10) NOT NULL,
   `PRODUCT_ID` varchar(10) NOT NULL,
   `MEMBER_ID` varchar(10) NOT NULL,
   `REVIEW_DATE` date NOT NULL,
-  `RATING` double NOT NULL
+  `RATING` double NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `fk_review_product` (`PRODUCT_ID`),
+  KEY `fk_review_member` (`MEMBER_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -507,12 +531,15 @@ INSERT INTO `review_product` (`ID`, `PRODUCT_ID`, `MEMBER_ID`, `REVIEW_DATE`, `R
 --
 
 DROP TABLE IF EXISTS `review_song`;
-CREATE TABLE `review_song` (
+CREATE TABLE IF NOT EXISTS `review_song` (
   `ID` varchar(10) NOT NULL,
   `SONG_ID` varchar(10) NOT NULL,
   `MEMBER_ID` varchar(10) NOT NULL,
   `REVIEW_DATE` date NOT NULL,
-  `RATING` double NOT NULL
+  `RATING` double NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `fk_review_2_song` (`SONG_ID`),
+  KEY `fk_review_2_member` (`MEMBER_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -529,11 +556,14 @@ INSERT INTO `review_song` (`ID`, `SONG_ID`, `MEMBER_ID`, `REVIEW_DATE`, `RATING`
 --
 
 DROP TABLE IF EXISTS `shopping_cart`;
-CREATE TABLE `shopping_cart` (
+CREATE TABLE IF NOT EXISTS `shopping_cart` (
   `ID` varchar(10) NOT NULL,
   `PRODUCT_ID` varchar(10) NOT NULL,
   `MEMBER_ID` varchar(10) NOT NULL,
-  `QUANTITY` int(11) NOT NULL
+  `QUANTITY` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `fk_cart_member` (`MEMBER_ID`),
+  KEY `fk_cart_product` (`PRODUCT_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -543,7 +573,7 @@ CREATE TABLE `shopping_cart` (
 --
 
 DROP TABLE IF EXISTS `songs`;
-CREATE TABLE `songs` (
+CREATE TABLE IF NOT EXISTS `songs` (
   `ID` varchar(10) NOT NULL,
   `NAME` varchar(150) NOT NULL,
   `RELEASE_DATE` datetime NOT NULL,
@@ -551,7 +581,10 @@ CREATE TABLE `songs` (
   `GENRE_ID` varchar(10) NOT NULL,
   `LENGTH` int(11) NOT NULL,
   `DESCRIPTION` varchar(250) NOT NULL,
-  `RATING` double NOT NULL
+  `RATING` double NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `fk_song_group` (`GROUP_ID`),
+  KEY `fk_song_genre` (`GENRE_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -593,7 +626,7 @@ DELIMITER ;
 --
 
 DROP TABLE IF EXISTS `staff`;
-CREATE TABLE `staff` (
+CREATE TABLE IF NOT EXISTS `staff` (
   `ID` varchar(10) NOT NULL,
   `NAME` varchar(150) NOT NULL,
   `USERNAME` varchar(150) NOT NULL,
@@ -601,7 +634,8 @@ CREATE TABLE `staff` (
   `ADDRESS` varchar(150) NOT NULL,
   `GENDER` varchar(1) NOT NULL,
   `DATE_OF_BIRTH` date NOT NULL,
-  `STATUS` int(11) NOT NULL
+  `STATUS` int(11) NOT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -636,9 +670,10 @@ DELIMITER ;
 --
 
 DROP TABLE IF EXISTS `type_product`;
-CREATE TABLE `type_product` (
+CREATE TABLE IF NOT EXISTS `type_product` (
   `ID` varchar(5) NOT NULL,
-  `TYPE_NAME` varchar(150) NOT NULL
+  `TYPE_NAME` varchar(150) NOT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -649,129 +684,6 @@ INSERT INTO `type_product` (`ID`, `TYPE_NAME`) VALUES
 ('1', 'Single'),
 ('2', 'EP'),
 ('3', 'Album');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `format`
---
-ALTER TABLE `format`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `format_product`
---
-ALTER TABLE `format_product`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_format_product_1` (`PRODUCT_ID`),
-  ADD KEY `fk_format_product_2` (`FORMAT_ID`);
-
---
--- Indexes for table `genre`
---
-ALTER TABLE `genre`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `group_music`
---
-ALTER TABLE `group_music`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `group_personel`
---
-ALTER TABLE `group_personel`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `fkPersonel_Group` (`GROUP_ID`),
-  ADD KEY `fkPersonel_Personel` (`PERSONEL_ID`);
-
---
--- Indexes for table `member`
---
-ALTER TABLE `member`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_member_membership` (`MEMBERSHIP_ID`);
-
---
--- Indexes for table `membership`
---
-ALTER TABLE `membership`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `occupation`
---
-ALTER TABLE `occupation`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `personel`
---
-ALTER TABLE `personel`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `fkPersonel` (`OCCUPATION_ID`);
-
---
--- Indexes for table `product`
---
-ALTER TABLE `product`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_product_type` (`TYPE_ID`);
-
---
--- Indexes for table `product_song`
---
-ALTER TABLE `product_song`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_product_song_1` (`PRODUCT_ID`),
-  ADD KEY `fk_product_song_2` (`SONG_ID`);
-
---
--- Indexes for table `review_product`
---
-ALTER TABLE `review_product`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_review_product` (`PRODUCT_ID`),
-  ADD KEY `fk_review_member` (`MEMBER_ID`);
-
---
--- Indexes for table `review_song`
---
-ALTER TABLE `review_song`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_review_2_song` (`SONG_ID`),
-  ADD KEY `fk_review_2_member` (`MEMBER_ID`);
-
---
--- Indexes for table `shopping_cart`
---
-ALTER TABLE `shopping_cart`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_cart_member` (`MEMBER_ID`),
-  ADD KEY `fk_cart_product` (`PRODUCT_ID`);
-
---
--- Indexes for table `songs`
---
-ALTER TABLE `songs`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_song_group` (`GROUP_ID`),
-  ADD KEY `fk_song_genre` (`GENRE_ID`);
-
---
--- Indexes for table `staff`
---
-ALTER TABLE `staff`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `type_product`
---
-ALTER TABLE `type_product`
-  ADD PRIMARY KEY (`ID`);
 
 --
 -- Constraints for dumped tables
@@ -843,6 +755,7 @@ ALTER TABLE `shopping_cart`
 ALTER TABLE `songs`
   ADD CONSTRAINT `fk_song_genre` FOREIGN KEY (`GENRE_ID`) REFERENCES `genre` (`ID`),
   ADD CONSTRAINT `fk_song_group` FOREIGN KEY (`GROUP_ID`) REFERENCES `group_music` (`id`);
+SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
