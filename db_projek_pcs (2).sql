@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2022 at 03:55 PM
+-- Generation Time: Jun 21, 2022 at 04:26 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -29,7 +29,6 @@ USE `db_projek_pcs`;
 -- Table structure for table `format`
 --
 
-DROP TABLE IF EXISTS `format`;
 CREATE TABLE `format` (
   `ID` varchar(10) NOT NULL,
   `NAME` varchar(150) NOT NULL
@@ -48,7 +47,6 @@ INSERT INTO `format` (`ID`, `NAME`) VALUES
 --
 -- Triggers `format`
 --
-DROP TRIGGER IF EXISTS `TR_Format_1`;
 DELIMITER $$
 CREATE TRIGGER `TR_Format_1` BEFORE DELETE ON `format` FOR EACH ROW BEGIN
 	DECLARE EXIT HANDLER FOR SQLSTATE '45000'
@@ -69,7 +67,6 @@ DELIMITER ;
 -- Table structure for table `format_product`
 --
 
-DROP TABLE IF EXISTS `format_product`;
 CREATE TABLE `format_product` (
   `ID` varchar(10) NOT NULL,
   `PRODUCT_ID` varchar(10) NOT NULL,
@@ -92,7 +89,6 @@ INSERT INTO `format_product` (`ID`, `PRODUCT_ID`, `FORMAT_ID`, `STOCK`, `PRICE`)
 -- Table structure for table `genre`
 --
 
-DROP TABLE IF EXISTS `genre`;
 CREATE TABLE `genre` (
   `ID` varchar(5) NOT NULL,
   `NAME` varchar(150) NOT NULL
@@ -118,7 +114,6 @@ INSERT INTO `genre` (`ID`, `NAME`) VALUES
 --
 -- Triggers `genre`
 --
-DROP TRIGGER IF EXISTS `TR_Genre_1`;
 DELIMITER $$
 CREATE TRIGGER `TR_Genre_1` BEFORE DELETE ON `genre` FOR EACH ROW BEGIN
 	DECLARE EXIT HANDLER FOR SQLSTATE '45000'
@@ -139,7 +134,6 @@ DELIMITER ;
 -- Table structure for table `group_music`
 --
 
-DROP TABLE IF EXISTS `group_music`;
 CREATE TABLE `group_music` (
   `id` varchar(10) NOT NULL,
   `name` varchar(150) NOT NULL
@@ -161,7 +155,6 @@ INSERT INTO `group_music` (`id`, `name`) VALUES
 --
 -- Triggers `group_music`
 --
-DROP TRIGGER IF EXISTS `TR_Group_1`;
 DELIMITER $$
 CREATE TRIGGER `TR_Group_1` BEFORE DELETE ON `group_music` FOR EACH ROW BEGIN
 	DECLARE EXIT HANDLER FOR SQLSTATE '45000'
@@ -182,7 +175,6 @@ DELIMITER ;
 -- Table structure for table `group_personel`
 --
 
-DROP TABLE IF EXISTS `group_personel`;
 CREATE TABLE `group_personel` (
   `ID` varchar(10) NOT NULL,
   `GROUP_ID` varchar(10) NOT NULL,
@@ -212,7 +204,6 @@ INSERT INTO `group_personel` (`ID`, `GROUP_ID`, `PERSONEL_ID`) VALUES
 -- Table structure for table `member`
 --
 
-DROP TABLE IF EXISTS `member`;
 CREATE TABLE `member` (
   `ID` varchar(10) NOT NULL,
   `NAME` varchar(150) NOT NULL,
@@ -238,7 +229,6 @@ INSERT INTO `member` (`ID`, `NAME`, `USERNAME`, `PASSWORD`, `GENDER`, `ADDRESS`,
 -- Table structure for table `membership`
 --
 
-DROP TABLE IF EXISTS `membership`;
 CREATE TABLE `membership` (
   `ID` varchar(10) NOT NULL,
   `NAME` varchar(150) NOT NULL,
@@ -260,7 +250,6 @@ INSERT INTO `membership` (`ID`, `NAME`, `DISCOUNT`, `EXP_LENGTH`) VALUES
 --
 -- Triggers `membership`
 --
-DROP TRIGGER IF EXISTS `TR_Membership_1`;
 DELIMITER $$
 CREATE TRIGGER `TR_Membership_1` BEFORE DELETE ON `membership` FOR EACH ROW BEGIN
 	DECLARE EXIT HANDLER FOR SQLSTATE '45000'
@@ -281,7 +270,6 @@ DELIMITER ;
 -- Table structure for table `occupation`
 --
 
-DROP TABLE IF EXISTS `occupation`;
 CREATE TABLE `occupation` (
   `ID` varchar(10) NOT NULL,
   `NAME` varchar(150) NOT NULL
@@ -303,7 +291,6 @@ INSERT INTO `occupation` (`ID`, `NAME`) VALUES
 --
 -- Triggers `occupation`
 --
-DROP TRIGGER IF EXISTS `TR_Occupation_1`;
 DELIMITER $$
 CREATE TRIGGER `TR_Occupation_1` BEFORE DELETE ON `occupation` FOR EACH ROW BEGIN
 	DECLARE EXIT HANDLER FOR SQLSTATE '45000'
@@ -324,7 +311,6 @@ DELIMITER ;
 -- Table structure for table `orderdetails`
 --
 
-DROP TABLE IF EXISTS `orderdetails`;
 CREATE TABLE `orderdetails` (
   `NOTE_NUMBER` varchar(15) NOT NULL,
   `PRODUCT_ID` varchar(10) NOT NULL,
@@ -345,7 +331,6 @@ INSERT INTO `orderdetails` (`NOTE_NUMBER`, `PRODUCT_ID`, `QUANTITY`, `SUBTOTAL`)
 -- Table structure for table `orders`
 --
 
-DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `NOTE_NUMBER` varchar(15) NOT NULL,
   `ORDER_DATE` date NOT NULL,
@@ -369,37 +354,10 @@ INSERT INTO `orders` (`NOTE_NUMBER`, `ORDER_DATE`, `MEMBER_ID`, `STAFF_ID`, `STA
 -- Table structure for table `payment_method`
 --
 
-DROP TABLE IF EXISTS `payment_method`;
 CREATE TABLE `payment_method` (
   `ID` varchar(10) NOT NULL,
   `NAME` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `payment_method`
---
-
-INSERT INTO `payment_method` (`ID`, `NAME`) VALUES
-('1', 'GO-PAY'),
-('2', 'OVO');
-
---
--- Triggers `payment_method`
---
-DROP TRIGGER IF EXISTS `TR_Payment_1`;
-DELIMITER $$
-CREATE TRIGGER `TR_Payment_1` BEFORE DELETE ON `payment_method` FOR EACH ROW BEGIN
-	DECLARE EXIT HANDLER FOR SQLSTATE '45000'
-		  BEGIN
-		   RESIGNAL SET MESSAGE_TEXT = 'Terdapat order yang menggunakan payment method ini !';
-		  END;
-		  
-	IF (old.id IN (SELECT o.`PAYMENT_METHOD` FROM orders o WHERE o.`PAYMENT_METHOD` = old.id)) THEN
-		SIGNAL SQLSTATE '45000';
-	END IF;
-    END
-$$
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -407,7 +365,6 @@ DELIMITER ;
 -- Table structure for table `personel`
 --
 
-DROP TABLE IF EXISTS `personel`;
 CREATE TABLE `personel` (
   `ID` varchar(10) NOT NULL,
   `NAME` varchar(150) NOT NULL,
@@ -437,7 +394,6 @@ INSERT INTO `personel` (`ID`, `NAME`, `COUNTRY`, `GENDER`, `OCCUPATION_ID`) VALU
 --
 -- Triggers `personel`
 --
-DROP TRIGGER IF EXISTS `TR_Personel_1`;
 DELIMITER $$
 CREATE TRIGGER `TR_Personel_1` BEFORE DELETE ON `personel` FOR EACH ROW BEGIN
 	DECLARE EXIT HANDLER FOR SQLSTATE '45000'
@@ -458,7 +414,6 @@ DELIMITER ;
 -- Table structure for table `product`
 --
 
-DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
   `ID` varchar(10) NOT NULL,
   `NAME` varchar(150) NOT NULL,
@@ -483,7 +438,6 @@ INSERT INTO `product` (`ID`, `NAME`, `RELEASE_DATE`, `RATING`, `DESCRIPTION`, `T
 -- Table structure for table `product_song`
 --
 
-DROP TABLE IF EXISTS `product_song`;
 CREATE TABLE `product_song` (
   `ID` varchar(10) NOT NULL,
   `PRODUCT_ID` varchar(10) NOT NULL,
@@ -510,7 +464,6 @@ INSERT INTO `product_song` (`ID`, `PRODUCT_ID`, `SONG_ID`) VALUES
 -- Table structure for table `review_product`
 --
 
-DROP TABLE IF EXISTS `review_product`;
 CREATE TABLE `review_product` (
   `ID` varchar(10) NOT NULL,
   `PRODUCT_ID` varchar(10) NOT NULL,
@@ -532,7 +485,6 @@ INSERT INTO `review_product` (`ID`, `PRODUCT_ID`, `MEMBER_ID`, `REVIEW_DATE`, `R
 -- Table structure for table `review_song`
 --
 
-DROP TABLE IF EXISTS `review_song`;
 CREATE TABLE `review_song` (
   `ID` varchar(10) NOT NULL,
   `SONG_ID` varchar(10) NOT NULL,
@@ -554,7 +506,6 @@ INSERT INTO `review_song` (`ID`, `SONG_ID`, `MEMBER_ID`, `REVIEW_DATE`, `RATING`
 -- Table structure for table `shopping_cart`
 --
 
-DROP TABLE IF EXISTS `shopping_cart`;
 CREATE TABLE `shopping_cart` (
   `ID` varchar(10) NOT NULL,
   `PRODUCT_ID` varchar(10) NOT NULL,
@@ -568,7 +519,6 @@ CREATE TABLE `shopping_cart` (
 -- Table structure for table `songs`
 --
 
-DROP TABLE IF EXISTS `songs`;
 CREATE TABLE `songs` (
   `ID` varchar(10) NOT NULL,
   `NAME` varchar(150) NOT NULL,
@@ -597,7 +547,6 @@ INSERT INTO `songs` (`ID`, `NAME`, `RELEASE_DATE`, `GROUP_ID`, `GENRE_ID`, `LENG
 --
 -- Triggers `songs`
 --
-DROP TRIGGER IF EXISTS `TR_Song_1`;
 DELIMITER $$
 CREATE TRIGGER `TR_Song_1` BEFORE DELETE ON `songs` FOR EACH ROW BEGIN
 	DECLARE EXIT HANDLER FOR SQLSTATE '45000'
@@ -618,7 +567,6 @@ DELIMITER ;
 -- Table structure for table `staff`
 --
 
-DROP TABLE IF EXISTS `staff`;
 CREATE TABLE `staff` (
   `ID` varchar(10) NOT NULL,
   `NAME` varchar(150) NOT NULL,
@@ -640,7 +588,6 @@ INSERT INTO `staff` (`ID`, `NAME`, `USERNAME`, `PASSWORD`, `ADDRESS`, `GENDER`, 
 --
 -- Triggers `staff`
 --
-DROP TRIGGER IF EXISTS `TR_Staff_1`;
 DELIMITER $$
 CREATE TRIGGER `TR_Staff_1` BEFORE DELETE ON `staff` FOR EACH ROW BEGIN
 	DECLARE EXIT HANDLER FOR SQLSTATE '45000'
@@ -661,7 +608,6 @@ DELIMITER ;
 -- Table structure for table `type_product`
 --
 
-DROP TABLE IF EXISTS `type_product`;
 CREATE TABLE `type_product` (
   `ID` varchar(5) NOT NULL,
   `TYPE_NAME` varchar(150) NOT NULL
@@ -707,14 +653,6 @@ ALTER TABLE `group_music`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `group_personel`
---
-ALTER TABLE `group_personel`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `fkGroup` (`GROUP_ID`),
-  ADD KEY `fk_personel` (`PERSONEL_ID`);
-
---
 -- Indexes for table `member`
 --
 ALTER TABLE `member`
@@ -731,28 +669,6 @@ ALTER TABLE `membership`
 -- Indexes for table `occupation`
 --
 ALTER TABLE `occupation`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `orderdetails`
---
-ALTER TABLE `orderdetails`
-  ADD PRIMARY KEY (`NOTE_NUMBER`),
-  ADD KEY `fk_order_product` (`PRODUCT_ID`);
-
---
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`NOTE_NUMBER`),
-  ADD KEY `fk_order_member` (`MEMBER_ID`),
-  ADD KEY `fk_order_staff` (`STAFF_ID`),
-  ADD KEY `fk_order_payment` (`PAYMENT_METHOD`);
-
---
--- Indexes for table `payment_method`
---
-ALTER TABLE `payment_method`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -833,31 +749,10 @@ ALTER TABLE `format_product`
   ADD CONSTRAINT `fk_format_product_2` FOREIGN KEY (`FORMAT_ID`) REFERENCES `format` (`ID`);
 
 --
--- Constraints for table `group_personel`
---
-ALTER TABLE `group_personel`
-  ADD CONSTRAINT `fkGroup` FOREIGN KEY (`GROUP_ID`) REFERENCES `group_music` (`id`),
-  ADD CONSTRAINT `fk_personel` FOREIGN KEY (`PERSONEL_ID`) REFERENCES `personel` (`ID`);
-
---
 -- Constraints for table `member`
 --
 ALTER TABLE `member`
   ADD CONSTRAINT `fk_member_membership` FOREIGN KEY (`MEMBERSHIP_ID`) REFERENCES `membership` (`ID`);
-
---
--- Constraints for table `orderdetails`
---
-ALTER TABLE `orderdetails`
-  ADD CONSTRAINT `fk_order_product` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `product` (`ID`);
-
---
--- Constraints for table `orders`
---
-ALTER TABLE `orders`
-  ADD CONSTRAINT `fk_order_member` FOREIGN KEY (`MEMBER_ID`) REFERENCES `member` (`ID`),
-  ADD CONSTRAINT `fk_order_payment` FOREIGN KEY (`PAYMENT_METHOD`) REFERENCES `payment_method` (`ID`),
-  ADD CONSTRAINT `fk_order_staff` FOREIGN KEY (`STAFF_ID`) REFERENCES `staff` (`ID`);
 
 --
 -- Constraints for table `personel`
