@@ -203,6 +203,8 @@ namespace Project
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label45 = new System.Windows.Forms.Label();
             this.Format = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportProdukToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panelStaff.SuspendLayout();
             this.gb_status.SuspendLayout();
@@ -241,7 +243,8 @@ namespace Project
             this.masterMembershipToolStripMenuItem,
             this.masterOccupationToolStripMenuItem,
             this.masterProductToolStripMenuItem,
-            this.masterPaymentToolStripMenuItem});
+            this.masterPaymentToolStripMenuItem,
+            this.reportToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -2040,6 +2043,20 @@ namespace Project
             this.Format.Name = "Format";
             this.Format.ReadOnly = true;
             // 
+            // reportToolStripMenuItem
+            // 
+            this.reportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reportProdukToolStripMenuItem});
+            this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
+            this.reportToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.reportToolStripMenuItem.Text = "Report";
+            // 
+            // reportProdukToolStripMenuItem
+            // 
+            this.reportProdukToolStripMenuItem.Name = "reportProdukToolStripMenuItem";
+            this.reportProdukToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reportProdukToolStripMenuItem.Text = "Report Produk";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2286,5 +2303,7 @@ namespace Project
         private System.Windows.Forms.Button button_update_productFormat;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportProdukToolStripMenuItem;
     }
 }
