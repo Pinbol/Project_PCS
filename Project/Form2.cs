@@ -44,6 +44,7 @@ namespace Project
             panelPersonel.Visible = false;
             panelSong.Visible = false;
             panelProductSong.Visible = false;
+            panelProductFormat.Visible = false;
             
             refreshDGStaff();
             clearStaff();

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2022 at 01:25 PM
+-- Generation Time: Jun 21, 2022 at 03:55 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -474,7 +474,8 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`ID`, `NAME`, `RELEASE_DATE`, `RATING`, `DESCRIPTION`, `TYPE_ID`) VALUES
 ('1', 'High Tide Single', '2022-02-17 00:00:00', 4.8, 'A single composed of High Tide, the second original song of Moona Hoshinova', '1'),
-('2', 'Scream', '2022-01-04 00:00:00', 0, 'Tokoyami Towa\'s first EP to be released.', '2');
+('2', 'Scream', '2022-01-04 00:00:00', 0, 'Tokoyami Towa\'s first EP to be released.', '2'),
+('3', 'KINGWORLD Single', '2022-06-21 00:00:00', 0, 'KINGWORLD is the second single released by Shirakami Fubuki', '1');
 
 -- --------------------------------------------------------
 
@@ -500,7 +501,8 @@ INSERT INTO `product_song` (`ID`, `PRODUCT_ID`, `SONG_ID`) VALUES
 ('4', '2', '4'),
 ('5', '2', '5'),
 ('6', '2', '6'),
-('7', '2', '7');
+('7', '2', '7'),
+('9', '3', '8');
 
 -- --------------------------------------------------------
 
@@ -895,7 +897,7 @@ ALTER TABLE `review_song`
 --
 ALTER TABLE `shopping_cart`
   ADD CONSTRAINT `fk_cart_member` FOREIGN KEY (`MEMBER_ID`) REFERENCES `member` (`ID`),
-  ADD CONSTRAINT `fk_cart_product` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `format_product` (`ID`);
+  ADD CONSTRAINT `fk_cart_product` FOREIGN KEY (`ID`) REFERENCES `format_product` (`ID`);
 
 --
 -- Constraints for table `songs`
