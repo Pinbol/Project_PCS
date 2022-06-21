@@ -152,6 +152,13 @@ namespace Project
             this.dg_groupMusic = new System.Windows.Forms.DataGridView();
             this.label30 = new System.Windows.Forms.Label();
             this.panelSong = new System.Windows.Forms.Panel();
+            this.dtp_releaseDate_song = new System.Windows.Forms.DateTimePicker();
+            this.label35 = new System.Windows.Forms.Label();
+            this.cb_group_song = new System.Windows.Forms.ComboBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.tb_length_song = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.rtb_deskripsi_song = new System.Windows.Forms.RichTextBox();
             this.cb_genre_song = new System.Windows.Forms.ComboBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
@@ -163,13 +170,27 @@ namespace Project
             this.label32 = new System.Windows.Forms.Label();
             this.dg_song = new System.Windows.Forms.DataGridView();
             this.label33 = new System.Windows.Forms.Label();
-            this.rtb_deskripsi_song = new System.Windows.Forms.RichTextBox();
-            this.tb_length_song = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.cb_group_song = new System.Windows.Forms.ComboBox();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.dtp_releaseDate_song = new System.Windows.Forms.DateTimePicker();
+            this.panelProductSong = new System.Windows.Forms.Panel();
+            this.btn_clear_song_productSong = new System.Windows.Forms.Button();
+            this.btn_delete_song_productSong = new System.Windows.Forms.Button();
+            this.btn_enter_song_productSong = new System.Windows.Forms.Button();
+            this.dg_song_productSong = new System.Windows.Forms.DataGridView();
+            this.cb_song_productSong = new System.Windows.Forms.ComboBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.btn_delete_productSong = new System.Windows.Forms.Button();
+            this.btn_clear_groupSong = new System.Windows.Forms.Button();
+            this.btn_update_productSong = new System.Windows.Forms.Button();
+            this.btn_insert_productSong = new System.Windows.Forms.Button();
+            this.tb_name_productSong = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.dg_productSong = new System.Windows.Forms.DataGridView();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.rtb_description_productSong = new System.Windows.Forms.RichTextBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.cb_type_productSong = new System.Windows.Forms.ComboBox();
+            this.Song = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.panelStaff.SuspendLayout();
             this.gb_status.SuspendLayout();
@@ -192,6 +213,9 @@ namespace Project
             ((System.ComponentModel.ISupportInitialize)(this.dg_groupMusic)).BeginInit();
             this.panelSong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_song)).BeginInit();
+            this.panelProductSong.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_song_productSong)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_productSong)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -293,6 +317,7 @@ namespace Project
             this.masterProductSongToolStripMenuItem.Name = "masterProductSongToolStripMenuItem";
             this.masterProductSongToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.masterProductSongToolStripMenuItem.Text = "Master Product-Song";
+            this.masterProductSongToolStripMenuItem.Click += new System.EventHandler(this.masterProductSongToolStripMenuItem_Click);
             // 
             // masterProductSellingToolStripMenuItem
             // 
@@ -1484,6 +1509,63 @@ namespace Project
             this.panelSong.Size = new System.Drawing.Size(880, 541);
             this.panelSong.TabIndex = 25;
             // 
+            // dtp_releaseDate_song
+            // 
+            this.dtp_releaseDate_song.Location = new System.Drawing.Point(462, 373);
+            this.dtp_releaseDate_song.Name = "dtp_releaseDate_song";
+            this.dtp_releaseDate_song.Size = new System.Drawing.Size(200, 20);
+            this.dtp_releaseDate_song.TabIndex = 30;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(356, 379);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(74, 13);
+            this.label35.TabIndex = 29;
+            this.label35.Text = "Tanggal Rilis :";
+            // 
+            // cb_group_song
+            // 
+            this.cb_group_song.FormattingEnabled = true;
+            this.cb_group_song.Location = new System.Drawing.Point(462, 427);
+            this.cb_group_song.Name = "cb_group_song";
+            this.cb_group_song.Size = new System.Drawing.Size(163, 21);
+            this.cb_group_song.TabIndex = 28;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(356, 430);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(42, 13);
+            this.label34.TabIndex = 27;
+            this.label34.Text = "Group :";
+            // 
+            // tb_length_song
+            // 
+            this.tb_length_song.Location = new System.Drawing.Point(462, 344);
+            this.tb_length_song.Name = "tb_length_song";
+            this.tb_length_song.Size = new System.Drawing.Size(163, 20);
+            this.tb_length_song.TabIndex = 26;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(356, 347);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(84, 13);
+            this.label28.TabIndex = 25;
+            this.label28.Text = "Panjang (detik) :";
+            // 
+            // rtb_deskripsi_song
+            // 
+            this.rtb_deskripsi_song.Location = new System.Drawing.Point(131, 376);
+            this.rtb_deskripsi_song.Name = "rtb_deskripsi_song";
+            this.rtb_deskripsi_song.Size = new System.Drawing.Size(163, 96);
+            this.rtb_deskripsi_song.TabIndex = 24;
+            this.rtb_deskripsi_song.Text = "";
+            // 
             // cb_genre_song
             // 
             this.cb_genre_song.FormattingEnabled = true;
@@ -1594,71 +1676,236 @@ namespace Project
             this.label33.TabIndex = 0;
             this.label33.Text = "Master Song";
             // 
-            // rtb_deskripsi_song
+            // panelProductSong
             // 
-            this.rtb_deskripsi_song.Location = new System.Drawing.Point(131, 376);
-            this.rtb_deskripsi_song.Name = "rtb_deskripsi_song";
-            this.rtb_deskripsi_song.Size = new System.Drawing.Size(163, 96);
-            this.rtb_deskripsi_song.TabIndex = 24;
-            this.rtb_deskripsi_song.Text = "";
+            this.panelProductSong.Controls.Add(this.cb_type_productSong);
+            this.panelProductSong.Controls.Add(this.label40);
+            this.panelProductSong.Controls.Add(this.rtb_description_productSong);
+            this.panelProductSong.Controls.Add(this.label39);
+            this.panelProductSong.Controls.Add(this.btn_clear_song_productSong);
+            this.panelProductSong.Controls.Add(this.btn_delete_song_productSong);
+            this.panelProductSong.Controls.Add(this.btn_enter_song_productSong);
+            this.panelProductSong.Controls.Add(this.dg_song_productSong);
+            this.panelProductSong.Controls.Add(this.cb_song_productSong);
+            this.panelProductSong.Controls.Add(this.label36);
+            this.panelProductSong.Controls.Add(this.btn_delete_productSong);
+            this.panelProductSong.Controls.Add(this.btn_clear_groupSong);
+            this.panelProductSong.Controls.Add(this.btn_update_productSong);
+            this.panelProductSong.Controls.Add(this.btn_insert_productSong);
+            this.panelProductSong.Controls.Add(this.tb_name_productSong);
+            this.panelProductSong.Controls.Add(this.label37);
+            this.panelProductSong.Controls.Add(this.dg_productSong);
+            this.panelProductSong.Controls.Add(this.label38);
+            this.panelProductSong.Location = new System.Drawing.Point(0, 54);
+            this.panelProductSong.Name = "panelProductSong";
+            this.panelProductSong.Size = new System.Drawing.Size(880, 541);
+            this.panelProductSong.TabIndex = 26;
             // 
-            // tb_length_song
+            // btn_clear_song_productSong
             // 
-            this.tb_length_song.Location = new System.Drawing.Point(462, 344);
-            this.tb_length_song.Name = "tb_length_song";
-            this.tb_length_song.Size = new System.Drawing.Size(163, 20);
-            this.tb_length_song.TabIndex = 26;
+            this.btn_clear_song_productSong.Location = new System.Drawing.Point(736, 250);
+            this.btn_clear_song_productSong.Name = "btn_clear_song_productSong";
+            this.btn_clear_song_productSong.Size = new System.Drawing.Size(109, 23);
+            this.btn_clear_song_productSong.TabIndex = 27;
+            this.btn_clear_song_productSong.Text = "Clear Song";
+            this.btn_clear_song_productSong.UseVisualStyleBackColor = true;
+            this.btn_clear_song_productSong.Click += new System.EventHandler(this.btn_clear_song_productSong_Click);
             // 
-            // label28
+            // btn_delete_song_productSong
             // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(356, 347);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(84, 13);
-            this.label28.TabIndex = 25;
-            this.label28.Text = "Panjang (detik) :";
+            this.btn_delete_song_productSong.Location = new System.Drawing.Point(621, 250);
+            this.btn_delete_song_productSong.Name = "btn_delete_song_productSong";
+            this.btn_delete_song_productSong.Size = new System.Drawing.Size(109, 23);
+            this.btn_delete_song_productSong.TabIndex = 26;
+            this.btn_delete_song_productSong.Text = "Delete Song";
+            this.btn_delete_song_productSong.UseVisualStyleBackColor = true;
+            this.btn_delete_song_productSong.Click += new System.EventHandler(this.btn_delete_song_productSong_Click);
             // 
-            // cb_group_song
+            // btn_enter_song_productSong
             // 
-            this.cb_group_song.FormattingEnabled = true;
-            this.cb_group_song.Location = new System.Drawing.Point(462, 427);
-            this.cb_group_song.Name = "cb_group_song";
-            this.cb_group_song.Size = new System.Drawing.Size(163, 21);
-            this.cb_group_song.TabIndex = 28;
+            this.btn_enter_song_productSong.Location = new System.Drawing.Point(510, 250);
+            this.btn_enter_song_productSong.Name = "btn_enter_song_productSong";
+            this.btn_enter_song_productSong.Size = new System.Drawing.Size(105, 23);
+            this.btn_enter_song_productSong.TabIndex = 25;
+            this.btn_enter_song_productSong.Text = "Enter Song";
+            this.btn_enter_song_productSong.UseVisualStyleBackColor = true;
+            this.btn_enter_song_productSong.Click += new System.EventHandler(this.btn_enter_song_productSong_Click);
             // 
-            // label34
+            // dg_song_productSong
             // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(356, 430);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(42, 13);
-            this.label34.TabIndex = 27;
-            this.label34.Text = "Group :";
+            this.dg_song_productSong.AllowUserToAddRows = false;
+            this.dg_song_productSong.AllowUserToDeleteRows = false;
+            this.dg_song_productSong.AllowUserToResizeColumns = false;
+            this.dg_song_productSong.AllowUserToResizeRows = false;
+            this.dg_song_productSong.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dg_song_productSong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_song_productSong.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Song,
+            this.Length});
+            this.dg_song_productSong.Location = new System.Drawing.Point(510, 34);
+            this.dg_song_productSong.Name = "dg_song_productSong";
+            this.dg_song_productSong.ReadOnly = true;
+            this.dg_song_productSong.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dg_song_productSong.Size = new System.Drawing.Size(320, 165);
+            this.dg_song_productSong.TabIndex = 24;
+            this.dg_song_productSong.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_song_productSong_CellClick);
             // 
-            // label35
+            // cb_song_productSong
             // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(356, 379);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(74, 13);
-            this.label35.TabIndex = 29;
-            this.label35.Text = "Tanggal Rilis :";
+            this.cb_song_productSong.FormattingEnabled = true;
+            this.cb_song_productSong.Location = new System.Drawing.Point(613, 217);
+            this.cb_song_productSong.Name = "cb_song_productSong";
+            this.cb_song_productSong.Size = new System.Drawing.Size(153, 21);
+            this.cb_song_productSong.TabIndex = 23;
             // 
-            // dtp_releaseDate_song
+            // label36
             // 
-            this.dtp_releaseDate_song.Location = new System.Drawing.Point(462, 373);
-            this.dtp_releaseDate_song.Name = "dtp_releaseDate_song";
-            this.dtp_releaseDate_song.Size = new System.Drawing.Size(200, 20);
-            this.dtp_releaseDate_song.TabIndex = 30;
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(507, 220);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(38, 13);
+            this.label36.TabIndex = 22;
+            this.label36.Text = "Song :";
+            // 
+            // btn_delete_productSong
+            // 
+            this.btn_delete_productSong.Enabled = false;
+            this.btn_delete_productSong.Location = new System.Drawing.Point(700, 504);
+            this.btn_delete_productSong.Name = "btn_delete_productSong";
+            this.btn_delete_productSong.Size = new System.Drawing.Size(75, 23);
+            this.btn_delete_productSong.TabIndex = 16;
+            this.btn_delete_productSong.Text = "Delete";
+            this.btn_delete_productSong.UseVisualStyleBackColor = true;
+            this.btn_delete_productSong.Click += new System.EventHandler(this.btn_delete_productSong_Click);
+            // 
+            // btn_clear_groupSong
+            // 
+            this.btn_clear_groupSong.Location = new System.Drawing.Point(793, 504);
+            this.btn_clear_groupSong.Name = "btn_clear_groupSong";
+            this.btn_clear_groupSong.Size = new System.Drawing.Size(75, 23);
+            this.btn_clear_groupSong.TabIndex = 15;
+            this.btn_clear_groupSong.Text = "Clear";
+            this.btn_clear_groupSong.UseVisualStyleBackColor = true;
+            this.btn_clear_groupSong.Click += new System.EventHandler(this.btn_clear_groupSong_Click);
+            // 
+            // btn_update_productSong
+            // 
+            this.btn_update_productSong.Enabled = false;
+            this.btn_update_productSong.Location = new System.Drawing.Point(609, 504);
+            this.btn_update_productSong.Name = "btn_update_productSong";
+            this.btn_update_productSong.Size = new System.Drawing.Size(75, 23);
+            this.btn_update_productSong.TabIndex = 14;
+            this.btn_update_productSong.Text = "Update";
+            this.btn_update_productSong.UseVisualStyleBackColor = true;
+            this.btn_update_productSong.Click += new System.EventHandler(this.btn_update_productSong_Click);
+            // 
+            // btn_insert_productSong
+            // 
+            this.btn_insert_productSong.Location = new System.Drawing.Point(510, 504);
+            this.btn_insert_productSong.Name = "btn_insert_productSong";
+            this.btn_insert_productSong.Size = new System.Drawing.Size(75, 23);
+            this.btn_insert_productSong.TabIndex = 13;
+            this.btn_insert_productSong.Text = "Insert";
+            this.btn_insert_productSong.UseVisualStyleBackColor = true;
+            this.btn_insert_productSong.Click += new System.EventHandler(this.btn_insert_productSong_Click);
+            // 
+            // tb_name_productSong
+            // 
+            this.tb_name_productSong.Location = new System.Drawing.Point(131, 344);
+            this.tb_name_productSong.Name = "tb_name_productSong";
+            this.tb_name_productSong.Size = new System.Drawing.Size(163, 20);
+            this.tb_name_productSong.TabIndex = 3;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(21, 347);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(41, 13);
+            this.label37.TabIndex = 2;
+            this.label37.Text = "Nama :";
+            // 
+            // dg_productSong
+            // 
+            this.dg_productSong.AllowUserToAddRows = false;
+            this.dg_productSong.AllowUserToDeleteRows = false;
+            this.dg_productSong.AllowUserToResizeColumns = false;
+            this.dg_productSong.AllowUserToResizeRows = false;
+            this.dg_productSong.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dg_productSong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_productSong.Location = new System.Drawing.Point(21, 34);
+            this.dg_productSong.Name = "dg_productSong";
+            this.dg_productSong.ReadOnly = true;
+            this.dg_productSong.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dg_productSong.Size = new System.Drawing.Size(441, 289);
+            this.dg_productSong.TabIndex = 1;
+            this.dg_productSong.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_productSong_CellDoubleClick);
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Location = new System.Drawing.Point(17, 15);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(152, 16);
+            this.label38.TabIndex = 0;
+            this.label38.Text = "Master Product Song";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(21, 373);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(56, 13);
+            this.label39.TabIndex = 28;
+            this.label39.Text = "Deskripsi :";
+            // 
+            // rtb_description_productSong
+            // 
+            this.rtb_description_productSong.Location = new System.Drawing.Point(131, 370);
+            this.rtb_description_productSong.Name = "rtb_description_productSong";
+            this.rtb_description_productSong.Size = new System.Drawing.Size(163, 96);
+            this.rtb_description_productSong.TabIndex = 29;
+            this.rtb_description_productSong.Text = "";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(21, 484);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(37, 13);
+            this.label40.TabIndex = 30;
+            this.label40.Text = "Type :";
+            // 
+            // cb_type_productSong
+            // 
+            this.cb_type_productSong.FormattingEnabled = true;
+            this.cb_type_productSong.Location = new System.Drawing.Point(131, 481);
+            this.cb_type_productSong.Name = "cb_type_productSong";
+            this.cb_type_productSong.Size = new System.Drawing.Size(163, 21);
+            this.cb_type_productSong.TabIndex = 31;
+            // 
+            // Song
+            // 
+            this.Song.HeaderText = "Song";
+            this.Song.Name = "Song";
+            this.Song.ReadOnly = true;
+            // 
+            // Length
+            // 
+            this.Length.HeaderText = "Length";
+            this.Length.Name = "Length";
+            this.Length.ReadOnly = true;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 593);
+            this.Controls.Add(this.panelProductSong);
+            this.Controls.Add(this.panelGroupMusic);
             this.Controls.Add(this.panelSong);
             this.Controls.Add(this.panelPersonel);
-            this.Controls.Add(this.panelGroupMusic);
             this.Controls.Add(this.panelStaff);
             this.Controls.Add(this.panelFormat);
             this.Controls.Add(this.panelGenre);
@@ -1706,6 +1953,10 @@ namespace Project
             this.panelSong.ResumeLayout(false);
             this.panelSong.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_song)).EndInit();
+            this.panelProductSong.ResumeLayout(false);
+            this.panelProductSong.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_song_productSong)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_productSong)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1854,5 +2105,26 @@ namespace Project
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.DateTimePicker dtp_releaseDate_song;
         private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Panel panelProductSong;
+        private System.Windows.Forms.Button btn_clear_song_productSong;
+        private System.Windows.Forms.Button btn_delete_song_productSong;
+        private System.Windows.Forms.Button btn_enter_song_productSong;
+        private System.Windows.Forms.DataGridView dg_song_productSong;
+        private System.Windows.Forms.ComboBox cb_song_productSong;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Button btn_delete_productSong;
+        private System.Windows.Forms.Button btn_clear_groupSong;
+        private System.Windows.Forms.Button btn_update_productSong;
+        private System.Windows.Forms.Button btn_insert_productSong;
+        private System.Windows.Forms.TextBox tb_name_productSong;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.DataGridView dg_productSong;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.ComboBox cb_type_productSong;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.RichTextBox rtb_description_productSong;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Song;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Length;
     }
 }
