@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2022 at 02:44 PM
+-- Generation Time: Jun 22, 2022 at 03:39 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -834,6 +834,92 @@ ALTER TABLE `staff`
 --
 ALTER TABLE `type_product`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `format_product`
+--
+ALTER TABLE `format_product`
+  ADD CONSTRAINT `fk_format_product_1` FOREIGN KEY (`FORMAT_ID`) REFERENCES `format` (`ID`),
+  ADD CONSTRAINT `fk_format_product_2` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `product` (`ID`);
+
+--
+-- Constraints for table `group_personel`
+--
+ALTER TABLE `group_personel`
+  ADD CONSTRAINT `fk_group_group` FOREIGN KEY (`GROUP_ID`) REFERENCES `group_music` (`id`),
+  ADD CONSTRAINT `fk_group_personel` FOREIGN KEY (`PERSONEL_ID`) REFERENCES `personel` (`ID`);
+
+--
+-- Constraints for table `member`
+--
+ALTER TABLE `member`
+  ADD CONSTRAINT `fk_member_membership` FOREIGN KEY (`MEMBERSHIP_ID`) REFERENCES `membership` (`ID`);
+
+--
+-- Constraints for table `orderdetails`
+--
+ALTER TABLE `orderdetails`
+  ADD CONSTRAINT `fk_detail_order` FOREIGN KEY (`NOTE_NUMBER`) REFERENCES `orders` (`NOTE_NUMBER`),
+  ADD CONSTRAINT `fk_detail_product` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `format_product` (`ID`);
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `fk_order_member` FOREIGN KEY (`MEMBER_ID`) REFERENCES `member` (`ID`),
+  ADD CONSTRAINT `fk_order_payment` FOREIGN KEY (`PAYMENT_METHOD`) REFERENCES `payment_method` (`ID`),
+  ADD CONSTRAINT `fk_order_staff` FOREIGN KEY (`STAFF_ID`) REFERENCES `staff` (`ID`);
+
+--
+-- Constraints for table `personel`
+--
+ALTER TABLE `personel`
+  ADD CONSTRAINT `fk_personel_occupation` FOREIGN KEY (`OCCUPATION_ID`) REFERENCES `occupation` (`ID`);
+
+--
+-- Constraints for table `product`
+--
+ALTER TABLE `product`
+  ADD CONSTRAINT `fk_product_type` FOREIGN KEY (`TYPE_ID`) REFERENCES `type_product` (`ID`);
+
+--
+-- Constraints for table `product_song`
+--
+ALTER TABLE `product_song`
+  ADD CONSTRAINT `fk_product_song_1` FOREIGN KEY (`SONG_ID`) REFERENCES `songs` (`ID`),
+  ADD CONSTRAINT `fk_product_song_2` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `product` (`ID`);
+
+--
+-- Constraints for table `review_product`
+--
+ALTER TABLE `review_product`
+  ADD CONSTRAINT `fk_review_member` FOREIGN KEY (`MEMBER_ID`) REFERENCES `member` (`ID`),
+  ADD CONSTRAINT `fk_review_product` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `product` (`ID`);
+
+--
+-- Constraints for table `review_song`
+--
+ALTER TABLE `review_song`
+  ADD CONSTRAINT `fk_review_2_member` FOREIGN KEY (`MEMBER_ID`) REFERENCES `member` (`ID`),
+  ADD CONSTRAINT `fk_review_2_song` FOREIGN KEY (`SONG_ID`) REFERENCES `songs` (`ID`);
+
+--
+-- Constraints for table `shopping_cart`
+--
+ALTER TABLE `shopping_cart`
+  ADD CONSTRAINT `fk_cart_member` FOREIGN KEY (`MEMBER_ID`) REFERENCES `member` (`ID`),
+  ADD CONSTRAINT `fk_cart_product` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `format_product` (`ID`);
+
+--
+-- Constraints for table `songs`
+--
+ALTER TABLE `songs`
+  ADD CONSTRAINT `fk_song_genre` FOREIGN KEY (`GENRE_ID`) REFERENCES `genre` (`ID`),
+  ADD CONSTRAINT `fk_song_group` FOREIGN KEY (`GROUP_ID`) REFERENCES `group_music` (`id`);
 SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
 
