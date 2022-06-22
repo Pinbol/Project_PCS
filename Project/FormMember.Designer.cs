@@ -80,6 +80,9 @@ namespace Project
             this.label15 = new System.Windows.Forms.Label();
             this.tb_name_review = new System.Windows.Forms.TextBox();
             this.tb_type_review = new System.Windows.Forms.TextBox();
+            this.historyPembelianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelHistory = new System.Windows.Forms.Panel();
+            this.crv_history = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Jumlah)).BeginInit();
@@ -89,6 +92,7 @@ namespace Project
             this.panelReview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_review)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_review)).BeginInit();
+            this.panelHistory.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -97,7 +101,8 @@ namespace Project
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.BeliBarangToolStripMenuItem,
             this.ReviewToolStripMenuItem,
-            this.updateBiodataToolStripMenuItem1});
+            this.updateBiodataToolStripMenuItem1,
+            this.historyPembelianToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -644,11 +649,37 @@ namespace Project
             this.tb_type_review.Size = new System.Drawing.Size(172, 20);
             this.tb_type_review.TabIndex = 8;
             // 
+            // historyPembelianToolStripMenuItem
+            // 
+            this.historyPembelianToolStripMenuItem.Name = "historyPembelianToolStripMenuItem";
+            this.historyPembelianToolStripMenuItem.Size = new System.Drawing.Size(116, 20);
+            this.historyPembelianToolStripMenuItem.Text = "History Pembelian";
+            this.historyPembelianToolStripMenuItem.Click += new System.EventHandler(this.historyPembelianToolStripMenuItem_Click);
+            // 
+            // panelHistory
+            // 
+            this.panelHistory.Controls.Add(this.crv_history);
+            this.panelHistory.Location = new System.Drawing.Point(0, 80);
+            this.panelHistory.Name = "panelHistory";
+            this.panelHistory.Size = new System.Drawing.Size(742, 588);
+            this.panelHistory.TabIndex = 13;
+            // 
+            // crv_history
+            // 
+            this.crv_history.ActiveViewIndex = -1;
+            this.crv_history.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crv_history.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crv_history.Location = new System.Drawing.Point(0, 9);
+            this.crv_history.Name = "crv_history";
+            this.crv_history.Size = new System.Drawing.Size(742, 579);
+            this.crv_history.TabIndex = 0;
+            // 
             // FormMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(748, 670);
+            this.Controls.Add(this.panelHistory);
             this.Controls.Add(this.panelReview);
             this.Controls.Add(this.panelBiodata);
             this.Controls.Add(this.btn_LogOut);
@@ -672,6 +703,7 @@ namespace Project
             this.panelReview.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_review)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_review)).EndInit();
+            this.panelHistory.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -730,5 +762,8 @@ namespace Project
         private System.Windows.Forms.Button btn_review;
         private System.Windows.Forms.NumericUpDown nud_review;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ToolStripMenuItem historyPembelianToolStripMenuItem;
+        private System.Windows.Forms.Panel panelHistory;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crv_history;
     }
 }

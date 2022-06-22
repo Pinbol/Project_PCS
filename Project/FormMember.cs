@@ -33,6 +33,7 @@ namespace Project
             panel1.Visible = true;
             panelBiodata.Visible = false;
             panelReview.Visible = false;
+            panelHistory.Visible = false;
 
             fillForm();
 
@@ -310,6 +311,7 @@ namespace Project
             panel1.Visible = true;
             panelBiodata.Visible = false;
             panelReview.Visible = false;
+            panelHistory.Visible = false;
 
             if (dtInternalCart.Columns.Count == 0) prepareDTInternalCart();
 
@@ -616,6 +618,7 @@ namespace Project
             panel1.Visible = false;
             panelBiodata.Visible = true;
             panelReview.Visible = false;
+            panelHistory.Visible = false;
 
             fillBiodata();
         }
@@ -633,6 +636,7 @@ namespace Project
             panel1.Visible = false;
             panelBiodata.Visible = false;
             panelReview.Visible = true;
+            panelHistory.Visible = false;
 
             loadDG_Review();
         }
@@ -736,6 +740,20 @@ namespace Project
                     }
                 }
             }
+        }
+
+        private void historyPembelianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+            panelBiodata.Visible = false;
+            panelReview.Visible = false;
+            panelHistory.Visible = true;
+
+            CrystalReport_History report = new CrystalReport_History();
+            report.SetDatabaseLogon("root", "", "localhost", "db_projek_pcs");
+            report.SetParameterValue("param_member", member_id);
+
+            crv_history.ReportSource = report;
         }
     }
 }

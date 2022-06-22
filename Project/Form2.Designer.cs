@@ -43,6 +43,8 @@ namespace Project
             this.masterProductSongToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.masterProductSellingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.masterPaymentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportLaguToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelStaff = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.gb_status = new System.Windows.Forms.GroupBox();
@@ -171,10 +173,16 @@ namespace Project
             this.dg_song = new System.Windows.Forms.DataGridView();
             this.label33 = new System.Windows.Forms.Label();
             this.panelProductSong = new System.Windows.Forms.Panel();
+            this.cb_type_productSong = new System.Windows.Forms.ComboBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.rtb_description_productSong = new System.Windows.Forms.RichTextBox();
+            this.label39 = new System.Windows.Forms.Label();
             this.btn_clear_song_productSong = new System.Windows.Forms.Button();
             this.btn_delete_song_productSong = new System.Windows.Forms.Button();
             this.btn_enter_song_productSong = new System.Windows.Forms.Button();
             this.dg_song_productSong = new System.Windows.Forms.DataGridView();
+            this.Song = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cb_song_productSong = new System.Windows.Forms.ComboBox();
             this.label36 = new System.Windows.Forms.Label();
             this.btn_delete_productSong = new System.Windows.Forms.Button();
@@ -185,26 +193,32 @@ namespace Project
             this.label37 = new System.Windows.Forms.Label();
             this.dg_productSong = new System.Windows.Forms.DataGridView();
             this.label38 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.rtb_description_productSong = new System.Windows.Forms.RichTextBox();
-            this.label40 = new System.Windows.Forms.Label();
-            this.cb_type_productSong = new System.Windows.Forms.ComboBox();
-            this.Song = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelProductFormat = new System.Windows.Forms.Panel();
+            this.tb_harga_productFormat = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
             this.btn_delete_format_productFormat = new System.Windows.Forms.Button();
             this.btn_enter_format_productFormat = new System.Windows.Forms.Button();
             this.dg_format_productFormat = new System.Windows.Forms.DataGridView();
+            this.Format = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cb_format_productFormat = new System.Windows.Forms.ComboBox();
             this.label43 = new System.Windows.Forms.Label();
             this.dg_productFormat = new System.Windows.Forms.DataGridView();
             this.label45 = new System.Windows.Forms.Label();
-            this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportProdukToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label41 = new System.Windows.Forms.Label();
-            this.tb_harga_productFormat = new System.Windows.Forms.TextBox();
-            this.Format = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reportPenjualanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelReportLagu = new System.Windows.Forms.Panel();
+            this.crv_reportLagu = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.label42 = new System.Windows.Forms.Label();
+            this.panelReportProduct = new System.Windows.Forms.Panel();
+            this.label44 = new System.Windows.Forms.Label();
+            this.crv_reportProduct = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.panelReportPenjualan = new System.Windows.Forms.Panel();
+            this.label46 = new System.Windows.Forms.Label();
+            this.crv_reportPenjualan = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.rb_sort = new System.Windows.Forms.RadioButton();
+            this.dtp_reportPenjualan = new System.Windows.Forms.DateTimePicker();
+            this.btn_reportPenjualan = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panelStaff.SuspendLayout();
             this.gb_status.SuspendLayout();
@@ -233,6 +247,9 @@ namespace Project
             this.panelProductFormat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_format_productFormat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dg_productFormat)).BeginInit();
+            this.panelReportLagu.SuspendLayout();
+            this.panelReportProduct.SuspendLayout();
+            this.panelReportPenjualan.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -350,6 +367,23 @@ namespace Project
             this.masterPaymentToolStripMenuItem.Size = new System.Drawing.Size(105, 20);
             this.masterPaymentToolStripMenuItem.Text = "Master Payment";
             this.masterPaymentToolStripMenuItem.Click += new System.EventHandler(this.masterPaymentToolStripMenuItem_Click);
+            // 
+            // reportToolStripMenuItem
+            // 
+            this.reportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reportLaguToolStripMenuItem,
+            this.reportProdukToolStripMenuItem,
+            this.reportPenjualanToolStripMenuItem});
+            this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
+            this.reportToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.reportToolStripMenuItem.Text = "Report";
+            // 
+            // reportLaguToolStripMenuItem
+            // 
+            this.reportLaguToolStripMenuItem.Name = "reportLaguToolStripMenuItem";
+            this.reportLaguToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reportLaguToolStripMenuItem.Text = "Report Lagu";
+            this.reportLaguToolStripMenuItem.Click += new System.EventHandler(this.reportLaguToolStripMenuItem_Click);
             // 
             // panelStaff
             // 
@@ -1720,6 +1754,40 @@ namespace Project
             this.panelProductSong.Size = new System.Drawing.Size(880, 541);
             this.panelProductSong.TabIndex = 26;
             // 
+            // cb_type_productSong
+            // 
+            this.cb_type_productSong.FormattingEnabled = true;
+            this.cb_type_productSong.Location = new System.Drawing.Point(131, 481);
+            this.cb_type_productSong.Name = "cb_type_productSong";
+            this.cb_type_productSong.Size = new System.Drawing.Size(163, 21);
+            this.cb_type_productSong.TabIndex = 31;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(21, 484);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(37, 13);
+            this.label40.TabIndex = 30;
+            this.label40.Text = "Type :";
+            // 
+            // rtb_description_productSong
+            // 
+            this.rtb_description_productSong.Location = new System.Drawing.Point(131, 370);
+            this.rtb_description_productSong.Name = "rtb_description_productSong";
+            this.rtb_description_productSong.Size = new System.Drawing.Size(163, 96);
+            this.rtb_description_productSong.TabIndex = 29;
+            this.rtb_description_productSong.Text = "";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(21, 373);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(56, 13);
+            this.label39.TabIndex = 28;
+            this.label39.Text = "Deskripsi :";
+            // 
             // btn_clear_song_productSong
             // 
             this.btn_clear_song_productSong.Location = new System.Drawing.Point(736, 250);
@@ -1768,6 +1836,18 @@ namespace Project
             this.dg_song_productSong.Size = new System.Drawing.Size(320, 165);
             this.dg_song_productSong.TabIndex = 24;
             this.dg_song_productSong.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_song_productSong_CellClick);
+            // 
+            // Song
+            // 
+            this.Song.HeaderText = "Song";
+            this.Song.Name = "Song";
+            this.Song.ReadOnly = true;
+            // 
+            // Length
+            // 
+            this.Length.HeaderText = "Length";
+            this.Length.Name = "Length";
+            this.Length.ReadOnly = true;
             // 
             // cb_song_productSong
             // 
@@ -1870,52 +1950,6 @@ namespace Project
             this.label38.TabIndex = 0;
             this.label38.Text = "Master Product Song";
             // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(21, 373);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(56, 13);
-            this.label39.TabIndex = 28;
-            this.label39.Text = "Deskripsi :";
-            // 
-            // rtb_description_productSong
-            // 
-            this.rtb_description_productSong.Location = new System.Drawing.Point(131, 370);
-            this.rtb_description_productSong.Name = "rtb_description_productSong";
-            this.rtb_description_productSong.Size = new System.Drawing.Size(163, 96);
-            this.rtb_description_productSong.TabIndex = 29;
-            this.rtb_description_productSong.Text = "";
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(21, 484);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(37, 13);
-            this.label40.TabIndex = 30;
-            this.label40.Text = "Type :";
-            // 
-            // cb_type_productSong
-            // 
-            this.cb_type_productSong.FormattingEnabled = true;
-            this.cb_type_productSong.Location = new System.Drawing.Point(131, 481);
-            this.cb_type_productSong.Name = "cb_type_productSong";
-            this.cb_type_productSong.Size = new System.Drawing.Size(163, 21);
-            this.cb_type_productSong.TabIndex = 31;
-            // 
-            // Song
-            // 
-            this.Song.HeaderText = "Song";
-            this.Song.Name = "Song";
-            this.Song.ReadOnly = true;
-            // 
-            // Length
-            // 
-            this.Length.HeaderText = "Length";
-            this.Length.Name = "Length";
-            this.Length.ReadOnly = true;
-            // 
             // panelProductFormat
             // 
             this.panelProductFormat.Controls.Add(this.tb_harga_productFormat);
@@ -1931,6 +1965,22 @@ namespace Project
             this.panelProductFormat.Name = "panelProductFormat";
             this.panelProductFormat.Size = new System.Drawing.Size(880, 541);
             this.panelProductFormat.TabIndex = 32;
+            // 
+            // tb_harga_productFormat
+            // 
+            this.tb_harga_productFormat.Location = new System.Drawing.Point(613, 247);
+            this.tb_harga_productFormat.Name = "tb_harga_productFormat";
+            this.tb_harga_productFormat.Size = new System.Drawing.Size(153, 20);
+            this.tb_harga_productFormat.TabIndex = 28;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(507, 250);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(42, 13);
+            this.label41.TabIndex = 27;
+            this.label41.Text = "Harga :";
             // 
             // btn_delete_format_productFormat
             // 
@@ -1972,6 +2022,18 @@ namespace Project
             this.dg_format_productFormat.Size = new System.Drawing.Size(320, 165);
             this.dg_format_productFormat.TabIndex = 24;
             this.dg_format_productFormat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_format_productFormat_CellClick);
+            // 
+            // Format
+            // 
+            this.Format.HeaderText = "Format";
+            this.Format.Name = "Format";
+            this.Format.ReadOnly = true;
+            // 
+            // Harga
+            // 
+            this.Harga.HeaderText = "Harga";
+            this.Harga.Name = "Harga";
+            this.Harga.ReadOnly = true;
             // 
             // cb_format_productFormat
             // 
@@ -2016,53 +2078,149 @@ namespace Project
             this.label45.TabIndex = 0;
             this.label45.Text = "Master Product Format";
             // 
-            // reportToolStripMenuItem
-            // 
-            this.reportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.reportProdukToolStripMenuItem});
-            this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
-            this.reportToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
-            this.reportToolStripMenuItem.Text = "Report";
-            // 
             // reportProdukToolStripMenuItem
             // 
             this.reportProdukToolStripMenuItem.Name = "reportProdukToolStripMenuItem";
             this.reportProdukToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.reportProdukToolStripMenuItem.Text = "Report Produk";
+            this.reportProdukToolStripMenuItem.Click += new System.EventHandler(this.reportProdukToolStripMenuItem_Click);
             // 
-            // label41
+            // reportPenjualanToolStripMenuItem
             // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(507, 250);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(42, 13);
-            this.label41.TabIndex = 27;
-            this.label41.Text = "Harga :";
+            this.reportPenjualanToolStripMenuItem.Name = "reportPenjualanToolStripMenuItem";
+            this.reportPenjualanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reportPenjualanToolStripMenuItem.Text = "Report Penjualan";
+            this.reportPenjualanToolStripMenuItem.Click += new System.EventHandler(this.reportPenjualanToolStripMenuItem_Click);
             // 
-            // tb_harga_productFormat
+            // panelReportLagu
             // 
-            this.tb_harga_productFormat.Location = new System.Drawing.Point(613, 247);
-            this.tb_harga_productFormat.Name = "tb_harga_productFormat";
-            this.tb_harga_productFormat.Size = new System.Drawing.Size(153, 20);
-            this.tb_harga_productFormat.TabIndex = 28;
+            this.panelReportLagu.Controls.Add(this.label42);
+            this.panelReportLagu.Controls.Add(this.crv_reportLagu);
+            this.panelReportLagu.Location = new System.Drawing.Point(0, 54);
+            this.panelReportLagu.Name = "panelReportLagu";
+            this.panelReportLagu.Size = new System.Drawing.Size(880, 541);
+            this.panelReportLagu.TabIndex = 33;
             // 
-            // Format
+            // crv_reportLagu
             // 
-            this.Format.HeaderText = "Format";
-            this.Format.Name = "Format";
-            this.Format.ReadOnly = true;
+            this.crv_reportLagu.ActiveViewIndex = -1;
+            this.crv_reportLagu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crv_reportLagu.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crv_reportLagu.Location = new System.Drawing.Point(0, 62);
+            this.crv_reportLagu.Name = "crv_reportLagu";
+            this.crv_reportLagu.Size = new System.Drawing.Size(877, 476);
+            this.crv_reportLagu.TabIndex = 0;
             // 
-            // Harga
+            // label42
             // 
-            this.Harga.HeaderText = "Harga";
-            this.Harga.Name = "Harga";
-            this.Harga.ReadOnly = true;
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.Location = new System.Drawing.Point(14, 15);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(93, 16);
+            this.label42.TabIndex = 1;
+            this.label42.Text = "Report Lagu";
+            // 
+            // panelReportProduct
+            // 
+            this.panelReportProduct.Controls.Add(this.label44);
+            this.panelReportProduct.Controls.Add(this.crv_reportProduct);
+            this.panelReportProduct.Location = new System.Drawing.Point(0, 54);
+            this.panelReportProduct.Name = "panelReportProduct";
+            this.panelReportProduct.Size = new System.Drawing.Size(880, 541);
+            this.panelReportProduct.TabIndex = 34;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.Location = new System.Drawing.Point(14, 15);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(108, 16);
+            this.label44.TabIndex = 1;
+            this.label44.Text = "Report Produk";
+            // 
+            // crv_reportProduct
+            // 
+            this.crv_reportProduct.ActiveViewIndex = -1;
+            this.crv_reportProduct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crv_reportProduct.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crv_reportProduct.Location = new System.Drawing.Point(0, 62);
+            this.crv_reportProduct.Name = "crv_reportProduct";
+            this.crv_reportProduct.Size = new System.Drawing.Size(877, 476);
+            this.crv_reportProduct.TabIndex = 0;
+            // 
+            // panelReportPenjualan
+            // 
+            this.panelReportPenjualan.Controls.Add(this.btn_reportPenjualan);
+            this.panelReportPenjualan.Controls.Add(this.dtp_reportPenjualan);
+            this.panelReportPenjualan.Controls.Add(this.rb_sort);
+            this.panelReportPenjualan.Controls.Add(this.label46);
+            this.panelReportPenjualan.Controls.Add(this.crv_reportPenjualan);
+            this.panelReportPenjualan.Location = new System.Drawing.Point(0, 54);
+            this.panelReportPenjualan.Name = "panelReportPenjualan";
+            this.panelReportPenjualan.Size = new System.Drawing.Size(880, 541);
+            this.panelReportPenjualan.TabIndex = 35;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label46.Location = new System.Drawing.Point(14, 15);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(128, 16);
+            this.label46.TabIndex = 1;
+            this.label46.Text = "Report Penjualan";
+            // 
+            // crv_reportPenjualan
+            // 
+            this.crv_reportPenjualan.ActiveViewIndex = -1;
+            this.crv_reportPenjualan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crv_reportPenjualan.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crv_reportPenjualan.Location = new System.Drawing.Point(0, 83);
+            this.crv_reportPenjualan.Name = "crv_reportPenjualan";
+            this.crv_reportPenjualan.Size = new System.Drawing.Size(877, 455);
+            this.crv_reportPenjualan.TabIndex = 0;
+            // 
+            // rb_sort
+            // 
+            this.rb_sort.AutoSize = true;
+            this.rb_sort.Location = new System.Drawing.Point(17, 48);
+            this.rb_sort.Name = "rb_sort";
+            this.rb_sort.Size = new System.Drawing.Size(44, 17);
+            this.rb_sort.TabIndex = 3;
+            this.rb_sort.TabStop = true;
+            this.rb_sort.Text = "Sort";
+            this.rb_sort.UseVisualStyleBackColor = true;
+            this.rb_sort.CheckedChanged += new System.EventHandler(this.rb_sort_CheckedChanged);
+            // 
+            // dtp_reportPenjualan
+            // 
+            this.dtp_reportPenjualan.CustomFormat = "yyyy-MM";
+            this.dtp_reportPenjualan.Enabled = false;
+            this.dtp_reportPenjualan.Location = new System.Drawing.Point(87, 48);
+            this.dtp_reportPenjualan.Name = "dtp_reportPenjualan";
+            this.dtp_reportPenjualan.Size = new System.Drawing.Size(200, 20);
+            this.dtp_reportPenjualan.TabIndex = 4;
+            // 
+            // btn_reportPenjualan
+            // 
+            this.btn_reportPenjualan.Location = new System.Drawing.Point(359, 48);
+            this.btn_reportPenjualan.Name = "btn_reportPenjualan";
+            this.btn_reportPenjualan.Size = new System.Drawing.Size(75, 23);
+            this.btn_reportPenjualan.TabIndex = 5;
+            this.btn_reportPenjualan.Text = "Report";
+            this.btn_reportPenjualan.UseVisualStyleBackColor = true;
+            this.btn_reportPenjualan.Click += new System.EventHandler(this.btn_reportPenjualan_Click);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 593);
+            this.Controls.Add(this.panelReportPenjualan);
+            this.Controls.Add(this.panelReportProduct);
+            this.Controls.Add(this.panelReportLagu);
             this.Controls.Add(this.panelProductFormat);
             this.Controls.Add(this.panelProductSong);
             this.Controls.Add(this.panelGroupMusic);
@@ -2123,6 +2281,12 @@ namespace Project
             this.panelProductFormat.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_format_productFormat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dg_productFormat)).EndInit();
+            this.panelReportLagu.ResumeLayout(false);
+            this.panelReportLagu.PerformLayout();
+            this.panelReportProduct.ResumeLayout(false);
+            this.panelReportProduct.PerformLayout();
+            this.panelReportPenjualan.ResumeLayout(false);
+            this.panelReportPenjualan.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2301,10 +2465,24 @@ namespace Project
         private System.Windows.Forms.DataGridView dg_productFormat;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reportProdukToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportLaguToolStripMenuItem;
         private System.Windows.Forms.TextBox tb_harga_productFormat;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.DataGridViewTextBoxColumn Format;
         private System.Windows.Forms.DataGridViewTextBoxColumn Harga;
+        private System.Windows.Forms.ToolStripMenuItem reportProdukToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportPenjualanToolStripMenuItem;
+        private System.Windows.Forms.Panel panelReportLagu;
+        private System.Windows.Forms.Label label42;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crv_reportLagu;
+        private System.Windows.Forms.Panel panelReportProduct;
+        private System.Windows.Forms.Label label44;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crv_reportProduct;
+        private System.Windows.Forms.Panel panelReportPenjualan;
+        private System.Windows.Forms.Label label46;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crv_reportPenjualan;
+        private System.Windows.Forms.DateTimePicker dtp_reportPenjualan;
+        private System.Windows.Forms.RadioButton rb_sort;
+        private System.Windows.Forms.Button btn_reportPenjualan;
     }
 }

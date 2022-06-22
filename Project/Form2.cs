@@ -48,6 +48,9 @@ namespace Project
             panelSong.Visible = false;
             panelProductSong.Visible = false;
             panelProductFormat.Visible = false;
+            panelReportLagu.Visible = false;
+            panelReportProduct.Visible = false;
+            panelReportPenjualan.Visible = false;
             
             refreshDGStaff();
             clearStaff();
@@ -66,6 +69,9 @@ namespace Project
             panelSong.Visible = false;
             panelProductSong.Visible = false;
             panelProductFormat.Visible = false;
+            panelReportLagu.Visible = false;
+            panelReportProduct.Visible = false;
+            panelReportPenjualan.Visible = false;
 
             refreshDGMembership();
             clearMembership();
@@ -84,6 +90,9 @@ namespace Project
             panelSong.Visible = false;
             panelProductSong.Visible = false;
             panelProductFormat.Visible = false;
+            panelReportLagu.Visible = false;
+            panelReportProduct.Visible = false;
+            panelReportPenjualan.Visible = false;
 
             refreshDGStaff();
             clearStaff();
@@ -1074,6 +1083,9 @@ namespace Project
             panelSong.Visible = false;
             panelProductSong.Visible = false;
             panelProductFormat.Visible = false;
+            panelReportLagu.Visible = false;
+            panelReportProduct.Visible = false;
+            panelReportPenjualan.Visible = false;
 
             clearPayment();
             refreshDGPayment();
@@ -1211,6 +1223,9 @@ namespace Project
             panelSong.Visible = false;
             panelProductSong.Visible = false;
             panelProductFormat.Visible = false;
+            panelReportLagu.Visible = false;
+            panelReportProduct.Visible = false;
+            panelReportPenjualan.Visible = false;
 
             clearOccupation();
             refreshDGOccupation();
@@ -1348,6 +1363,9 @@ namespace Project
             panelSong.Visible = false;
             panelProductSong.Visible = false;
             panelProductFormat.Visible = false;
+            panelReportLagu.Visible = false;
+            panelReportProduct.Visible = false;
+            panelReportPenjualan.Visible = false;
 
             clearGenre();
             refreshDGGenre();
@@ -1485,6 +1503,9 @@ namespace Project
             panelSong.Visible = false;
             panelProductSong.Visible = false;
             panelProductFormat.Visible = false;
+            panelReportLagu.Visible = false;
+            panelReportProduct.Visible = false;
+            panelReportPenjualan.Visible = false;
 
             clearFormat();
             refreshDGFormat();
@@ -1617,6 +1638,9 @@ namespace Project
             panelSong.Visible = false;
             panelProductSong.Visible = false;
             panelProductFormat.Visible = false;
+            panelReportLagu.Visible = false;
+            panelReportProduct.Visible = false;
+            panelReportPenjualan.Visible = false;
 
             clearPersonel();
             refreshDGPersonel();
@@ -1785,6 +1809,9 @@ namespace Project
             panelSong.Visible = false;
             panelProductSong.Visible = false;
             panelProductFormat.Visible = false;
+            panelReportLagu.Visible = false;
+            panelReportProduct.Visible = false;
+            panelReportPenjualan.Visible = false;
 
             clearGroupMusic();
             refreshDGGroupMusic();
@@ -2052,6 +2079,9 @@ namespace Project
             panelSong.Visible = true;
             panelProductSong.Visible = false;
             panelProductFormat.Visible = false;
+            panelReportLagu.Visible = false;
+            panelReportProduct.Visible = false;
+            panelReportPenjualan.Visible = false;
 
             clearSong();
             refreshDGSong();
@@ -2229,6 +2259,9 @@ namespace Project
             panelSong.Visible = false;
             panelProductSong.Visible = true;
             panelProductFormat.Visible = false;
+            panelReportLagu.Visible = false;
+            panelReportProduct.Visible = false;
+            panelReportPenjualan.Visible = false;
 
             clearProductSong();
             refreshDGProductSong();
@@ -2520,6 +2553,9 @@ namespace Project
             panelSong.Visible = false;
             panelProductSong.Visible = false;
             panelProductFormat.Visible = true;
+            panelReportLagu.Visible = false;
+            panelReportProduct.Visible = false;
+            panelReportPenjualan.Visible = false;
 
             clearProductFormat();
             refreshDGProductFormat();
@@ -2626,6 +2662,101 @@ namespace Project
                     clearProductFormat();
                     MessageBox.Show(ex.Message);
                 }
+            }
+        }
+
+        private void reportLaguToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panelStaff.Visible = false;
+            panelMembership.Visible = false;
+            panelPayment.Visible = false;
+            panelOccupation.Visible = false;
+            panelGenre.Visible = false;
+            panelFormat.Visible = false;
+            panelPersonel.Visible = false;
+            panelGroupMusic.Visible = false;
+            panelSong.Visible = false;
+            panelProductSong.Visible = false;
+            panelProductFormat.Visible = false;
+            panelReportLagu.Visible = true;
+            panelReportProduct.Visible = false;
+            panelReportPenjualan.Visible = false;
+
+            CrystalReport1 report = new CrystalReport1();
+            report.SetDatabaseLogon("root", "", "localhost", "db_projek_pcs");
+
+            crv_reportLagu.ReportSource = report;
+        }
+
+        private void reportProdukToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panelStaff.Visible = false;
+            panelMembership.Visible = false;
+            panelPayment.Visible = false;
+            panelOccupation.Visible = false;
+            panelGenre.Visible = false;
+            panelFormat.Visible = false;
+            panelPersonel.Visible = false;
+            panelGroupMusic.Visible = false;
+            panelSong.Visible = false;
+            panelProductSong.Visible = false;
+            panelProductFormat.Visible = false;
+            panelReportLagu.Visible = false;
+            panelReportProduct.Visible = true;
+            panelReportPenjualan.Visible = false;
+
+            CrystalReport_reportProduct report = new CrystalReport_reportProduct();
+            report.SetDatabaseLogon("root", "", "localhost", "db_projek_pcs");
+
+            crv_reportProduct.ReportSource = report;
+        }
+
+        private void rb_sort_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rb_sort.Checked) dtp_reportPenjualan.Enabled = true;
+            else dtp_reportPenjualan.Enabled = false;
+        }
+
+        private void reportPenjualanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panelStaff.Visible = false;
+            panelMembership.Visible = false;
+            panelPayment.Visible = false;
+            panelOccupation.Visible = false;
+            panelGenre.Visible = false;
+            panelFormat.Visible = false;
+            panelPersonel.Visible = false;
+            panelGroupMusic.Visible = false;
+            panelSong.Visible = false;
+            panelProductSong.Visible = false;
+            panelProductFormat.Visible = false;
+            panelReportLagu.Visible = false;
+            panelReportProduct.Visible = false;
+            panelReportPenjualan.Visible = true;
+
+            dtp_reportPenjualan.Format = DateTimePickerFormat.Custom;
+            dtp_reportPenjualan.CustomFormat = "MM-yyyy";
+            dtp_reportPenjualan.ShowUpDown = true;
+        }
+
+        private void btn_reportPenjualan_Click(object sender, EventArgs e)
+        {
+            if (rb_sort.Checked)
+            {
+                CrystalReport_reportPenjualan report = new CrystalReport_reportPenjualan();
+                report.SetDatabaseLogon("root", "", "localhost", "db_projek_pcs");
+                report.SetParameterValue("param_month", dtp_reportPenjualan.Value.ToString("MM"));
+                report.SetParameterValue("param_year", dtp_reportPenjualan.Value.ToString("yyyy"));
+
+                crv_reportPenjualan.ReportSource = report;
+            } else
+            {
+                CrystalReport_reportPenjualan report = new CrystalReport_reportPenjualan();
+                report.SetDatabaseLogon("root", "", "localhost", "db_projek_pcs");
+                report.SetParameterValue("param_month", "0");
+                report.SetParameterValue("param_year", "0");
+
+                crv_reportPenjualan.ReportSource = report;
             }
         }
     }
