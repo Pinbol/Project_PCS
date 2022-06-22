@@ -20,6 +20,7 @@ namespace Project
         public DataTable dtInternalCart = new DataTable();
 
         public int cartRowIndex;
+        public int reviewRowIndex;
 
         public FormMember(String username)
         {
@@ -30,6 +31,8 @@ namespace Project
         private void FormMember_Load(object sender, EventArgs e)
         {
             panel1.Visible = true;
+            panelBiodata.Visible = false;
+            panelReview.Visible = false;
 
             fillForm();
 
@@ -63,6 +66,29 @@ namespace Project
             koneksi.closeConn();
 
             label4.Text = "Selamat Datang, " + member_name;
+        }
+
+        private void fillBiodata()
+        {
+            labelNama_Biodata.Text = "Nama : " + member_name;
+            labelUsername_Biodata.Text = "Username : " + member_username;
+
+            MySqlCommand cmdBiodata = new MySqlCommand("select gender, address, date_format(date_of_birth,'%d %M %Y') from member where id = @id", koneksi.getConn());
+            cmdBiodata.Parameters.AddWithValue("@id", member_id);
+
+            koneksi.openConn();
+            MySqlDataReader dr = cmdBiodata.ExecuteReader();
+
+            while (dr.Read())
+            {
+                labelJK_Biodata.Text = dr.GetString(0);
+                labelAlamat_Biodata.Text = "Alamat : " + dr.GetString(1);
+                labelTanggalLahir_Biodata.Text = "Tanggal Lahir : " +  dr.GetString(2);
+            }
+            koneksi.closeConn();
+
+            if (labelJK_Biodata.Text == "L") labelJK_Biodata.Text = "Jenis Kelamin : Laki-Laki";
+            else labelJK_Biodata.Text = "Jenis Kelamin : Perempuan";
         }
 
         private void fillCBSong_1()
@@ -149,6 +175,30 @@ namespace Project
                 dtInternalCart.Rows.Add(dr.GetString(0), dr.GetString(1), dr.GetString(2));
             }
             koneksi.closeConn();
+        }
+
+        private void loadDG_Review()
+        {
+            dg_review.DataSource = null;
+
+            if (koneksi.getConn().State == ConnectionState.Open)
+            {
+                koneksi.closeConn();
+            }
+
+            DataTable dt = new DataTable();
+            MySqlCommand cmd = new MySqlCommand("SELECT s.`NAME`, s.`RATING`, 'Song' FROM songs s WHERE s.`ID` NOT IN (SELECT rs.`SONG_ID` FROM review_song rs WHERE rs.`MEMBER_ID` = @member) UNION SELECT p.name, p.rating, 'Product' FROM product p WHERE p.`ID` NOT IN (SELECT rp.`PRODUCT_ID` FROM review_product rp WHERE rp.`MEMBER_ID` = @member);", koneksi.getConn());
+            cmd.Parameters.AddWithValue("@member", member_id);
+            MySqlDataAdapter da = new MySqlDataAdapter();
+
+            koneksi.openConn();
+            cmd.ExecuteReader();
+            koneksi.closeConn();
+
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            dg_review.DataSource = dt;
         }
 
         private void fillCb_Format()
@@ -258,6 +308,8 @@ namespace Project
         private void BeliBarangToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panel1.Visible = true;
+            panelBiodata.Visible = false;
+            panelReview.Visible = false;
 
             if (dtInternalCart.Columns.Count == 0) prepareDTInternalCart();
 
@@ -557,6 +609,133 @@ namespace Project
             da.Fill(dt);
 
             dg_Produk.DataSource = dt;
+        }
+
+        private void updateBiodataToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+            panelBiodata.Visible = true;
+            panelReview.Visible = false;
+
+            fillBiodata();
+        }
+
+        private void btn_update_biodata_Click(object sender, EventArgs e)
+        {
+            using (FormGantiPassword form = new FormGantiPassword(member_id))
+            {
+                form.ShowDialog();
+            }
+        }
+
+        private void ReviewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+            panelBiodata.Visible = false;
+            panelReview.Visible = true;
+
+            loadDG_Review();
+        }
+
+        private void dg_review_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex!=-1)
+            {
+                reviewRowIndex = e.RowIndex;
+
+                tb_name_review.Text = dg_review.Rows[e.RowIndex].Cells[0].Value.ToString();
+                tb_type_review.Text = dg_review.Rows[e.RowIndex].Cells[2].Value.ToString();
+            }
+        }
+
+        private void btn_review_Click(object sender, EventArgs e)
+        {
+            if (tb_name_review.Text == "") MessageBox.Show("Produk/Song yang direview harus dipilih !");
+            else if (nud_review.Value == 0) MessageBox.Show("Rating harus diisi !");
+            else
+            {
+                if (tb_type_review.Text=="Song")
+                {
+                    String rating = nud_review.Value.ToString();
+                    String date = DateTime.Today.ToString("yyyy-MM-dd");
+
+                    MySqlCommand cmdSong = new MySqlCommand("select id from songs where name = @name", koneksi.getConn());
+                    cmdSong.Parameters.AddWithValue("@name", tb_name_review.Text);
+
+                    koneksi.openConn();
+                    String Songid = cmdSong.ExecuteScalar().ToString();
+                    koneksi.closeConn();
+
+                    MySqlCommand cmdID = new MySqlCommand("select cast(id as unsigned)+1 from review_song order by cast(id as unsigned) desc limit 1", koneksi.getConn());
+
+                    koneksi.openConn();
+                    String id = cmdID.ExecuteScalar().ToString();
+                    koneksi.closeConn();
+
+                    try
+                    {
+                        MySqlCommand cmdReview = new MySqlCommand("insert into review_song (id, song_id, member_id, review_date, rating) values (@id, @product, @member, @date, @rating)", koneksi.getConn());
+                        cmdReview.Parameters.AddWithValue("@id", id);
+                        cmdReview.Parameters.AddWithValue("@product", Songid);
+                        cmdReview.Parameters.AddWithValue("@member", member_id);
+                        cmdReview.Parameters.AddWithValue("@date", date);
+                        cmdReview.Parameters.AddWithValue("@rating", rating);
+
+                        koneksi.openConn();
+                        cmdReview.ExecuteNonQuery();
+                        koneksi.closeConn();
+
+                        tb_name_review.Text = "";
+                        tb_type_review.Text = "";
+                        nud_Jumlah.Value = 0;
+                        MessageBox.Show("Review berhasil !");
+                        loadDG_Review();
+                    } catch (MySqlException ex)
+                    {
+                        loadDG_Review();
+                        MessageBox.Show(ex.Message);
+                    }
+                } else
+                {
+                    String rating = nud_review.Value.ToString();
+                    String date = DateTime.Today.ToString("yyyy-MM-dd");
+
+                    MySqlCommand cmdSong = new MySqlCommand("select id from product where name = @name", koneksi.getConn());
+                    cmdSong.Parameters.AddWithValue("@name", tb_name_review.Text);
+
+                    koneksi.openConn();
+                    String Songid = cmdSong.ExecuteScalar().ToString();
+                    koneksi.closeConn();
+
+                    MySqlCommand cmdID = new MySqlCommand("select cast(id as unsigned)+1 from review_product order by cast(id as unsigned) desc limit 1", koneksi.getConn());
+
+                    koneksi.openConn();
+                    String id = cmdID.ExecuteScalar().ToString();
+                    koneksi.closeConn();
+
+                    try
+                    {
+                        MySqlCommand cmdReview = new MySqlCommand("insert into review_product (id, product_id, member_id, review_date, rating) values (@id, @product, @member, @date, @rating)", koneksi.getConn());
+                        cmdReview.Parameters.AddWithValue("@id", id);
+                        cmdReview.Parameters.AddWithValue("@product", Songid);
+                        cmdReview.Parameters.AddWithValue("@member", member_id);
+                        cmdReview.Parameters.AddWithValue("@date", date);
+                        cmdReview.Parameters.AddWithValue("@rating", rating);
+
+                        koneksi.openConn();
+                        cmdReview.ExecuteNonQuery();
+                        koneksi.closeConn();
+
+                        MessageBox.Show("Review berhasil !");
+                        loadDG_Review();
+                    }
+                    catch (MySqlException ex)
+                    {
+                        loadDG_Review();
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
         }
     }
 }
