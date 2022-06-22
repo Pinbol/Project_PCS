@@ -192,19 +192,19 @@ namespace Project
             this.Song = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelProductFormat = new System.Windows.Forms.Panel();
-            this.btn_clear_format_productFormat = new System.Windows.Forms.Button();
             this.btn_delete_format_productFormat = new System.Windows.Forms.Button();
             this.btn_enter_format_productFormat = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.dg_format_productFormat = new System.Windows.Forms.DataGridView();
+            this.cb_format_productFormat = new System.Windows.Forms.ComboBox();
             this.label43 = new System.Windows.Forms.Label();
-            this.btn_clear_productFormat = new System.Windows.Forms.Button();
-            this.button_update_productFormat = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dg_productFormat = new System.Windows.Forms.DataGridView();
             this.label45 = new System.Windows.Forms.Label();
-            this.Format = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportProdukToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label41 = new System.Windows.Forms.Label();
+            this.tb_harga_productFormat = new System.Windows.Forms.TextBox();
+            this.Format = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.panelStaff.SuspendLayout();
             this.gb_status.SuspendLayout();
@@ -231,8 +231,8 @@ namespace Project
             ((System.ComponentModel.ISupportInitialize)(this.dg_song_productSong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dg_productSong)).BeginInit();
             this.panelProductFormat.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_format_productFormat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_productFormat)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -342,6 +342,7 @@ namespace Project
             this.masterProductSellingToolStripMenuItem.Name = "masterProductSellingToolStripMenuItem";
             this.masterProductSellingToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
             this.masterProductSellingToolStripMenuItem.Text = "Master Product-Format";
+            this.masterProductSellingToolStripMenuItem.Click += new System.EventHandler(this.masterProductSellingToolStripMenuItem_Click);
             // 
             // masterPaymentToolStripMenuItem
             // 
@@ -1917,72 +1918,68 @@ namespace Project
             // 
             // panelProductFormat
             // 
-            this.panelProductFormat.Controls.Add(this.btn_clear_format_productFormat);
+            this.panelProductFormat.Controls.Add(this.tb_harga_productFormat);
+            this.panelProductFormat.Controls.Add(this.label41);
             this.panelProductFormat.Controls.Add(this.btn_delete_format_productFormat);
             this.panelProductFormat.Controls.Add(this.btn_enter_format_productFormat);
-            this.panelProductFormat.Controls.Add(this.dataGridView1);
-            this.panelProductFormat.Controls.Add(this.comboBox2);
+            this.panelProductFormat.Controls.Add(this.dg_format_productFormat);
+            this.panelProductFormat.Controls.Add(this.cb_format_productFormat);
             this.panelProductFormat.Controls.Add(this.label43);
-            this.panelProductFormat.Controls.Add(this.btn_clear_productFormat);
-            this.panelProductFormat.Controls.Add(this.button_update_productFormat);
-            this.panelProductFormat.Controls.Add(this.dataGridView2);
+            this.panelProductFormat.Controls.Add(this.dg_productFormat);
             this.panelProductFormat.Controls.Add(this.label45);
             this.panelProductFormat.Location = new System.Drawing.Point(0, 54);
             this.panelProductFormat.Name = "panelProductFormat";
             this.panelProductFormat.Size = new System.Drawing.Size(880, 541);
             this.panelProductFormat.TabIndex = 32;
             // 
-            // btn_clear_format_productFormat
-            // 
-            this.btn_clear_format_productFormat.Location = new System.Drawing.Point(736, 250);
-            this.btn_clear_format_productFormat.Name = "btn_clear_format_productFormat";
-            this.btn_clear_format_productFormat.Size = new System.Drawing.Size(109, 23);
-            this.btn_clear_format_productFormat.TabIndex = 27;
-            this.btn_clear_format_productFormat.Text = "Clear Format";
-            this.btn_clear_format_productFormat.UseVisualStyleBackColor = true;
-            // 
             // btn_delete_format_productFormat
             // 
-            this.btn_delete_format_productFormat.Location = new System.Drawing.Point(621, 250);
+            this.btn_delete_format_productFormat.Enabled = false;
+            this.btn_delete_format_productFormat.Location = new System.Drawing.Point(621, 279);
             this.btn_delete_format_productFormat.Name = "btn_delete_format_productFormat";
             this.btn_delete_format_productFormat.Size = new System.Drawing.Size(109, 23);
             this.btn_delete_format_productFormat.TabIndex = 26;
             this.btn_delete_format_productFormat.Text = "Delete Format";
             this.btn_delete_format_productFormat.UseVisualStyleBackColor = true;
+            this.btn_delete_format_productFormat.Click += new System.EventHandler(this.btn_delete_format_productFormat_Click);
             // 
             // btn_enter_format_productFormat
             // 
-            this.btn_enter_format_productFormat.Location = new System.Drawing.Point(510, 250);
+            this.btn_enter_format_productFormat.Enabled = false;
+            this.btn_enter_format_productFormat.Location = new System.Drawing.Point(510, 279);
             this.btn_enter_format_productFormat.Name = "btn_enter_format_productFormat";
             this.btn_enter_format_productFormat.Size = new System.Drawing.Size(105, 23);
             this.btn_enter_format_productFormat.TabIndex = 25;
             this.btn_enter_format_productFormat.Text = "Enter Format";
             this.btn_enter_format_productFormat.UseVisualStyleBackColor = true;
+            this.btn_enter_format_productFormat.Click += new System.EventHandler(this.btn_enter_format_productFormat_Click);
             // 
-            // dataGridView1
+            // dg_format_productFormat
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Format});
-            this.dataGridView1.Location = new System.Drawing.Point(510, 34);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(320, 165);
-            this.dataGridView1.TabIndex = 24;
+            this.dg_format_productFormat.AllowUserToAddRows = false;
+            this.dg_format_productFormat.AllowUserToDeleteRows = false;
+            this.dg_format_productFormat.AllowUserToResizeColumns = false;
+            this.dg_format_productFormat.AllowUserToResizeRows = false;
+            this.dg_format_productFormat.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dg_format_productFormat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_format_productFormat.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Format,
+            this.Harga});
+            this.dg_format_productFormat.Location = new System.Drawing.Point(510, 34);
+            this.dg_format_productFormat.Name = "dg_format_productFormat";
+            this.dg_format_productFormat.ReadOnly = true;
+            this.dg_format_productFormat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dg_format_productFormat.Size = new System.Drawing.Size(320, 165);
+            this.dg_format_productFormat.TabIndex = 24;
+            this.dg_format_productFormat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_format_productFormat_CellClick);
             // 
-            // comboBox2
+            // cb_format_productFormat
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(613, 217);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(153, 21);
-            this.comboBox2.TabIndex = 23;
+            this.cb_format_productFormat.FormattingEnabled = true;
+            this.cb_format_productFormat.Location = new System.Drawing.Point(613, 217);
+            this.cb_format_productFormat.Name = "cb_format_productFormat";
+            this.cb_format_productFormat.Size = new System.Drawing.Size(153, 21);
+            this.cb_format_productFormat.TabIndex = 23;
             // 
             // label43
             // 
@@ -1993,39 +1990,21 @@ namespace Project
             this.label43.TabIndex = 22;
             this.label43.Text = "Format :";
             // 
-            // btn_clear_productFormat
+            // dg_productFormat
             // 
-            this.btn_clear_productFormat.Location = new System.Drawing.Point(700, 504);
-            this.btn_clear_productFormat.Name = "btn_clear_productFormat";
-            this.btn_clear_productFormat.Size = new System.Drawing.Size(75, 23);
-            this.btn_clear_productFormat.TabIndex = 15;
-            this.btn_clear_productFormat.Text = "Clear";
-            this.btn_clear_productFormat.UseVisualStyleBackColor = true;
-            // 
-            // button_update_productFormat
-            // 
-            this.button_update_productFormat.Enabled = false;
-            this.button_update_productFormat.Location = new System.Drawing.Point(609, 504);
-            this.button_update_productFormat.Name = "button_update_productFormat";
-            this.button_update_productFormat.Size = new System.Drawing.Size(75, 23);
-            this.button_update_productFormat.TabIndex = 14;
-            this.button_update_productFormat.Text = "Update";
-            this.button_update_productFormat.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AllowUserToResizeColumns = false;
-            this.dataGridView2.AllowUserToResizeRows = false;
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(21, 34);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(441, 289);
-            this.dataGridView2.TabIndex = 1;
+            this.dg_productFormat.AllowUserToAddRows = false;
+            this.dg_productFormat.AllowUserToDeleteRows = false;
+            this.dg_productFormat.AllowUserToResizeColumns = false;
+            this.dg_productFormat.AllowUserToResizeRows = false;
+            this.dg_productFormat.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dg_productFormat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_productFormat.Location = new System.Drawing.Point(21, 34);
+            this.dg_productFormat.Name = "dg_productFormat";
+            this.dg_productFormat.ReadOnly = true;
+            this.dg_productFormat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dg_productFormat.Size = new System.Drawing.Size(441, 289);
+            this.dg_productFormat.TabIndex = 1;
+            this.dg_productFormat.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_productFormat_CellDoubleClick);
             // 
             // label45
             // 
@@ -2036,12 +2015,6 @@ namespace Project
             this.label45.Size = new System.Drawing.Size(164, 16);
             this.label45.TabIndex = 0;
             this.label45.Text = "Master Product Format";
-            // 
-            // Format
-            // 
-            this.Format.HeaderText = "Format";
-            this.Format.Name = "Format";
-            this.Format.ReadOnly = true;
             // 
             // reportToolStripMenuItem
             // 
@@ -2056,6 +2029,34 @@ namespace Project
             this.reportProdukToolStripMenuItem.Name = "reportProdukToolStripMenuItem";
             this.reportProdukToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.reportProdukToolStripMenuItem.Text = "Report Produk";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(507, 250);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(42, 13);
+            this.label41.TabIndex = 27;
+            this.label41.Text = "Harga :";
+            // 
+            // tb_harga_productFormat
+            // 
+            this.tb_harga_productFormat.Location = new System.Drawing.Point(613, 247);
+            this.tb_harga_productFormat.Name = "tb_harga_productFormat";
+            this.tb_harga_productFormat.Size = new System.Drawing.Size(153, 20);
+            this.tb_harga_productFormat.TabIndex = 28;
+            // 
+            // Format
+            // 
+            this.Format.HeaderText = "Format";
+            this.Format.Name = "Format";
+            this.Format.ReadOnly = true;
+            // 
+            // Harga
+            // 
+            this.Harga.HeaderText = "Harga";
+            this.Harga.Name = "Harga";
+            this.Harga.ReadOnly = true;
             // 
             // Form2
             // 
@@ -2120,8 +2121,8 @@ namespace Project
             ((System.ComponentModel.ISupportInitialize)(this.dg_productSong)).EndInit();
             this.panelProductFormat.ResumeLayout(false);
             this.panelProductFormat.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_format_productFormat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_productFormat)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2292,18 +2293,18 @@ namespace Project
         private System.Windows.Forms.DataGridViewTextBoxColumn Song;
         private System.Windows.Forms.DataGridViewTextBoxColumn Length;
         private System.Windows.Forms.Panel panelProductFormat;
-        private System.Windows.Forms.Button btn_clear_format_productFormat;
         private System.Windows.Forms.Button btn_delete_format_productFormat;
         private System.Windows.Forms.Button btn_enter_format_productFormat;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Format;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.DataGridView dg_format_productFormat;
+        private System.Windows.Forms.ComboBox cb_format_productFormat;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Button btn_clear_productFormat;
-        private System.Windows.Forms.Button button_update_productFormat;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dg_productFormat;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportProdukToolStripMenuItem;
+        private System.Windows.Forms.TextBox tb_harga_productFormat;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Format;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Harga;
     }
 }

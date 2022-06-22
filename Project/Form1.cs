@@ -89,7 +89,7 @@ namespace Project
                     if (password.Equals(tbPassword.Text))
                     {
                         this.Hide();
-                        using (FormMember form = new FormMember())
+                        using (FormMember form = new FormMember(tbUsername.Text))
                         {
                             form.ShowDialog();
                         }

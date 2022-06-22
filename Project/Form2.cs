@@ -18,6 +18,7 @@ namespace Project
         public String idGroupMusic;
         public String idSong;
         public String idProductSong;
+        public String idProductFormat;
 
         DataTable dtInternalGroupMusic = new DataTable();
         DataTable dtInternalProductSong = new DataTable();
@@ -27,6 +28,8 @@ namespace Project
 
         public int PersonelGroupMusicIndex;
         public int SongProductSongIndex;
+
+        public String Format_ProductFormat;
 
         public Form2()
         {
@@ -62,6 +65,7 @@ namespace Project
             panelGroupMusic.Visible = false;
             panelSong.Visible = false;
             panelProductSong.Visible = false;
+            panelProductFormat.Visible = false;
 
             refreshDGMembership();
             clearMembership();
@@ -79,6 +83,7 @@ namespace Project
             panelGroupMusic.Visible = false;
             panelSong.Visible = false;
             panelProductSong.Visible = false;
+            panelProductFormat.Visible = false;
 
             refreshDGStaff();
             clearStaff();
@@ -314,6 +319,29 @@ namespace Project
             dg_productSong.DataSource = dt;
         }
 
+        private void refreshDGProductFormat()
+        {
+            dg_productFormat.DataSource = null;
+
+            if (koneksi.getConn().State == ConnectionState.Open)
+            {
+                koneksi.closeConn();
+            }
+
+            DataTable dt = new DataTable();
+            MySqlCommand cmd = new MySqlCommand("SELECT p.`ID` AS 'ID', p.`NAME` AS 'Name'  FROM product p order by cast(p.id as unsigned) asc;", koneksi.getConn());
+            MySqlDataAdapter da = new MySqlDataAdapter();
+
+            koneksi.openConn();
+            cmd.ExecuteReader();
+            koneksi.closeConn();
+
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            dg_productFormat.DataSource = dt;
+        }
+
         private void fillCBPersonel()
         {
             cb_occupation_personel.Items.Clear();
@@ -468,6 +496,32 @@ namespace Project
 
             koneksi.closeConn();
             cb_type_productSong.SelectedIndex = -1;
+        }
+
+        private void fillCBProductFormat()
+        {
+            cb_format_productFormat.Items.Clear();
+
+            if (koneksi.getConn().State == ConnectionState.Open)
+            {
+                koneksi.closeConn();
+            }
+
+            MySqlCommand cmd = new MySqlCommand("SELECT id, name FROM format ORDER BY CAST(id AS UNSIGNED) ASC;", koneksi.getConn());
+
+            koneksi.openConn();
+            MySqlDataReader dr = cmd.ExecuteReader();
+
+            cb_format_productFormat.DisplayMember = "Text";
+            cb_format_productFormat.ValueMember = "Value";
+
+            while (dr.Read())
+            {
+                cb_format_productFormat.Items.Add(new { Text = dr.GetString(1), Value = dr.GetString(0) });
+            }
+
+            koneksi.closeConn();
+            cb_format_productFormat.SelectedIndex = -1;
         }
 
         private Boolean checkCond_personel()
@@ -629,6 +683,34 @@ namespace Project
                 row.Cells["Length"].Value = dr.GetString(2);
 
                 dtInternalProductSong.Rows.Add(dr.GetString(0));
+            }
+
+            koneksi.closeConn();
+        }
+
+        private void fillDGFormatProductFormat()
+        {
+            dg_format_productFormat.Rows.Clear();
+
+            if (koneksi.getConn().State == ConnectionState.Open)
+            {
+                koneksi.closeConn();
+            }
+
+            MySqlCommand cmd = new MySqlCommand("SELECT f.name, fp.price FROM format_product fp, format f  where fp.product_id = @id and fp.format_id = f.id  ORDER BY CAST(fp.id AS UNSIGNED) ASC;", koneksi.getConn());
+            cmd.Parameters.AddWithValue("@id", idProductFormat);
+
+            koneksi.openConn();
+
+            MySqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                int rowID = dg_format_productFormat.Rows.Add();
+
+                DataGridViewRow row = dg_format_productFormat.Rows[rowID];
+
+                row.Cells["Format"].Value = dr.GetString(0);
+                row.Cells["Harga"].Value = dr.GetString(1);
             }
 
             koneksi.closeConn();
@@ -991,6 +1073,7 @@ namespace Project
             panelGroupMusic.Visible = false;
             panelSong.Visible = false;
             panelProductSong.Visible = false;
+            panelProductFormat.Visible = false;
 
             clearPayment();
             refreshDGPayment();
@@ -1127,6 +1210,7 @@ namespace Project
             panelGroupMusic.Visible = false;
             panelSong.Visible = false;
             panelProductSong.Visible = false;
+            panelProductFormat.Visible = false;
 
             clearOccupation();
             refreshDGOccupation();
@@ -1263,6 +1347,7 @@ namespace Project
             panelGroupMusic.Visible = false;
             panelSong.Visible = false;
             panelProductSong.Visible = false;
+            panelProductFormat.Visible = false;
 
             clearGenre();
             refreshDGGenre();
@@ -1399,6 +1484,7 @@ namespace Project
             panelGroupMusic.Visible = false;
             panelSong.Visible = false;
             panelProductSong.Visible = false;
+            panelProductFormat.Visible = false;
 
             clearFormat();
             refreshDGFormat();
@@ -1530,6 +1616,7 @@ namespace Project
             panelGroupMusic.Visible = false;
             panelSong.Visible = false;
             panelProductSong.Visible = false;
+            panelProductFormat.Visible = false;
 
             clearPersonel();
             refreshDGPersonel();
@@ -1697,6 +1784,7 @@ namespace Project
             panelGroupMusic.Visible = true;
             panelSong.Visible = false;
             panelProductSong.Visible = false;
+            panelProductFormat.Visible = false;
 
             clearGroupMusic();
             refreshDGGroupMusic();
@@ -1963,6 +2051,7 @@ namespace Project
             panelGroupMusic.Visible = false;
             panelSong.Visible = true;
             panelProductSong.Visible = false;
+            panelProductFormat.Visible = false;
 
             clearSong();
             refreshDGSong();
@@ -2139,6 +2228,7 @@ namespace Project
             panelGroupMusic.Visible = false;
             panelSong.Visible = false;
             panelProductSong.Visible = true;
+            panelProductFormat.Visible = false;
 
             clearProductSong();
             refreshDGProductSong();
@@ -2414,6 +2504,128 @@ namespace Project
                     }
                 }
                 koneksi.closeConn();
+            }
+        }
+
+        private void masterProductSellingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panelStaff.Visible = false;
+            panelMembership.Visible = false;
+            panelPayment.Visible = false;
+            panelOccupation.Visible = false;
+            panelGenre.Visible = false;
+            panelFormat.Visible = false;
+            panelPersonel.Visible = false;
+            panelGroupMusic.Visible = false;
+            panelSong.Visible = false;
+            panelProductSong.Visible = false;
+            panelProductFormat.Visible = true;
+
+            clearProductFormat();
+            refreshDGProductFormat();
+            fillCBProductFormat();
+        }
+
+        private void clearProductFormat()
+        {
+            cb_format_productFormat.SelectedIndex = -1;
+            tb_harga_productFormat.Text = "";
+
+            btn_enter_format_productFormat.Enabled = false;
+            btn_delete_format_productFormat.Enabled = false;
+
+            dg_format_productFormat.Rows.Clear();
+        }
+
+        private void dg_productFormat_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex!=-1)
+            {
+                idProductFormat = dg_productFormat.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+                fillDGFormatProductFormat();
+
+                btn_enter_format_productFormat.Enabled = true;
+                btn_delete_format_productFormat.Enabled = true;
+            }
+        }
+
+        private void btn_enter_format_productFormat_Click(object sender, EventArgs e)
+        {
+            if (cb_format_productFormat.SelectedIndex == -1) MessageBox.Show("Pilih format produk terlebih dahulu !");
+            else if (tb_harga_productFormat.Text == "") MessageBox.Show("Isi harga produk terlebih dahulu !");
+            else if (!tb_harga_productFormat.Text.All(char.IsDigit)) MessageBox.Show("Harga harus berupa digit !");
+            else
+            {
+                MySqlCommand cmdID = new MySqlCommand();
+                cmdID.CommandText = "SELECT cast(id as unsigned)+1 FROM format_product ORDER BY CAST(id AS UNSIGNED) DESC LIMIT 1;";
+                cmdID.Connection = koneksi.getConn();
+
+                koneksi.openConn();
+                String newID = cmdID.ExecuteScalar().ToString();
+                koneksi.closeConn();
+
+                String format = (cb_format_productFormat.SelectedItem as dynamic).Value;
+                String price = tb_harga_productFormat.Text;
+
+                try
+                {
+                    MySqlCommand cmdInsert = new MySqlCommand("insert into format_product (id,product_id, format_id,stock,price) values (@id,@product,@format,100,@price);", koneksi.getConn());
+
+                    cmdInsert.Parameters.AddWithValue("@id", newID);
+                    cmdInsert.Parameters.AddWithValue("@product", idProductFormat);
+                    cmdInsert.Parameters.AddWithValue("@format", format);
+                    cmdInsert.Parameters.AddWithValue("@price", price);
+
+                    koneksi.openConn();
+                    cmdInsert.ExecuteNonQuery();
+                    koneksi.closeConn();
+
+                    clearProductFormat();
+                    refreshDGProductFormat();
+                    MessageBox.Show("Insert successful !");
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void dg_format_productFormat_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex!=-1)
+            {
+                Format_ProductFormat = dg_format_productFormat.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+        }
+
+        private void btn_delete_format_productFormat_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete this ?", "Confirm Delete", MessageBoxButtons.YesNo);
+
+            if (dr == DialogResult.Yes)
+            {
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand("DELETE fp FROM format_product fp, FORMAT f, product p WHERE f.id = fp.`FORMAT_ID` AND fp.`PRODUCT_ID` = p.`ID` AND p.`ID` = @product AND f.Name = @format;", koneksi.getConn());
+                    cmd.Parameters.AddWithValue("@product", idProductFormat);
+                    cmd.Parameters.AddWithValue("@format", Format_ProductFormat);
+
+                    koneksi.openConn();
+                    cmd.ExecuteNonQuery();
+                    koneksi.closeConn();
+
+                    clearProductFormat();
+                    refreshDGProductFormat();
+
+                    MessageBox.Show("Delete successfull !");
+                }
+                catch (MySqlException ex)
+                {
+                    clearProductFormat();
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }
