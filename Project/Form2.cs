@@ -30,7 +30,7 @@ namespace Project
         public int SongProductSongIndex;
 
         public String Format_ProductFormat;
-
+        
         public Form2()
         {
             InitializeComponent();
@@ -79,6 +79,7 @@ namespace Project
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            //load
             panelStaff.Visible = true;
             panelMembership.Visible = false;
             panelPayment.Visible = false;
