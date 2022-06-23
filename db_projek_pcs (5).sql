@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2022 at 03:39 PM
+-- Generation Time: Jun 23, 2022 at 04:29 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -86,12 +86,12 @@ CREATE TABLE `format_product` (
 --
 
 INSERT INTO `format_product` (`ID`, `PRODUCT_ID`, `FORMAT_ID`, `STOCK`, `PRICE`) VALUES
-('1', '2', '1', 100, 250000),
-('4', '1', '1', 100, 150000),
+('1', '2', '1', 98, 250000),
+('4', '1', '1', 109, 150000),
 ('5', '3', '1', 100, 150000),
-('6', '3', '4', 100, 25000),
+('6', '3', '4', 99, 25000),
 ('7', '1', '4', 100, 25000),
-('8', '2', '4', 100, 75000);
+('8', '2', '4', 99, 75000);
 
 -- --------------------------------------------------------
 
@@ -237,8 +237,9 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`ID`, `NAME`, `USERNAME`, `PASSWORD`, `GENDER`, `ADDRESS`, `DATE_OF_BIRTH`, `MEMBERSHIP_ID`, `MEMBERSHIP_EXP`) VALUES
-('1', 'John Doe', 'John1', 'abc123', 'L', 'Jalan Mawar no. 10, Surabaya, Jawa Timur, Indonesia', '2000-05-12', '1', '2022-08-01'),
-('2', 'Jane Doe', 'Jan1', '123', 'P', 'Jln Melati no 5', '1995-08-19', '1', '2022-09-22');
+('1', 'John Doe', 'John1', 'qwerty', 'L', 'Jalan Mawar no. 10, Surabaya, Jawa Timur, Indonesia', '2000-05-12', '1', '2022-08-01'),
+('2', 'Jane Doe', 'Jan1', '123', 'P', 'Jln Melati no 5', '1995-08-19', '1', '2022-09-23'),
+('3', 'Lorem', 'Lipsum', 'abc', 'L', 'Jalan Unknown no 69', '1991-02-28', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -346,7 +347,11 @@ CREATE TABLE `orderdetails` (
 --
 
 INSERT INTO `orderdetails` (`DETAIL_ID`, `NOTE_NUMBER`, `PRODUCT_ID`, `QUANTITY`, `SUBTOTAL`) VALUES
-('1', 'NOTE20211123001', '1', 2, 100000);
+('1', 'NOTE20211123001', '1', 2, 500000),
+('2', 'NOTE20220623001', '6', 1, 25000),
+('3', 'NOTE20220623001', '8', 1, 75000),
+('4', 'NOTE20220623002', '1', 2, 500000),
+('5', 'NOTE20220623002', '4', 1, 150000);
 
 -- --------------------------------------------------------
 
@@ -370,7 +375,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`NOTE_NUMBER`, `ORDER_DATE`, `MEMBER_ID`, `STAFF_ID`, `STATUS`, `PAYMENT_METHOD`, `TOTAL`) VALUES
-('NOTE20211123001', '2021-11-23', '1', '1', 'DELIVERED', '1', 98000);
+('NOTE20211123001', '2021-11-23', '1', '1', 'DELIVERED', '1', 490000),
+('NOTE20220623001', '2022-06-23', '1', '1', 'DELIVERED', '2', 98000),
+('NOTE20220623002', '2022-06-23', '2', '1', 'DELIVERED', '1', 637000);
 
 --
 -- Triggers `orders`
@@ -389,6 +396,77 @@ CREATE TRIGGER `TR_Orders_1` BEFORE INSERT ON `orders` FOR EACH ROW BEGIN
 		set cut = 100 - cut;
 		
 		set new.total = cut*new.total/100;
+	end if;
+    END
+$$
+DELIMITER ;
+DROP TRIGGER IF EXISTS `TR_Orders_2`;
+DELIMITER $$
+CREATE TRIGGER `TR_Orders_2` BEFORE UPDATE ON `orders` FOR EACH ROW BEGIN
+	declare num int (2) default 0;
+	
+	declare idProduct varchar (10) default '';
+	declare quantity int (11) default 0;
+	
+	declare idPUpdate varchar (10) default '';
+	declare uQuantity int (11) default 0;
+	
+	declare numStock int (11) default 0;
+	
+	DECLARE fin INT (10) DEFAULT 0;
+	
+	declare cond int (1) default 0;
+	
+	DECLARE curOrder CURSOR
+	FOR SELECT od.`PRODUCT_ID`, od.`QUANTITY`
+	FROM orderdetails od where od.`NOTE_NUMBER` = old.`NOTE_NUMBER`;
+	
+	declare curUpdate cursor
+	FOR SELECT od.`PRODUCT_ID`, od.`QUANTITY`
+	FROM orderdetails od WHERE od.`NOTE_NUMBER` = old.`NOTE_NUMBER`;
+	
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET fin = 1;
+	
+	DECLARE EXIT HANDLER FOR SQLSTATE '45000'
+		  BEGIN
+		   RESIGNAL SET MESSAGE_TEXT = 'Stok tidak mencukupi !';
+		  END;
+	
+	if (old.`STATUS` <> new.`STATUS`) then
+		open curOrder;
+		getOrder : Loop
+			fetch curOrder into idProduct, quantity;
+			IF (fin = 1) THEN
+				LEAVE getOrder;
+			END IF;
+			
+			select fp.`STOCK` into numStock from format_product fp
+			where fp.`ID` = idProduct;
+			
+			if numStock>quantity then 
+				set cond = 1;
+			else
+				set cond = 0;
+			end if;
+		end loop;
+		close curOrder;
+		
+		set fin = 0;
+		
+		if cond = 1 then
+			open curUpdate;
+			getUpdate : Loop
+				fetch curUpdate into idPUpdate, uQuantity;
+				if (fin=1) then
+					leave getUpdate;
+				end if;
+				
+				update format_product set stock = stock - uQuantity
+				where id = idPUpdate;
+			end loop;
+		else
+			SIGNAL SQLSTATE '45000';
+		end if;
 	end if;
     END
 $$
@@ -486,9 +564,9 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`ID`, `NAME`, `RELEASE_DATE`, `RATING`, `DESCRIPTION`, `TYPE_ID`) VALUES
-('1', 'High Tide Single', '2022-02-17 00:00:00', 4.8, 'A single composed of High Tide, the second original song of Moona Hoshinova', '1'),
+('1', 'High Tide Single', '2022-02-17 00:00:00', 4.85, 'A single composed of High Tide, the second original song of Moona Hoshinova', '1'),
 ('2', 'Scream', '2022-01-04 00:00:00', 0, 'Tokoyami Towa\'s first EP to be released.', '2'),
-('3', 'KINGWORLD Single', '2022-06-21 00:00:00', 0, 'KINGWORLD is the second single released by Shirakami Fubuki', '1');
+('3', 'KINGWORLD Single', '2022-06-21 00:00:00', 4.8, 'KINGWORLD is the second single released by Shirakami Fubuki', '1');
 
 -- --------------------------------------------------------
 
@@ -537,7 +615,22 @@ CREATE TABLE `review_product` (
 --
 
 INSERT INTO `review_product` (`ID`, `PRODUCT_ID`, `MEMBER_ID`, `REVIEW_DATE`, `RATING`) VALUES
-('1', '1', '1', '2022-04-29', 4.8);
+('1', '1', '1', '2022-04-29', 4.8),
+('2', '1', '2', '2022-06-23', 4.9),
+('3', '3', '2', '2022-06-23', 4.8);
+
+--
+-- Triggers `review_product`
+--
+DROP TRIGGER IF EXISTS `TR_reviewProduct_1`;
+DELIMITER $$
+CREATE TRIGGER `TR_reviewProduct_1` AFTER INSERT ON `review_product` FOR EACH ROW BEGIN
+	UPDATE product
+	SET `RATING` = (SELECT AVG(r.`RATING`) FROM review_product r, product p WHERE r.`PRODUCT_ID` = p.id AND r.`PRODUCT_ID` = new.`PRODUCT_ID`)
+	WHERE product.`ID` = new.`PRODUCT_ID`;
+    END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -559,7 +652,21 @@ CREATE TABLE `review_song` (
 --
 
 INSERT INTO `review_song` (`ID`, `SONG_ID`, `MEMBER_ID`, `REVIEW_DATE`, `RATING`) VALUES
-('1', '1', '1', '2022-04-20', 4.8);
+('1', '1', '1', '2022-04-20', 4.8),
+('2', '2', '1', '2022-06-23', 4.8);
+
+--
+-- Triggers `review_song`
+--
+DROP TRIGGER IF EXISTS `TR_reviewSong_1`;
+DELIMITER $$
+CREATE TRIGGER `TR_reviewSong_1` AFTER INSERT ON `review_song` FOR EACH ROW BEGIN
+	UPDATE songs
+	SET `RATING` = (SELECT AVG(r.`RATING`) FROM review_song r, songs s WHERE r.`SONG_ID` = s.id AND r.`SONG_ID` = new.`SONG_ID`)
+	WHERE songs.`ID` = new.`SONG_ID`;
+    END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -599,7 +706,7 @@ CREATE TABLE `songs` (
 
 INSERT INTO `songs` (`ID`, `NAME`, `RELEASE_DATE`, `GROUP_ID`, `GENRE_ID`, `LENGTH`, `DESCRIPTION`, `RATING`) VALUES
 ('1', 'High Tide', '2022-02-17 00:00:00', '1', '4', 202, 'Second original song from Moona Hoshinova, with heavy tone of a LoL song in it.', 4.8),
-('2', 'Akuma', '2022-01-03 00:00:00', '2', '4', 209, 'The first track in Towa\'s first EP, Scream', 0),
+('2', 'Akuma', '2022-01-03 00:00:00', '2', '4', 209, 'The first track in Towa\'s first EP, Scream', 4.8),
 ('3', 'Midnight Runaway', '2022-01-03 00:00:00', '3', '4', 209, 'The second track in Towa\'s first EP, Scream.', 0),
 ('4', 'Pallete', '2021-02-17 00:00:00', '4', '4', 215, 'Tokoyami Towa\'s first original song.', 0),
 ('5', 'Fact', '2022-01-03 00:00:00', '4', '4', 195, 'Tokoyami Towa\'s second original song to be made MV.', 0),

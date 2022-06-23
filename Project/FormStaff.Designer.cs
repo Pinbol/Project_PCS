@@ -29,206 +29,274 @@ namespace Project
         /// </summary>
         private void InitializeComponent()
         {
-            this.TB_ID = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.TB_NAME = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.TB_PASSWORD = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.TB_USERNAME = new System.Windows.Forms.TextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.registerMemberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restockProdukToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.membershipMemberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.orderMemberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelRegister = new System.Windows.Forms.Panel();
+            this.checkBox_Female = new System.Windows.Forms.CheckBox();
+            this.checkBoxMale = new System.Windows.Forms.CheckBox();
+            this.dateTimePicker_DateOfBirth = new System.Windows.Forms.DateTimePicker();
+            this.btnDaftarMember = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.TB_ADDRESS = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.btnDaftarMember = new System.Windows.Forms.Button();
-            this.dateTimePicker_DateOfBirth = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker_MembershippEXP = new System.Windows.Forms.DateTimePicker();
-            this.checkBoxMale = new System.Windows.Forms.CheckBox();
-            this.checkBox_Female = new System.Windows.Forms.CheckBox();
-            this.TB_MEMBERSHIP_ID = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.TB_PASSWORD = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.TB_USERNAME = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.TB_NAME = new System.Windows.Forms.TextBox();
+            this.panelRestock = new System.Windows.Forms.Panel();
             this.button_insertProduct = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.TB_QUANTITY = new System.Windows.Forms.TextBox();
+            this.btn_logout = new System.Windows.Forms.Button();
+            this.label_staff = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cb_membership_register = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox_ID_RESTOK_PRODUK = new System.Windows.Forms.TextBox();
+            this.cb_produk_restock = new System.Windows.Forms.ComboBox();
+            this.panelMembership = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dg_membership = new System.Windows.Forms.DataGridView();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tb_nama_update = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cb_membership_update = new System.Windows.Forms.ComboBox();
+            this.btn_membership = new System.Windows.Forms.Button();
+            this.panelOrder = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dg_order = new System.Windows.Forms.DataGridView();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tb_noteNumber_order = new System.Windows.Forms.TextBox();
+            this.btn_deliver_order = new System.Windows.Forms.Button();
+            this.menuStrip1.SuspendLayout();
+            this.panelRegister.SuspendLayout();
+            this.panelRestock.SuspendLayout();
+            this.panelMembership.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_membership)).BeginInit();
+            this.panelOrder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_order)).BeginInit();
             this.SuspendLayout();
             // 
-            // TB_ID
+            // menuStrip1
             // 
-            this.TB_ID.Location = new System.Drawing.Point(147, 28);
-            this.TB_ID.Name = "TB_ID";
-            this.TB_ID.Size = new System.Drawing.Size(200, 20);
-            this.TB_ID.TabIndex = 1;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.registerMemberToolStripMenuItem,
+            this.restockProdukToolStripMenuItem,
+            this.membershipMemberToolStripMenuItem,
+            this.orderMemberToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 41;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // label2
+            // registerMemberToolStripMenuItem
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 35);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(18, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "ID";
+            this.registerMemberToolStripMenuItem.Name = "registerMemberToolStripMenuItem";
+            this.registerMemberToolStripMenuItem.Size = new System.Drawing.Size(109, 20);
+            this.registerMemberToolStripMenuItem.Text = "Register Member";
+            this.registerMemberToolStripMenuItem.Click += new System.EventHandler(this.registerMemberToolStripMenuItem_Click);
             // 
-            // label1
+            // restockProdukToolStripMenuItem
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 61);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "NAME";
+            this.restockProdukToolStripMenuItem.Name = "restockProdukToolStripMenuItem";
+            this.restockProdukToolStripMenuItem.Size = new System.Drawing.Size(101, 20);
+            this.restockProdukToolStripMenuItem.Text = "Restock Produk";
+            this.restockProdukToolStripMenuItem.Click += new System.EventHandler(this.restockProdukToolStripMenuItem_Click);
             // 
-            // TB_NAME
+            // membershipMemberToolStripMenuItem
             // 
-            this.TB_NAME.Location = new System.Drawing.Point(147, 54);
-            this.TB_NAME.Name = "TB_NAME";
-            this.TB_NAME.Size = new System.Drawing.Size(200, 20);
-            this.TB_NAME.TabIndex = 3;
+            this.membershipMemberToolStripMenuItem.Name = "membershipMemberToolStripMenuItem";
+            this.membershipMemberToolStripMenuItem.Size = new System.Drawing.Size(134, 20);
+            this.membershipMemberToolStripMenuItem.Text = "Membership Member";
+            this.membershipMemberToolStripMenuItem.Click += new System.EventHandler(this.membershipMemberToolStripMenuItem_Click);
             // 
-            // label3
+            // orderMemberToolStripMenuItem
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(28, 113);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "PASSWORD";
+            this.orderMemberToolStripMenuItem.Name = "orderMemberToolStripMenuItem";
+            this.orderMemberToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
+            this.orderMemberToolStripMenuItem.Text = "Order Member";
+            this.orderMemberToolStripMenuItem.Click += new System.EventHandler(this.orderMemberToolStripMenuItem_Click);
             // 
-            // TB_PASSWORD
+            // panelRegister
             // 
-            this.TB_PASSWORD.Location = new System.Drawing.Point(147, 106);
-            this.TB_PASSWORD.Name = "TB_PASSWORD";
-            this.TB_PASSWORD.Size = new System.Drawing.Size(200, 20);
-            this.TB_PASSWORD.TabIndex = 7;
+            this.panelRegister.Controls.Add(this.label10);
+            this.panelRegister.Controls.Add(this.cb_membership_register);
+            this.panelRegister.Controls.Add(this.checkBox_Female);
+            this.panelRegister.Controls.Add(this.checkBoxMale);
+            this.panelRegister.Controls.Add(this.dateTimePicker_DateOfBirth);
+            this.panelRegister.Controls.Add(this.btnDaftarMember);
+            this.panelRegister.Controls.Add(this.label5);
+            this.panelRegister.Controls.Add(this.label6);
+            this.panelRegister.Controls.Add(this.label7);
+            this.panelRegister.Controls.Add(this.TB_ADDRESS);
+            this.panelRegister.Controls.Add(this.label8);
+            this.panelRegister.Controls.Add(this.label3);
+            this.panelRegister.Controls.Add(this.TB_PASSWORD);
+            this.panelRegister.Controls.Add(this.label4);
+            this.panelRegister.Controls.Add(this.TB_USERNAME);
+            this.panelRegister.Controls.Add(this.label1);
+            this.panelRegister.Controls.Add(this.TB_NAME);
+            this.panelRegister.Location = new System.Drawing.Point(0, 69);
+            this.panelRegister.Name = "panelRegister";
+            this.panelRegister.Size = new System.Drawing.Size(800, 480);
+            this.panelRegister.TabIndex = 42;
             // 
-            // label4
+            // checkBox_Female
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(28, 87);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "USERNAME";
+            this.checkBox_Female.AutoSize = true;
+            this.checkBox_Female.Location = new System.Drawing.Point(192, 122);
+            this.checkBox_Female.Name = "checkBox_Female";
+            this.checkBox_Female.Size = new System.Drawing.Size(68, 17);
+            this.checkBox_Female.TabIndex = 44;
+            this.checkBox_Female.Text = "FEMALE";
+            this.checkBox_Female.UseVisualStyleBackColor = true;
             // 
-            // TB_USERNAME
+            // checkBoxMale
             // 
-            this.TB_USERNAME.Location = new System.Drawing.Point(147, 80);
-            this.TB_USERNAME.Name = "TB_USERNAME";
-            this.TB_USERNAME.Size = new System.Drawing.Size(200, 20);
-            this.TB_USERNAME.TabIndex = 5;
+            this.checkBoxMale.AutoSize = true;
+            this.checkBoxMale.Location = new System.Drawing.Point(131, 122);
+            this.checkBoxMale.Name = "checkBoxMale";
+            this.checkBoxMale.Size = new System.Drawing.Size(55, 17);
+            this.checkBoxMale.TabIndex = 43;
+            this.checkBoxMale.Text = "MALE";
+            this.checkBoxMale.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker_DateOfBirth
+            // 
+            this.dateTimePicker_DateOfBirth.Location = new System.Drawing.Point(131, 175);
+            this.dateTimePicker_DateOfBirth.Name = "dateTimePicker_DateOfBirth";
+            this.dateTimePicker_DateOfBirth.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker_DateOfBirth.TabIndex = 41;
+            // 
+            // btnDaftarMember
+            // 
+            this.btnDaftarMember.Location = new System.Drawing.Point(256, 234);
+            this.btnDaftarMember.Name = "btnDaftarMember";
+            this.btnDaftarMember.Size = new System.Drawing.Size(75, 23);
+            this.btnDaftarMember.TabIndex = 40;
+            this.btnDaftarMember.Text = "DAFTAR";
+            this.btnDaftarMember.UseVisualStyleBackColor = true;
+            this.btnDaftarMember.Click += new System.EventHandler(this.btnDaftarMember_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(28, 217);
+            this.label5.Location = new System.Drawing.Point(12, 201);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 13);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "MEMBERSHIP ID";
+            this.label5.Size = new System.Drawing.Size(79, 13);
+            this.label5.TabIndex = 38;
+            this.label5.Text = "MEMBERSHIP";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(28, 191);
+            this.label6.Location = new System.Drawing.Point(12, 175);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(89, 13);
-            this.label6.TabIndex = 14;
+            this.label6.TabIndex = 37;
             this.label6.Text = "DATE OF BIRTH";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(28, 165);
+            this.label7.Location = new System.Drawing.Point(12, 149);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(59, 13);
-            this.label7.TabIndex = 12;
+            this.label7.TabIndex = 36;
             this.label7.Text = "ADDRESS";
             // 
             // TB_ADDRESS
             // 
-            this.TB_ADDRESS.Location = new System.Drawing.Point(147, 162);
+            this.TB_ADDRESS.Location = new System.Drawing.Point(131, 146);
             this.TB_ADDRESS.Name = "TB_ADDRESS";
             this.TB_ADDRESS.Size = new System.Drawing.Size(200, 20);
-            this.TB_ADDRESS.TabIndex = 11;
+            this.TB_ADDRESS.TabIndex = 35;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(28, 139);
+            this.label8.Location = new System.Drawing.Point(12, 123);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 13);
-            this.label8.TabIndex = 10;
+            this.label8.TabIndex = 34;
             this.label8.Text = "GENDER";
             // 
-            // label9
+            // label3
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(28, 243);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(103, 13);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "MEMBERSHIP EXP";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 97);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 13);
+            this.label3.TabIndex = 33;
+            this.label3.Text = "PASSWORD";
             // 
-            // btnDaftarMember
+            // TB_PASSWORD
             // 
-            this.btnDaftarMember.Location = new System.Drawing.Point(61, 280);
-            this.btnDaftarMember.Name = "btnDaftarMember";
-            this.btnDaftarMember.Size = new System.Drawing.Size(75, 23);
-            this.btnDaftarMember.TabIndex = 19;
-            this.btnDaftarMember.Text = "DAFTAR";
-            this.btnDaftarMember.UseVisualStyleBackColor = true;
-            this.btnDaftarMember.Click += new System.EventHandler(this.btnDaftarMember_Click);
+            this.TB_PASSWORD.Location = new System.Drawing.Point(131, 90);
+            this.TB_PASSWORD.Name = "TB_PASSWORD";
+            this.TB_PASSWORD.PasswordChar = '*';
+            this.TB_PASSWORD.Size = new System.Drawing.Size(200, 20);
+            this.TB_PASSWORD.TabIndex = 32;
             // 
-            // dateTimePicker_DateOfBirth
+            // label4
             // 
-            this.dateTimePicker_DateOfBirth.Location = new System.Drawing.Point(147, 191);
-            this.dateTimePicker_DateOfBirth.Name = "dateTimePicker_DateOfBirth";
-            this.dateTimePicker_DateOfBirth.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker_DateOfBirth.TabIndex = 20;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 71);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 13);
+            this.label4.TabIndex = 31;
+            this.label4.Text = "USERNAME";
             // 
-            // dateTimePicker_MembershippEXP
+            // TB_USERNAME
             // 
-            this.dateTimePicker_MembershippEXP.Location = new System.Drawing.Point(147, 243);
-            this.dateTimePicker_MembershippEXP.Name = "dateTimePicker_MembershippEXP";
-            this.dateTimePicker_MembershippEXP.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker_MembershippEXP.TabIndex = 21;
+            this.TB_USERNAME.Location = new System.Drawing.Point(131, 64);
+            this.TB_USERNAME.Name = "TB_USERNAME";
+            this.TB_USERNAME.Size = new System.Drawing.Size(200, 20);
+            this.TB_USERNAME.TabIndex = 30;
             // 
-            // checkBoxMale
+            // label1
             // 
-            this.checkBoxMale.AutoSize = true;
-            this.checkBoxMale.Location = new System.Drawing.Point(147, 138);
-            this.checkBoxMale.Name = "checkBoxMale";
-            this.checkBoxMale.Size = new System.Drawing.Size(55, 17);
-            this.checkBoxMale.TabIndex = 23;
-            this.checkBoxMale.Text = "MALE";
-            this.checkBoxMale.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 45);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "NAME";
             // 
-            // checkBox_Female
+            // TB_NAME
             // 
-            this.checkBox_Female.AutoSize = true;
-            this.checkBox_Female.Location = new System.Drawing.Point(201, 139);
-            this.checkBox_Female.Name = "checkBox_Female";
-            this.checkBox_Female.Size = new System.Drawing.Size(68, 17);
-            this.checkBox_Female.TabIndex = 24;
-            this.checkBox_Female.Text = "FEMALE";
-            this.checkBox_Female.UseVisualStyleBackColor = true;
+            this.TB_NAME.Location = new System.Drawing.Point(131, 38);
+            this.TB_NAME.Name = "TB_NAME";
+            this.TB_NAME.Size = new System.Drawing.Size(200, 20);
+            this.TB_NAME.TabIndex = 28;
             // 
-            // TB_MEMBERSHIP_ID
+            // panelRestock
             // 
-            this.TB_MEMBERSHIP_ID.Location = new System.Drawing.Point(147, 217);
-            this.TB_MEMBERSHIP_ID.Name = "TB_MEMBERSHIP_ID";
-            this.TB_MEMBERSHIP_ID.Size = new System.Drawing.Size(200, 20);
-            this.TB_MEMBERSHIP_ID.TabIndex = 25;
+            this.panelRestock.Controls.Add(this.cb_produk_restock);
+            this.panelRestock.Controls.Add(this.button_insertProduct);
+            this.panelRestock.Controls.Add(this.label2);
+            this.panelRestock.Controls.Add(this.label18);
+            this.panelRestock.Controls.Add(this.label17);
+            this.panelRestock.Controls.Add(this.TB_QUANTITY);
+            this.panelRestock.Location = new System.Drawing.Point(0, 69);
+            this.panelRestock.Name = "panelRestock";
+            this.panelRestock.Size = new System.Drawing.Size(800, 480);
+            this.panelRestock.TabIndex = 43;
             // 
             // button_insertProduct
             // 
-            this.button_insertProduct.Location = new System.Drawing.Point(491, 87);
+            this.button_insertProduct.Location = new System.Drawing.Point(167, 97);
             this.button_insertProduct.Name = "button_insertProduct";
             this.button_insertProduct.Size = new System.Drawing.Size(164, 23);
-            this.button_insertProduct.TabIndex = 40;
+            this.button_insertProduct.TabIndex = 48;
             this.button_insertProduct.Text = "RESTOCK PRODUCT";
             this.button_insertProduct.UseVisualStyleBackColor = true;
             this.button_insertProduct.Click += new System.EventHandler(this.button_insertProduct_Click);
@@ -236,99 +304,312 @@ namespace Project
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(452, 61);
+            this.label17.Location = new System.Drawing.Point(12, 78);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(62, 13);
-            this.label17.TabIndex = 29;
+            this.label17.TabIndex = 47;
             this.label17.Text = "QUANTITY";
             // 
             // TB_QUANTITY
             // 
-            this.TB_QUANTITY.Location = new System.Drawing.Point(571, 54);
+            this.TB_QUANTITY.Location = new System.Drawing.Point(131, 71);
             this.TB_QUANTITY.Name = "TB_QUANTITY";
             this.TB_QUANTITY.Size = new System.Drawing.Size(200, 20);
-            this.TB_QUANTITY.TabIndex = 28;
+            this.TB_QUANTITY.TabIndex = 46;
+            // 
+            // btn_logout
+            // 
+            this.btn_logout.Location = new System.Drawing.Point(713, 27);
+            this.btn_logout.Name = "btn_logout";
+            this.btn_logout.Size = new System.Drawing.Size(75, 23);
+            this.btn_logout.TabIndex = 44;
+            this.btn_logout.Text = "Log Out";
+            this.btn_logout.UseVisualStyleBackColor = true;
+            this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
+            // 
+            // label_staff
+            // 
+            this.label_staff.AutoSize = true;
+            this.label_staff.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_staff.Location = new System.Drawing.Point(11, 27);
+            this.label_staff.Name = "label_staff";
+            this.label_staff.Size = new System.Drawing.Size(49, 24);
+            this.label_staff.TabIndex = 45;
+            this.label_staff.Text = "Staff";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(12, 12);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(127, 16);
+            this.label10.TabIndex = 46;
+            this.label10.Text = "Register Member";
+            // 
+            // cb_membership_register
+            // 
+            this.cb_membership_register.FormattingEnabled = true;
+            this.cb_membership_register.Location = new System.Drawing.Point(131, 198);
+            this.cb_membership_register.Name = "cb_membership_register";
+            this.cb_membership_register.Size = new System.Drawing.Size(200, 21);
+            this.cb_membership_register.TabIndex = 47;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(118, 16);
+            this.label2.TabIndex = 47;
+            this.label2.Text = "Restock Produk";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(452, 35);
+            this.label18.Location = new System.Drawing.Point(12, 52);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(18, 13);
-            this.label18.TabIndex = 27;
-            this.label18.Text = "ID";
+            this.label18.Size = new System.Drawing.Size(53, 13);
+            this.label18.TabIndex = 45;
+            this.label18.Text = "PRODUK";
             // 
-            // textBox_ID_RESTOK_PRODUK
+            // cb_produk_restock
             // 
-            this.textBox_ID_RESTOK_PRODUK.Location = new System.Drawing.Point(571, 28);
-            this.textBox_ID_RESTOK_PRODUK.Name = "textBox_ID_RESTOK_PRODUK";
-            this.textBox_ID_RESTOK_PRODUK.Size = new System.Drawing.Size(200, 20);
-            this.textBox_ID_RESTOK_PRODUK.TabIndex = 26;
+            this.cb_produk_restock.FormattingEnabled = true;
+            this.cb_produk_restock.Location = new System.Drawing.Point(131, 44);
+            this.cb_produk_restock.Name = "cb_produk_restock";
+            this.cb_produk_restock.Size = new System.Drawing.Size(200, 21);
+            this.cb_produk_restock.TabIndex = 49;
+            // 
+            // panelMembership
+            // 
+            this.panelMembership.Controls.Add(this.btn_membership);
+            this.panelMembership.Controls.Add(this.cb_membership_update);
+            this.panelMembership.Controls.Add(this.label12);
+            this.panelMembership.Controls.Add(this.tb_nama_update);
+            this.panelMembership.Controls.Add(this.label11);
+            this.panelMembership.Controls.Add(this.dg_membership);
+            this.panelMembership.Controls.Add(this.label9);
+            this.panelMembership.Location = new System.Drawing.Point(0, 69);
+            this.panelMembership.Name = "panelMembership";
+            this.panelMembership.Size = new System.Drawing.Size(800, 480);
+            this.panelMembership.TabIndex = 46;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(12, 12);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(153, 16);
+            this.label9.TabIndex = 48;
+            this.label9.Text = "Membership Member";
+            // 
+            // dg_membership
+            // 
+            this.dg_membership.AllowUserToAddRows = false;
+            this.dg_membership.AllowUserToDeleteRows = false;
+            this.dg_membership.AllowUserToResizeColumns = false;
+            this.dg_membership.AllowUserToResizeRows = false;
+            this.dg_membership.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dg_membership.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_membership.Location = new System.Drawing.Point(0, 38);
+            this.dg_membership.Name = "dg_membership";
+            this.dg_membership.ReadOnly = true;
+            this.dg_membership.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dg_membership.Size = new System.Drawing.Size(800, 319);
+            this.dg_membership.TabIndex = 49;
+            this.dg_membership.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_membership_CellDoubleClick);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(12, 375);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(41, 13);
+            this.label11.TabIndex = 50;
+            this.label11.Text = "Nama :";
+            // 
+            // tb_nama_update
+            // 
+            this.tb_nama_update.Location = new System.Drawing.Point(108, 372);
+            this.tb_nama_update.Name = "tb_nama_update";
+            this.tb_nama_update.ReadOnly = true;
+            this.tb_nama_update.Size = new System.Drawing.Size(152, 20);
+            this.tb_nama_update.TabIndex = 51;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(12, 401);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(70, 13);
+            this.label12.TabIndex = 52;
+            this.label12.Text = "Membership :";
+            // 
+            // cb_membership_update
+            // 
+            this.cb_membership_update.FormattingEnabled = true;
+            this.cb_membership_update.Location = new System.Drawing.Point(108, 398);
+            this.cb_membership_update.Name = "cb_membership_update";
+            this.cb_membership_update.Size = new System.Drawing.Size(152, 21);
+            this.cb_membership_update.TabIndex = 53;
+            // 
+            // btn_membership
+            // 
+            this.btn_membership.Location = new System.Drawing.Point(133, 434);
+            this.btn_membership.Name = "btn_membership";
+            this.btn_membership.Size = new System.Drawing.Size(127, 23);
+            this.btn_membership.TabIndex = 54;
+            this.btn_membership.Text = "Update Membership";
+            this.btn_membership.UseVisualStyleBackColor = true;
+            this.btn_membership.Click += new System.EventHandler(this.btn_membership_Click);
+            // 
+            // panelOrder
+            // 
+            this.panelOrder.Controls.Add(this.btn_deliver_order);
+            this.panelOrder.Controls.Add(this.tb_noteNumber_order);
+            this.panelOrder.Controls.Add(this.label14);
+            this.panelOrder.Controls.Add(this.dg_order);
+            this.panelOrder.Controls.Add(this.label13);
+            this.panelOrder.Location = new System.Drawing.Point(0, 69);
+            this.panelOrder.Name = "panelOrder";
+            this.panelOrder.Size = new System.Drawing.Size(800, 480);
+            this.panelOrder.TabIndex = 47;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(12, 12);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(75, 16);
+            this.label13.TabIndex = 49;
+            this.label13.Text = "Order List";
+            // 
+            // dg_order
+            // 
+            this.dg_order.AllowUserToAddRows = false;
+            this.dg_order.AllowUserToDeleteRows = false;
+            this.dg_order.AllowUserToResizeColumns = false;
+            this.dg_order.AllowUserToResizeRows = false;
+            this.dg_order.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dg_order.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_order.Location = new System.Drawing.Point(0, 31);
+            this.dg_order.Name = "dg_order";
+            this.dg_order.ReadOnly = true;
+            this.dg_order.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dg_order.Size = new System.Drawing.Size(800, 367);
+            this.dg_order.TabIndex = 50;
+            this.dg_order.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_order_CellDoubleClick);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(12, 414);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(76, 13);
+            this.label14.TabIndex = 51;
+            this.label14.Text = "Note Number :";
+            // 
+            // tb_noteNumber_order
+            // 
+            this.tb_noteNumber_order.Location = new System.Drawing.Point(108, 411);
+            this.tb_noteNumber_order.Name = "tb_noteNumber_order";
+            this.tb_noteNumber_order.ReadOnly = true;
+            this.tb_noteNumber_order.Size = new System.Drawing.Size(152, 20);
+            this.tb_noteNumber_order.TabIndex = 52;
+            // 
+            // btn_deliver_order
+            // 
+            this.btn_deliver_order.Location = new System.Drawing.Point(531, 409);
+            this.btn_deliver_order.Name = "btn_deliver_order";
+            this.btn_deliver_order.Size = new System.Drawing.Size(75, 23);
+            this.btn_deliver_order.TabIndex = 53;
+            this.btn_deliver_order.Text = "Deliver";
+            this.btn_deliver_order.UseVisualStyleBackColor = true;
+            this.btn_deliver_order.Click += new System.EventHandler(this.btn_deliver_order_Click);
             // 
             // FormStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button_insertProduct);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.TB_QUANTITY);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.textBox_ID_RESTOK_PRODUK);
-            this.Controls.Add(this.TB_MEMBERSHIP_ID);
-            this.Controls.Add(this.checkBox_Female);
-            this.Controls.Add(this.checkBoxMale);
-            this.Controls.Add(this.dateTimePicker_MembershippEXP);
-            this.Controls.Add(this.dateTimePicker_DateOfBirth);
-            this.Controls.Add(this.btnDaftarMember);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.TB_ADDRESS);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.TB_PASSWORD);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.TB_USERNAME);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.TB_NAME);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.TB_ID);
+            this.ClientSize = new System.Drawing.Size(800, 552);
+            this.Controls.Add(this.panelOrder);
+            this.Controls.Add(this.panelMembership);
+            this.Controls.Add(this.label_staff);
+            this.Controls.Add(this.btn_logout);
+            this.Controls.Add(this.panelRestock);
+            this.Controls.Add(this.panelRegister);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormStaff";
             this.Text = "FormStaff";
             this.Load += new System.EventHandler(this.FormStaff_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.panelRegister.ResumeLayout(false);
+            this.panelRegister.PerformLayout();
+            this.panelRestock.ResumeLayout(false);
+            this.panelRestock.PerformLayout();
+            this.panelMembership.ResumeLayout(false);
+            this.panelMembership.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_membership)).EndInit();
+            this.panelOrder.ResumeLayout(false);
+            this.panelOrder.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_order)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox TB_ID;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox TB_NAME;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox TB_PASSWORD;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox TB_USERNAME;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem registerMemberToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem restockProdukToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem membershipMemberToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem orderMemberToolStripMenuItem;
+        private System.Windows.Forms.Panel panelRegister;
+        private System.Windows.Forms.CheckBox checkBox_Female;
+        private System.Windows.Forms.CheckBox checkBoxMale;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_DateOfBirth;
+        private System.Windows.Forms.Button btnDaftarMember;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox TB_ADDRESS;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button btnDaftarMember;
-        private System.Windows.Forms.DateTimePicker dateTimePicker_DateOfBirth;
-        private System.Windows.Forms.DateTimePicker dateTimePicker_MembershippEXP;
-        private System.Windows.Forms.CheckBox checkBoxMale;
-        private System.Windows.Forms.CheckBox checkBox_Female;
-        private System.Windows.Forms.TextBox TB_MEMBERSHIP_ID;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox TB_PASSWORD;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox TB_USERNAME;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox TB_NAME;
+        private System.Windows.Forms.Panel panelRestock;
         private System.Windows.Forms.Button button_insertProduct;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox TB_QUANTITY;
+        private System.Windows.Forms.Button btn_logout;
+        private System.Windows.Forms.Label label_staff;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cb_membership_register;
+        private System.Windows.Forms.ComboBox cb_produk_restock;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox_ID_RESTOK_PRODUK;
+        private System.Windows.Forms.Panel panelMembership;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DataGridView dg_membership;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btn_membership;
+        private System.Windows.Forms.ComboBox cb_membership_update;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox tb_nama_update;
+        private System.Windows.Forms.Panel panelOrder;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DataGridView dg_order;
+        private System.Windows.Forms.Button btn_deliver_order;
+        private System.Windows.Forms.TextBox tb_noteNumber_order;
+        private System.Windows.Forms.Label label14;
     }
 }

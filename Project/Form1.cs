@@ -60,7 +60,7 @@ namespace Project
                     if (password.Equals(tbPassword.Text))
                     {
                         this.Hide();
-                        using (FormStaff form = new FormStaff())
+                        using (FormStaff form = new FormStaff(tbUsername.Text))
                         {
                             form.ShowDialog();
                         }
