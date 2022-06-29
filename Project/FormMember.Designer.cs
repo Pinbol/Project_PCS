@@ -33,6 +33,7 @@ namespace Project
             this.BeliBarangToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ReviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateBiodataToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.historyPembelianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tb_Nama = new System.Windows.Forms.TextBox();
@@ -63,26 +64,29 @@ namespace Project
             this.dg_Produk = new System.Windows.Forms.DataGridView();
             this.btn_LogOut = new System.Windows.Forms.Button();
             this.panelBiodata = new System.Windows.Forms.Panel();
-            this.labelNama_Biodata = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.labelUsername_Biodata = new System.Windows.Forms.Label();
-            this.labelAlamat_Biodata = new System.Windows.Forms.Label();
-            this.labelJK_Biodata = new System.Windows.Forms.Label();
-            this.labelTanggalLahir_Biodata = new System.Windows.Forms.Label();
             this.btn_update_biodata = new System.Windows.Forms.Button();
+            this.labelTanggalLahir_Biodata = new System.Windows.Forms.Label();
+            this.labelJK_Biodata = new System.Windows.Forms.Label();
+            this.labelAlamat_Biodata = new System.Windows.Forms.Label();
+            this.labelUsername_Biodata = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.labelNama_Biodata = new System.Windows.Forms.Label();
             this.panelReview = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.dg_review = new System.Windows.Forms.DataGridView();
-            this.label13 = new System.Windows.Forms.Label();
-            this.nud_review = new System.Windows.Forms.NumericUpDown();
-            this.btn_review = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.tb_name_review = new System.Windows.Forms.TextBox();
             this.tb_type_review = new System.Windows.Forms.TextBox();
-            this.historyPembelianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tb_name_review = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.btn_review = new System.Windows.Forms.Button();
+            this.nud_review = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dg_review = new System.Windows.Forms.DataGridView();
+            this.label12 = new System.Windows.Forms.Label();
             this.panelHistory = new System.Windows.Forms.Panel();
             this.crv_history = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.tb_Lagu = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.btn_clear_search = new System.Windows.Forms.Button();
+            this.btn_lihatLagu = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Jumlah)).BeginInit();
@@ -90,8 +94,8 @@ namespace Project
             ((System.ComponentModel.ISupportInitialize)(this.dg_Produk)).BeginInit();
             this.panelBiodata.SuspendLayout();
             this.panelReview.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_review)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_review)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_review)).BeginInit();
             this.panelHistory.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,6 +135,13 @@ namespace Project
             this.updateBiodataToolStripMenuItem1.Text = "Biodata";
             this.updateBiodataToolStripMenuItem1.Click += new System.EventHandler(this.updateBiodataToolStripMenuItem1_Click);
             // 
+            // historyPembelianToolStripMenuItem
+            // 
+            this.historyPembelianToolStripMenuItem.Name = "historyPembelianToolStripMenuItem";
+            this.historyPembelianToolStripMenuItem.Size = new System.Drawing.Size(116, 20);
+            this.historyPembelianToolStripMenuItem.Text = "History Pembelian";
+            this.historyPembelianToolStripMenuItem.Click += new System.EventHandler(this.historyPembelianToolStripMenuItem_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -144,7 +155,7 @@ namespace Project
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(227, 5);
+            this.label2.Location = new System.Drawing.Point(434, 4);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 13);
@@ -161,7 +172,7 @@ namespace Project
             // 
             // btn_Search
             // 
-            this.btn_Search.Location = new System.Drawing.Point(436, 2);
+            this.btn_Search.Location = new System.Drawing.Point(608, 1);
             this.btn_Search.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Search.Name = "btn_Search";
             this.btn_Search.Size = new System.Drawing.Size(56, 20);
@@ -183,6 +194,10 @@ namespace Project
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btn_lihatLagu);
+            this.panel1.Controls.Add(this.btn_clear_search);
+            this.panel1.Controls.Add(this.tb_Lagu);
+            this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.cb_payment_beliMember);
             this.panel1.Controls.Add(this.btn_GantiJumlah);
@@ -269,7 +284,7 @@ namespace Project
             // 
             // btn_Add
             // 
-            this.btn_Add.Location = new System.Drawing.Point(253, 346);
+            this.btn_Add.Location = new System.Drawing.Point(260, 396);
             this.btn_Add.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Add.Name = "btn_Add";
             this.btn_Add.Size = new System.Drawing.Size(59, 37);
@@ -298,7 +313,7 @@ namespace Project
             // 
             // btn_Clear
             // 
-            this.btn_Clear.Location = new System.Drawing.Point(253, 296);
+            this.btn_Clear.Location = new System.Drawing.Point(260, 346);
             this.btn_Clear.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Clear.Name = "btn_Clear";
             this.btn_Clear.Size = new System.Drawing.Size(59, 37);
@@ -402,10 +417,10 @@ namespace Project
             // cb_Genre
             // 
             this.cb_Genre.FormattingEnabled = true;
-            this.cb_Genre.Location = new System.Drawing.Point(271, 2);
+            this.cb_Genre.Location = new System.Drawing.Point(478, 1);
             this.cb_Genre.Margin = new System.Windows.Forms.Padding(2);
             this.cb_Genre.Name = "cb_Genre";
-            this.cb_Genre.Size = new System.Drawing.Size(162, 21);
+            this.cb_Genre.Size = new System.Drawing.Size(126, 21);
             this.cb_Genre.TabIndex = 10;
             // 
             // dg_Cart
@@ -471,14 +486,51 @@ namespace Project
             this.panelBiodata.Size = new System.Drawing.Size(742, 588);
             this.panelBiodata.TabIndex = 11;
             // 
-            // labelNama_Biodata
+            // btn_update_biodata
             // 
-            this.labelNama_Biodata.AutoSize = true;
-            this.labelNama_Biodata.Location = new System.Drawing.Point(43, 60);
-            this.labelNama_Biodata.Name = "labelNama_Biodata";
-            this.labelNama_Biodata.Size = new System.Drawing.Size(41, 13);
-            this.labelNama_Biodata.TabIndex = 0;
-            this.labelNama_Biodata.Text = "Nama :";
+            this.btn_update_biodata.Location = new System.Drawing.Point(46, 203);
+            this.btn_update_biodata.Name = "btn_update_biodata";
+            this.btn_update_biodata.Size = new System.Drawing.Size(157, 23);
+            this.btn_update_biodata.TabIndex = 13;
+            this.btn_update_biodata.Text = "Ganti Password";
+            this.btn_update_biodata.UseVisualStyleBackColor = true;
+            this.btn_update_biodata.Click += new System.EventHandler(this.btn_update_biodata_Click);
+            // 
+            // labelTanggalLahir_Biodata
+            // 
+            this.labelTanggalLahir_Biodata.AutoSize = true;
+            this.labelTanggalLahir_Biodata.Location = new System.Drawing.Point(43, 172);
+            this.labelTanggalLahir_Biodata.Name = "labelTanggalLahir_Biodata";
+            this.labelTanggalLahir_Biodata.Size = new System.Drawing.Size(78, 13);
+            this.labelTanggalLahir_Biodata.TabIndex = 12;
+            this.labelTanggalLahir_Biodata.Text = "Tanggal Lahir :";
+            // 
+            // labelJK_Biodata
+            // 
+            this.labelJK_Biodata.AutoSize = true;
+            this.labelJK_Biodata.Location = new System.Drawing.Point(43, 115);
+            this.labelJK_Biodata.Name = "labelJK_Biodata";
+            this.labelJK_Biodata.Size = new System.Drawing.Size(77, 13);
+            this.labelJK_Biodata.TabIndex = 4;
+            this.labelJK_Biodata.Text = "Jenis Kelamin :";
+            // 
+            // labelAlamat_Biodata
+            // 
+            this.labelAlamat_Biodata.AutoSize = true;
+            this.labelAlamat_Biodata.Location = new System.Drawing.Point(43, 144);
+            this.labelAlamat_Biodata.Name = "labelAlamat_Biodata";
+            this.labelAlamat_Biodata.Size = new System.Drawing.Size(45, 13);
+            this.labelAlamat_Biodata.TabIndex = 3;
+            this.labelAlamat_Biodata.Text = "Alamat :";
+            // 
+            // labelUsername_Biodata
+            // 
+            this.labelUsername_Biodata.AutoSize = true;
+            this.labelUsername_Biodata.Location = new System.Drawing.Point(43, 87);
+            this.labelUsername_Biodata.Name = "labelUsername_Biodata";
+            this.labelUsername_Biodata.Size = new System.Drawing.Size(61, 13);
+            this.labelUsername_Biodata.TabIndex = 2;
+            this.labelUsername_Biodata.Text = "Username :";
             // 
             // label11
             // 
@@ -490,51 +542,14 @@ namespace Project
             this.label11.TabIndex = 1;
             this.label11.Text = "Biodata";
             // 
-            // labelUsername_Biodata
+            // labelNama_Biodata
             // 
-            this.labelUsername_Biodata.AutoSize = true;
-            this.labelUsername_Biodata.Location = new System.Drawing.Point(43, 87);
-            this.labelUsername_Biodata.Name = "labelUsername_Biodata";
-            this.labelUsername_Biodata.Size = new System.Drawing.Size(61, 13);
-            this.labelUsername_Biodata.TabIndex = 2;
-            this.labelUsername_Biodata.Text = "Username :";
-            // 
-            // labelAlamat_Biodata
-            // 
-            this.labelAlamat_Biodata.AutoSize = true;
-            this.labelAlamat_Biodata.Location = new System.Drawing.Point(43, 144);
-            this.labelAlamat_Biodata.Name = "labelAlamat_Biodata";
-            this.labelAlamat_Biodata.Size = new System.Drawing.Size(45, 13);
-            this.labelAlamat_Biodata.TabIndex = 3;
-            this.labelAlamat_Biodata.Text = "Alamat :";
-            // 
-            // labelJK_Biodata
-            // 
-            this.labelJK_Biodata.AutoSize = true;
-            this.labelJK_Biodata.Location = new System.Drawing.Point(43, 115);
-            this.labelJK_Biodata.Name = "labelJK_Biodata";
-            this.labelJK_Biodata.Size = new System.Drawing.Size(77, 13);
-            this.labelJK_Biodata.TabIndex = 4;
-            this.labelJK_Biodata.Text = "Jenis Kelamin :";
-            // 
-            // labelTanggalLahir_Biodata
-            // 
-            this.labelTanggalLahir_Biodata.AutoSize = true;
-            this.labelTanggalLahir_Biodata.Location = new System.Drawing.Point(43, 172);
-            this.labelTanggalLahir_Biodata.Name = "labelTanggalLahir_Biodata";
-            this.labelTanggalLahir_Biodata.Size = new System.Drawing.Size(78, 13);
-            this.labelTanggalLahir_Biodata.TabIndex = 12;
-            this.labelTanggalLahir_Biodata.Text = "Tanggal Lahir :";
-            // 
-            // btn_update_biodata
-            // 
-            this.btn_update_biodata.Location = new System.Drawing.Point(46, 203);
-            this.btn_update_biodata.Name = "btn_update_biodata";
-            this.btn_update_biodata.Size = new System.Drawing.Size(157, 23);
-            this.btn_update_biodata.TabIndex = 13;
-            this.btn_update_biodata.Text = "Ganti Password";
-            this.btn_update_biodata.UseVisualStyleBackColor = true;
-            this.btn_update_biodata.Click += new System.EventHandler(this.btn_update_biodata_Click);
+            this.labelNama_Biodata.AutoSize = true;
+            this.labelNama_Biodata.Location = new System.Drawing.Point(43, 60);
+            this.labelNama_Biodata.Name = "labelNama_Biodata";
+            this.labelNama_Biodata.Size = new System.Drawing.Size(41, 13);
+            this.labelNama_Biodata.TabIndex = 0;
+            this.labelNama_Biodata.Text = "Nama :";
             // 
             // panelReview
             // 
@@ -552,40 +567,49 @@ namespace Project
             this.panelReview.Size = new System.Drawing.Size(742, 588);
             this.panelReview.TabIndex = 12;
             // 
-            // label12
+            // tb_type_review
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(12, 9);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(59, 16);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Review";
+            this.tb_type_review.Location = new System.Drawing.Point(94, 355);
+            this.tb_type_review.Name = "tb_type_review";
+            this.tb_type_review.ReadOnly = true;
+            this.tb_type_review.Size = new System.Drawing.Size(172, 20);
+            this.tb_type_review.TabIndex = 8;
             // 
-            // dg_review
+            // tb_name_review
             // 
-            this.dg_review.AllowUserToAddRows = false;
-            this.dg_review.AllowUserToDeleteRows = false;
-            this.dg_review.AllowUserToResizeColumns = false;
-            this.dg_review.AllowUserToResizeRows = false;
-            this.dg_review.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dg_review.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_review.Location = new System.Drawing.Point(13, 28);
-            this.dg_review.Name = "dg_review";
-            this.dg_review.ReadOnly = true;
-            this.dg_review.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dg_review.Size = new System.Drawing.Size(723, 281);
-            this.dg_review.TabIndex = 1;
-            this.dg_review.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_review_CellClick);
+            this.tb_name_review.Location = new System.Drawing.Point(94, 325);
+            this.tb_name_review.Name = "tb_name_review";
+            this.tb_name_review.ReadOnly = true;
+            this.tb_name_review.Size = new System.Drawing.Size(172, 20);
+            this.tb_name_review.TabIndex = 7;
             // 
-            // label13
+            // label15
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(13, 394);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(44, 13);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "Rating :";
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(13, 358);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(37, 13);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "Type :";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(13, 327);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(41, 13);
+            this.label14.TabIndex = 5;
+            this.label14.Text = "Name :";
+            // 
+            // btn_review
+            // 
+            this.btn_review.Location = new System.Drawing.Point(643, 441);
+            this.btn_review.Name = "btn_review";
+            this.btn_review.Size = new System.Drawing.Size(75, 23);
+            this.btn_review.TabIndex = 4;
+            this.btn_review.Text = "Review";
+            this.btn_review.UseVisualStyleBackColor = true;
+            this.btn_review.Click += new System.EventHandler(this.btn_review_Click);
             // 
             // nud_review
             // 
@@ -605,56 +629,40 @@ namespace Project
             this.nud_review.Size = new System.Drawing.Size(172, 20);
             this.nud_review.TabIndex = 3;
             // 
-            // btn_review
+            // label13
             // 
-            this.btn_review.Location = new System.Drawing.Point(643, 441);
-            this.btn_review.Name = "btn_review";
-            this.btn_review.Size = new System.Drawing.Size(75, 23);
-            this.btn_review.TabIndex = 4;
-            this.btn_review.Text = "Review";
-            this.btn_review.UseVisualStyleBackColor = true;
-            this.btn_review.Click += new System.EventHandler(this.btn_review_Click);
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(13, 394);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(44, 13);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Rating :";
             // 
-            // label14
+            // dg_review
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(13, 327);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(41, 13);
-            this.label14.TabIndex = 5;
-            this.label14.Text = "Name :";
+            this.dg_review.AllowUserToAddRows = false;
+            this.dg_review.AllowUserToDeleteRows = false;
+            this.dg_review.AllowUserToResizeColumns = false;
+            this.dg_review.AllowUserToResizeRows = false;
+            this.dg_review.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dg_review.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_review.Location = new System.Drawing.Point(13, 28);
+            this.dg_review.Name = "dg_review";
+            this.dg_review.ReadOnly = true;
+            this.dg_review.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dg_review.Size = new System.Drawing.Size(723, 281);
+            this.dg_review.TabIndex = 1;
+            this.dg_review.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_review_CellClick);
             // 
-            // label15
+            // label12
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(13, 358);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(37, 13);
-            this.label15.TabIndex = 6;
-            this.label15.Text = "Type :";
-            // 
-            // tb_name_review
-            // 
-            this.tb_name_review.Location = new System.Drawing.Point(94, 325);
-            this.tb_name_review.Name = "tb_name_review";
-            this.tb_name_review.ReadOnly = true;
-            this.tb_name_review.Size = new System.Drawing.Size(172, 20);
-            this.tb_name_review.TabIndex = 7;
-            // 
-            // tb_type_review
-            // 
-            this.tb_type_review.Location = new System.Drawing.Point(94, 355);
-            this.tb_type_review.Name = "tb_type_review";
-            this.tb_type_review.ReadOnly = true;
-            this.tb_type_review.Size = new System.Drawing.Size(172, 20);
-            this.tb_type_review.TabIndex = 8;
-            // 
-            // historyPembelianToolStripMenuItem
-            // 
-            this.historyPembelianToolStripMenuItem.Name = "historyPembelianToolStripMenuItem";
-            this.historyPembelianToolStripMenuItem.Size = new System.Drawing.Size(116, 20);
-            this.historyPembelianToolStripMenuItem.Text = "History Pembelian";
-            this.historyPembelianToolStripMenuItem.Click += new System.EventHandler(this.historyPembelianToolStripMenuItem_Click);
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(12, 9);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(59, 16);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Review";
             // 
             // panelHistory
             // 
@@ -674,16 +682,56 @@ namespace Project
             this.crv_history.Size = new System.Drawing.Size(742, 579);
             this.crv_history.TabIndex = 0;
             // 
+            // tb_Lagu
+            // 
+            this.tb_Lagu.Location = new System.Drawing.Point(260, 2);
+            this.tb_Lagu.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_Lagu.Name = "tb_Lagu";
+            this.tb_Lagu.Size = new System.Drawing.Size(168, 20);
+            this.tb_Lagu.TabIndex = 30;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(218, 5);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(34, 13);
+            this.label16.TabIndex = 29;
+            this.label16.Text = "Lagu:";
+            // 
+            // btn_clear_search
+            // 
+            this.btn_clear_search.Location = new System.Drawing.Point(680, 2);
+            this.btn_clear_search.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_clear_search.Name = "btn_clear_search";
+            this.btn_clear_search.Size = new System.Drawing.Size(56, 20);
+            this.btn_clear_search.TabIndex = 31;
+            this.btn_clear_search.Text = "Clear";
+            this.btn_clear_search.UseVisualStyleBackColor = true;
+            this.btn_clear_search.Click += new System.EventHandler(this.btn_clear_search_Click);
+            // 
+            // btn_lihatLagu
+            // 
+            this.btn_lihatLagu.Location = new System.Drawing.Point(260, 296);
+            this.btn_lihatLagu.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_lihatLagu.Name = "btn_lihatLagu";
+            this.btn_lihatLagu.Size = new System.Drawing.Size(59, 37);
+            this.btn_lihatLagu.TabIndex = 32;
+            this.btn_lihatLagu.Text = "Lihat Lagu";
+            this.btn_lihatLagu.UseVisualStyleBackColor = true;
+            this.btn_lihatLagu.Click += new System.EventHandler(this.btn_lihatLagu_Click);
+            // 
             // FormMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(748, 670);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelHistory);
             this.Controls.Add(this.panelReview);
             this.Controls.Add(this.panelBiodata);
             this.Controls.Add(this.btn_LogOut);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.menuStrip1);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -701,8 +749,8 @@ namespace Project
             this.panelBiodata.PerformLayout();
             this.panelReview.ResumeLayout(false);
             this.panelReview.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_review)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_review)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_review)).EndInit();
             this.panelHistory.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -765,5 +813,9 @@ namespace Project
         private System.Windows.Forms.ToolStripMenuItem historyPembelianToolStripMenuItem;
         private System.Windows.Forms.Panel panelHistory;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crv_history;
+        private System.Windows.Forms.TextBox tb_Lagu;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button btn_clear_search;
+        private System.Windows.Forms.Button btn_lihatLagu;
     }
 }
