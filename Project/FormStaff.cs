@@ -152,7 +152,7 @@ namespace Project
             {
                 MessageBox.Show("Isi password member terlebih dahulu !");
                 return false;
-            } else if (!checkBox_Female.Checked && !checkBoxMale.Checked)
+            } else if (!radioButton_Male.Checked && !radioButton_Female.Checked)
             {
                 MessageBox.Show("Pilih jenis kelamin member terlebih dahulu !");
                 return false;
@@ -188,8 +188,8 @@ namespace Project
             TB_USERNAME.Text = "";
             TB_ADDRESS.Text = "";
 
-            checkBox_Female.Checked = false;
-            checkBoxMale.Checked = false;
+            radioButton_Male.Checked = false;
+            radioButton_Female.Checked = false;
 
             cb_membership_register.SelectedIndex = -1;
 
@@ -259,13 +259,21 @@ namespace Project
             fillCBRegister();
         }
 
-        private void btnDaftarMember_Click(object sender, EventArgs e)
+        private void btnDaftarMember_Click(object sender, EventArgs e) 
         {
             if (checkCond_Register())
             {
-                string gender = "";
-                if (checkBoxMale.Checked) gender = "L";
-                if (checkBox_Female.Checked) gender = "P";
+                string gender = ""; 
+                if (radioButton_Female.Checked)
+                {
+                    radioButton_Male.Checked = false;
+                    gender = "P";
+                }
+                if (radioButton_Male.Checked)
+                {
+                    radioButton_Female.Checked = false;
+                    gender = "L";
+                }
 
                 String membership_exp = "";
                 if (cb_membership_register.SelectedIndex != -1)
@@ -280,7 +288,7 @@ namespace Project
                 String newID = cmdID.ExecuteScalar().ToString();
                 koneksi.closeConn();
 
-                if (cb_membership_register.SelectedIndex == -1)
+                if (cb_membership_register.SelectedIndex == -1) 
                 {
                     try
                     {
@@ -309,7 +317,7 @@ namespace Project
                 }
                 else
                 {
-                    try
+                    try 
                     {
                         MySqlCommand cmdInsert = new MySqlCommand("insert into member (id,name, username, password, gender, address,date_of_birth, membership_id,membership_exp) values (@id,@name, @username, @password, @gender, @address, @date_of_birth, @membership_id, @membership_exp);", koneksi.getConn());
 
@@ -360,12 +368,14 @@ namespace Project
                     MessageBox.Show("Stok Berhasil Ditambahkan !");
                     fillCBRestock();
                     clearRestock();
+                    cb_produk_restock.SelectedIndex = -1;
                 }
                 catch (MySqlException ex)
                 {
                     MessageBox.Show(ex.Message);
                     fillCBRestock();
                     clearRestock();
+                    cb_produk_restock.SelectedIndex = -1;
                 }
             }
         }
@@ -494,6 +504,27 @@ namespace Project
             {
                 tb_noteNumber_order.Text = dg_order.Rows[e.RowIndex].Cells[0].Value.ToString();
             }
+        }
+
+        public void loadComboBoxRegisteredMember()
+        {
+            comboBox_Member.Items.Clear();
+
+            if (koneksi.getConn().State == ConnectionState.Open)
+            {
+                koneksi.closeConn();
+            }
+
+            MySqlCommand cmd = new MySqlCommand("select name from member;", koneksi.getConn());
+
+            koneksi.openConn();
+            MySqlDataReader dr = cmd.ExecuteReader();
+
+            comboBox_Member.DisplayMember = "Text";
+            comboBox_Member.ValueMember = "Value";
+
+            koneksi.closeConn();
+            comboBox_Member.SelectedIndex = -1;
         }
 
         private void btn_deliver_order_Click(object sender, EventArgs e)
