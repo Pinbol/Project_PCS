@@ -534,14 +534,10 @@ namespace Project
 
         private void btn_Search_Click(object sender, EventArgs e)
         {
-            if (tb_Nama.Text == "" && cb_Genre.SelectedIndex == -1 && tb_Lagu.Text == "") loadDg_product();
-            else if (tb_Nama.Text != "" && cb_Genre.SelectedIndex == -1 && tb_Lagu.Text == "") searchProductNameOnly();
-            else if (tb_Nama.Text == "" && cb_Genre.SelectedIndex != -1 && tb_Lagu.Text == "") searchProductGenreOnly();
-            else if (tb_Nama.Text != "" && cb_Genre.SelectedIndex != -1 && tb_Lagu.Text == "") searchProduct();
-            else if (tb_Nama.Text == "" && cb_Genre.SelectedIndex == -1 && tb_Lagu.Text != "") searchProductLaguOnly();
-            else if (tb_Nama.Text != "" && cb_Genre.SelectedIndex == -1 && tb_Lagu.Text != "") searchProductLaguNamaOnly();
-            else if (tb_Nama.Text == "" && cb_Genre.SelectedIndex != -1 && tb_Lagu.Text != "") searchProductLaguGenreOnly();
-            else if (tb_Nama.Text != "" && cb_Genre.SelectedIndex != -1 && tb_Lagu.Text != "") searchProductAll();
+            if (tb_Nama.Text == "" && cb_Genre.SelectedIndex == -1) loadDg_product();
+            else if (tb_Nama.Text != "" && cb_Genre.SelectedIndex == -1) searchProductNameOnly();
+            else if (tb_Nama.Text == "" && cb_Genre.SelectedIndex != -1) searchProductGenreOnly();
+            else searchProduct();
         }
 
         private void searchProductNameOnly()
@@ -605,106 +601,6 @@ namespace Project
             MySqlCommand cmd = new MySqlCommand("SELECT DISTINCT(p.`NAME`), DATE_FORMAT(p.`RELEASE_DATE`,'%d %M %Y') AS 'Release Date' , p.`DESCRIPTION`, tp.`TYPE_NAME`, p.`RATING` FROM product p ,product_song ps, songs s, genre g, type_product tp WHERE p.`ID` = ps.`PRODUCT_ID` AND ps.`SONG_ID` = s.`ID` AND s.`GENRE_ID` = g.`ID` AND p.`TYPE_ID` = tp.`ID` and g.id = @genre and p.name like @name;", koneksi.getConn());
             cmd.Parameters.AddWithValue("@genre", (cb_Genre.SelectedItem as dynamic).Value);
             cmd.Parameters.AddWithValue("@name", "%" + tb_Nama.Text + "%");
-            MySqlDataAdapter da = new MySqlDataAdapter();
-
-            koneksi.openConn();
-            cmd.ExecuteReader();
-            koneksi.closeConn();
-
-            da.SelectCommand = cmd;
-            da.Fill(dt);
-
-            dg_Produk.DataSource = dt;
-        }
-
-        private void searchProductLaguOnly()
-        {
-            dg_Produk.DataSource = null;
-
-            if (koneksi.getConn().State == ConnectionState.Open)
-            {
-                koneksi.closeConn();
-            }
-
-            DataTable dt = new DataTable();
-            MySqlCommand cmd = new MySqlCommand("SELECT DISTINCT(p.`NAME`), DATE_FORMAT(p.`RELEASE_DATE`,'%d %M %Y') AS 'Release Date' , p.`DESCRIPTION`, tp.`TYPE_NAME`, p.`RATING` FROM product p ,product_song ps, songs s, genre g, type_product tp WHERE p.`ID` = ps.`PRODUCT_ID` AND ps.`SONG_ID` = s.`ID` AND s.`GENRE_ID` = g.`ID` AND p.`TYPE_ID` = tp.`ID` AND s.`NAME` LIKE @name;", koneksi.getConn());
-            cmd.Parameters.AddWithValue("@name", "%" + tb_Lagu.Text + "%");
-            MySqlDataAdapter da = new MySqlDataAdapter();
-
-            koneksi.openConn();
-            cmd.ExecuteReader();
-            koneksi.closeConn();
-
-            da.SelectCommand = cmd;
-            da.Fill(dt);
-
-            dg_Produk.DataSource = dt;
-        }
-
-        private void searchProductLaguNamaOnly()
-        {
-            dg_Produk.DataSource = null;
-
-            if (koneksi.getConn().State == ConnectionState.Open)
-            {
-                koneksi.closeConn();
-            }
-
-            DataTable dt = new DataTable();
-            MySqlCommand cmd = new MySqlCommand("SELECT DISTINCT(p.`NAME`), DATE_FORMAT(p.`RELEASE_DATE`,'%d %M %Y') AS 'Release Date' , p.`DESCRIPTION`, tp.`TYPE_NAME`, p.`RATING` FROM product p ,product_song ps, songs s, genre g, type_product tp WHERE p.`ID` = ps.`PRODUCT_ID` AND ps.`SONG_ID` = s.`ID` AND s.`GENRE_ID` = g.`ID` AND p.`TYPE_ID` = tp.`ID` AND s.`NAME` LIKE @name and p.name like @name2;", koneksi.getConn());
-            cmd.Parameters.AddWithValue("@name", "%" + tb_Lagu.Text + "%");
-            cmd.Parameters.AddWithValue("@name2", "%" + tb_Nama.Text + "%");
-            MySqlDataAdapter da = new MySqlDataAdapter();
-
-            koneksi.openConn();
-            cmd.ExecuteReader();
-            koneksi.closeConn();
-
-            da.SelectCommand = cmd;
-            da.Fill(dt);
-
-            dg_Produk.DataSource = dt;
-        }
-
-        private void searchProductLaguGenreOnly()
-        {
-            dg_Produk.DataSource = null;
-
-            if (koneksi.getConn().State == ConnectionState.Open)
-            {
-                koneksi.closeConn();
-            }
-
-            DataTable dt = new DataTable();
-            MySqlCommand cmd = new MySqlCommand("SELECT DISTINCT(p.`NAME`), DATE_FORMAT(p.`RELEASE_DATE`,'%d %M %Y') AS 'Release Date' , p.`DESCRIPTION`, tp.`TYPE_NAME`, p.`RATING` FROM product p ,product_song ps, songs s, genre g, type_product tp WHERE p.`ID` = ps.`PRODUCT_ID` AND ps.`SONG_ID` = s.`ID` AND s.`GENRE_ID` = g.`ID` AND p.`TYPE_ID` = tp.`ID` and g.id = @genre and s.name like @name;", koneksi.getConn());
-            cmd.Parameters.AddWithValue("@name", "%" + tb_Lagu.Text + "%");
-            cmd.Parameters.AddWithValue("@genre", (cb_Genre.SelectedItem as dynamic).Value);
-            MySqlDataAdapter da = new MySqlDataAdapter();
-
-            koneksi.openConn();
-            cmd.ExecuteReader();
-            koneksi.closeConn();
-
-            da.SelectCommand = cmd;
-            da.Fill(dt);
-
-            dg_Produk.DataSource = dt;
-        }
-
-        private void searchProductAll()
-        {
-            dg_Produk.DataSource = null;
-
-            if (koneksi.getConn().State == ConnectionState.Open)
-            {
-                koneksi.closeConn();
-            }
-
-            DataTable dt = new DataTable();
-            MySqlCommand cmd = new MySqlCommand("SELECT DISTINCT(p.`NAME`), DATE_FORMAT(p.`RELEASE_DATE`,'%d %M %Y') AS 'Release Date' , p.`DESCRIPTION`, tp.`TYPE_NAME`, p.`RATING` FROM product p ,product_song ps, songs s, genre g, type_product tp WHERE p.`ID` = ps.`PRODUCT_ID` AND ps.`SONG_ID` = s.`ID` AND s.`GENRE_ID` = g.`ID` AND p.`TYPE_ID` = tp.`ID` and g.id = @genre and s.name like @name and p.name like @name2;", koneksi.getConn());
-            cmd.Parameters.AddWithValue("@name", "%" + tb_Lagu.Text + "%");
-            cmd.Parameters.AddWithValue("@name2", "%" + tb_Nama.Text + "%");
-            cmd.Parameters.AddWithValue("@genre", (cb_Genre.SelectedItem as dynamic).Value);
             MySqlDataAdapter da = new MySqlDataAdapter();
 
             koneksi.openConn();
@@ -864,21 +760,17 @@ namespace Project
         {
             tb_Lagu.Text = "";
             tb_Nama.Text = "";
-            cb_Genre.SelectedIndex = -1;
 
-            loadDg_product();
+            cb_Genre.SelectedIndex = -1;
         }
 
         private void btn_lihatLagu_Click(object sender, EventArgs e)
         {
-            if (tb_Nama2.Text!="")
-            {
-                String product = tb_Nama2.Text;
+            String product = tb_Nama2.Text;
 
-                using (FormDetailProduct form = new FormDetailProduct(product))
-                {
-                    form.ShowDialog();
-                }
+            using (FormDetailProduct form = new FormDetailProduct(product))
+            {
+                form.ShowDialog();
             }
         }
     }

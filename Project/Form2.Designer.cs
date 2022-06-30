@@ -45,12 +45,10 @@ namespace Project
             this.masterPaymentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportLaguToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportProdukToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportPenjualanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelStaff = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.gb_status = new System.Windows.Forms.GroupBox();
-            this.rb_tdk_aktif = new System.Windows.Forms.RadioButton();
-            this.rb_aktif = new System.Windows.Forms.RadioButton();
-            this.lbl_status_staff = new System.Windows.Forms.Label();
             this.dtp_dob_staff = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.btn_clear_staff = new System.Windows.Forms.Button();
@@ -205,23 +203,20 @@ namespace Project
             this.label43 = new System.Windows.Forms.Label();
             this.dg_productFormat = new System.Windows.Forms.DataGridView();
             this.label45 = new System.Windows.Forms.Label();
-            this.reportProdukToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportPenjualanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelReportLagu = new System.Windows.Forms.Panel();
-            this.crv_reportLagu = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.label42 = new System.Windows.Forms.Label();
+            this.crv_reportLagu = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.panelReportProduct = new System.Windows.Forms.Panel();
             this.label44 = new System.Windows.Forms.Label();
             this.crv_reportProduct = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.panelReportPenjualan = new System.Windows.Forms.Panel();
+            this.btn_reportPenjualan = new System.Windows.Forms.Button();
+            this.dtp_reportPenjualan = new System.Windows.Forms.DateTimePicker();
+            this.rb_sort = new System.Windows.Forms.RadioButton();
             this.label46 = new System.Windows.Forms.Label();
             this.crv_reportPenjualan = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.rb_sort = new System.Windows.Forms.RadioButton();
-            this.dtp_reportPenjualan = new System.Windows.Forms.DateTimePicker();
-            this.btn_reportPenjualan = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panelStaff.SuspendLayout();
-            this.gb_status.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_staff)).BeginInit();
             this.panelMembership.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_wkt_membership)).BeginInit();
@@ -381,15 +376,27 @@ namespace Project
             // reportLaguToolStripMenuItem
             // 
             this.reportLaguToolStripMenuItem.Name = "reportLaguToolStripMenuItem";
-            this.reportLaguToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reportLaguToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.reportLaguToolStripMenuItem.Text = "Report Lagu";
             this.reportLaguToolStripMenuItem.Click += new System.EventHandler(this.reportLaguToolStripMenuItem_Click);
+            // 
+            // reportProdukToolStripMenuItem
+            // 
+            this.reportProdukToolStripMenuItem.Name = "reportProdukToolStripMenuItem";
+            this.reportProdukToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.reportProdukToolStripMenuItem.Text = "Report Produk";
+            this.reportProdukToolStripMenuItem.Click += new System.EventHandler(this.reportProdukToolStripMenuItem_Click);
+            // 
+            // reportPenjualanToolStripMenuItem
+            // 
+            this.reportPenjualanToolStripMenuItem.Name = "reportPenjualanToolStripMenuItem";
+            this.reportPenjualanToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.reportPenjualanToolStripMenuItem.Text = "Report Penjualan";
+            this.reportPenjualanToolStripMenuItem.Click += new System.EventHandler(this.reportPenjualanToolStripMenuItem_Click);
             // 
             // panelStaff
             // 
             this.panelStaff.Controls.Add(this.label8);
-            this.panelStaff.Controls.Add(this.gb_status);
-            this.panelStaff.Controls.Add(this.lbl_status_staff);
             this.panelStaff.Controls.Add(this.dtp_dob_staff);
             this.panelStaff.Controls.Add(this.label6);
             this.panelStaff.Controls.Add(this.btn_clear_staff);
@@ -423,49 +430,6 @@ namespace Project
             this.label8.Size = new System.Drawing.Size(90, 16);
             this.label8.TabIndex = 21;
             this.label8.Text = "Master Staff";
-            // 
-            // gb_status
-            // 
-            this.gb_status.Controls.Add(this.rb_tdk_aktif);
-            this.gb_status.Controls.Add(this.rb_aktif);
-            this.gb_status.Location = new System.Drawing.Point(515, 438);
-            this.gb_status.Name = "gb_status";
-            this.gb_status.Size = new System.Drawing.Size(200, 40);
-            this.gb_status.TabIndex = 20;
-            this.gb_status.TabStop = false;
-            this.gb_status.Visible = false;
-            // 
-            // rb_tdk_aktif
-            // 
-            this.rb_tdk_aktif.AutoSize = true;
-            this.rb_tdk_aktif.Location = new System.Drawing.Point(80, 16);
-            this.rb_tdk_aktif.Name = "rb_tdk_aktif";
-            this.rb_tdk_aktif.Size = new System.Drawing.Size(76, 17);
-            this.rb_tdk_aktif.TabIndex = 20;
-            this.rb_tdk_aktif.TabStop = true;
-            this.rb_tdk_aktif.Text = "Tidak Aktif";
-            this.rb_tdk_aktif.UseVisualStyleBackColor = true;
-            // 
-            // rb_aktif
-            // 
-            this.rb_aktif.AutoSize = true;
-            this.rb_aktif.Location = new System.Drawing.Point(18, 16);
-            this.rb_aktif.Name = "rb_aktif";
-            this.rb_aktif.Size = new System.Drawing.Size(46, 17);
-            this.rb_aktif.TabIndex = 19;
-            this.rb_aktif.TabStop = true;
-            this.rb_aktif.Text = "Aktif";
-            this.rb_aktif.UseVisualStyleBackColor = true;
-            // 
-            // lbl_status_staff
-            // 
-            this.lbl_status_staff.AutoSize = true;
-            this.lbl_status_staff.Location = new System.Drawing.Point(419, 456);
-            this.lbl_status_staff.Name = "lbl_status_staff";
-            this.lbl_status_staff.Size = new System.Drawing.Size(43, 13);
-            this.lbl_status_staff.TabIndex = 18;
-            this.lbl_status_staff.Text = "Status :";
-            this.lbl_status_staff.Visible = false;
             // 
             // dtp_dob_staff
             // 
@@ -576,6 +540,7 @@ namespace Project
             // 
             this.tb_password_staff.Location = new System.Drawing.Point(109, 417);
             this.tb_password_staff.Name = "tb_password_staff";
+            this.tb_password_staff.PasswordChar = '*';
             this.tb_password_staff.Size = new System.Drawing.Size(291, 20);
             this.tb_password_staff.TabIndex = 6;
             // 
@@ -2078,20 +2043,6 @@ namespace Project
             this.label45.TabIndex = 0;
             this.label45.Text = "Master Product Format";
             // 
-            // reportProdukToolStripMenuItem
-            // 
-            this.reportProdukToolStripMenuItem.Name = "reportProdukToolStripMenuItem";
-            this.reportProdukToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.reportProdukToolStripMenuItem.Text = "Report Produk";
-            this.reportProdukToolStripMenuItem.Click += new System.EventHandler(this.reportProdukToolStripMenuItem_Click);
-            // 
-            // reportPenjualanToolStripMenuItem
-            // 
-            this.reportPenjualanToolStripMenuItem.Name = "reportPenjualanToolStripMenuItem";
-            this.reportPenjualanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.reportPenjualanToolStripMenuItem.Text = "Report Penjualan";
-            this.reportPenjualanToolStripMenuItem.Click += new System.EventHandler(this.reportPenjualanToolStripMenuItem_Click);
-            // 
             // panelReportLagu
             // 
             this.panelReportLagu.Controls.Add(this.label42);
@@ -2100,16 +2051,6 @@ namespace Project
             this.panelReportLagu.Name = "panelReportLagu";
             this.panelReportLagu.Size = new System.Drawing.Size(880, 541);
             this.panelReportLagu.TabIndex = 33;
-            // 
-            // crv_reportLagu
-            // 
-            this.crv_reportLagu.ActiveViewIndex = -1;
-            this.crv_reportLagu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crv_reportLagu.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crv_reportLagu.Location = new System.Drawing.Point(0, 62);
-            this.crv_reportLagu.Name = "crv_reportLagu";
-            this.crv_reportLagu.Size = new System.Drawing.Size(877, 476);
-            this.crv_reportLagu.TabIndex = 0;
             // 
             // label42
             // 
@@ -2120,6 +2061,16 @@ namespace Project
             this.label42.Size = new System.Drawing.Size(93, 16);
             this.label42.TabIndex = 1;
             this.label42.Text = "Report Lagu";
+            // 
+            // crv_reportLagu
+            // 
+            this.crv_reportLagu.ActiveViewIndex = -1;
+            this.crv_reportLagu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crv_reportLagu.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crv_reportLagu.Location = new System.Drawing.Point(0, 62);
+            this.crv_reportLagu.Name = "crv_reportLagu";
+            this.crv_reportLagu.Size = new System.Drawing.Size(877, 476);
+            this.crv_reportLagu.TabIndex = 0;
             // 
             // panelReportProduct
             // 
@@ -2162,6 +2113,37 @@ namespace Project
             this.panelReportPenjualan.Size = new System.Drawing.Size(880, 541);
             this.panelReportPenjualan.TabIndex = 35;
             // 
+            // btn_reportPenjualan
+            // 
+            this.btn_reportPenjualan.Location = new System.Drawing.Point(359, 48);
+            this.btn_reportPenjualan.Name = "btn_reportPenjualan";
+            this.btn_reportPenjualan.Size = new System.Drawing.Size(75, 23);
+            this.btn_reportPenjualan.TabIndex = 5;
+            this.btn_reportPenjualan.Text = "Report";
+            this.btn_reportPenjualan.UseVisualStyleBackColor = true;
+            this.btn_reportPenjualan.Click += new System.EventHandler(this.btn_reportPenjualan_Click);
+            // 
+            // dtp_reportPenjualan
+            // 
+            this.dtp_reportPenjualan.CustomFormat = "yyyy-MM";
+            this.dtp_reportPenjualan.Enabled = false;
+            this.dtp_reportPenjualan.Location = new System.Drawing.Point(87, 48);
+            this.dtp_reportPenjualan.Name = "dtp_reportPenjualan";
+            this.dtp_reportPenjualan.Size = new System.Drawing.Size(200, 20);
+            this.dtp_reportPenjualan.TabIndex = 4;
+            // 
+            // rb_sort
+            // 
+            this.rb_sort.AutoSize = true;
+            this.rb_sort.Location = new System.Drawing.Point(17, 48);
+            this.rb_sort.Name = "rb_sort";
+            this.rb_sort.Size = new System.Drawing.Size(44, 17);
+            this.rb_sort.TabIndex = 3;
+            this.rb_sort.TabStop = true;
+            this.rb_sort.Text = "Sort";
+            this.rb_sort.UseVisualStyleBackColor = true;
+            this.rb_sort.CheckedChanged += new System.EventHandler(this.rb_sort_CheckedChanged);
+            // 
             // label46
             // 
             this.label46.AutoSize = true;
@@ -2182,51 +2164,20 @@ namespace Project
             this.crv_reportPenjualan.Size = new System.Drawing.Size(877, 455);
             this.crv_reportPenjualan.TabIndex = 0;
             // 
-            // rb_sort
-            // 
-            this.rb_sort.AutoSize = true;
-            this.rb_sort.Location = new System.Drawing.Point(17, 48);
-            this.rb_sort.Name = "rb_sort";
-            this.rb_sort.Size = new System.Drawing.Size(44, 17);
-            this.rb_sort.TabIndex = 3;
-            this.rb_sort.TabStop = true;
-            this.rb_sort.Text = "Sort";
-            this.rb_sort.UseVisualStyleBackColor = true;
-            this.rb_sort.CheckedChanged += new System.EventHandler(this.rb_sort_CheckedChanged);
-            // 
-            // dtp_reportPenjualan
-            // 
-            this.dtp_reportPenjualan.CustomFormat = "yyyy-MM";
-            this.dtp_reportPenjualan.Enabled = false;
-            this.dtp_reportPenjualan.Location = new System.Drawing.Point(87, 48);
-            this.dtp_reportPenjualan.Name = "dtp_reportPenjualan";
-            this.dtp_reportPenjualan.Size = new System.Drawing.Size(200, 20);
-            this.dtp_reportPenjualan.TabIndex = 4;
-            // 
-            // btn_reportPenjualan
-            // 
-            this.btn_reportPenjualan.Location = new System.Drawing.Point(359, 48);
-            this.btn_reportPenjualan.Name = "btn_reportPenjualan";
-            this.btn_reportPenjualan.Size = new System.Drawing.Size(75, 23);
-            this.btn_reportPenjualan.TabIndex = 5;
-            this.btn_reportPenjualan.Text = "Report";
-            this.btn_reportPenjualan.UseVisualStyleBackColor = true;
-            this.btn_reportPenjualan.Click += new System.EventHandler(this.btn_reportPenjualan_Click);
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 593);
+            this.Controls.Add(this.panelProductFormat);
+            this.Controls.Add(this.panelStaff);
+            this.Controls.Add(this.panelProductSong);
+            this.Controls.Add(this.panelGroupMusic);
             this.Controls.Add(this.panelReportPenjualan);
             this.Controls.Add(this.panelReportProduct);
             this.Controls.Add(this.panelReportLagu);
-            this.Controls.Add(this.panelProductFormat);
-            this.Controls.Add(this.panelProductSong);
-            this.Controls.Add(this.panelGroupMusic);
             this.Controls.Add(this.panelSong);
             this.Controls.Add(this.panelPersonel);
-            this.Controls.Add(this.panelStaff);
             this.Controls.Add(this.panelFormat);
             this.Controls.Add(this.panelGenre);
             this.Controls.Add(this.panelOccupation);
@@ -2244,8 +2195,6 @@ namespace Project
             this.menuStrip1.PerformLayout();
             this.panelStaff.ResumeLayout(false);
             this.panelStaff.PerformLayout();
-            this.gb_status.ResumeLayout(false);
-            this.gb_status.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_staff)).EndInit();
             this.panelMembership.ResumeLayout(false);
             this.panelMembership.PerformLayout();
@@ -2318,10 +2267,6 @@ namespace Project
         private System.Windows.Forms.Button btn_logout;
         private System.Windows.Forms.DateTimePicker dtp_dob_staff;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.GroupBox gb_status;
-        private System.Windows.Forms.RadioButton rb_tdk_aktif;
-        private System.Windows.Forms.RadioButton rb_aktif;
-        private System.Windows.Forms.Label lbl_status_staff;
         private System.Windows.Forms.Panel panelMembership;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dg_membership;

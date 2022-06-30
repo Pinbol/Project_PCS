@@ -248,6 +248,29 @@ namespace Project
             dg_order.DataSource = dt;
         }
 
+        private void fillDGMember()
+        {
+            dg_memberList.DataSource = null;
+
+            if (koneksi.getConn().State == ConnectionState.Open)
+            {
+                koneksi.closeConn();
+            }
+
+            DataTable dt = new DataTable();
+            MySqlCommand cmd = new MySqlCommand("SELECT m.`NAME` AS 'Name', m.`USERNAME` AS 'Username', IFNULL(mb.`NAME`, '-') AS 'Membership' FROM member m LEFT JOIN membership mb ON mb.`ID` = m.`MEMBERSHIP_ID`;", koneksi.getConn());
+            MySqlDataAdapter da = new MySqlDataAdapter();
+
+            koneksi.openConn();
+            cmd.ExecuteReader();
+            koneksi.closeConn();
+
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            dg_memberList.DataSource = dt;
+        }
+
         private void FormStaff_Load(object sender, EventArgs e)
         {
             panelRegister.Visible = true;
@@ -257,6 +280,8 @@ namespace Project
 
             fillForm();
             fillCBRegister();
+
+            fillDGMember();
         }
 
         private void btnDaftarMember_Click(object sender, EventArgs e) 
@@ -308,11 +333,13 @@ namespace Project
 
                         clearRegister();
                         MessageBox.Show("Insert successful !");
+                        fillDGMember();
                     }
                     catch (MySqlException ex)
                     {
                         clearRegister();
                         MessageBox.Show(ex.Message);
+                        fillDGMember();
                     }
                 }
                 else
@@ -337,6 +364,7 @@ namespace Project
 
                         clearRegister();
                         MessageBox.Show("Insert successful !");
+                        fillDGMember();
                     }
                     catch (MySqlException ex)
                     {
@@ -369,6 +397,7 @@ namespace Project
                     fillCBRestock();
                     clearRestock();
                     cb_produk_restock.SelectedIndex = -1;
+                    cb_produk_restock.Text = "";
                 }
                 catch (MySqlException ex)
                 {
@@ -376,6 +405,7 @@ namespace Project
                     fillCBRestock();
                     clearRestock();
                     cb_produk_restock.SelectedIndex = -1;
+                    cb_produk_restock.Text = "";
                 }
             }
         }
@@ -388,6 +418,7 @@ namespace Project
             panelOrder.Visible = false;
 
             fillCBRegister();
+            fillDGMember();
         }
 
         private void btn_logout_Click(object sender, EventArgs e)
@@ -506,27 +537,6 @@ namespace Project
             }
         }
 
-        public void loadComboBoxRegisteredMember()
-        {
-            comboBox_Member.Items.Clear();
-
-            if (koneksi.getConn().State == ConnectionState.Open)
-            {
-                koneksi.closeConn();
-            }
-
-            MySqlCommand cmd = new MySqlCommand("select name from member;", koneksi.getConn());
-
-            koneksi.openConn();
-            MySqlDataReader dr = cmd.ExecuteReader();
-
-            comboBox_Member.DisplayMember = "Text";
-            comboBox_Member.ValueMember = "Value";
-
-            koneksi.closeConn();
-            comboBox_Member.SelectedIndex = -1;
-        }
-
         private void btn_deliver_order_Click(object sender, EventArgs e)
         {
             if (tb_noteNumber_order.Text == "") MessageBox.Show("Pilih order terlebih dahulu !");
@@ -551,6 +561,14 @@ namespace Project
                     tb_noteNumber_order.Text = "";
                     MessageBox.Show(ex.Message);
                 }
+            }
+        }
+
+        private void btn_orderDetail_Click(object sender, EventArgs e)
+        {
+            using (FormDetailOrder form = new FormDetailOrder(tb_noteNumber_order.Text))
+            {
+                form.ShowDialog();
             }
         }
     }

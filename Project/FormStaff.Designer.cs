@@ -35,6 +35,8 @@ namespace Project
             this.membershipMemberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orderMemberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelRegister = new System.Windows.Forms.Panel();
+            this.radioButton_Female = new System.Windows.Forms.RadioButton();
+            this.radioButton_Male = new System.Windows.Forms.RadioButton();
             this.label10 = new System.Windows.Forms.Label();
             this.cb_membership_register = new System.Windows.Forms.ComboBox();
             this.dateTimePicker_DateOfBirth = new System.Windows.Forms.DateTimePicker();
@@ -73,10 +75,9 @@ namespace Project
             this.label14 = new System.Windows.Forms.Label();
             this.dg_order = new System.Windows.Forms.DataGridView();
             this.label13 = new System.Windows.Forms.Label();
-            this.radioButton_Male = new System.Windows.Forms.RadioButton();
-            this.radioButton_Female = new System.Windows.Forms.RadioButton();
-            this.comboBox_Member = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.dg_memberList = new System.Windows.Forms.DataGridView();
+            this.btn_orderDetail = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panelRegister.SuspendLayout();
             this.panelRestock.SuspendLayout();
@@ -84,6 +85,7 @@ namespace Project
             ((System.ComponentModel.ISupportInitialize)(this.dg_membership)).BeginInit();
             this.panelOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_order)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_memberList)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -129,8 +131,8 @@ namespace Project
             // 
             // panelRegister
             // 
+            this.panelRegister.Controls.Add(this.dg_memberList);
             this.panelRegister.Controls.Add(this.label15);
-            this.panelRegister.Controls.Add(this.comboBox_Member);
             this.panelRegister.Controls.Add(this.radioButton_Female);
             this.panelRegister.Controls.Add(this.radioButton_Male);
             this.panelRegister.Controls.Add(this.label10);
@@ -152,6 +154,28 @@ namespace Project
             this.panelRegister.Name = "panelRegister";
             this.panelRegister.Size = new System.Drawing.Size(800, 480);
             this.panelRegister.TabIndex = 42;
+            // 
+            // radioButton_Female
+            // 
+            this.radioButton_Female.AutoSize = true;
+            this.radioButton_Female.Location = new System.Drawing.Point(191, 121);
+            this.radioButton_Female.Name = "radioButton_Female";
+            this.radioButton_Female.Size = new System.Drawing.Size(67, 17);
+            this.radioButton_Female.TabIndex = 49;
+            this.radioButton_Female.TabStop = true;
+            this.radioButton_Female.Text = "FEMALE";
+            this.radioButton_Female.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_Male
+            // 
+            this.radioButton_Male.AutoSize = true;
+            this.radioButton_Male.Location = new System.Drawing.Point(131, 121);
+            this.radioButton_Male.Name = "radioButton_Male";
+            this.radioButton_Male.Size = new System.Drawing.Size(54, 17);
+            this.radioButton_Male.TabIndex = 48;
+            this.radioButton_Male.TabStop = true;
+            this.radioButton_Male.Text = "MALE";
+            this.radioButton_Male.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
@@ -452,6 +476,7 @@ namespace Project
             // 
             // panelOrder
             // 
+            this.panelOrder.Controls.Add(this.btn_orderDetail);
             this.panelOrder.Controls.Add(this.btn_deliver_order);
             this.panelOrder.Controls.Add(this.tb_noteNumber_order);
             this.panelOrder.Controls.Add(this.label14);
@@ -515,53 +540,49 @@ namespace Project
             this.label13.TabIndex = 49;
             this.label13.Text = "Order List";
             // 
-            // radioButton_Male
-            // 
-            this.radioButton_Male.AutoSize = true;
-            this.radioButton_Male.Location = new System.Drawing.Point(131, 121);
-            this.radioButton_Male.Name = "radioButton_Male";
-            this.radioButton_Male.Size = new System.Drawing.Size(54, 17);
-            this.radioButton_Male.TabIndex = 48;
-            this.radioButton_Male.TabStop = true;
-            this.radioButton_Male.Text = "MALE";
-            this.radioButton_Male.UseVisualStyleBackColor = true;
-            // 
-            // radioButton_Female
-            // 
-            this.radioButton_Female.AutoSize = true;
-            this.radioButton_Female.Location = new System.Drawing.Point(191, 121);
-            this.radioButton_Female.Name = "radioButton_Female";
-            this.radioButton_Female.Size = new System.Drawing.Size(67, 17);
-            this.radioButton_Female.TabIndex = 49;
-            this.radioButton_Female.TabStop = true;
-            this.radioButton_Female.Text = "FEMALE";
-            this.radioButton_Female.UseVisualStyleBackColor = true;
-            // 
-            // comboBox_Member
-            // 
-            this.comboBox_Member.FormattingEnabled = true;
-            this.comboBox_Member.Location = new System.Drawing.Point(563, 42);
-            this.comboBox_Member.Name = "comboBox_Member";
-            this.comboBox_Member.Size = new System.Drawing.Size(164, 21);
-            this.comboBox_Member.TabIndex = 50;
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(458, 47);
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(389, 12);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(100, 13);
-            this.label15.TabIndex = 51;
-            this.label15.Text = "DAFTAR MEMBER";
+            this.label15.Size = new System.Drawing.Size(92, 16);
+            this.label15.TabIndex = 50;
+            this.label15.Text = "Member List";
+            // 
+            // dg_memberList
+            // 
+            this.dg_memberList.AllowUserToAddRows = false;
+            this.dg_memberList.AllowUserToDeleteRows = false;
+            this.dg_memberList.AllowUserToResizeColumns = false;
+            this.dg_memberList.AllowUserToResizeRows = false;
+            this.dg_memberList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dg_memberList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_memberList.Location = new System.Drawing.Point(392, 38);
+            this.dg_memberList.Name = "dg_memberList";
+            this.dg_memberList.ReadOnly = true;
+            this.dg_memberList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dg_memberList.Size = new System.Drawing.Size(396, 319);
+            this.dg_memberList.TabIndex = 51;
+            // 
+            // btn_orderDetail
+            // 
+            this.btn_orderDetail.Location = new System.Drawing.Point(339, 409);
+            this.btn_orderDetail.Name = "btn_orderDetail";
+            this.btn_orderDetail.Size = new System.Drawing.Size(106, 23);
+            this.btn_orderDetail.TabIndex = 54;
+            this.btn_orderDetail.Text = "Order Detail";
+            this.btn_orderDetail.UseVisualStyleBackColor = true;
+            this.btn_orderDetail.Click += new System.EventHandler(this.btn_orderDetail_Click);
             // 
             // FormStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 552);
-            this.Controls.Add(this.panelRestock);
-            this.Controls.Add(this.panelRegister);
             this.Controls.Add(this.panelOrder);
+            this.Controls.Add(this.panelRegister);
+            this.Controls.Add(this.panelRestock);
             this.Controls.Add(this.panelMembership);
             this.Controls.Add(this.label_staff);
             this.Controls.Add(this.btn_logout);
@@ -582,6 +603,7 @@ namespace Project
             this.panelOrder.ResumeLayout(false);
             this.panelOrder.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_order)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_memberList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -634,7 +656,8 @@ namespace Project
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.RadioButton radioButton_Female;
         private System.Windows.Forms.RadioButton radioButton_Male;
-        private System.Windows.Forms.ComboBox comboBox_Member;
+        private System.Windows.Forms.DataGridView dg_memberList;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btn_orderDetail;
     }
 }

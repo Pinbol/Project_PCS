@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2022 at 04:29 AM
+-- Generation Time: Jun 30, 2022 at 04:13 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -86,12 +86,14 @@ CREATE TABLE `format_product` (
 --
 
 INSERT INTO `format_product` (`ID`, `PRODUCT_ID`, `FORMAT_ID`, `STOCK`, `PRICE`) VALUES
-('1', '2', '1', 98, 250000),
+('1', '2', '1', 100, 250000),
+('10', '4', '3', 1100, 50000),
 ('4', '1', '1', 109, 150000),
-('5', '3', '1', 100, 150000),
-('6', '3', '4', 99, 25000),
-('7', '1', '4', 100, 25000),
-('8', '2', '4', 99, 75000);
+('5', '3', '1', 154, 150000),
+('6', '3', '4', 1110, 25000),
+('7', '1', '4', 134, 25000),
+('8', '2', '4', 99, 75000),
+('9', '1', '2', 99, 100000);
 
 -- --------------------------------------------------------
 
@@ -163,7 +165,8 @@ INSERT INTO `group_music` (`id`, `name`) VALUES
 ('4', 'Group_Towa_3'),
 ('5', 'Group_Towa_4'),
 ('6', 'Group_Towa_5'),
-('7', 'Group_Fubuki_1');
+('7', 'Group_Fubuki_1'),
+('8', 'Group Music');
 
 --
 -- Triggers `group_music`
@@ -208,6 +211,16 @@ INSERT INTO `group_personel` (`ID`, `GROUP_ID`, `PERSONEL_ID`) VALUES
 ('14', '6', '6'),
 ('15', '6', '11'),
 ('16', '7', '12'),
+('17', '8', '1'),
+('18', '8', '6'),
+('21', '1', '1'),
+('22', '1', '2'),
+('23', '1', '3'),
+('24', '1', '4'),
+('25', '1', '5'),
+('30', '8', '11'),
+('31', '8', '2'),
+('32', '8', '3'),
 ('6', '2', '6'),
 ('7', '2', '7'),
 ('8', '3', '6'),
@@ -237,9 +250,11 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`ID`, `NAME`, `USERNAME`, `PASSWORD`, `GENDER`, `ADDRESS`, `DATE_OF_BIRTH`, `MEMBERSHIP_ID`, `MEMBERSHIP_EXP`) VALUES
-('1', 'John Doe', 'John1', 'qwerty', 'L', 'Jalan Mawar no. 10, Surabaya, Jawa Timur, Indonesia', '2000-05-12', '1', '2022-08-01'),
-('2', 'Jane Doe', 'Jan1', '123', 'P', 'Jln Melati no 5', '1995-08-19', '1', '2022-09-23'),
-('3', 'Lorem', 'Lipsum', 'abc', 'L', 'Jalan Unknown no 69', '1991-02-28', NULL, NULL);
+('1', 'John Doe', 'John1', 'abc123', 'L', 'Jalan Mawar no. 10, Surabaya, Jawa Timur, Indonesia', '2000-05-12', '1', '2022-09-23'),
+('2', 'Jane Doe', 'Jan1', '123', 'P', 'Jln Melati no 5', '1995-08-19', NULL, NULL),
+('3', 'Lorem', 'Lipsum', 'abc', 'L', 'Jalan Unknown no 69', '1991-02-28', NULL, NULL),
+('4', 'Adam', 'Adam#1', 'qwerty', 'L', 'Jalan Something Surabaya', '1996-02-29', NULL, NULL),
+('5', 'Ervin', 'ervin123', 'abc654321', 'L', 'Jalan Nusantara 5', '2000-03-02', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -351,7 +366,11 @@ INSERT INTO `orderdetails` (`DETAIL_ID`, `NOTE_NUMBER`, `PRODUCT_ID`, `QUANTITY`
 ('2', 'NOTE20220623001', '6', 1, 25000),
 ('3', 'NOTE20220623001', '8', 1, 75000),
 ('4', 'NOTE20220623002', '1', 2, 500000),
-('5', 'NOTE20220623002', '4', 1, 150000);
+('5', 'NOTE20220623002', '4', 1, 150000),
+('6', 'NOTE20220623003', '5', 2, 300000),
+('7', 'NOTE20220623003', '9', 1, 100000),
+('8', 'NOTE20220623004', '10', 100, 5000000),
+('9', 'NOTE20220630001', '6', 5, 125000);
 
 -- --------------------------------------------------------
 
@@ -377,7 +396,10 @@ CREATE TABLE `orders` (
 INSERT INTO `orders` (`NOTE_NUMBER`, `ORDER_DATE`, `MEMBER_ID`, `STAFF_ID`, `STATUS`, `PAYMENT_METHOD`, `TOTAL`) VALUES
 ('NOTE20211123001', '2021-11-23', '1', '1', 'DELIVERED', '1', 490000),
 ('NOTE20220623001', '2022-06-23', '1', '1', 'DELIVERED', '2', 98000),
-('NOTE20220623002', '2022-06-23', '2', '1', 'DELIVERED', '1', 637000);
+('NOTE20220623002', '2022-06-23', '2', '1', 'DELIVERED', '1', 637000),
+('NOTE20220623003', '2022-06-23', '1', '1', 'DELIVERED', '2', 392000),
+('NOTE20220623004', '2022-06-23', '5', '1', 'DELIVERED', '1', 5000000),
+('NOTE20220630001', '2022-06-30', '2', NULL, 'PENDING', '1', 125000);
 
 --
 -- Triggers `orders`
@@ -443,7 +465,7 @@ CREATE TRIGGER `TR_Orders_2` BEFORE UPDATE ON `orders` FOR EACH ROW BEGIN
 			select fp.`STOCK` into numStock from format_product fp
 			where fp.`ID` = idProduct;
 			
-			if numStock>quantity then 
+			if numStock>=quantity then 
 				set cond = 1;
 			else
 				set cond = 0;
@@ -566,7 +588,8 @@ CREATE TABLE `product` (
 INSERT INTO `product` (`ID`, `NAME`, `RELEASE_DATE`, `RATING`, `DESCRIPTION`, `TYPE_ID`) VALUES
 ('1', 'High Tide Single', '2022-02-17 00:00:00', 4.85, 'A single composed of High Tide, the second original song of Moona Hoshinova', '1'),
 ('2', 'Scream', '2022-01-04 00:00:00', 0, 'Tokoyami Towa\'s first EP to be released.', '2'),
-('3', 'KINGWORLD Single', '2022-06-21 00:00:00', 4.8, 'KINGWORLD is the second single released by Shirakami Fubuki', '1');
+('3', 'KINGWORLD Single', '2022-06-21 00:00:00', 4.75, 'KINGWORLD is the second single released by Shirakami Fubuki', '1'),
+('4', 'Produk', '2022-06-23 00:00:00', 0, 'This is a test product created during first presentation.', '2');
 
 -- --------------------------------------------------------
 
@@ -587,6 +610,8 @@ CREATE TABLE `product_song` (
 
 INSERT INTO `product_song` (`ID`, `PRODUCT_ID`, `SONG_ID`) VALUES
 ('1', '1', '1'),
+('10', '4', '6'),
+('11', '4', '9'),
 ('2', '2', '2'),
 ('3', '2', '3'),
 ('4', '2', '4'),
@@ -617,7 +642,8 @@ CREATE TABLE `review_product` (
 INSERT INTO `review_product` (`ID`, `PRODUCT_ID`, `MEMBER_ID`, `REVIEW_DATE`, `RATING`) VALUES
 ('1', '1', '1', '2022-04-29', 4.8),
 ('2', '1', '2', '2022-06-23', 4.9),
-('3', '3', '2', '2022-06-23', 4.8);
+('3', '3', '2', '2022-06-23', 4.8),
+('4', '3', '1', '2022-06-23', 4.7);
 
 --
 -- Triggers `review_product`
@@ -712,7 +738,8 @@ INSERT INTO `songs` (`ID`, `NAME`, `RELEASE_DATE`, `GROUP_ID`, `GENRE_ID`, `LENG
 ('5', 'Fact', '2022-01-03 00:00:00', '4', '4', 195, 'Tokoyami Towa\'s second original song to be made MV.', 0),
 ('6', 'Born to be Real', '2022-01-03 00:00:00', '5', '4', 207, 'The fifth track in Towa\'s first EP, Scream', 0),
 ('7', 'My Roar', '2022-01-03 00:00:00', '6', '4', 218, 'The sixth track in Towa\'s first EP, Scream', 0),
-('8', 'KINGWORLD', '2022-06-03 00:00:00', '7', '4', 216, 'Shirakami Fubuki\'s second original song. Released on June 3rd, 2022', 0);
+('8', 'KINGWORLD', '2022-06-03 00:00:00', '7', '4', 216, 'Shirakami Fubuki\'s second original song. Released on June 3rd, 2022', 0),
+('9', 'Something', '2022-06-09 00:00:00', '8', '7', 210, 'aaa', 0);
 
 --
 -- Triggers `songs`
@@ -746,16 +773,16 @@ CREATE TABLE `staff` (
   `PASSWORD` varchar(250) NOT NULL,
   `ADDRESS` varchar(150) NOT NULL,
   `GENDER` varchar(1) NOT NULL,
-  `DATE_OF_BIRTH` date NOT NULL,
-  `STATUS` int(11) NOT NULL
+  `DATE_OF_BIRTH` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `staff`
 --
 
-INSERT INTO `staff` (`ID`, `NAME`, `USERNAME`, `PASSWORD`, `ADDRESS`, `GENDER`, `DATE_OF_BIRTH`, `STATUS`) VALUES
-('1', 'Eugene Bush', 'Staff#1', '123456', 'Jalan Lorem no 69, Surabaya, Jawa Timur, Indonesia', 'L', '1997-05-09', 1);
+INSERT INTO `staff` (`ID`, `NAME`, `USERNAME`, `PASSWORD`, `ADDRESS`, `GENDER`, `DATE_OF_BIRTH`) VALUES
+('1', 'Eugene Bush', 'Staff#1', '123456', 'Jalan Lorem no 69, Surabaya, Jawa Timur, Indonesia', 'L', '1997-05-09'),
+('2', 'Adam', 'Adam', '123456', 'Jalan Something', 'L', '1999-01-13');
 
 --
 -- Triggers `staff`

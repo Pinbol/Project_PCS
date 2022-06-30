@@ -30,7 +30,7 @@ namespace Project
         public int SongProductSongIndex;
 
         public String Format_ProductFormat;
-        
+
         public Form2()
         {
             InitializeComponent();
@@ -79,7 +79,6 @@ namespace Project
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            //load
             panelStaff.Visible = true;
             panelMembership.Visible = false;
             panelPayment.Visible = false;
@@ -132,13 +131,13 @@ namespace Project
             }
 
             DataTable dt = new DataTable();
-            MySqlCommand cmd = new MySqlCommand("SELECT ID, Name, Username, Password, Address, CASE WHEN gender = 'L' THEN 'Laki-Laki' ELSE 'Perempuan' END as 'Jenis Kelamin', date_of_birth, CASE WHEN STATUS = 1 THEN 'Aktif' ELSE 'Tidak Aktif' END as 'Status' FROM staff order by cast(id as unsigned) asc;", koneksi.getConn());
+            MySqlCommand cmd = new MySqlCommand("SELECT ID, Name, Username, Address, CASE WHEN gender = 'L' THEN 'Laki-Laki' ELSE 'Perempuan' END as 'Jenis Kelamin', date_of_birth FROM staff order by cast(id as unsigned) asc;", koneksi.getConn());
             MySqlDataAdapter da = new MySqlDataAdapter();
 
             koneksi.openConn();
             cmd.ExecuteReader();
             koneksi.closeConn();
-            
+
             da.SelectCommand = cmd;
             da.Fill(dt);
 
@@ -745,9 +744,6 @@ namespace Project
             btn_insert_staff.Enabled = true;
             btn_update_staff.Enabled = false;
 
-            lbl_status_staff.Visible = false;
-            gb_status.Visible = false;
-
             dtp_dob_staff.Value = DateTime.Today;
         }
 
@@ -785,7 +781,7 @@ namespace Project
 
                 try
                 {
-                    MySqlCommand cmdInsert = new MySqlCommand("insert into staff (id,name,username,password,address,gender,date_of_birth,status) values (@id,@name,@username,@password,@address,@gender,@date,@status);", koneksi.getConn());
+                    MySqlCommand cmdInsert = new MySqlCommand("insert into staff (id,name,username,password,address,gender,date_of_birth) values (@id,@name,@username,@password,@address,@gender,@date);", koneksi.getConn());
 
                     cmdInsert.Parameters.AddWithValue("@id", newID);
                     cmdInsert.Parameters.AddWithValue("@name", name);
@@ -794,7 +790,6 @@ namespace Project
                     cmdInsert.Parameters.AddWithValue("@address", alamat);
                     cmdInsert.Parameters.AddWithValue("@gender", staffJK);
                     cmdInsert.Parameters.AddWithValue("@date", staffDOB);
-                    cmdInsert.Parameters.AddWithValue("@status", 1);
 
                     koneksi.openConn();
                     cmdInsert.ExecuteNonQuery();
@@ -830,13 +825,9 @@ namespace Project
                 if (rb_l.Checked) staffJK = "L";
                 else staffJK = "P";
 
-                String staffStatus;
-                if (rb_aktif.Checked) staffStatus = "1";
-                else staffStatus = "0";
-
                 try
                 {
-                    MySqlCommand cmdInsert = new MySqlCommand("update staff set name = @name, username = @username, password= @password, address = @address, gender = @gender, date_of_birth = @date, status=@status where id = @id;", koneksi.getConn());
+                    MySqlCommand cmdInsert = new MySqlCommand("update staff set name = @name, username = @username, password= @password, address = @address, gender = @gender, date_of_birth = @date where id = @id;", koneksi.getConn());
 
                     cmdInsert.Parameters.AddWithValue("@id", idStaff);
                     cmdInsert.Parameters.AddWithValue("@name", name);
@@ -845,7 +836,6 @@ namespace Project
                     cmdInsert.Parameters.AddWithValue("@address", alamat);
                     cmdInsert.Parameters.AddWithValue("@gender", staffJK);
                     cmdInsert.Parameters.AddWithValue("@date", staffDOB);
-                    cmdInsert.Parameters.AddWithValue("@status", staffStatus);
 
                     koneksi.openConn();
                     cmdInsert.ExecuteNonQuery();
@@ -893,61 +883,59 @@ namespace Project
 
         private void dg_staff_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            btn_delete_staff.Enabled = true;
-            btn_update_staff.Enabled = true;
-
-            btn_insert_staff.Enabled = false;
-
-            idStaff = dg_staff.Rows[e.RowIndex].Cells[0].Value.ToString();
-
-            lbl_status_staff.Visible = true;
-            gb_status.Visible = true;
-
-            tb_name_staff.Text = dg_staff.Rows[e.RowIndex].Cells[1].Value.ToString();
-            tb_username_staff.Text = dg_staff.Rows[e.RowIndex].Cells[2].Value.ToString();
-            tb_password_staff.Text = dg_staff.Rows[e.RowIndex].Cells[3].Value.ToString();
-            tb_alamat_staff.Text = dg_staff.Rows[e.RowIndex].Cells[4].Value.ToString();
-
-            String jk = dg_staff.Rows[e.RowIndex].Cells[5].Value.ToString();
-
-            if (jk == "Laki-Laki")
+            if (e.RowIndex!=-1)
             {
-                rb_l.Checked = true;
-                rb_p.Checked = false;
-            }
-            else
-            {
-                rb_p.Checked = true;
-                rb_l.Checked = false;
-            }
+                btn_delete_staff.Enabled = true;
+                btn_update_staff.Enabled = true;
 
-            String status = dg_staff.Rows[e.RowIndex].Cells[7].Value.ToString();
-            if (status == "Aktif")
-            {
-                rb_aktif.Checked = true;
-                rb_tdk_aktif.Checked = false;
-            }
-            else
-            {
-                rb_aktif.Checked = false;
-                rb_tdk_aktif.Checked = true;
-            }
+                btn_insert_staff.Enabled = false;
 
-            dtp_dob_staff.Value = Convert.ToDateTime(dg_staff.Rows[e.RowIndex].Cells[6].Value.ToString());
+                idStaff = dg_staff.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+                tb_name_staff.Text = dg_staff.Rows[e.RowIndex].Cells[1].Value.ToString();
+                tb_username_staff.Text = dg_staff.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+                tb_alamat_staff.Text = dg_staff.Rows[e.RowIndex].Cells[3].Value.ToString();
+
+                MySqlCommand cmd = new MySqlCommand("select password from staff where id=@id;", koneksi.getConn());
+                cmd.Parameters.AddWithValue("@id", idStaff);
+
+                koneksi.openConn();
+                tb_password_staff.Text = cmd.ExecuteScalar().ToString();
+                koneksi.closeConn();
+
+                String jk = dg_staff.Rows[e.RowIndex].Cells[4].Value.ToString();
+
+                if (jk == "Laki-Laki")
+                {
+                    rb_l.Checked = true;
+                    rb_p.Checked = false;
+                }
+                else
+                {
+                    rb_p.Checked = true;
+                    rb_l.Checked = false;
+                }
+
+                dtp_dob_staff.Value = Convert.ToDateTime(dg_staff.Rows[e.RowIndex].Cells[5].Value.ToString());
+            }
         }
 
         private void dg_membership_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            btn_update_membership.Enabled = true;
-            btn_delete_membership.Enabled = true;
-            btn_insert_membership.Enabled = false;
+            if (e.RowIndex!=-1)
+            {
+                btn_update_membership.Enabled = true;
+                btn_delete_membership.Enabled = true;
+                btn_insert_membership.Enabled = false;
 
-            idMembership = dg_membership.Rows[e.RowIndex].Cells[0].Value.ToString();
+                idMembership = dg_membership.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-            tb_name_membership.Text = dg_membership.Rows[e.RowIndex].Cells[1].Value.ToString();
-            tb_harga_membership.Text = dg_membership.Rows[e.RowIndex].Cells[2].Value.ToString().Substring(0, dg_membership.Rows[e.RowIndex].Cells[2].Value.ToString().Length-1);
+                tb_name_membership.Text = dg_membership.Rows[e.RowIndex].Cells[1].Value.ToString();
+                tb_harga_membership.Text = dg_membership.Rows[e.RowIndex].Cells[2].Value.ToString().Substring(0, dg_membership.Rows[e.RowIndex].Cells[2].Value.ToString().Length - 1);
 
-            nud_wkt_membership.Value = Convert.ToInt32(dg_membership.Rows[e.RowIndex].Cells[3].Value.ToString().Split(' ')[0]);
+                nud_wkt_membership.Value = Convert.ToInt32(dg_membership.Rows[e.RowIndex].Cells[3].Value.ToString().Split(' ')[0]);
+            }
         }
 
         private void btn_clear_membership_Click(object sender, EventArgs e)
@@ -1145,13 +1133,16 @@ namespace Project
 
         private void dg_payment_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            idPayment = dg_payment.Rows[e.RowIndex].Cells[0].Value.ToString();
+            if (e.RowIndex!=-1)
+            {
+                idPayment = dg_payment.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-            tb_name_payment.Text = dg_payment.Rows[e.RowIndex].Cells[1].Value.ToString();
+                tb_name_payment.Text = dg_payment.Rows[e.RowIndex].Cells[1].Value.ToString();
 
-            btn_insert_payment.Enabled = false;
-            btn_delete_payment.Enabled = true;
-            btn_update_payment.Enabled = true;
+                btn_insert_payment.Enabled = false;
+                btn_delete_payment.Enabled = true;
+                btn_update_payment.Enabled = true;
+            }
         }
 
         private void btn_update_payment_Click(object sender, EventArgs e)
@@ -1315,13 +1306,16 @@ namespace Project
 
         private void dg_occupation_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            idOccupation = dg_occupation.Rows[e.RowIndex].Cells[0].Value.ToString();
+            if (e.RowIndex!=-1)
+            {
+                idOccupation = dg_occupation.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-            tb_name_occupation.Text = dg_occupation.Rows[e.RowIndex].Cells[1].Value.ToString();
+                tb_name_occupation.Text = dg_occupation.Rows[e.RowIndex].Cells[1].Value.ToString();
 
-            btn_insert_occupation.Enabled = false;
-            btn_delete_occupation.Enabled = true;
-            btn_update_occupation.Enabled = true;
+                btn_insert_occupation.Enabled = false;
+                btn_delete_occupation.Enabled = true;
+                btn_update_occupation.Enabled = true;
+            }
         }
 
         private void btn_delete_occupation_Click(object sender, EventArgs e)
@@ -1383,13 +1377,16 @@ namespace Project
 
         private void dg_genre_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            idGenre = dg_genre.Rows[e.RowIndex].Cells[0].Value.ToString();
+            if (e.RowIndex!=-1)
+            {
+                idGenre = dg_genre.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-            tb_name_genre.Text = dg_genre.Rows[e.RowIndex].Cells[1].Value.ToString();
+                tb_name_genre.Text = dg_genre.Rows[e.RowIndex].Cells[1].Value.ToString();
 
-            btn_insert_genre.Enabled = false;
-            btn_delete_genre.Enabled = true;
-            btn_update_genre.Enabled = true;
+                btn_insert_genre.Enabled = false;
+                btn_delete_genre.Enabled = true;
+                btn_update_genre.Enabled = true;
+            }
         }
 
         private void btn_insert_genre_Click(object sender, EventArgs e)
@@ -1523,13 +1520,16 @@ namespace Project
 
         private void dg_format_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            idFormat = dg_format.Rows[e.RowIndex].Cells[0].Value.ToString();
+            if (e.RowIndex!=-1)
+            {
+                idFormat = dg_format.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-            tb_name_format.Text = dg_format.Rows[e.RowIndex].Cells[1].Value.ToString();
+                tb_name_format.Text = dg_format.Rows[e.RowIndex].Cells[1].Value.ToString();
 
-            btn_insert_format.Enabled = false;
-            btn_delete_format.Enabled = true;
-            btn_update_format.Enabled = true;
+                btn_insert_format.Enabled = false;
+                btn_delete_format.Enabled = true;
+                btn_update_format.Enabled = true;
+            }
         }
 
         private void btn_insert_format_Click(object sender, EventArgs e)
@@ -1711,20 +1711,23 @@ namespace Project
 
         private void dg_personel_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            idPersonel = dg_personel.Rows[e.RowIndex].Cells[0].Value.ToString();
+            if (e.RowIndex!=-1)
+            {
+                idPersonel = dg_personel.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-            tb_name_personel.Text = dg_personel.Rows[e.RowIndex].Cells[1].Value.ToString();
-            tb_country_personel.Text = dg_personel.Rows[e.RowIndex].Cells[2].Value.ToString();
+                tb_name_personel.Text = dg_personel.Rows[e.RowIndex].Cells[1].Value.ToString();
+                tb_country_personel.Text = dg_personel.Rows[e.RowIndex].Cells[2].Value.ToString();
 
-            String gender = dg_personel.Rows[e.RowIndex].Cells[3].Value.ToString();
-            if (gender == "L") rb_l_personel.Checked = true;
-            else rb_p_personel.Checked = true;
+                String gender = dg_personel.Rows[e.RowIndex].Cells[3].Value.ToString();
+                if (gender == "L") rb_l_personel.Checked = true;
+                else rb_p_personel.Checked = true;
 
-            cb_occupation_personel.Text = dg_personel.Rows[e.RowIndex].Cells[4].Value.ToString();
+                cb_occupation_personel.Text = dg_personel.Rows[e.RowIndex].Cells[4].Value.ToString();
 
-            btn_insert_personel.Enabled = false;
-            btn_delete_personel.Enabled = true;
-            btn_update_personel.Enabled = true;
+                btn_insert_personel.Enabled = false;
+                btn_delete_personel.Enabled = true;
+                btn_update_personel.Enabled = true;
+            }
         }
 
         private void btn_clear_personel_Click(object sender, EventArgs e)
@@ -1844,15 +1847,18 @@ namespace Project
 
         private void dg_groupMusic_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            idGroupMusic = dg_groupMusic.Rows[e.RowIndex].Cells[0].Value.ToString();
+            if (e.RowIndex!=-1)
+            {
+                idGroupMusic = dg_groupMusic.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-            tb_name_groupMusic.Text = dg_groupMusic.Rows[e.RowIndex].Cells[1].Value.ToString();
+                tb_name_groupMusic.Text = dg_groupMusic.Rows[e.RowIndex].Cells[1].Value.ToString();
 
-            fillDGPersonelGroupMusic();
+                fillDGPersonelGroupMusic();
 
-            btn_insert_groupMusic.Enabled = false;
-            btn_update_groupMusic.Enabled = true;
-            btn_delete_groupMusic.Enabled = true;
+                btn_insert_groupMusic.Enabled = false;
+                btn_update_groupMusic.Enabled = true;
+                btn_delete_groupMusic.Enabled = true;
+            }
         }
 
         private void btn_clear_personel_group_Click(object sender, EventArgs e)
@@ -1863,12 +1869,39 @@ namespace Project
 
         private void btn_enter_group_personel_Click(object sender, EventArgs e)
         {
-            String personel = (cb_personel_groupMusic.SelectedItem as dynamic).Personel;
-            String occupation = (cb_personel_groupMusic.SelectedItem as dynamic).Occupation;
+            if (cb_personel_groupMusic.SelectedIndex != -1)
+            {
+                String personel = (cb_personel_groupMusic.SelectedItem as dynamic).Personel;
+                String occupation = (cb_personel_groupMusic.SelectedItem as dynamic).Occupation;
 
-            dg_personel_groupMusic.Rows.Add(personel, occupation);
+                if (dg_personel_groupMusic.Rows.Count==0)
+                {
+                    dg_personel_groupMusic.Rows.Add(personel, occupation);
 
-            dtInternalGroupMusic.Rows.Add((cb_personel_groupMusic.SelectedItem as dynamic).Value);
+                    dtInternalGroupMusic.Rows.Add((cb_personel_groupMusic.SelectedItem as dynamic).Value);
+                } else
+                {
+                    Boolean isThere = false;
+                    for (int i=0; i<dg_personel_groupMusic.Rows.Count;i++)
+                    {
+                        if (dg_personel_groupMusic.Rows[i].Cells[0].Value.ToString()==personel)
+                        {
+                            isThere = true;
+                            MessageBox.Show("Personel sudah ada !");
+                            break;
+                        }
+                    }
+
+                    if (!isThere)
+                    {
+                        dg_personel_groupMusic.Rows.Add(personel, occupation);
+
+                        dtInternalGroupMusic.Rows.Add((cb_personel_groupMusic.SelectedItem as dynamic).Value);
+                    }
+                }
+                
+            }
+            else MessageBox.Show("Pilih personel terlebih dahulu !");
         }
 
         private void btn_delete_group_personel_Click(object sender, EventArgs e)
@@ -1879,7 +1912,7 @@ namespace Project
 
         private void dg_personel_groupMusic_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            PersonelGroupMusicIndex = e.RowIndex;
+            if (e.RowIndex!=-1) PersonelGroupMusicIndex = e.RowIndex;
         }
 
         private void btn_insert_groupMusic_Click(object sender, EventArgs e)
@@ -1931,9 +1964,12 @@ namespace Project
                         clearGroupMusic();
                         refreshDGGroupMusic();
 
+                        dtInternalGroupMusic.Rows.Clear();
+
                         MessageBox.Show("Insert successful !");
                     } catch (MySqlException ex)
                     {
+                        dtInternalGroupMusic.Rows.Clear();
                         MessageBox.Show(ex.Message);
                         trans.Rollback();
                     }
@@ -1967,11 +2003,16 @@ namespace Project
                     clearGroupMusic();
                     refreshDGGroupMusic();
 
+                    dtInternalGroupMusic.Rows.Clear();
+                    dtTempUpdateGroupMusic.Rows.Clear();
+
                     MessageBox.Show("Delete successfull !");
                 }
                 catch (MySqlException ex)
                 {
                     clearGroupMusic();
+                    dtInternalGroupMusic.Rows.Clear();
+                    dtTempUpdateGroupMusic.Rows.Clear();
                     MessageBox.Show(ex.Message);
                 }
             }
@@ -2055,6 +2096,9 @@ namespace Project
 
                         clearGroupMusic();
                         refreshDGGroupMusic();
+
+                        dtTempUpdateGroupMusic.Rows.Clear();
+                        dtInternalGroupMusic.Rows.Clear();
 
                         MessageBox.Show("Update successful !");
                     } catch (MySqlException ex)
@@ -2162,21 +2206,24 @@ namespace Project
 
         private void dg_song_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            idSong = dg_song.Rows[e.RowIndex].Cells[0].Value.ToString();
+            if (e.RowIndex!=-1)
+            {
+                idSong = dg_song.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-            tb_name_song.Text = dg_song.Rows[e.RowIndex].Cells[1].Value.ToString();
-            rtb_deskripsi_song.Text = dg_song.Rows[e.RowIndex].Cells[6].Value.ToString();
+                tb_name_song.Text = dg_song.Rows[e.RowIndex].Cells[1].Value.ToString();
+                rtb_deskripsi_song.Text = dg_song.Rows[e.RowIndex].Cells[6].Value.ToString();
 
-            dtp_releaseDate_song.Value = DateTime.Parse(dg_song.Rows[e.RowIndex].Cells[2].Value.ToString());
+                dtp_releaseDate_song.Value = DateTime.Parse(dg_song.Rows[e.RowIndex].Cells[2].Value.ToString());
 
-            tb_length_song.Text = (Convert.ToInt32(dg_song.Rows[e.RowIndex].Cells[5].Value.ToString().Substring(0,2))*60 + Convert.ToInt32(dg_song.Rows[e.RowIndex].Cells[5].Value.ToString().Substring(3, 2))).ToString() ;
+                tb_length_song.Text = (Convert.ToInt32(dg_song.Rows[e.RowIndex].Cells[5].Value.ToString().Substring(0, 2)) * 60 + Convert.ToInt32(dg_song.Rows[e.RowIndex].Cells[5].Value.ToString().Substring(3, 2))).ToString();
 
-            cb_group_song.Text = dg_song.Rows[e.RowIndex].Cells[3].Value.ToString();
-            cb_genre_song.Text = dg_song.Rows[e.RowIndex].Cells[4].Value.ToString();
+                cb_group_song.Text = dg_song.Rows[e.RowIndex].Cells[3].Value.ToString();
+                cb_genre_song.Text = dg_song.Rows[e.RowIndex].Cells[4].Value.ToString();
 
-            btn_insert_song.Enabled = false;
-            btn_delete_song.Enabled = true;
-            btn_update_song.Enabled = true;
+                btn_insert_song.Enabled = false;
+                btn_delete_song.Enabled = true;
+                btn_update_song.Enabled = true;
+            }
         }
 
         private void btn_delete_song_Click(object sender, EventArgs e)
@@ -2298,19 +2345,22 @@ namespace Project
 
         private void dg_productSong_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            idProductSong = dg_productSong.Rows[e.RowIndex].Cells[0].Value.ToString();
+            if (e.RowIndex!=-1)
+            {
+                idProductSong = dg_productSong.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-            tb_name_productSong.Text = dg_productSong.Rows[e.RowIndex].Cells[1].Value.ToString();
+                tb_name_productSong.Text = dg_productSong.Rows[e.RowIndex].Cells[1].Value.ToString();
 
-            rtb_description_productSong.Text = dg_productSong.Rows[e.RowIndex].Cells[3].Value.ToString();
+                rtb_description_productSong.Text = dg_productSong.Rows[e.RowIndex].Cells[3].Value.ToString();
 
-            cb_type_productSong.Text = dg_productSong.Rows[e.RowIndex].Cells[4].Value.ToString();
+                cb_type_productSong.Text = dg_productSong.Rows[e.RowIndex].Cells[4].Value.ToString();
 
-            fillDGSongProductSong();
+                fillDGSongProductSong();
 
-            btn_insert_productSong.Enabled = false;
-            btn_update_productSong.Enabled = true;
-            btn_delete_productSong.Enabled = true;
+                btn_insert_productSong.Enabled = false;
+                btn_update_productSong.Enabled = true;
+                btn_delete_productSong.Enabled = true;
+            }
         }
 
         private void btn_clear_song_productSong_Click(object sender, EventArgs e)
@@ -2326,9 +2376,32 @@ namespace Project
                 String song = (cb_song_productSong.SelectedItem as dynamic).Text;
                 String length = (cb_song_productSong.SelectedItem as dynamic).Length;
 
-                dg_song_productSong.Rows.Add(song, length);
+                if (dg_song_productSong.Rows.Count==0)
+                {
+                    dg_song_productSong.Rows.Add(song, length);
 
-                dtInternalProductSong.Rows.Add((cb_song_productSong.SelectedItem as dynamic).Value);
+                    dtInternalProductSong.Rows.Add((cb_song_productSong.SelectedItem as dynamic).Value);
+                } else
+                {
+                    Boolean isThere = false;
+                    for (int i=0; i<dg_song_productSong.Rows.Count; i++)
+                    {
+                        if (dg_song_productSong.Rows[i].Cells[0].Value.ToString()==song)
+                        {
+                            MessageBox.Show("Lagu sudah ada !");
+                            isThere = true;
+                            break;
+                        }
+                    }
+
+                    if (!isThere)
+                    {
+                        dg_song_productSong.Rows.Add(song, length);
+
+                        dtInternalProductSong.Rows.Add((cb_song_productSong.SelectedItem as dynamic).Value);
+                    }
+
+                }
             }
             else MessageBox.Show("Pilih lagu terlebih dahulu !");
         }
@@ -2398,10 +2471,13 @@ namespace Project
                         clearProductSong();
                         refreshDGProductSong();
 
+                        dtInternalProductSong.Rows.Clear();
+
                         MessageBox.Show("Insert successful !");
                     }
                     catch (MySqlException ex)
                     {
+                        dtInternalProductSong.Rows.Clear();
                         MessageBox.Show(ex.Message);
                         trans.Rollback();
                     }
@@ -2434,12 +2510,16 @@ namespace Project
 
                     clearProductSong();
                     refreshDGProductSong();
+                    dtTempUpdateProductSong.Rows.Clear();
+                    dtInternalProductSong.Rows.Clear();
 
                     MessageBox.Show("Delete successfull !");
                 }
                 catch (MySqlException ex)
                 {
                     clearProductSong();
+                    dtTempUpdateProductSong.Rows.Clear();
+                    dtInternalProductSong.Rows.Clear();
                     MessageBox.Show(ex.Message);
                 }
             }
@@ -2528,11 +2608,16 @@ namespace Project
                         clearProductSong();
                         refreshDGProductSong();
 
+                        dtTempUpdateProductSong.Rows.Clear();
+                        dtInternalProductSong.Rows.Clear();
+
                         MessageBox.Show("Update successful !");
                     }
                     catch (MySqlException ex)
                     {
                         clearProductSong();
+                        dtTempUpdateProductSong.Rows.Clear();
+                        dtInternalProductSong.Rows.Clear();
                         MessageBox.Show(ex.Message);
                         trans.Rollback();
                     }
@@ -2605,26 +2690,38 @@ namespace Project
                 String format = (cb_format_productFormat.SelectedItem as dynamic).Value;
                 String price = tb_harga_productFormat.Text;
 
-                try
+                MySqlCommand cmdCount = new MySqlCommand("select count(*) from format_product where product_id=@product and format_id=@format", koneksi.getConn());
+                cmdCount.Parameters.AddWithValue("@product", idProductFormat);
+                cmdCount.Parameters.AddWithValue("@format", format);
+
+                koneksi.openConn();
+                String count = cmdCount.ExecuteScalar().ToString();
+                koneksi.closeConn();
+
+                if (count != "0") MessageBox.Show("Format sudah ada !");
+                else
                 {
-                    MySqlCommand cmdInsert = new MySqlCommand("insert into format_product (id,product_id, format_id,stock,price) values (@id,@product,@format,100,@price);", koneksi.getConn());
+                    try
+                    {
+                        MySqlCommand cmdInsert = new MySqlCommand("insert into format_product (id,product_id, format_id,stock,price) values (@id,@product,@format,100,@price);", koneksi.getConn());
 
-                    cmdInsert.Parameters.AddWithValue("@id", newID);
-                    cmdInsert.Parameters.AddWithValue("@product", idProductFormat);
-                    cmdInsert.Parameters.AddWithValue("@format", format);
-                    cmdInsert.Parameters.AddWithValue("@price", price);
+                        cmdInsert.Parameters.AddWithValue("@id", newID);
+                        cmdInsert.Parameters.AddWithValue("@product", idProductFormat);
+                        cmdInsert.Parameters.AddWithValue("@format", format);
+                        cmdInsert.Parameters.AddWithValue("@price", price);
 
-                    koneksi.openConn();
-                    cmdInsert.ExecuteNonQuery();
-                    koneksi.closeConn();
+                        koneksi.openConn();
+                        cmdInsert.ExecuteNonQuery();
+                        koneksi.closeConn();
 
-                    clearProductFormat();
-                    refreshDGProductFormat();
-                    MessageBox.Show("Insert successful !");
-                }
-                catch (MySqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
+                        clearProductFormat();
+                        refreshDGProductFormat();
+                        MessageBox.Show("Insert successful !");
+                    }
+                    catch (MySqlException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }
         }
